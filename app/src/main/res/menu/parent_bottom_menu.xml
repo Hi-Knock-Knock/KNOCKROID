@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/ic_home"
+        android:checked="false"
+        android:title="홈"/>
+    <item
+        android:id="@+id/menu_talk"
+        android:icon="@drawable/ic_talk"
+        android:checked="false"
+        android:title="대화/질문하기"/>
+    <item
+        android:id="@+id/menu_faq"
+        android:icon="@drawable/ic_faq"
+        android:checked="false"
+        android:title="FAQ"/>
+</menu>

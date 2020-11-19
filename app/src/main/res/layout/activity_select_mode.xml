@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background"
+    tools:context=".base.SelectModeActivity">
+
+    <TextView
+        android:id="@+id/select_txt"
+        android:layout_width="276dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="19dp"
+        android:text="모드를 선택해 주세요"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/select_btn_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/select_btn_layout"
+        android:layout_width="355dp"
+        android:layout_height="261dp"
+        android:background="@drawable/bg_whitebox"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <Button
+            android:id="@+id/select_btn_infantmode"
+            android:layout_width="305dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/bg_select_btn"
+            android:text="아이모드"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold">
+        </Button>
+
+
+        <Button
+            android:id="@+id/select_btn_parentmode"
+            android:layout_width="305dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="46dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="59dp"
+            android:background="@drawable/bg_select_btn"
+            android:text="부모모드"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold">
+        </Button>
+
+
+    </LinearLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
