@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knock_Knock">
-        <activity android:name=".infant_layout.InfantSwitchCharacterActivity"></activity>
-        <activity android:name=".infant_layout.InfantSelectCharacterActivity" />
-        <activity android:name=".infant_layout.InfantSelectIdActivity" />
+        <activity android:name=".infant_layout.InfantSelectIdActivity"></activity>
         <activity android:name=".base.SignupActivity" />
         <activity android:name=".base.LoginActivity" />
         <activity android:name=".base.SplashActivity">
