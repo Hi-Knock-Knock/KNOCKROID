@@ -11,7 +11,7 @@ class InfantSelectIdActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_select_id)
 
-        val intent = Intent(this, InfantHomeActivity::class.java)
+        val intent = Intent(this, InfantSelectCharacterActivity::class.java)
         button1.setOnClickListener{
             startActivity(intent)
         }
