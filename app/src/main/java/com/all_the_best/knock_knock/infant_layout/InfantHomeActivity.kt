@@ -39,9 +39,14 @@ class InfantHomeActivity : AppCompatActivity() {
             !in "10:00:00".."23:59:59" -> change_bg.setBackgroundResource(R.drawable.infant_home_bg3)
         }
 
-        val intent = Intent(this, InfantSelectFeelActivity::class.java)
+        val intent1 = Intent(this, InfantSelectFeelActivity::class.java)
         char_talk_btn.setOnClickListener{
-            startActivity(intent)
+            startActivity(intent1)
         }
+        val intent2 = Intent(this, InfantSwitchCharacterActivity::class.java)
+        char_change_btn.setOnClickListener{
+            startActivity(intent2)
+        }
+
     }
 }
