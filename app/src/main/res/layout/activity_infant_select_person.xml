@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/infant_select_person"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/infant_home_bg1"
+    tools:context=".infant_layout.InfantSelectFeelActivity">
+
+    <ImageView
+        android:id="@+id/infant_talk1"
+        android:layout_width="349dp"
+        android:layout_height="95dp"
+        app:layout_constraintBottom_toTopOf="@+id/char_dam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src ="@drawable/infant_talk1"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/talk_txtview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="누구와 있었던 일이야?"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/infant_talk1"
+        app:layout_constraintEnd_toEndOf="@+id/infant_talk1"
+        app:layout_constraintStart_toStartOf="@+id/infant_talk1"
+        app:layout_constraintTop_toTopOf="@id/infant_talk1"
+        app:layout_constraintVertical_bias="0.263" />
+
+    <ImageView
+        android:id="@+id/char_dam"
+        android:layout_width="310dp"
+        android:layout_height="407dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.501"
+        app:srcCompat="@drawable/char_dam" />
+
+
+    <ImageView
+        android:id="@+id/infant_gift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/infant_gift" />
+
+    <ImageView
+        android:id="@+id/infant_cookie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/infant_cookie" />
+
+    <LinearLayout
+        android:id="@+id/infant_feel_emjbar"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_marginTop="360dp"
+        android:background="@drawable/infant_emj_bg"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infant_talk1">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
+            <TableRow>
+                <ImageView
+                    android:id="@+id/infant_emj_person_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/infant_emj_person_1"
+                    android:layout_marginRight="45dp"
+                    />
+                <ImageView
+                    android:id="@+id/infant_emj_person_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/infant_emj_person_2"
+                    android:layout_marginRight="45dp"/>
+                <ImageView
+                    android:id="@+id/infant_emj_person_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/infant_emj_person_3"/>
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp">
+            <TableRow>
+                <ImageView
+                    android:id="@+id/infant_emj_person_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/infant_emj_person_4"
+                    android:layout_marginRight="20dp"
+                   />
+                <ImageView
+                    android:id="@+id/infant_emj_person_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/infant_emj_person_5"
+                    android:layout_marginLeft="20dp" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

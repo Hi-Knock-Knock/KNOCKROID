@@ -3,32 +3,24 @@ package com.all_the_best.knock_knock.infant_layout
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.all_the_best.knock_knock.R
-import kotlinx.android.synthetic.main.activity_infant_home.*
+import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-
-class InfantHomeActivity : AppCompatActivity() {
-
-
+class InfantSelectFeelActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_infant_home)
-        val change_bg:ConstraintLayout = findViewById(R.id.infant_home)
+        setContentView(R.layout.activity_infant_select_feel)
+        val change_bg:ConstraintLayout = findViewById(R.id.infant_select_feel)
 
         var day : Long = 0
         day = SystemClock.elapsedRealtime()
         val date = Date(day)
         val mFormat = SimpleDateFormat("HH:mm:ss")
         val time = mFormat.format(date).toString()
-
-        infant_talk1.setOnClickListener{
-            Toast.makeText(this, time, Toast.LENGTH_SHORT).show()
-        }
 
 
         when(time){
@@ -37,10 +29,10 @@ class InfantHomeActivity : AppCompatActivity() {
             in "21:35:00".."23:59:59" -> change_bg.setBackgroundResource(R.drawable.infant_home_bg3)
             !in "10:00:00".."23:59:59" -> change_bg.setBackgroundResource(R.drawable.infant_home_bg3)
         }
-
-        val intent = Intent(this, InfantSelectFeelActivity::class.java)
-        char_talk_btn.setOnClickListener{
+        val intent = Intent(this, InfantSelectPersonActivity::class.java)
+        infant_emj_feel_3.setOnClickListener{
             startActivity(intent)
         }
+
     }
 }
