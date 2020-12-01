@@ -1,10 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/faq_drawer_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".parent_layout.ParentFaqFragment"
     android:background="@drawable/fragment_background1">
 
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/faq_navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:itemIconTint="#5375FF"
+        app:headerLayout="@layout/parent_drawer_header"
+        app:menu="@menu/drawer"/>
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/faq_btn_hamburger"
+            android:layout_width="25dp"
+            android:layout_height="21dp"
+            android:background="@drawable/ic_hamburger"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="25dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/faq_txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FAQ"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/faq_search"
+            android:layout_width="405dp"
+            android:layout_height="40dp"
+            app:iconifiedByDefault="false"
+            app:queryHint="검색하기"
+            app:queryBackground="@null"
+            android:background="@drawable/bg_faq_search"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@id/faq_txt_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/parent_faq_rcv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            tools:listitem="@layout/rcv_parent_faq"
+            app:layout_constraintTop_toBottomOf="@id/faq_search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

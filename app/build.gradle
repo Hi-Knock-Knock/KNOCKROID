@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -31,6 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -47,4 +51,12 @@ dependencies {
 
     //뷰페이저 도트 인디케이터 추가
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
+
+    //데이터바인딩
+    kapt 'com.android.databinding:compiler:6.5'
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0' // DrawerLayout
+    implementation 'com.google.android.material:material:1.0.0' // NavigationView
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0' // CircleImageView
 }

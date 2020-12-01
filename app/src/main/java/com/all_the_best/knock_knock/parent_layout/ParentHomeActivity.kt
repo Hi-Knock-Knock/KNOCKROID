@@ -2,9 +2,12 @@ package com.all_the_best.knock_knock.parent_layout
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import com.all_the_best.knock_knock.R
 import kotlinx.android.synthetic.main.activity_parent_home.*
+import kotlinx.android.synthetic.main.fragment_parent_faq.*
+import kotlinx.android.synthetic.main.fragment_parent_home.*
 import kotlin.properties.Delegates
 
 class ParentHomeActivity : AppCompatActivity() {
@@ -43,5 +46,15 @@ class ParentHomeActivity : AppCompatActivity() {
             true
         }
 
+    }
+
+    override fun onBackPressed() {
+        if(home_drawer_layout.isDrawerOpen(GravityCompat.START)){
+            home_drawer_layout.closeDrawers()
+        } else if(faq_drawer_layout.isDrawerOpen(GravityCompat.START)){
+            faq_drawer_layout.closeDrawers()
+        } else{
+            super.onBackPressed()
+        }
     }
 }
