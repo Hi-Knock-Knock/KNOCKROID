@@ -1,4 +1,4 @@
-package com.all_the_best.knock_knock.parent_layout
+package com.all_the_best.knock_knock.parent_layout.rcv
 
 import android.content.Context
 import android.view.LayoutInflater
