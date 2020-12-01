@@ -48,14 +48,14 @@
 
 
     <ImageView
-        android:id="@+id/infant_gift"
+        android:id="@+id/infant_icon_gift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/infant_gift" />
+        app:srcCompat="@drawable/infant_icon_gift" />
 
     <ImageView
         android:id="@+id/infant_cookie"

@@ -9,11 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knock_Knock">
-        <activity android:name=".infant_layout.InfantSwitchCharacterActivity"></activity>
+        <activity android:name=".infant_layout.InfantGiftEndActivity"></activity>
+        <activity android:name=".infant_layout.InfantGiftBoxActivity" />
+        <activity android:name=".infant_layout.InfantGiftStartActivity" />
+        <activity android:name=".infant_layout.InfantSwitchCharacterActivity" />
         <activity android:name=".infant_layout.InfantSelectCharacterActivity" />
-        <activity android:name=".infant_layout.InfantTalkStartActivity"/>
+        <activity android:name=".infant_layout.InfantTalkStartActivity" />
         <activity android:name=".infant_layout.InfantSelectPersonActivity" />
-        <activity android:name=".infant_layout.InfantSelectFeelActivity"/>
+        <activity android:name=".infant_layout.InfantSelectFeelActivity" />
         <activity android:name=".infant_layout.InfantSelectIdActivity" />
         <activity android:name=".base.SignupActivity" />
         <activity android:name=".base.LoginActivity" />
@@ -25,9 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".base.SelectModeActivity" />
-        <activity android:name=".infant_layout.InfantHomeActivity">
-
-        </activity>
+        <activity android:name=".infant_layout.InfantHomeActivity" />
         <activity android:name=".parent_layout.ParentHomeActivity" />
     </application>
 

@@ -32,7 +32,7 @@ class InfantHomeActivity : AppCompatActivity() {
         }
 
 
-        when(time){
+        when(time){ //UTC시간이므로 변경하지말것
             in "10:00:00".."18:34:59" -> change_bg.setBackgroundResource(R.drawable.infant_home_bg1)
             in "18:35:00".."21:34:59" -> change_bg.setBackgroundResource(R.drawable.infant_home_bg2)
             in "21:35:00".."23:59:59" -> change_bg.setBackgroundResource(R.drawable.infant_home_bg3)
@@ -46,6 +46,11 @@ class InfantHomeActivity : AppCompatActivity() {
         val intent2 = Intent(this, InfantSwitchCharacterActivity::class.java)
         char_change_btn.setOnClickListener{
             startActivity(intent2)
+        }
+
+        val intent3 = Intent(this, InfantGiftStartActivity::class.java)
+        infant_icon_gift.setOnClickListener{
+            startActivity(intent3)
         }
 
     }
