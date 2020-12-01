@@ -18,6 +18,10 @@
         <activity android:name=".infant_layout.InfantSelectPersonActivity" />
         <activity android:name=".infant_layout.InfantSelectFeelActivity" />
         <activity android:name=".infant_layout.InfantSelectIdActivity" />
+        <activity android:name=".infant_layout.InfantHomeActivity" />
+        <activity android:name=".parent_layout.ParentFaqDetailActivity"/>
+        <activity android:name=".parent_layout.ParentHomeActivity" />
+        <activity android:name=".base.SelectModeActivity" />
         <activity android:name=".base.SignupActivity" />
         <activity android:name=".base.LoginActivity" />
         <activity android:name=".base.SplashActivity">
@@ -27,9 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".base.SelectModeActivity" />
-        <activity android:name=".infant_layout.InfantHomeActivity" />
-        <activity android:name=".parent_layout.ParentHomeActivity" />
     </application>
 
 </manifest>
