@@ -2,11 +2,13 @@ package com.all_the_best.knock_knock.parent_layout
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.parent_layout.rcv.ParentFaqAdapter
@@ -14,11 +16,22 @@ import com.all_the_best.knock_knock.parent_layout.rcv.ParentFaqData
 import com.all_the_best.knock_knock.parent_layout.rcv.ParentFaqItemDeco
 import kotlinx.android.synthetic.main.fragment_parent_faq.*
 import kotlinx.android.synthetic.main.fragment_parent_home.*
+import kotlinx.android.synthetic.main.fragment_parent_talk.*
 
 
-class ParentFaqFragment : Fragment() {
+class ParentFaqFragment : Fragment(), FragmentOnBackPressed {
     private lateinit var parentFaqAdapter: ParentFaqAdapter
     private lateinit var rcvLayoutManager: GridLayoutManager
+
+    override fun onBackPressed(): Boolean {
+        if (faq_drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            Log.d("프래그먼트","FAQ if")
+            faq_drawer_layout.closeDrawers()
+            return true
+        } else {
+            return false
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,7 +76,7 @@ class ParentFaqFragment : Fragment() {
 
         parentFaqAdapter.notifyDataSetChanged()
 
-        //햄버거바 클릭시 DrawerLayout 열
+        //햄버거바 클릭시 DrawerLayout 열림
         faq_btn_hamburger.setOnClickListener {
             faq_drawer_layout.openDrawer(GravityCompat.START) //네비게이션 드로어 열기
         }
