@@ -68,7 +68,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/talk_constraint"
             android:layout_width="0dp"
-            android:layout_height="500dp"
+            android:layout_height="471dp"
             android:background="@drawable/bg_whitebox"
             android:layout_marginTop="21dp"
             android:layout_marginStart="25dp"
@@ -122,7 +122,7 @@
                 android:layout_width="0dp"
                 android:layout_height="320dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginBottom="46dp"
+                android:layout_marginBottom="17dp"
                 android:layout_marginEnd="25dp"
                 app:layout_constraintStart_toStartOf="@id/talk_txt_list"
                 app:layout_constraintEnd_toEndOf="parent"
