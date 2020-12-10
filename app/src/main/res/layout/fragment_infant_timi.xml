@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView_timi"
-        android:layout_width="290dp"
-        android:layout_height="460dp"
+        android:layout_width="286dp"
+        android:layout_height="445dp"
         android:src="@drawable/char_timi"
         tools:layout_editor_absoluteX="113dp"
         tools:layout_editor_absoluteY="213dp"

@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="556dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".infant_layout.InfantKnockknockFragment"
+    tools:context=".infant_layout.InfantSwitchKnockknockFragment"
     android:background="#00ffffff">
 
     <ImageView
         android:id="@+id/imageView_knockknock"
-        android:layout_width="272dp"
-        android:layout_height="463dp"
-        android:src="@drawable/char_knockknock"
+        android:layout_width="296dp"
+        android:layout_height="359dp"
+        android:src="@drawable/char_knockknock_switch"
         tools:layout_editor_absoluteX="113dp"
         tools:layout_editor_absoluteY="213dp"
         app:layout_constraintStart_toStartOf="parent"
