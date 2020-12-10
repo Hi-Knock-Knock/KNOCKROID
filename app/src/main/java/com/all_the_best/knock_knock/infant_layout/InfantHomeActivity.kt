@@ -18,9 +18,6 @@ class InfantHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_home)
-        val change_bg:ConstraintLayout = findViewById(R.id.infant_home)
-
-
 
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
@@ -31,10 +28,30 @@ class InfantHomeActivity : AppCompatActivity() {
         }
 
         when(formatted){
-            in "08:00:000".."13:59:999" -> change_bg.setBackgroundResource(R.drawable.infant_home_bg1)
-            in "14:00:000".."19:59:999" -> change_bg.setBackgroundResource(R.drawable.infant_home_bg2)
-            in "20:00:00".."23:59:999" -> change_bg.setBackgroundResource(R.drawable.infant_home_bg3)
-            !in "08:00:00".."23:59:999" -> change_bg.setBackgroundResource(R.drawable.infant_home_bg3)
+            in "08:00:000".."13:59:999" -> {
+                infant_home.setBackgroundResource(R.drawable.infant_home_bg1)
+                char_deco_btn.setImageResource(R.drawable.infant_home_btn_deco1)
+                char_talk_btn.setImageResource(R.drawable.infant_home_btn_talk1)
+                char_change_btn.setImageResource(R.drawable.infant_home_btn_change1)
+            }
+            in "14:00:000".."19:59:999" -> {
+                infant_home.setBackgroundResource(R.drawable.infant_home_bg2)
+                char_deco_btn.setImageResource(R.drawable.infant_home_btn_deco2)
+                char_talk_btn.setImageResource(R.drawable.infant_home_btn_talk2)
+                char_change_btn.setImageResource(R.drawable.infant_home_btn_change2)
+            }
+            in "20:00:00".."23:59:999" -> {
+                infant_home.setBackgroundResource(R.drawable.infant_home_bg3)
+                char_deco_btn.setImageResource(R.drawable.infant_home_btn_deco3)
+                char_talk_btn.setImageResource(R.drawable.infant_home_btn_talk3)
+                char_change_btn.setImageResource(R.drawable.infant_home_btn_change3)
+            }
+            !in "08:00:00".."23:59:999" -> {
+                infant_home.setBackgroundResource(R.drawable.infant_home_bg3)
+                char_deco_btn.setImageResource(R.drawable.infant_home_btn_deco3)
+                char_talk_btn.setImageResource(R.drawable.infant_home_btn_talk3)
+                char_change_btn.setImageResource(R.drawable.infant_home_btn_change3)
+            }
         }
 
 

@@ -10,7 +10,7 @@
 
     <ImageView
         android:id="@+id/imageView_dami"
-        android:layout_width="294dp"
+        android:layout_width="291dp"
         android:layout_height="374dp"
         android:src="@drawable/char_dam"
         tools:layout_editor_absoluteX="113dp"
