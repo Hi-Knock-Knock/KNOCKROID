@@ -69,5 +69,10 @@ class InfantHomeActivity : AppCompatActivity() {
             startActivity(intent3)
         }
 
+        val intent4 = Intent(this, InfantDecoActivity::class.java)
+        char_deco_btn.setOnClickListener{
+            startActivity(intent4)
+        }
+
     }
 }
