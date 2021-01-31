@@ -10,25 +10,51 @@
         android:id="@+id/parent_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/parent_bottom_navi"
+        app:layout_constraintBottom_toTopOf="@id/parent_coordinatorlayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-    </androidx.viewpager.widget.ViewPager>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/parent_bottom_navi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        app:itemIconTint="@color/parent_bottom_navi_color"
-        app:itemTextColor="@color/parent_bottom_navi_color"
-        app:layout_constraintTop_toBottomOf="@id/parent_viewpager"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/parent_coordinatorlayout"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/parent_bottom_menu">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/parent_bottom_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@android:color/transparent">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/parent_bottom_navi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                app:itemIconTint="@color/parent_bottom_navi_color"
+                app:itemTextColor="@color/parent_bottom_navi_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/parent_viewpager"
+                app:menu="@menu/parent_bottom_menu" />
+
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_talk"
+            android:backgroundTint="#a3a3a3"
+            app:borderWidth="0dp"
+            android:outlineSpotShadowColor="@android:color/transparent"
+            app:layout_anchor="@id/parent_bottom_appbar"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
