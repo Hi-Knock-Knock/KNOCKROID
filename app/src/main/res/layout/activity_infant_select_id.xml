@@ -4,44 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_background"
+    android:background="@drawable/img_splash_background"
     tools:context=".infant_layout.InfantSelectIdActivity">
 
     <LinearLayout
         android:id="@+id/mode_infant_btn"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="154dp"
         android:orientation="horizontal"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="162dp"
-            android:layout_height="190dp"
-            android:layout_marginLeft="23dp"
-            android:layout_marginRight="33dp"
+            android:layout_width="128dp"
+            android:layout_height="154dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="12dp"
             android:background="@drawable/bg_whitebox"
+            android:drawableTop="@drawable/img_infantprofile_1"
             android:paddingTop="8dp"
-            android:drawableTop="@drawable/infant_id_2"
             android:text="짱아">
 
         </Button>
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="162dp"
-            android:layout_height="190dp"
-            android:layout_marginRight="0dp"
+            android:layout_width="128dp"
+            android:layout_height="154dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="40dp"
             android:background="@drawable/bg_whitebox"
+            android:drawableTop="@drawable/img_infantprofile_2"
             android:paddingTop="8dp"
-            android:drawableTop="@drawable/infant_id_1"
             android:text="짱구"
 
             />
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

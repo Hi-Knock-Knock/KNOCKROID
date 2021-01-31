@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/imageView_knockknock"
-        android:layout_width="296dp"
-        android:layout_height="359dp"
-        android:src="@drawable/char_knockknock_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_char_knock"
         tools:layout_editor_absoluteX="113dp"
         tools:layout_editor_absoluteY="213dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/imageView_text_knockknock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_text_knockknock"
+        android:src="@drawable/img_char_knock_name_txt"
         tools:layout_editor_absoluteX="113dp"
         tools:layout_editor_absoluteY="213dp"
         app:layout_constraintStart_toStartOf="parent"

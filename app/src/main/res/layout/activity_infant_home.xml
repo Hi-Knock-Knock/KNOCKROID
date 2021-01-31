@@ -5,47 +5,48 @@
     android:id="@+id/infant_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/infant_home_bg1"
+    android:background="@drawable/img_infant_home_day_bg"
     tools:context=".infant_layout.InfantHomeActivity">
 
     <ImageView
         android:id="@+id/char_deco_btn"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-        android:layout_marginStart="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="32dp"
-        android:src="@drawable/infant_home_btn_deco1"
+        android:layout_marginBottom="68dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_infant_deco_btn_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/char_talk_btn"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/char_dam" />
+
 
     <TextView
         android:id="@+id/char_deco_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="캐릭터 꾸미기"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/char_talk_txt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/char_deco_btn" />
-
+        app:layout_constraintEnd_toEndOf="@+id/char_deco_btn"
+        app:layout_constraintStart_toStartOf="@+id/char_deco_btn"
+        app:layout_constraintTop_toBottomOf="@id/char_deco_btn"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/char_talk_btn"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-
-        android:layout_marginBottom="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="68dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/char_dam"
-        app:srcCompat="@drawable/infant_home_btn_talk1" />
+        app:srcCompat="@drawable/ic_infant_chat_btn_1" />
 
     <TextView
         android:id="@+id/char_talk_txt"
@@ -53,26 +54,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:text="대화하기"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/char_change_txt"
-        app:layout_constraintStart_toEndOf="@+id/char_deco_txt"
+        app:layout_constraintEnd_toEndOf="@+id/char_talk_btn"
+        app:layout_constraintStart_toStartOf="@+id/char_talk_btn"
         app:layout_constraintTop_toBottomOf="@id/char_talk_btn" />
 
     <ImageView
         android:id="@+id/char_change_btn"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="68dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
         app:layout_constraintStart_toEndOf="@+id/char_talk_btn"
         app:layout_constraintTop_toBottomOf="@+id/char_dam"
-        app:srcCompat="@drawable/infant_home_btn_change1" />
+        app:srcCompat="@drawable/ic_infant_change_btn_1" />
 
     <TextView
         android:id="@+id/char_change_txt"
@@ -80,51 +79,51 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:text="캐릭터 바꾸기"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/char_talk_txt"
+        app:layout_constraintEnd_toEndOf="@+id/char_change_btn"
+        app:layout_constraintStart_toStartOf="@+id/char_change_btn"
         app:layout_constraintTop_toBottomOf="@id/char_change_btn" />
 
     <ImageView
         android:id="@+id/infant_talk1"
-        android:layout_width="303dp"
-        android:layout_height="95dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_infant_chatbox"
         app:layout_constraintBottom_toTopOf="@+id/char_dam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src ="@drawable/infant_talk1"
-        android:scaleType="fitXY"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/talk_txtview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="안녕! 윤정아!"
-        android:textSize="35sp"
-        android:textStyle="bold"
+        android:text="안녕! 짱구야!"
         android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/infant_talk1"
         app:layout_constraintEnd_toEndOf="@+id/infant_talk1"
         app:layout_constraintStart_toStartOf="@+id/infant_talk1"
         app:layout_constraintTop_toTopOf="@id/infant_talk1"
         app:layout_constraintVertical_bias="0.263" />
 
+
     <ImageView
         android:id="@+id/char_dam"
-        android:layout_width="310dp"
-        android:layout_height="407dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.501"
-        app:srcCompat="@drawable/char_dam"/>
-
+        app:srcCompat="@drawable/img_char_dam" />
 
     <ImageView
         android:id="@+id/infant_icon_gift"
@@ -134,7 +133,7 @@
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/infant_icon_gift" />
+        app:srcCompat="@drawable/ic_infant_img_gift" />
 
     <ImageView
         android:id="@+id/infant_cookie"
@@ -144,6 +143,19 @@
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/infant_cookie" />
+        app:srcCompat="@drawable/ic_infant_home_cookie" />
+
+    <TextView
+        android:id="@+id/infant_home_cookie_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="5개"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/infant_cookie"
+        app:layout_constraintEnd_toEndOf="@+id/infant_cookie"
+        app:layout_constraintTop_toTopOf="@+id/infant_cookie" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
