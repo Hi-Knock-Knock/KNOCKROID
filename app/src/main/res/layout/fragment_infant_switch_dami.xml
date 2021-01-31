@@ -10,9 +10,9 @@ android:background="#00ffffff">
 
 <ImageView
     android:id="@+id/imageView_dami"
-    android:layout_width="294dp"
-    android:layout_height="374dp"
-    android:src="@drawable/char_dam"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/img_char_dam"
     tools:layout_editor_absoluteX="113dp"
     tools:layout_editor_absoluteY="213dp"
     app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@ android:background="#00ffffff">
     android:id="@+id/imageView_text_dami"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:src="@drawable/ic_text_dami"
+    android:src="@drawable/img_char_dami_name_txt"
     tools:layout_editor_absoluteX="113dp"
     tools:layout_editor_absoluteY="213dp"
     app:layout_constraintStart_toStartOf="parent"

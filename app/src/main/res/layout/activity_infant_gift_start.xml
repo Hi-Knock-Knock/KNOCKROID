@@ -5,14 +5,14 @@
     android:id="@+id/infant_gift_start"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/infant_gift_bg1"
+    android:background="@drawable/img_infant_gift_bg_2"
     tools:context=".infant_layout.InfantGiftStartActivity">
 
     <ImageView
         android:id="@+id/infant_icon_gift_out1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/infant_icon_out2"
+        android:src="@drawable/ic_infant_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="15dp"
@@ -26,16 +26,16 @@
         android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/infant_gift_cookie" />
+        app:srcCompat="@drawable/ic_infant_home_cookie" />
 
     <TextView
         android:id="@+id/infant_cookie_count"
-        android:layout_width="46dp"
-        android:layout_height="41dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="5개"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/infant_cookie_bg"
         app:layout_constraintEnd_toEndOf="@+id/infant_cookie_bg"
@@ -44,23 +44,22 @@
 
     <ImageView
         android:id="@+id/infant_gift_talk1"
-        android:layout_width="303dp"
-        android:layout_height="95dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:scaleType="fitXY"
-        android:src="@drawable/infant_talk1"
+        android:src="@drawable/ic_infant_chatbox"
         app:layout_constraintBottom_toTopOf="@+id/infant_gift_char"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/infant_gift_char" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/infant_gift_talk_txt"
+        android:id="@+id/infant_gift_talk_txt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="쿠키 3개를 줘!"
-        android:textSize="35sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/infant_gift_talk1"
@@ -70,47 +69,59 @@
         app:layout_constraintVertical_bias="0.263" />
 
     <ImageView
+        android:id="@+id/infant_gift_branch"
+        android:layout_width="380dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="220dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_infant_gift_branch" />
+
+    <ImageView
         android:id="@+id/infant_gift_char"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/infant_gift_char" />
+        app:srcCompat="@drawable/img_infant_gift_char" />
 
     <ImageView
         android:id="@+id/infant_empty_cookie1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="134dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="106dp"
+        android:src="@drawable/img_infant_empty_cookie"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/infant_empty_cookie2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infant_gift_char"
-        android:src="@drawable/infant_empty_cookie" />
+        app:layout_constraintTop_toBottomOf="@+id/infant_gift_char" />
 
     <ImageView
         android:id="@+id/infant_empty_cookie2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="134dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="106dp"
+        android:src="@drawable/img_infant_empty_cookie"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infant_gift_char"
-        android:src="@drawable/infant_empty_cookie" />
+        app:layout_constraintTop_toBottomOf="@+id/infant_gift_char" />
 
     <ImageView
         android:id="@+id/infant_empty_cookie3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="134dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="106dp"
+        android:src="@drawable/img_infant_empty_cookie"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/infant_empty_cookie2"
-        app:layout_constraintTop_toBottomOf="@+id/infant_gift_char"
-        android:src="@drawable/infant_empty_cookie" />
+        app:layout_constraintTop_toBottomOf="@+id/infant_gift_char" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

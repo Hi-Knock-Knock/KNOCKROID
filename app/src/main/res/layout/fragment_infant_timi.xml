@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/imageView_timi"
-        android:layout_width="286dp"
-        android:layout_height="445dp"
-        android:src="@drawable/char_timi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_char_timi"
         tools:layout_editor_absoluteX="113dp"
         tools:layout_editor_absoluteY="213dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:id="@+id/imageView_text_timi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_text_timi"
+        android:src="@drawable/img_char_timi_name_txt"
         tools:layout_editor_absoluteX="113dp"
         tools:layout_editor_absoluteY="213dp"
         app:layout_constraintStart_toStartOf="parent"
