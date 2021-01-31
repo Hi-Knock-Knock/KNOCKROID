@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/infant_gift_bg3"
+    android:background="@drawable/img_infant_gift_bg_1"
     tools:context=".infant_layout.InfantGiftEndActivity">
 
 
@@ -12,45 +12,47 @@
         android:id="@+id/infant_icon_gift_out3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/infant_icon_out2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_infant_back"/>
 
     <ImageView
-        android:id="@+id/infant_cookie_bg"
+        android:id="@+id/infant_cookie_bg3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/infant_gift_cookie" />
+        app:srcCompat="@drawable/ic_infant_home_cookie" />
 
     <TextView
-        android:id="@+id/infant_cookie_count"
-        android:layout_width="46dp"
-        android:layout_height="41dp"
+        android:id="@+id/infant_cookie_count3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="2개"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/infant_cookie_bg"
-        app:layout_constraintEnd_toEndOf="@+id/infant_cookie_bg"
-        app:layout_constraintStart_toStartOf="@+id/infant_cookie_bg"
-        app:layout_constraintTop_toTopOf="@+id/infant_cookie_bg" />
+        app:layout_constraintBottom_toBottomOf="@+id/infant_cookie_bg3"
+        app:layout_constraintEnd_toEndOf="@+id/infant_cookie_bg3"
+        app:layout_constraintStart_toStartOf="@+id/infant_cookie_bg3"
+        app:layout_constraintTop_toTopOf="@+id/infant_cookie_bg3" />
+
     <ImageView
-        android:id="@+id/infant_talk1"
-        android:layout_width="303dp"
-        android:layout_height="95dp"
+        android:id="@+id/infant_talk3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_infant_chatbox"
         app:layout_constraintBottom_toTopOf="@+id/char_dam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src ="@drawable/infant_talk1"
-        android:scaleType="fitXY"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/talk_txtview"
@@ -58,25 +60,25 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="우와! 멋지다!"
-        android:textSize="35sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/infant_talk1"
-        app:layout_constraintEnd_toEndOf="@+id/infant_talk1"
-        app:layout_constraintStart_toStartOf="@+id/infant_talk1"
-        app:layout_constraintTop_toTopOf="@id/infant_talk1"
+        app:layout_constraintBottom_toBottomOf="@+id/infant_talk3"
+        app:layout_constraintEnd_toEndOf="@+id/infant_talk3"
+        app:layout_constraintStart_toStartOf="@+id/infant_talk3"
+        app:layout_constraintTop_toTopOf="@id/infant_talk3"
         app:layout_constraintVertical_bias="0.263" />
 
     <ImageView
         android:id="@+id/char_dam"
-        android:layout_width="338dp"
-        android:layout_height="434dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.501"
-        app:srcCompat="@drawable/infant_gift_deco_dami" /> />
+        app:srcCompat="@drawable/img_char_gift_yglass_dam" /> />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

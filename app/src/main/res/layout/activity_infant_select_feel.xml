@@ -5,18 +5,18 @@
     android:id="@+id/infant_select_feel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/infant_home_bg1"
+    android:background="@drawable/img_infant_home_day_bg"
     tools:context=".infant_layout.InfantSelectFeelActivity">
 
     <ImageView
         android:id="@+id/infant_talk1"
-        android:layout_width="303dp"
-        android:layout_height="95dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/char_dam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        android:src ="@drawable/infant_talk1"
+        android:src ="@drawable/ic_infant_chatbox"
         android:scaleType="fitXY"/>
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="오늘 기분이 어때?"
-        android:textSize="35sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/infant_talk1"
@@ -36,15 +36,15 @@
 
     <ImageView
         android:id="@+id/char_dam"
-        android:layout_width="310dp"
-        android:layout_height="407dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.501"
-        app:srcCompat="@drawable/char_dam" />
+        app:srcCompat="@drawable/img_char_dam" />
 
 
     <ImageView
@@ -55,7 +55,7 @@
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/infant_icon_gift" />
+        app:srcCompat="@drawable/ic_infant_img_gift" />
 
     <ImageView
         android:id="@+id/infant_cookie"
@@ -65,14 +65,27 @@
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/infant_cookie" />
+        app:srcCompat="@drawable/ic_infant_home_cookie" />
+
+    <TextView
+        android:id="@+id/infant_home_cookie_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="5개"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/infant_cookie"
+        app:layout_constraintEnd_toEndOf="@+id/infant_cookie"
+        app:layout_constraintTop_toTopOf="@+id/infant_cookie" />
 
     <LinearLayout
         android:id="@+id/infant_feel_emjbar"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
-        android:layout_marginTop="370dp"
-        android:background="@drawable/infant_emj_bg"
+        android:layout_height="300dp"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/ic_infant_emj_bg"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,30 +96,65 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="60dp">
 
             <TableRow>
-
                 <ImageView
                     android:id="@+id/infant_emj_feel_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="45dp"
-                    android:src="@drawable/infant_emj_feel_1" />
+                    android:src="@drawable/ic_infant_emj_feel_happy" />
 
                 <ImageView
                     android:id="@+id/infant_emj_feel_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="45dp"
-                    android:src="@drawable/infant_emj_feel_2" />
+                    android:src="@drawable/ic_infant_emj_feel_nice" />
 
                 <ImageView
                     android:id="@+id/infant_emj_feel_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/infant_emj_feel_3" />
+                    android:src="@drawable/ic_infant_emj_feel_soksang" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/infant_emj_feel_1_txt"
+                    android:layout_marginRight="45dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="26dp"
+                    android:layout_height="24dp"
+                    android:gravity="center_horizontal"
+                    android:text="기뻐"
+                    android:textSize="19sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/infant_emj_feel_2_txt"
+                    android:layout_marginRight="45dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="26dp"
+                    android:layout_height="24dp"
+                    android:gravity="center_horizontal"
+                    android:text="신나"
+                    android:textSize="19sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/infant_emj_feel_3_txt"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="26dp"
+                    android:layout_height="24dp"
+                    android:gravity="center_horizontal"
+                    android:text="속상해"
+                    android:textSize="19sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
             </TableRow>
 
             <TableRow>
@@ -115,27 +163,54 @@
                     android:id="@+id/infant_emj_feel_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:layout_marginRight="45dp"
-
-                    android:src="@drawable/infant_emj_feel_4" />
+                    android:src="@drawable/ic_infant_emj_feel_sad" />
 
                 <ImageView
                     android:id="@+id/infant_emj_feel_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:layout_marginRight="45dp"
-
-                    android:src="@drawable/infant_emj_feel_5" />
+                    android:src="@drawable/ic_infant_emj_feel_scared" />
 
                 <ImageView
                     android:id="@+id/infant_emj_feel_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:src="@drawable/ic_infant_emj_feel_angry" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/infant_emj_feel_4_txt"
+                    android:layout_marginRight="45dp"
+                    android:layout_width="26dp"
+                    android:layout_height="24dp"
+                    android:gravity="center_horizontal"
+                    android:text="슬퍼"
+                    android:textSize="19sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
 
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/infant_emj_feel_6" />
+                <TextView
+                    android:id="@+id/infant_emj_feel_5_txt"
+                    android:layout_marginRight="45dp"
+                    android:layout_width="26dp"
+                    android:layout_height="24dp"
+                    android:gravity="center_horizontal"
+                    android:text="무서워"
+                    android:textSize="19sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/infant_emj_feel_6_txt"
+                    android:layout_width="26dp"
+                    android:layout_height="24dp"
+                    android:gravity="center_horizontal"
+                    android:text="화나"
+                    android:textSize="19sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
             </TableRow>
 
         </TableLayout>

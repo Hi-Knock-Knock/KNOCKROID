@@ -20,10 +20,10 @@ class InfantSelectFeelActivity : AppCompatActivity() {
 
 
         when(formatted){
-            in "08:00:000".."13:59:999" -> infant_select_feel.setBackgroundResource(R.drawable.infant_home_bg1)
-            in "14:00:000".."19:59:999" -> infant_select_feel.setBackgroundResource(R.drawable.infant_home_bg2)
-            in "20:00:00".."23:59:999" -> infant_select_feel.setBackgroundResource(R.drawable.infant_home_bg3)
-            !in "08:00:00".."23:59:999" -> infant_select_feel.setBackgroundResource(R.drawable.infant_home_bg3)
+            in "08:00:000".."13:59:999" -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_day_bg)
+            in "14:00:000".."19:59:999" -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_sunset_bg)
+            in "20:00:00".."23:59:999" -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_night_bg)
+            !in "08:00:00".."23:59:999" -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_night_bg)
         }
 
         val intent = Intent(this, InfantSelectPersonActivity::class.java)

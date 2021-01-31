@@ -34,7 +34,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
             if(count3==3){
                 startActivity(intent1)
             }
-            infant_empty_cookie1.setImageResource(R.drawable.infant_full_cookie)
+            infant_empty_cookie1.setImageResource(R.drawable.img_infant_full_cookie)
             infant_cookie_count.setText(count.toString() + "개")
         }
 
@@ -46,7 +46,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
             if(count3==3){
                 startActivity(intent1)
             }
-            infant_empty_cookie2.setImageResource(R.drawable.infant_full_cookie)
+            infant_empty_cookie2.setImageResource(R.drawable.img_infant_full_cookie)
             infant_cookie_count.setText(count.toString() + "개")
 
         }
@@ -59,7 +59,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
             if(count3==3){
                 startActivity(intent1)
             }
-            infant_empty_cookie3.setImageResource(R.drawable.infant_full_cookie)
+            infant_empty_cookie3.setImageResource(R.drawable.img_infant_full_cookie)
             infant_cookie_count.setText(count.toString() + "개")
         }
 
