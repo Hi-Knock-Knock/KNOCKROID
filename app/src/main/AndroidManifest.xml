@@ -22,7 +22,13 @@
         <activity android:name=".infant_layout.InfantSelectIdActivity" />
         <activity android:name=".infant_layout.InfantHomeActivity" />
         <activity android:name=".parent_layout.ParentFaqDetailActivity" />
-        <activity android:name=".parent_layout.ParentHomeActivity" />
+        <activity android:name=".parent_layout.ParentHomeActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".base.SelectModeActivity" />
         <activity android:name=".base.SignupActivity" />
         <activity android:name=".base.LoginActivity" />
