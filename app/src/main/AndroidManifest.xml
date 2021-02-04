@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_appicon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knock_Knock">
-        <activity android:name=".infant_layout.InfantCookieSaveActivity"></activity>
+        <activity android:name=".parent_layout.ParentSearchFaqActivity"></activity>
+        <activity android:name=".infant_layout.InfantCookieSaveActivity" />
         <activity android:name=".infant_layout.InfantDecoActivity" />
         <activity android:name=".infant_layout.InfantGiftEndActivity" />
         <activity android:name=".infant_layout.InfantGiftBoxActivity" />
@@ -22,7 +23,7 @@
         <activity android:name=".infant_layout.InfantSelectIdActivity" />
         <activity android:name=".infant_layout.InfantHomeActivity" />
         <activity android:name=".parent_layout.ParentFaqDetailActivity" />
-        <activity android:name=".parent_layout.ParentHomeActivity" >
+        <activity android:name=".parent_layout.ParentHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

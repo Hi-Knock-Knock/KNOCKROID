@@ -51,7 +51,7 @@ class ParentFaqFragment : Fragment(), FragmentOnBackPressed {
 //            }
 //        })
 
-        val spaceDecoration = ParentFaqItemDeco(30) //리사이클러뷰 아이템간 간격 설정
+        val spaceDecoration = ParentFaqItemDeco(10, 16) //리사이클러뷰 아이템간 간격 설정
         rcvLayoutManager = GridLayoutManager(view.context, 2)
         //rcvLayoutManager.
         parent_faq_rcv.apply{

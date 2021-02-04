@@ -1,71 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/faq_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/faq_drawer_layout"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".parent_layout.ParentFaqFragment"
-    android:background="@drawable/img_main_background">
+    android:background="@drawable/img_main_background"
+    tools:context=".parent_layout.ParentFaqFragment">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/faq_navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:itemIconTint="#5375FF"
         app:headerLayout="@layout/parent_drawer_header"
-        app:menu="@menu/drawer"/>
+        app:itemIconTint="#5375FF"
+        app:menu="@menu/drawer" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
+        <ImageButton
             android:id="@+id/faq_btn_hamburger"
-            android:layout_width="25dp"
-            android:layout_height="21dp"
-            android:background="@drawable/ic_hamburger"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="25dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_hamburger"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/faq_txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="FAQ"
-            android:textSize="28sp"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/faq_btn_hamburger"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/faq_btn_hamburger" />
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/faq_search"
-            android:layout_width="405dp"
-            android:layout_height="40dp"
-            app:iconifiedByDefault="false"
-            app:queryHint="검색하기"
-            app:queryBackground="@null"
-            android:background="@drawable/bg_faq_search"
+            style="@style/search_view"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
-            app:layout_constraintTop_toBottomOf="@id/faq_txt_title"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/faq_txt_title" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/parent_faq_rcv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            tools:listitem="@layout/rcv_parent_faq"
-            app:layout_constraintTop_toBottomOf="@id/faq_search"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/faq_search"
+            tools:listitem="@layout/rcv_parent_faq" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

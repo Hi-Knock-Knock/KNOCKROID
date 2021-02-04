@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:text="아이디"
+            android:text="계정"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -82,7 +82,9 @@
         android:layout_width="355dp"
         android:layout_height="55dp"
         android:background="@drawable/bg_login_down"
+        app:backgroundTint="@null"
         android:text="로그인"
+        android:textColor="#252525"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -135,7 +135,7 @@
                 android:layout_height="1dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/bg_division_line" />
+                android:background="#c9c9c9" />
 
             <TextView
                 android:id="@+id/signup_txt_sex"
@@ -213,7 +213,7 @@
                 android:layout_height="1dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/bg_division_line" />
+                android:background="#c9c9c9" />
 
             <TextView
                 android:id="@+id/signup_btn_addInfant"
