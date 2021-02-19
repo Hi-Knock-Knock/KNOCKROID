@@ -9,7 +9,18 @@
         android:roundIcon="@mipmap/ic_appicon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knock_Knock">
-        <activity android:name=".parent_layout.ParentSearchFaqActivity"></activity>
+        <activity android:name=".parent_layout.ParentRecordActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".parent_layout.ParentNoticeActivity" />
+        <activity android:name=".parent_layout.ParentAccountActivity" />
+        <activity android:name=".parent_layout.ParentAlarmSettingActivity" />
+        <activity android:name=".parent_layout.ParentSettingActivity" />
+        <activity android:name=".parent_layout.ParentSearchFaqActivity" />
         <activity android:name=".infant_layout.InfantCookieSaveActivity" />
         <activity android:name=".infant_layout.InfantDecoActivity" />
         <activity android:name=".infant_layout.InfantGiftEndActivity" />

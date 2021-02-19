@@ -13,8 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="#ffffff"
         app:headerLayout="@layout/parent_drawer_header"
         app:itemIconTint="#5375FF"
+        app:itemTextColor="#252525"
         app:menu="@menu/drawer" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,7 +48,7 @@
             app:layout_constraintTop_toTopOf="@id/faq_btn_hamburger" />
 
         <androidx.appcompat.widget.SearchView
-            android:id="@+id/faq_search"
+            android:id="@+id/parent_faq_search_view"
             style="@style/search_view"
             android:layout_width="0dp"
             android:layout_height="32dp"
@@ -57,21 +59,40 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/faq_txt_title" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/parent_faq_rcv"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/faq_search"
-            tools:listitem="@layout/rcv_parent_faq" />
+            app:layout_constraintTop_toBottomOf="@id/parent_faq_search_view">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/parent_faq_rcv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/rcv_parent_faq" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintTop_toBottomOf="@id/parent_faq_rcv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.core.widget.NestedScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

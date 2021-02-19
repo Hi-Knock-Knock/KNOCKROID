@@ -8,7 +8,7 @@
     tools:context=".parent_layout.ParentSearchFaqActivity">
 
     <ImageButton
-        android:id="@+id/search_faq_btn_back"
+        android:id="@+id/parent_search_faq_btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -19,16 +19,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/parent_search_faq_txt_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="검색하기"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/search_faq_btn_back"
-        app:layout_constraintBottom_toBottomOf="@id/search_faq_btn_back"
+        app:layout_constraintTop_toTopOf="@id/parent_search_faq_btn_back"
+        app:layout_constraintBottom_toBottomOf="@id/parent_search_faq_btn_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/parent_search_faq_search_view"
+        style="@style/search_view"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/parent_search_faq_txt_title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

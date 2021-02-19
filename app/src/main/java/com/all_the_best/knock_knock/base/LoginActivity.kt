@@ -5,13 +5,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.databinding.ActivityLoginBinding
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        binding.txtSignUp = "회원가입"
 
         val intent1 = Intent(this, SelectModeActivity::class.java)
         val intent2 = Intent(this, SignupActivity::class.java)

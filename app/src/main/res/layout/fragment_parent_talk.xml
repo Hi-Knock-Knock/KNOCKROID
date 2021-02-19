@@ -13,6 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="#ffffff"
+        app:itemTextColor="#252525"
         app:headerLayout="@layout/parent_drawer_header"
         app:itemIconTint="#5375FF"
         app:menu="@menu/drawer" />
@@ -157,6 +159,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="없음"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
 
                             <RadioButton
@@ -164,6 +167,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="엄마랑 아빠랑 싸우면 기분이 어때?"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
 
                             <RadioButton
@@ -171,6 +175,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="동생은 어떤 존재야?"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
 
                             <RadioButton
@@ -178,6 +183,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="동생이랑 노는 거 즐거워?"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
 
                             <RadioButton
@@ -185,6 +191,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="엄마가 어떻게 해줬으면 좋겠어?"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
 
                             <RadioButton
@@ -192,6 +199,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="아빠한테 속상한 거 있어?"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
 
                             <RadioButton
@@ -199,6 +207,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="엄마한테 속상한 거 있어?"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
 
                             <RadioButton
@@ -206,6 +215,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="엄마랑 아빠랑 싸우면 기분이 어때?"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
 
                             <RadioButton
@@ -213,6 +223,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="동생은 어떤 존재야?"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
 
                             <RadioButton
@@ -220,6 +231,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="동생이랑 노는 거 즐거워?"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
 
                             <RadioButton
@@ -227,6 +239,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="엄마가 어떻게 해줬으면 좋겠어?"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
 
                             <RadioButton
@@ -234,6 +247,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="26dp"
                                 android:text="아빠한테 속상한 거 있어?"
+                                android:textColor="#252525"
                                 android:textSize="14sp" />
                         </RadioGroup>
                     </LinearLayout>

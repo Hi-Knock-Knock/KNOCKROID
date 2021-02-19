@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.all_the_best.knock_knock.R
 
-class ParentSearchFaqActivity : AppCompatActivity() {
+class ParentAlarmSettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_parent_search_faq)
+        setContentView(R.layout.activity_parent_alarm_setting)
     }
 }

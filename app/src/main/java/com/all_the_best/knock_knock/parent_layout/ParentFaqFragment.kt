@@ -57,7 +57,6 @@ class ParentFaqFragment : Fragment(), FragmentOnBackPressed {
         parent_faq_rcv.apply{
             adapter = parentFaqAdapter
             layoutManager = GridLayoutManager(view.context, 2)
-            addItemDecoration(spaceDecoration) //간격 설정한거 데코로 설정
         }
 
         var faqList = mutableListOf(
