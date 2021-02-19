@@ -4,15 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.all_the_best.knock_knock.R
-import com.all_the_best.knock_knock.databinding.ActivityParentRecordBinding
+import com.all_the_best.knock_knock.databinding.ActivityParentEditProfileBinding
 
-class ParentRecordActivity : AppCompatActivity() {
+class ParentEditProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: ActivityParentRecordBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_parent_record)
-        binding.txtDelete = "삭제하기"
+        val binding: ActivityParentEditProfileBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_parent_edit_profile)
+        binding.txtOk = "확인"
     }
-
 }

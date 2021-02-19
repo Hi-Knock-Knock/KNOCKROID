@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="txtOk"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/img_mypage_background"
+        tools:context=".parent_layout.ParentEditProfileActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parent_edit_profile_constraint_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/parent_edit_profile_btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_back_black_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/parent_edit_profile_txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="프로필 수정"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/parent_edit_profile_btn_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/parent_edit_profile_btn_back" />
+
+            <View
+                android:id="@+id/parent_edit_profile_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="14dp"
+                android:background="#7c7c7c"
+                app:layout_constraintTop_toBottomOf="@id/parent_edit_profile_txt_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/parent_edit_profile_img_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/img_mypage_edit_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/parent_edit_profile_constraint_title" />
+
+        <ImageButton
+            android:id="@+id/parent_edit_profile_btn_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_camera"
+            app:layout_constraintBottom_toBottomOf="@id/parent_edit_profile_img_profile"
+            app:layout_constraintEnd_toEndOf="@id/parent_edit_profile_img_profile"
+            app:layout_constraintStart_toStartOf="@id/parent_edit_profile_img_profile"
+            app:layout_constraintTop_toTopOf="@id/parent_edit_profile_img_profile" />
+
+        <TextView
+            android:id="@+id/parent_edit_profile_txt_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="32dp"
+            android:text="별명 :"
+            android:textColor="#252525"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/parent_edit_profile_img_profile" />
+
+        <EditText
+            android:id="@+id/parent_edit_profile_edit_txt_nickname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="40dp"
+            android:background="@android:color/transparent"
+            android:text="짱아짱구맘"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/parent_edit_profile_txt_nickname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/parent_edit_profile_txt_nickname"
+            app:layout_constraintTop_toTopOf="@id/parent_edit_profile_txt_nickname" />
+
+        <View
+            android:id="@+id/parent_edit_profile_view_nickname"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginEnd="40dp"
+            android:background="#5c7cff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/parent_edit_profile_edit_txt_nickname"
+            app:layout_constraintTop_toBottomOf="@id/parent_edit_profile_edit_txt_nickname" />
+
+        <TextView
+            setUnderLine="@{txtOk}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#5c7cff"
+            android:textSize="15sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@id/parent_edit_profile_view_nickname"
+            app:layout_constraintTop_toBottomOf="@id/parent_edit_profile_view_nickname" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

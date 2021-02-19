@@ -9,6 +9,12 @@
         android:roundIcon="@mipmap/ic_appicon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knock_Knock">
+        <activity android:name=".parent_layout.ParentMyScrapActivity"></activity>
+        <activity android:name=".parent_layout.ParentMyBabyActivity" />
+        <activity android:name=".parent_layout.ParentEditProfileActivity" />
+        <activity android:name=".parent_layout.ParentMyPageActivity" />
+        <activity android:name=".parent_layout.ParentMemoActivity" />
+        <activity android:name=".parent_layout.ParentRecordDetailActivity" />
         <activity android:name=".parent_layout.ParentRecordActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
