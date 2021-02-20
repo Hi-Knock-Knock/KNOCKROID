@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="462dp"
+    tools:context=".infant_layout.InfantDamiFragment"
+    android:background="#00ffffff">
+
+
+    <ImageView
+        android:id="@+id/imageView_dami"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="85dp"
+        android:src="@drawable/img_char_dam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_text_dami"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/img_char_dami_name_txt"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_dami"
+        app:layout_constraintStart_toStartOf="@+id/imageView_dami"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_dami" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,19 +5,20 @@
     android:id="@+id/infant_select_feel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_infant_home_day_bg"
+    android:background="@drawable/img_infant_home_morning_bg"
     tools:context=".infant_layout.InfantSelectFeelActivity">
 
     <ImageView
         android:id="@+id/infant_talk1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="239dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_infant_chatbox2"
         app:layout_constraintBottom_toTopOf="@+id/char_dam"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/char_dam"
         app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src ="@drawable/ic_infant_chatbox"
-        android:scaleType="fitXY"/>
+        app:layout_constraintStart_toStartOf="@+id/char_dam" />
 
     <TextView
         android:id="@+id/talk_txtview"
@@ -38,7 +39,7 @@
         android:id="@+id/char_dam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,18 +52,18 @@
         android:id="@+id/infant_icon_gift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/infant_cookie"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_infant_img_gift" />
+        app:layout_constraintTop_toTopOf="@+id/infant_cookie"
+        app:srcCompat="@drawable/ic_infant_img_gift"  />
 
     <ImageView
         android:id="@+id/infant_cookie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_infant_home_cookie" />
@@ -83,14 +84,13 @@
     <LinearLayout
         android:id="@+id/infant_feel_emjbar"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="400dp"
+        android:layout_height="282dp"
+        android:layout_marginTop="314dp"
         android:background="@drawable/ic_infant_emj_bg"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infant_talk1">
+        app:layout_constraintTop_toTopOf="@+id/char_dam">
 
         <TableLayout
             android:layout_width="wrap_content"
@@ -123,8 +123,8 @@
             <TableRow>
                 <TextView
                     android:id="@+id/infant_emj_feel_1_txt"
+                    android:layout_marginTop="4dp"
                     android:layout_marginRight="45dp"
-                    android:layout_marginBottom="8dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
                     android:gravity="center_horizontal"
@@ -135,8 +135,8 @@
 
                 <TextView
                     android:id="@+id/infant_emj_feel_2_txt"
+                    android:layout_marginTop="4dp"
                     android:layout_marginRight="45dp"
-                    android:layout_marginBottom="8dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
                     android:gravity="center_horizontal"
@@ -147,7 +147,7 @@
 
                 <TextView
                     android:id="@+id/infant_emj_feel_3_txt"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
                     android:gravity="center_horizontal"
@@ -163,6 +163,7 @@
                     android:id="@+id/infant_emj_feel_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_marginRight="45dp"
                     android:src="@drawable/ic_infant_emj_feel_sad" />
 
@@ -170,6 +171,7 @@
                     android:id="@+id/infant_emj_feel_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_marginRight="45dp"
                     android:src="@drawable/ic_infant_emj_feel_scared" />
 
@@ -177,11 +179,13 @@
                     android:id="@+id/infant_emj_feel_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:src="@drawable/ic_infant_emj_feel_angry" />
             </TableRow>
             <TableRow>
                 <TextView
                     android:id="@+id/infant_emj_feel_4_txt"
+                    android:layout_marginTop="7dp"
                     android:layout_marginRight="45dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
@@ -193,6 +197,7 @@
 
                 <TextView
                     android:id="@+id/infant_emj_feel_5_txt"
+                    android:layout_marginTop="7dp"
                     android:layout_marginRight="45dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
@@ -204,6 +209,7 @@
 
                 <TextView
                     android:id="@+id/infant_emj_feel_6_txt"
+                    android:layout_marginTop="7dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
                     android:gravity="center_horizontal"

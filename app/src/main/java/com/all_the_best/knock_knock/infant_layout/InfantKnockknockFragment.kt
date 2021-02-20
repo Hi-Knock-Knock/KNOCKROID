@@ -18,7 +18,7 @@ class InfantKnockknockFragment : Fragment() {override fun onCreate(savedInstance
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_infant_knockknock, container, false)
+        return inflater.inflate(R.layout.fragment_infant_select_knockknock, container, false)
     }
 
 }
