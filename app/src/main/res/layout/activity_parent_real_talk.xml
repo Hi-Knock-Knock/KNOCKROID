@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_parent_real_talk_background"
-    tools:context=".parent_layout.ParentRealTalkActivity">
+    tools:context=".parent.talk.view.ParentRealTalkActivity">
     <Button
         android:id="@+id/real_talk_btn_hamburger"
         android:layout_width="20dp"

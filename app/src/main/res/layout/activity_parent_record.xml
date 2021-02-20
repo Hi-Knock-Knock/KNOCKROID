@@ -16,7 +16,7 @@
         android:background="@drawable/img_main_background"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        tools:context=".parent_layout.ParentRecordActivity">
+        tools:context=".parent.record.view.ParentRecordActivity">
 
         <ImageButton
             android:id="@+id/parent_record_btn_back"

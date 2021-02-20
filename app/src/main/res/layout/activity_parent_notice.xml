@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_white_background"
-    tools:context=".parent_layout.ParentNoticeActivity">
+    tools:context=".parent.alarm.view.ParentNoticeActivity">
 
     <ImageButton
         android:id="@+id/parent_notice_btn_back"

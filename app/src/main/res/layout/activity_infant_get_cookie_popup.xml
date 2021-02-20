@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:background="#CC000000"
-    tools:context=".infant_layout.InfantGetCookiePopupActivity">
+    tools:context=".infant.cookie.view.InfantGetCookiePopupActivity">
 
     <ImageView
         android:id="@+id/imageView5"

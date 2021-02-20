@@ -9,63 +9,63 @@
         android:roundIcon="@mipmap/ic_appicon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knock_Knock">
-        <activity android:name=".infant_layout.InfantGetCookiePopupActivity"></activity>
-        <activity android:name=".parent_layout.ParentRealTalkAccept2" />
-        <activity android:name=".parent_layout.ParentRealTalkAccept1" />
-        <activity android:name=".parent_layout.ParentRealTalkRefDialog3Activity" />
-        <activity android:name=".parent_layout.ParentRealTalkRefDialog1Activity" />
-        <activity android:name=".parent_layout.ParentRealTalkRefDialog2Activity" />
-        <activity android:name=".parent_layout.ParentRealTalkActivity" />
-        <activity android:name=".infant_layout.adapters.InfantDecoActivityAdapter" />
-        <activity android:name=".infant_layout.InfantDecoFragment3" />
-        <activity android:name=".infant_layout.InfantDecoFragment2" />
-        <activity android:name=".infant_layout.InfantDecoFragment1" />
+        <activity android:name=".infant.cookie.view.InfantGetCookiePopupActivity"></activity>
+        <activity android:name=".parent.talk.view.ParentRealTalkAccept2" />
+        <activity android:name=".parent.talk.view.ParentRealTalkAccept1" />
+        <activity android:name=".parent.talk.view.ParentRealTalkRefDialog3Activity" />
+        <activity android:name=".parent.talk.view.ParentRealTalkRefDialog1Activity" />
+        <activity android:name=".parent.talk.view.ParentRealTalkRefDialog2Activity" />
+        <activity android:name=".parent.talk.view.ParentRealTalkActivity" />
+        <activity android:name=".infant.deco.adapter.InfantDecoActivityAdapter" />
+        <activity android:name=".infant.deco.view.InfantDecoFragment3" />
+        <activity android:name=".infant.deco.view.InfantDecoFragment2" />
+        <activity android:name=".infant.deco.view.InfantDecoFragment1" />
         <activity android:name=".infant_layout.InfantDecoGlassesFragment" />
         <activity android:name=".infant_layout.InfantDecoScarfFragment" />
         <activity android:name=".infant_layout.InfantDecoFaceFragment" />
-        <activity android:name=".infant_layout.adapters.InfantDecoActivityAdapter" />
-        <activity android:name=".parent_layout.ParentMyScrapActivity"></activity>
-        <activity android:name=".parent_layout.ParentMyBabyActivity" />
-        <activity android:name=".parent_layout.ParentEditProfileActivity" />
-        <activity android:name=".parent_layout.ParentMyPageActivity" />
-        <activity android:name=".parent_layout.ParentMemoActivity" />
-        <activity android:name=".parent_layout.ParentRecordDetailActivity" />
-        <activity android:name=".parent_layout.ParentRecordActivity">
+        <activity android:name=".infant.deco.adapter.InfantDecoActivityAdapter" />
+        <activity android:name=".parent.mypage.view.ParentMyScrapActivity"></activity>
+        <activity android:name=".parent.mypage.view.ParentMyBabyActivity" />
+        <activity android:name=".parent.mypage.view.ParentEditProfileActivity" />
+        <activity android:name=".parent.mypage.view.ParentMyPageActivity" />
+        <activity android:name=".parent.record.view.ParentRecordMemoActivity" />
+        <activity android:name=".parent.record.view.ParentRecordDetailActivity" />
+        <activity android:name=".parent.record.view.ParentRecordActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".parent_layout.ParentNoticeActivity" />
-        <activity android:name=".parent_layout.ParentAccountActivity" />
-        <activity android:name=".parent_layout.ParentAlarmSettingActivity" />
-        <activity android:name=".parent_layout.ParentSettingActivity" />
-        <activity android:name=".parent_layout.ParentSearchFaqActivity" />
-        <activity android:name=".infant_layout.InfantCookieSaveActivity" />
-        <activity android:name=".infant_layout.InfantDecoActivity" />
-        <activity android:name=".infant_layout.InfantGiftEndActivity" />
-        <activity android:name=".infant_layout.InfantGiftBoxActivity" />
-        <activity android:name=".infant_layout.InfantGiftStartActivity" />
-        <activity android:name=".infant_layout.InfantSwitchCharacterActivity" />
-        <activity android:name=".infant_layout.InfantSelectCharacterActivity" />
-        <activity android:name=".infant_layout.InfantTalkStartActivity" />
-        <activity android:name=".infant_layout.InfantSelectPersonActivity" />
-        <activity android:name=".infant_layout.InfantSelectFeelActivity" />
-        <activity android:name=".infant_layout.InfantSelectIdActivity" />
-        <activity android:name=".infant_layout.InfantHomeActivity" />
-        <activity android:name=".parent_layout.ParentFaqDetailActivity" />
-        <activity android:name=".parent_layout.ParentHomeActivity">
+        <activity android:name=".parent.alarm.view.ParentNoticeActivity" />
+        <activity android:name=".parent.setting.view.ParentAccountActivity" />
+        <activity android:name=".parent.setting.view.ParentAlarmSettingActivity" />
+        <activity android:name=".parent.setting.view.ParentSettingActivity" />
+        <activity android:name=".parent.faq.view.ParentFaqSearchActivity" />
+        <activity android:name=".infant.cookie.view.InfantCookieSaveActivity" />
+        <activity android:name=".infant.deco.view.InfantDecoActivity" />
+        <activity android:name=".infant.gift.view.InfantGiftEndActivity" />
+        <activity android:name=".infant.gift.view.InfantGiftBoxActivity" />
+        <activity android:name=".infant.gift.view.InfantGiftStartActivity" />
+        <activity android:name=".infant.change.view.InfantSwitchCharacterActivity" />
+        <activity android:name=".infant.setting.view.InfantSelectCharacterActivity" />
+        <activity android:name=".infant.talk.view.InfantTalkStartActivity" />
+        <activity android:name=".infant.talk.view.InfantSelectPersonActivity" />
+        <activity android:name=".infant.talk.view.InfantSelectFeelActivity" />
+        <activity android:name=".infant.setting.view.InfantSelectIdActivity" />
+        <activity android:name=".infant.home.view.InfantHomeActivity" />
+        <activity android:name=".parent.faq.view.ParentFaqDetailActivity" />
+        <activity android:name=".parent.home.view.ParentHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".base.SelectModeActivity" />
-        <activity android:name=".base.SignupActivity" />
-        <activity android:name=".base.LoginActivity" />
-        <activity android:name=".base.SplashActivity">
+        <activity android:name=".parent.base.view.SelectModeActivity" />
+        <activity android:name=".parent.base.view.SignupActivity" />
+        <activity android:name=".parent.base.view.LoginActivity" />
+        <activity android:name=".parent.base.view.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_infant_deco_item_box"
-    tools:context=".infant_layout.InfantDecoFragment2">
+    tools:context=".infant.deco.view.InfantDecoFragment2">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_deco_frg2"

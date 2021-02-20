@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".infant_layout.InfantSwitchCharacterActivity"
+    tools:context=".infant.change.view.InfantSwitchCharacterActivity"
     android:id="@+id/infant_switch_character"
     android:background="@drawable/img_infant_home_morning_bg">
 

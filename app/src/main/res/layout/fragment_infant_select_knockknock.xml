@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="462dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".infant_layout.InfantKnockknockFragment"
+    tools:context=".infant.setting.view.InfantKnockknockFragment"
     android:background="#00ffffff">
 
     <ImageView

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_infant_home_morning_bg"
-    tools:context=".infant_layout.InfantHomeActivity">
+    tools:context=".infant.home.view.InfantHomeActivity">
 
     <ImageView
         android:id="@+id/char_deco_btn"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".parent_layout.ParentSettingActivity">
+    tools:context=".parent.setting.view.ParentSettingActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/parent_setting_constraint_layout"

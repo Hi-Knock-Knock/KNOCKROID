@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_infant_gift_bg_2"
-    tools:context=".infant_layout.InfantGiftStartActivity">
+    tools:context=".infant.gift.view.InfantGiftStartActivity">
 
     <ImageView
         android:id="@+id/infant_icon_gift_out1"
