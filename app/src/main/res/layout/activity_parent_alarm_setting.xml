@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_white_background"
-    tools:context=".parent_layout.ParentAlarmSettingActivity">
+    tools:context=".parent.setting.view.ParentAlarmSettingActivity">
 
     <ImageButton
         android:id="@+id/parent_alarm_setting_btn_back"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="462dp"
-    tools:context=".infant_layout.InfantDamiFragment"
+    tools:context=".infant.setting.view.InfantDamiFragment"
     android:background="#00ffffff">
 
 

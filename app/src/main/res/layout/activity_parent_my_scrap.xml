@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/img_mypage_background"
-        tools:context=".parent_layout.ParentMyScrapActivity">
+        tools:context=".parent.mypage.view.ParentMyScrapActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/parent_my_scrap_constraint_title"

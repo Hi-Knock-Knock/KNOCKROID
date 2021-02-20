@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    tools:context=".infant_layout.adapters.InfantDecoActivityAdapter">
+    tools:context=".infant.deco.adapter.InfantDecoActivityAdapter">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

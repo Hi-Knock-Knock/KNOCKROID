@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".infant_layout.InfantSelectCharacterActivity"
+    tools:context=".infant.setting.view.InfantSelectCharacterActivity"
     android:background="@drawable/img_splash_background">
 
     <androidx.viewpager.widget.ViewPager

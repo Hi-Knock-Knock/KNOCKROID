@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_main_background"
-    tools:context=".parent_layout.ParentHomeFragment">
+    tools:context=".parent.home.view.ParentHomeFragment">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/home_navigationView"
