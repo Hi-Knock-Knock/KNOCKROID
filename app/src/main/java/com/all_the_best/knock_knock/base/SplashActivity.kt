@@ -12,7 +12,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val intent = Intent(this, LoginActivity::class.java)
-        imageView2.setOnClickListener{
+        img_dami.setOnClickListener{
             startActivity(intent)
         }
     }

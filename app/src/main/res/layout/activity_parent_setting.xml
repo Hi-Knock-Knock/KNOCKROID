@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".parent_layout.ParentSettingActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent_setting_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/img_setting_background_blue"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageButton
+            android:id="@+id/parent_setting_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/parent_setting_txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="설정"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/parent_setting_btn_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/parent_setting_btn_back" />
+
+        <TextView
+            android:id="@+id/parent_setting_txt_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="56dp"
+            android:text="도움말을 통해\n문제신고와 고객지원을\n사용해보세요!"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parent_setting_txt_title"
+            app:layout_constraintBottom_toBottomOf="@id/parent_setting_constraint_layout"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ImageButton
+        android:id="@+id/parent_setting_btn_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_account_hamburger"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/parent_setting_constraint_layout" />
+
+    <TextView
+        android:id="@+id/parent_setting_txt_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="계정"
+        android:textColor="#252525"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@id/parent_setting_btn_account"
+        app:layout_constraintStart_toEndOf="@id/parent_setting_btn_account"
+        app:layout_constraintTop_toTopOf="@id/parent_setting_btn_account" />
+
+    <ImageButton
+        android:id="@+id/parent_setting_btn_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_alarm_hamburger"
+        app:layout_constraintStart_toStartOf="@id/parent_setting_btn_account"
+        app:layout_constraintTop_toBottomOf="@id/parent_setting_btn_account" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="알림 설정"
+        android:textColor="#252525"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@id/parent_setting_btn_alarm"
+        app:layout_constraintStart_toEndOf="@id/parent_setting_btn_alarm"
+        app:layout_constraintTop_toTopOf="@id/parent_setting_btn_alarm" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

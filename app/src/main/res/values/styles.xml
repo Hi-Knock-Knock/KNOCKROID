@@ -6,4 +6,17 @@
         <item name="android:textColorPrimary">#5C7CFF</item> <!--탭바 선택된 이미지-->
     </style>
 
+    <style name="search_view" parent="Widget.AppCompat.SearchView">
+        <item name="searchIcon">@drawable/ic_search</item>
+        <item name="iconifiedByDefault">false</item>
+        <item name="queryHint">"검색하기"</item>
+        <item name="editTextColor">#b1c1ff</item>
+        <item name="android:textColorPrimary">#b1c1ff</item>
+        <item name="queryBackground">@android:color/transparent</item>
+        <item name="android:background">@drawable/bg_faq_search</item>
+        <item name="android:textColorHint">#b1c1ff</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#b1c1ff</item>
+    </style>
+
 </resources>

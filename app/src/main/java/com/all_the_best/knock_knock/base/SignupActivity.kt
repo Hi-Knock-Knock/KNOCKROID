@@ -5,13 +5,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.databinding.ActivitySignupBinding
 import kotlinx.android.synthetic.main.activity_signup.*
 
 class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signup)
+
+        val binding: ActivitySignupBinding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
+
+        binding.txtPlusChild = "+자녀추가"
+        binding.txtSignUp = "회원가입"
 
         val intent = Intent(this, LoginActivity::class.java)
         signup_btn_signup.setOnClickListener{

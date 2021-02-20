@@ -42,10 +42,10 @@ class ParentFaqDetailActivity : AppCompatActivity() {
         if (faqData != null) {
             if(faqData.checked){
                 //넘어온 값이 true, 즉 북마크 체크 되어야 할 경우
-                faqdetail_bookmark.setBackgroundResource(R.drawable.bookmark_checked)
+                faqdetail_bookmark.setBackgroundResource(R.drawable.ic_bookmark_checked)
             }else{
                 //넘어온 값이 false, 즉 북마크 체크 해제 되어야 할 경우
-                faqdetail_bookmark.setBackgroundResource(R.drawable.bookmark_unchecked)
+                faqdetail_bookmark.setBackgroundResource(R.drawable.ic_bookmark_unchecked)
             }
         }
 
@@ -55,12 +55,12 @@ class ParentFaqDetailActivity : AppCompatActivity() {
                     //버튼 클릭했을 시, 체크되어있는 북마크일 경우 -> 클릭하면 체크 해제 되도록
                     //상세화면에서 북마크 변경하면 리사이클러뷰에도 적용되도록 해야함...(추가 코딩 필요)
                     faqData.checked = false
-                    faqdetail_bookmark.setBackgroundResource(R.drawable.bookmark_unchecked)
+                    faqdetail_bookmark.setBackgroundResource(R.drawable.ic_bookmark_unchecked)
                 }else{
                     //버튼 클릭했을 시, 체크되어있지 않은 북마크일 경우 -> 클릭하면 체크 되도록
                     //상세화면에서 북마크 변경하면 리사이클러뷰에도 적용되도록 해야함...(추가 코딩 필요)
                     faqData.checked = true
-                    faqdetail_bookmark.setBackgroundResource(R.drawable.bookmark_checked)
+                    faqdetail_bookmark.setBackgroundResource(R.drawable.ic_bookmark_checked)
                 }
             }
         }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp"
+    android:background="@drawable/bg_mypage_baby_rcv"
+    android:padding="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/item_my_page_baby_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="44dp"
+        android:src="@drawable/img_mypage_baby1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_my_page_baby_txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="짱구"
+        android:textColor="#252525"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/item_my_page_baby_img"
+        app:layout_constraintStart_toStartOf="@id/item_my_page_baby_img"
+        app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_img" />
+
+    <TextView
+        android:id="@+id/item_my_page_baby_txt_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="성별 : 남"
+        android:textColor="#252525"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_txt_name" />
+
+    <TextView
+        android:id="@+id/item_my_page_baby_txt_birth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="생년월일 : 14.10.04"
+        android:textColor="#252525"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_txt_gender" />
+
+    <TextView
+        android:id="@+id/item_my_page_baby_txt_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="별명 : 짱구"
+        android:textColor="#252525"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_txt_birth" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

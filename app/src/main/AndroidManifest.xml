@@ -24,6 +24,24 @@
         <activity android:name=".infant_layout.InfantDecoScarfFragment" />
         <activity android:name=".infant_layout.InfantDecoFaceFragment" />
         <activity android:name=".infant_layout.adapters.InfantDecoActivityAdapter" />
+        <activity android:name=".parent_layout.ParentMyScrapActivity"></activity>
+        <activity android:name=".parent_layout.ParentMyBabyActivity" />
+        <activity android:name=".parent_layout.ParentEditProfileActivity" />
+        <activity android:name=".parent_layout.ParentMyPageActivity" />
+        <activity android:name=".parent_layout.ParentMemoActivity" />
+        <activity android:name=".parent_layout.ParentRecordDetailActivity" />
+        <activity android:name=".parent_layout.ParentRecordActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".parent_layout.ParentNoticeActivity" />
+        <activity android:name=".parent_layout.ParentAccountActivity" />
+        <activity android:name=".parent_layout.ParentAlarmSettingActivity" />
+        <activity android:name=".parent_layout.ParentSettingActivity" />
+        <activity android:name=".parent_layout.ParentSearchFaqActivity" />
         <activity android:name=".infant_layout.InfantCookieSaveActivity" />
         <activity android:name=".infant_layout.InfantDecoActivity" />
         <activity android:name=".infant_layout.InfantGiftEndActivity" />
@@ -37,7 +55,13 @@
         <activity android:name=".infant_layout.InfantSelectIdActivity" />
         <activity android:name=".infant_layout.InfantHomeActivity" />
         <activity android:name=".parent_layout.ParentFaqDetailActivity" />
-        <activity android:name=".parent_layout.ParentHomeActivity" />
+        <activity android:name=".parent_layout.ParentHomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".base.SelectModeActivity" />
         <activity android:name=".base.SignupActivity" />
         <activity android:name=".base.LoginActivity" />
