@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.all_the_best.knock_knock.R
 import kotlinx.android.synthetic.main.activity_infant_home.*
 import java.time.LocalDateTime
@@ -29,7 +28,7 @@ class InfantHomeActivity : AppCompatActivity() {
 
         when(formatted){
             in "08:00:000".."13:59:999" -> {
-                infant_home.setBackgroundResource(R.drawable.img_infant_home_day_bg)
+                infant_home.setBackgroundResource(R.drawable.img_infant_home_morning_bg)
                 char_deco_btn.setImageResource(R.drawable.ic_infant_deco_btn_1)
                 char_talk_btn.setImageResource(R.drawable.ic_infant_chat_btn_1)
                 char_change_btn.setImageResource(R.drawable.ic_infant_change_btn_1)
@@ -74,5 +73,9 @@ class InfantHomeActivity : AppCompatActivity() {
             startActivity(intent4)
         }
 
+        val intent5 = Intent(this, InfantCookieSaveActivity::class.java)
+        infant_cookie_view.setOnClickListener{
+            startActivity(intent5)
+        }
     }
 }

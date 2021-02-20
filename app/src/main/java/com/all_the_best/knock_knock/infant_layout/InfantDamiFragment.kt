@@ -18,7 +18,7 @@ class InfantDamiFragment : Fragment() {override fun onCreate(savedInstanceState:
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_infant_dami, container, false)
+        return inflater.inflate(R.layout.fragment_infant_select_dami, container, false)
     }
 
 }

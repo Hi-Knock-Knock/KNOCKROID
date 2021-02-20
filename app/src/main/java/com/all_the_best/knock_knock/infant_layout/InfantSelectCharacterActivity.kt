@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.infant_layout.adapters.InfantViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_infant_select_character.*
 
 
@@ -23,10 +24,13 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
             startActivity(intent2)
         }
 
-        selectViewPagerAdapter = InfantViewPagerAdapter(supportFragmentManager)
+        selectViewPagerAdapter =
+            InfantViewPagerAdapter(
+                supportFragmentManager
+            )
 
         infant_viewpager_select.adapter = selectViewPagerAdapter
-        dots_indicator.setViewPager(infant_viewpager_select)
+
         infant_viewpager_select.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
             override fun onPageScrollStateChanged(state: Int) {
 

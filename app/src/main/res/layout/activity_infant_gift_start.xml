@@ -12,20 +12,20 @@
         android:id="@+id/infant_icon_gift_out1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/ic_infant_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/infant_cookie_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/infant_icon_gift_out1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/infant_icon_gift_out1"
         app:srcCompat="@drawable/ic_infant_home_cookie" />
 
     <TextView
@@ -50,8 +50,8 @@
         android:scaleType="fitXY"
         android:src="@drawable/ic_infant_chatbox"
         app:layout_constraintBottom_toTopOf="@+id/infant_gift_char"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/infant_gift_char"
+        app:layout_constraintStart_toStartOf="@+id/infant_gift_char" />
 
     <TextView
         android:id="@+id/infant_gift_talk_txt1"
@@ -70,21 +70,19 @@
 
     <ImageView
         android:id="@+id/infant_gift_branch"
-        android:layout_width="380dp"
+        android:layout_width="385dp"
         android:layout_height="69dp"
-        android:layout_marginTop="220dp"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/infant_gift_char"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_infant_gift_branch" />
 
     <ImageView
         android:id="@+id/infant_gift_char"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,20 +93,18 @@
         android:id="@+id/infant_empty_cookie1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="106dp"
         android:src="@drawable/img_infant_empty_cookie"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/infant_empty_cookie2"
         app:layout_constraintEnd_toEndOf="@+id/infant_empty_cookie2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infant_gift_char" />
+        app:layout_constraintTop_toTopOf="@+id/infant_empty_cookie2" />
 
     <ImageView
         android:id="@+id/infant_empty_cookie2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="106dp"
+        android:layout_marginTop="58dp"
         android:src="@drawable/img_infant_empty_cookie"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infant_gift_char" />
@@ -117,11 +113,10 @@
         android:id="@+id/infant_empty_cookie3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="106dp"
         android:src="@drawable/img_infant_empty_cookie"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/infant_empty_cookie2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/infant_empty_cookie2"
-        app:layout_constraintTop_toBottomOf="@+id/infant_gift_char" />
+        app:layout_constraintTop_toTopOf="@+id/infant_empty_cookie2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

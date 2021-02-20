@@ -12,17 +12,17 @@
         android:id="@+id/infant_icon_deco_out1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
         android:src="@drawable/ic_infant_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/char_dam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="228dp"
+        android:layout_marginBottom="252dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,15 +30,28 @@
         app:layout_constraintVertical_bias="0.501"
         app:srcCompat="@drawable/img_char_dam" />
 
-    <Button
-        android:id="@+id/img_infant_deco_item_box"
-        android:layout_width="320dp"
-        android:layout_height="226dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/bg_infant_deco_whitebox"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab"
+        style="@style/ChipTabLayout"
+        android:layout_width="180dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="@+id/deco_tab_view"
+        app:layout_constraintTop_toBottomOf="@+id/char_dam">
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/deco_tab_view"
+        android:layout_width="329dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="29dp"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/char_dam" />
+        app:layout_constraintTop_toTopOf="@+id/tab" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

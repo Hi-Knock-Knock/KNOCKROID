@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_parent_real_talk_background"
+    tools:context=".parent_layout.ParentRealTalkActivity">
+    <Button
+        android:id="@+id/real_talk_btn_hamburger"
+        android:layout_width="20dp"
+        android:layout_height="18dp"
+        android:background="@drawable/ic_hamburger"
+        android:layout_marginTop="19dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/real_talk_txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="대화/질문하기"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/real_talk_btn_hamburger"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/real_talk_btn_hamburger" />
+
+    <ImageView
+        android:id="@+id/char_profile_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="252dp"
+        android:layout_marginEnd="205dp"
+        android:src="@drawable/ic_parent_talk_dam_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/real_talk_txt_title" />
+
+    <ImageView
+        android:id="@+id/ic_talk_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_parent_talk_link"
+        app:layout_constraintBottom_toBottomOf="@+id/char_profile_img"
+        app:layout_constraintEnd_toStartOf="@+id/mem_profile_img"
+        app:layout_constraintStart_toEndOf="@+id/char_profile_img"
+        app:layout_constraintTop_toTopOf="@+id/char_profile_img" />
+
+
+    <ImageView
+        android:id="@+id/mem_profile_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:src="@drawable/ic_parent_talk_men_profile"
+        app:layout_constraintBottom_toBottomOf="@+id/char_profile_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/char_profile_img"
+        app:layout_constraintTop_toTopOf="@+id/char_profile_img" />
+
+    <ImageView
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_parent_circle_6"
+        app:layout_constraintBottom_toBottomOf="@+id/real_talk_txt_info"
+        app:layout_constraintEnd_toEndOf="@+id/real_talk_txt_info"
+        app:layout_constraintStart_toStartOf="@+id/real_talk_txt_info"
+        app:layout_constraintTop_toTopOf="@+id/real_talk_txt_info" />
+
+    <TextView
+        android:id="@+id/real_talk_txt_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:text="캐릭터와\n대화중입니다"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/mem_profile_img"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/char_profile_img"
+        app:layout_constraintTop_toBottomOf="@+id/ic_talk_link" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

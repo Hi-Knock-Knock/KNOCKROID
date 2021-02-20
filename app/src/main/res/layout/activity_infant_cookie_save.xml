@@ -11,11 +11,11 @@
         android:id="@+id/infant_icon_out_cookie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/ic_infant_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/infant_cookie_talk"
@@ -55,19 +55,284 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_char_cookie_save" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <LinearLayout
+        android:id="@+id/cookie_save_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="41dp"
+        android:background="@drawable/img_cookies_itembox"
         android:elevation="6dp"
-        android:src="@drawable/img_cookies_itembox"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/char_cookie_save" />
+        app:layout_constraintTop_toTopOf="@+id/char_cookie_save">
+
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/cookie_save_view"
+            app:layout_constraintEnd_toEndOf="@+id/cookie_save_view"
+            app:layout_constraintStart_toStartOf="@+id/cookie_save_view"
+            app:layout_constraintTop_toTopOf="@+id/cookie_save_view">
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_cookies_false" />
+            </TableRow>
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_cookies_false" />
+            </TableRow>
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_cookies_false" />
+            </TableRow>
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_cookies_false" />
+            </TableRow>
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_cookies_false" />
+            </TableRow>
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false29"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/ic_cookies_false" />
+
+                <ImageView
+                    android:id="@+id/ic_cookie_false30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_cookies_false" />
+            </TableRow>
+
+
+        </TableLayout>
+
+    </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
