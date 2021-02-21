@@ -42,13 +42,13 @@ class InfantDecoFragment1 : Fragment() {
         recyclerView?.adapter = decoAdapters
 
 
-        val spaceDecoration = ParentFaqItemDeco(1) //리사이클러뷰 아이템간 간격 설정
+        //val spaceDecoration = ParentFaqItemDeco(1) //리사이클러뷰 아이템간 간격 설정
         gridLayoutManager = GridLayoutManager(view.context, 3)
         //rcvLayoutManager.
         parent_faq_rcv.apply{
             adapter = decoAdapters
             layoutManager = GridLayoutManager(view.context, 2)
-            addItemDecoration(spaceDecoration) //간격 설정한거 데코로 설정
+            //addItemDecoration(spaceDecoration) //간격 설정한거 데코로 설정
         }
 
 

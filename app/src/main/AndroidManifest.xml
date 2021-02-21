@@ -16,27 +16,13 @@
         <activity android:name=".parent.talk.view.ParentRealTalkRefDialog1Activity" />
         <activity android:name=".parent.talk.view.ParentRealTalkRefDialog2Activity" />
         <activity android:name=".parent.talk.view.ParentRealTalkActivity" />
-        <activity android:name=".infant.deco.adapter.InfantDecoActivityAdapter" />
-        <activity android:name=".infant.deco.view.InfantDecoFragment3" />
-        <activity android:name=".infant.deco.view.InfantDecoFragment2" />
-        <activity android:name=".infant.deco.view.InfantDecoFragment1" />
-        <activity android:name=".infant_layout.InfantDecoGlassesFragment" />
-        <activity android:name=".infant_layout.InfantDecoScarfFragment" />
-        <activity android:name=".infant_layout.InfantDecoFaceFragment" />
-        <activity android:name=".infant.deco.adapter.InfantDecoActivityAdapter" />
-        <activity android:name=".parent.mypage.view.ParentMyScrapActivity"></activity>
+        <activity android:name=".parent.mypage.view.ParentMyScrapActivity" />
         <activity android:name=".parent.mypage.view.ParentMyBabyActivity" />
         <activity android:name=".parent.mypage.view.ParentEditProfileActivity" />
         <activity android:name=".parent.mypage.view.ParentMyPageActivity" />
         <activity android:name=".parent.record.view.ParentRecordMemoActivity" />
         <activity android:name=".parent.record.view.ParentRecordDetailActivity" />
-        <activity android:name=".parent.record.view.ParentRecordActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".parent.record.view.ParentRecordActivity"></activity>
         <activity android:name=".parent.alarm.view.ParentNoticeActivity" />
         <activity android:name=".parent.setting.view.ParentAccountActivity" />
         <activity android:name=".parent.setting.view.ParentAlarmSettingActivity" />

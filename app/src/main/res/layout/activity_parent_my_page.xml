@@ -97,7 +97,7 @@
                 app:layout_constraintTop_toTopOf="@id/parent_my_page_img_profile" />
 
             <TextView
-                setUnderline="@{txtEdit}"
+                setUnderLine="@{txtEdit}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#5c7cff"
