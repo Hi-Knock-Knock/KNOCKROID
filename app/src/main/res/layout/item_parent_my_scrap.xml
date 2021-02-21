@@ -48,7 +48,7 @@
             android:ellipsize="end"
             android:maxLines="3"
             android:text="- 미안해 를 강요하지 마세요. \n- 따뜻한 눈길로 바라봐주세요 \n- 칭찬과 애정표현을 자주해주세요 \n가나다"
-            android:textColor="#6d6d6d"
+            android:textColor="#6d6d6d"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

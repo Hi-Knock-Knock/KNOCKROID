@@ -191,7 +191,7 @@
                 android:layout_marginStart="18dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_forward_10"
-                app:layout_constraintBottom_toBottomOf="@id/parent_record_detailbtn_play_question3"
+                app:layout_constraintBottom_toBottomOf="@id/parent_record_detail_btn_play_question3"
                 app:layout_constraintStart_toEndOf="@id/parent_record_detail_btn_play_question3"
                 app:layout_constraintTop_toTopOf="@id/parent_record_detail_btn_play_question3" />
 
