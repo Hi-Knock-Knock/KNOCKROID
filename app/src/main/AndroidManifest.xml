@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.all_the_best.knock_knock">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_appicon"
@@ -25,7 +27,13 @@
         <activity android:name=".parent.record.view.ParentRecordActivity"></activity>
         <activity android:name=".parent.alarm.view.ParentNoticeActivity" />
         <activity android:name=".parent.setting.view.ParentAccountActivity" />
-        <activity android:name=".parent.setting.view.ParentAlarmSettingActivity" />
+        <activity android:name=".parent.setting.view.ParentAlarmSettingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".parent.setting.view.ParentSettingActivity" />
         <activity android:name=".parent.faq.view.ParentFaqSearchActivity" />
         <activity android:name=".infant.cookie.view.InfantCookieSaveActivity" />
@@ -41,13 +49,7 @@
         <activity android:name=".infant.setting.view.InfantSelectIdActivity" />
         <activity android:name=".infant.home.view.InfantHomeActivity" />
         <activity android:name=".parent.faq.view.ParentFaqDetailActivity" />
-        <activity android:name=".parent.home.view.ParentHomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".parent.home.view.ParentHomeActivity"></activity>
         <activity android:name=".parent.base.view.SelectModeActivity" />
         <activity android:name=".parent.base.view.SignupActivity" />
         <activity android:name=".parent.base.view.LoginActivity" />
