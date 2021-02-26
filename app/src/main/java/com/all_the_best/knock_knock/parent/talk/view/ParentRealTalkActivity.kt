@@ -5,15 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.util.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_parent_real_talk.*
 
 class ParentRealTalkActivity : AppCompatActivity() {
-//    var refusal_dlg1: Dialog? = null
+    //    var refusal_dlg1: Dialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val red = ContextCompat.getColor(applicationContext, R.color.orange_red)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parent_real_talk)
+
+        StatusBarUtil.setStatusBar(this, R.color.light_blue_status_bar)
 
         alarm_layout.setOnClickListener {
             ic_alarm.setImageResource(R.drawable.ic_parent_alarm_finish)
@@ -31,9 +34,6 @@ class ParentRealTalkActivity : AppCompatActivity() {
         btn_real_talk_true.setOnClickListener {
             startActivity(intentaccept1)
         }
-
-
-
 
 
 /*

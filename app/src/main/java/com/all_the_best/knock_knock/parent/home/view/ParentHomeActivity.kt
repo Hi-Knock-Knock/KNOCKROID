@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.parent.home.adapter.ParentViewPagerAdapter
+import com.all_the_best.knock_knock.util.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_parent_home.*
 import kotlin.properties.Delegates
 
@@ -18,6 +19,7 @@ class ParentHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parent_home)
 
+        StatusBarUtil.setStatusBar(this, R.color.blue_status_bar)
 
         viewPagerAdapter = ParentViewPagerAdapter(supportFragmentManager)
 
