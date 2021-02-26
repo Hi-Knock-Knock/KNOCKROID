@@ -12,7 +12,6 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        //StatusBar Color 설정하기 -> StatusBarUtil.setStatusBar(this, values-colors.xml에 선언해놓은 color명)
         StatusBarUtil.setStatusBar(this, R.color.splash_status_bar)
 
         val intent = Intent(this, LoginActivity::class.java)

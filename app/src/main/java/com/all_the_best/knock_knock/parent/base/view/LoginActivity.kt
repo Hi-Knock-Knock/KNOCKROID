@@ -8,12 +8,15 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.ActivityLoginBinding
+import com.all_the_best.knock_knock.util.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        StatusBarUtil.setStatusBar(this, R.color.splash_status_bar)
 
         val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.txtSignUp = "회원가입"

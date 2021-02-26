@@ -12,4 +12,9 @@
 <!--    StatusBar Color 선언
         <color name="액티비티명_status_bar>컬러코드</color>-->
     <color name="splash_status_bar">#74daff</color>
+    <color name="singup_status_bar">#85aeff</color>
+    <color name="main_status_bar">#85aeff</color>
+    <color name="setting_status_bar">#ffffff</color>
+    <color name="alarm_status_bar">#ffffff</color>
+    <color name="mypage_status_bar">#ffffff</color>
 </resources>
