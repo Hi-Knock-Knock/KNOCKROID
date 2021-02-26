@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        StatusBarUtil.setStatusBar(this, R.color.splash_status_bar)
+        StatusBarUtil.setStatusBar(this, R.color.light_blue_status_bar)
 
         val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.txtSignUp = "회원가입"

@@ -12,7 +12,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        StatusBarUtil.setStatusBar(this, R.color.splash_status_bar)
+        StatusBarUtil.setStatusBar(this, R.color.light_blue_status_bar)
 
         val intent = Intent(this, LoginActivity::class.java)
         img_dami.setOnClickListener{
