@@ -15,7 +15,7 @@ class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        StatusBarUtil.setStatusBar(this, R.color.blue_status_bar)
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.blue_status_bar, null))
 
         val binding: ActivitySignupBinding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
 

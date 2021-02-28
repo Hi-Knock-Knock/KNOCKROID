@@ -11,8 +11,8 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
-        StatusBarUtil.setStatusBar(this, R.color.light_blue_status_bar)
+        
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.light_blue_status_bar, null))
 
         val intent = Intent(this, LoginActivity::class.java)
         img_dami.setOnClickListener{

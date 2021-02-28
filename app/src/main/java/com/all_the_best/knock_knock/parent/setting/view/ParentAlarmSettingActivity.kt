@@ -11,6 +11,6 @@ class ParentAlarmSettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parent_alarm_setting)
 
-        StatusBarUtil.setStatusBar(this, R.color.white_status_bar)
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.white_status_bar, null))
     }
 }

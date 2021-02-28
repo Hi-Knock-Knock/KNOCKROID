@@ -10,6 +10,6 @@ class ParentFaqSearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parent_faq_search)
 
-        StatusBarUtil.setStatusBar(this, R.color.light_blue_status_bar)
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.light_blue_status_bar, null))
     }
 }

@@ -53,6 +53,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
 
     //뷰페이저 도트 인디케이터 추가
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'

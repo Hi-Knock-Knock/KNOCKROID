@@ -10,6 +10,6 @@ class ParentSettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parent_setting)
 
-        StatusBarUtil.setStatusBar(this, R.color.blue_status_bar)
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.blue_status_bar, null))
     }
 }

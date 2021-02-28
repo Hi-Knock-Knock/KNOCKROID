@@ -11,7 +11,7 @@ class ParentRealTalkAccept2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.parent_real_talk_accept_2)
 
-        StatusBarUtil.setStatusBar(this, R.color.blue_status_bar)
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.blue_status_bar, null))
 
         btn_voice.setOnClickListener {
             btn_voice.setImageResource(R.drawable.ic_parent_voice_mute)
