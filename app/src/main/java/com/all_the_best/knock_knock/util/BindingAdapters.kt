@@ -20,4 +20,10 @@ object BindingAdapters {
         )
         textView.text = spannableString
     }
+
+    @BindingAdapter("setTitleFromHome")
+    @JvmStatic
+    fun setTitleFromHome(textView: TextView, nickname: String) {
+        textView.text = nickname + "의 오늘"
+    }
 }

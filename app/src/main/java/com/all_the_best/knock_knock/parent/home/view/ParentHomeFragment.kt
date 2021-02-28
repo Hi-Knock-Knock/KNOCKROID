@@ -7,22 +7,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.FragmentParentHomeBinding
 import com.all_the_best.knock_knock.parent.faq.view.ParentFaqDetailActivity
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
-import com.all_the_best.knock_knock.parent.home.adapter.ParentHomeAdapter
-import com.all_the_best.knock_knock.parent.home.adapter.ParentHomeData
-import com.google.android.material.navigation.NavigationView
+import com.all_the_best.knock_knock.parent.home.adapter.ParentHomeRcvAdapter
+import com.all_the_best.knock_knock.parent.home.viewmodel.ParentHomeViewModel
 import kotlinx.android.synthetic.main.fragment_parent_home.*
 
 class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
     private lateinit var binding: FragmentParentHomeBinding
-    private lateinit var parentHomeAdapter: ParentHomeAdapter
+    private val parentHomeViewModel : ParentHomeViewModel by activityViewModels()
 
     override fun onBackPressed(): Boolean {
         if (home_drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -40,22 +39,13 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_parent_home, container, false)
         onSelectNavigationMenu()
+        parentHomeViewModel.setParentRecordList()
+        setParentHomeRecordRcvAdapter()
+        setParentHomeRecordObserve()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        parentHomeAdapter = ParentHomeAdapter(view.context)
-        parent_home_rcv.apply {
-            adapter = parentHomeAdapter
-            layoutManager = LinearLayoutManager(view.context).also {
-                it.orientation = LinearLayoutManager.HORIZONTAL
-            }
-        }
-        parentHomeAdapter.data = mutableListOf(
-            ParentHomeData(R.drawable.rcv_parent_home_img),
-            ParentHomeData(R.drawable.rcv_parent_home_img),
-            ParentHomeData(R.drawable.rcv_parent_home_img)
-        )
 
         //햄버거바 클릭시 DrawerLayout 열림
         home_btn_hamburger.setOnClickListener {
@@ -63,6 +53,23 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
         }
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun setParentHomeRecordRcvAdapter(){
+        val parentHomeRecordAdapter = ParentHomeRcvAdapter()
+        binding.parentHomeRcv.adapter = parentHomeRecordAdapter
+    }
+
+    private fun setParentHomeRecordObserve(){
+        parentHomeViewModel.parentHomeRecordList.observe(viewLifecycleOwner, Observer{parentHomeRecordList->
+            parentHomeRecordList?.let{
+                if (binding.parentHomeRcv.adapter != null) with(binding.parentHomeRcv.adapter as ParentHomeRcvAdapter) {
+                    submitList(parentHomeRecordList)
+                }
+            }
+        })
+
+
     }
 
     private fun onSelectNavigationMenu() {
@@ -76,7 +83,7 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
 //            return false
 //        }
         var detailIntent= Intent(context, ParentFaqDetailActivity::class.java)
-        startActivity(detailIntent)
+        //startActivity(detailIntent)
 
     }
 

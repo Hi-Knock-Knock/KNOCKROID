@@ -71,7 +71,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/home_txt_info"
-                tools:listitem="@layout/rcv_parent_home" />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_parent_home" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
