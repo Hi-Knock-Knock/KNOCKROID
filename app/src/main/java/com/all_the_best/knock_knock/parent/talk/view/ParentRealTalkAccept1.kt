@@ -12,8 +12,7 @@ class ParentRealTalkAccept1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.parent_real_talk_accept_1)
 
-        StatusBarUtil.setStatusBar(this, R.color.blue_status_bar)
-
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.blue_status_bar, null))
 
         //로딩후 화면
         val intentaccept2 = Intent(this, ParentRealTalkAccept2::class.java)

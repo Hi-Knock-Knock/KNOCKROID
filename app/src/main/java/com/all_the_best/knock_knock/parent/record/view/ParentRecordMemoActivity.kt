@@ -11,7 +11,7 @@ class ParentRecordMemoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        StatusBarUtil.setStatusBar(this, R.color.semi_black_status_bar)
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.semi_black_status_bar, null))
 
         val binding: ActivityParentRecordMemoBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_parent_record_memo)

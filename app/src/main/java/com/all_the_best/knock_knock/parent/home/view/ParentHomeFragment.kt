@@ -1,25 +1,32 @@
 package com.all_the_best.knock_knock.parent.home.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.GravityCompat
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.databinding.FragmentParentHomeBinding
+import com.all_the_best.knock_knock.parent.faq.view.ParentFaqDetailActivity
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.parent.home.adapter.ParentHomeAdapter
 import com.all_the_best.knock_knock.parent.home.adapter.ParentHomeData
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_parent_home.*
 
 class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
+    private lateinit var binding: FragmentParentHomeBinding
     private lateinit var parentHomeAdapter: ParentHomeAdapter
 
     override fun onBackPressed(): Boolean {
         if (home_drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            Log.d("프래그먼트","홈화면 if")
+            Log.d("프래그먼트", "홈화면 if")
             home_drawer_layout.closeDrawers()
             return true
         } else {
@@ -31,15 +38,18 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_parent_home, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_parent_home, container, false)
+        onSelectNavigationMenu()
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         parentHomeAdapter = ParentHomeAdapter(view.context)
-        parent_home_rcv.apply{
+        parent_home_rcv.apply {
             adapter = parentHomeAdapter
-            layoutManager = LinearLayoutManager(view.context).also { it.orientation = LinearLayoutManager.HORIZONTAL }
+            layoutManager = LinearLayoutManager(view.context).also {
+                it.orientation = LinearLayoutManager.HORIZONTAL
+            }
         }
         parentHomeAdapter.data = mutableListOf(
             ParentHomeData(R.drawable.rcv_parent_home_img),
@@ -53,6 +63,21 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
         }
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun onSelectNavigationMenu() {
+//        binding.homeNavigationView.setNavigationItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.item_mypage -> Toast.makeText(this, "account clicked", Toast.LENGTH_SHORT).show()
+//                R.id.item_childrecord -> Toast.makeText(this, "item2 clicked", Toast.LENGTH_SHORT).show()
+//                R.id.item_alarm -> Toast.makeText(this, "item3 clicked", Toast.LENGTH_SHORT).show()
+//                R.id.item_settings ->
+//            }
+//            return false
+//        }
+        var detailIntent= Intent(context, ParentFaqDetailActivity::class.java)
+        startActivity(detailIntent)
+
     }
 
 

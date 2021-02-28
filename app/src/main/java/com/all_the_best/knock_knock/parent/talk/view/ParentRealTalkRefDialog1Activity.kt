@@ -12,7 +12,7 @@ class ParentRealTalkRefDialog1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.parent_refusal_dialog1)
 
-        StatusBarUtil.setStatusBar(this, R.color.semi_black_status_bar)
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.semi_black_status_bar, null))
 
         //수정하기
         val intentselect_q = Intent(this, ParentRealTalkRefDialog2Activity::class.java)

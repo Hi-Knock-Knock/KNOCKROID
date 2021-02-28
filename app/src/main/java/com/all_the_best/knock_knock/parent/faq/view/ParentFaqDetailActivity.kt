@@ -14,7 +14,7 @@ class ParentFaqDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parent_faq_detail)
 
-        StatusBarUtil.setStatusBar(this, R.color.light_blue_status_bar)
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.light_blue_status_bar, null))
 
         val intent1 = Intent(this, ParentHomeActivity::class.java)
         faqdetail_btn_back.setOnClickListener{

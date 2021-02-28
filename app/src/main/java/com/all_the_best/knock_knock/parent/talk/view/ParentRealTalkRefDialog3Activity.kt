@@ -11,7 +11,7 @@ class ParentRealTalkRefDialog3Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.parent_refusal_dialog3)
 
-        StatusBarUtil.setStatusBar(this, R.color.light_blue_status_bar)
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.light_blue_status_bar, null))
 
         refusal_btn_send.setOnClickListener {
             setContentView(R.layout.parent_refusal_talk_char_start)

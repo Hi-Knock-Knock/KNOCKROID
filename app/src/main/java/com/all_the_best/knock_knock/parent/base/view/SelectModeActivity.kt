@@ -14,7 +14,7 @@ class SelectModeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_mode)
 
-        StatusBarUtil.setStatusBar(this, R.color.light_blue_status_bar)
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.light_blue_status_bar, null))
 
         val intent1 = Intent(this, ParentHomeActivity::class.java)
         val intent2 = Intent(this, InfantSelectIdActivity::class.java)
