@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.PagerSnapHelper
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.FragmentParentHomeBinding
 import com.all_the_best.knock_knock.parent.faq.view.ParentFaqDetailActivity
@@ -42,6 +43,7 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
         parentHomeViewModel.setParentRecordList()
         setParentHomeRecordRcvAdapter()
         setParentHomeRecordObserve()
+        setSnapHelper()
         return binding.root
     }
 
@@ -68,8 +70,11 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
                 }
             }
         })
+    }
 
-
+    private fun setSnapHelper() {
+        val snapHelper = PagerSnapHelper()
+        snapHelper.attachToRecyclerView(binding.parentHomeRcv)
     }
 
     private fun onSelectNavigationMenu() {
