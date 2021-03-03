@@ -78,7 +78,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/talk_constraint"
                 android:layout_width="0dp"
-                android:layout_height="471dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="25dp"
@@ -137,11 +137,9 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="320dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="25dp"
-                    android:layout_marginBottom="17dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/talk_txt_list"
                     app:layout_constraintTop_toBottomOf="@+id/talk_txt_list">
@@ -248,13 +246,6 @@
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
-                                <RadioButton
-                                    android:id="@+id/rb12"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
-                                    android:text="아빠한테 속상한 거 있어?"
-                                    android:textColor="#252525"
-                                    android:textSize="14sp" />
                             </RadioGroup>
                         </LinearLayout>
                     </ScrollView>
