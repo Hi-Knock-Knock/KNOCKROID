@@ -1,6 +1,7 @@
 package com.all_the_best.knock_knock.infant.change.view
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
@@ -21,6 +22,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
         val intent = Intent(this, InfantHomeActivity::class.java)
         switch_btn_back.setOnClickListener {
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         val current = LocalDateTime.now()
@@ -31,15 +33,19 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
         when(formatted){
             in "08:00:000".."13:59:999" -> {
                 infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_morning_bg)
+                window.statusBarColor = Color.parseColor("#57DDFF")
             }
             in "14:00:000".."19:59:999" -> {
-                infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_sunset_bg)
+                infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_after_bg)
+                window.statusBarColor = Color.parseColor("#FF6471")
             }
             in "20:00:00".."23:59:999" -> {
                 infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_night_bg)
+                window.statusBarColor = Color.parseColor("#0F0E15")
             }
             !in "08:00:00".."23:59:999" -> {
                 infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_night_bg)
+                window.statusBarColor = Color.parseColor("#0F0E15")
             }
         }
 

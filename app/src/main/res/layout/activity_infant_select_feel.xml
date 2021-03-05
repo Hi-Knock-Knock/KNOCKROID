@@ -47,45 +47,11 @@
         app:layout_constraintVertical_bias="0.501"
         app:srcCompat="@drawable/img_char_dam" />
 
-
-    <ImageView
-        android:id="@+id/infant_icon_gift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/infant_cookie"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/infant_cookie"
-        app:srcCompat="@drawable/ic_infant_img_gift"  />
-
-    <ImageView
-        android:id="@+id/infant_cookie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_infant_home_cookie" />
-
-    <TextView
-        android:id="@+id/infant_home_cookie_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="5개"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/infant_cookie"
-        app:layout_constraintEnd_toEndOf="@+id/infant_cookie"
-        app:layout_constraintTop_toTopOf="@+id/infant_cookie" />
-
     <LinearLayout
         android:id="@+id/infant_feel_emjbar"
         android:layout_width="match_parent"
-        android:layout_height="282dp"
-        android:layout_marginTop="314dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="310dp"
         android:background="@drawable/ic_infant_emj_bg"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,14 +62,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="60dp">
 
             <TableRow>
+
                 <ImageView
                     android:id="@+id/infant_emj_feel_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:layout_marginRight="45dp"
                     android:src="@drawable/ic_infant_emj_feel_happy" />
 
@@ -111,6 +79,7 @@
                     android:id="@+id/infant_emj_feel_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:layout_marginRight="45dp"
                     android:src="@drawable/ic_infant_emj_feel_nice" />
 
@@ -118,43 +87,46 @@
                     android:id="@+id/infant_emj_feel_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:src="@drawable/ic_infant_emj_feel_soksang" />
             </TableRow>
+
             <TableRow>
+
                 <TextView
                     android:id="@+id/infant_emj_feel_1_txt"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="45dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="45dp"
                     android:gravity="center_horizontal"
                     android:text="기뻐"
-                    android:textSize="19sp"
                     android:textColor="#000000"
-                    android:textStyle="bold"/>
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infant_emj_feel_2_txt"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginRight="45dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="45dp"
                     android:gravity="center_horizontal"
                     android:text="신나"
-                    android:textSize="19sp"
                     android:textColor="#000000"
-                    android:textStyle="bold"/>
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infant_emj_feel_3_txt"
-                    android:layout_marginTop="4dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
+                    android:layout_marginTop="4dp"
                     android:gravity="center_horizontal"
                     android:text="속상해"
-                    android:textSize="19sp"
                     android:textColor="#000000"
-                    android:textStyle="bold"/>
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow>
@@ -182,41 +154,43 @@
                     android:layout_marginTop="8dp"
                     android:src="@drawable/ic_infant_emj_feel_angry" />
             </TableRow>
+
             <TableRow>
+
                 <TextView
                     android:id="@+id/infant_emj_feel_4_txt"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginRight="45dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="45dp"
                     android:gravity="center_horizontal"
                     android:text="슬퍼"
-                    android:textSize="19sp"
                     android:textColor="#000000"
-                    android:textStyle="bold"/>
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infant_emj_feel_5_txt"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginRight="45dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="45dp"
                     android:gravity="center_horizontal"
                     android:text="무서워"
-                    android:textSize="19sp"
                     android:textColor="#000000"
-                    android:textStyle="bold"/>
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infant_emj_feel_6_txt"
-                    android:layout_marginTop="7dp"
                     android:layout_width="26dp"
                     android:layout_height="24dp"
+                    android:layout_marginTop="4dp"
                     android:gravity="center_horizontal"
                     android:text="화나"
-                    android:textSize="19sp"
                     android:textColor="#000000"
-                    android:textStyle="bold"/>
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
             </TableRow>
 
         </TableLayout>

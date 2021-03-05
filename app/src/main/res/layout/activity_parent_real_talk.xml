@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/img_parent_real_talk_background"
     tools:context=".parent.talk.view.ParentRealTalkActivity">
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/real_talk_btn_hamburger"
         android:layout_width="20dp"
         android:layout_height="18dp"
@@ -135,7 +135,7 @@
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_real_talk_false"
             android:layout_width="160dp"
             android:layout_height="45dp"
@@ -146,7 +146,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/real_talk_box"
             tools:layout_editor_absoluteX="46dp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_real_talk_true"
             android:layout_width="160dp"
             android:layout_height="45dp"

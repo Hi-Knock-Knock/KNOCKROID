@@ -41,13 +41,7 @@
         <activity android:name=".infant.setting.view.InfantSelectIdActivity" />
         <activity android:name=".infant.home.view.InfantHomeActivity" />
         <activity android:name=".parent.faq.view.ParentFaqDetailActivity" />
-        <activity android:name=".parent.home.view.ParentHomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".parent.home.view.ParentHomeActivity"></activity>
         <activity android:name=".parent.base.view.SelectModeActivity" />
         <activity android:name=".parent.base.view.SignupActivity" />
         <activity android:name=".parent.base.view.LoginActivity" />

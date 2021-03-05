@@ -223,7 +223,7 @@
         app:layout_constraintStart_toStartOf="@+id/linearLayout6"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_select_false2"
             android:layout_width="160dp"
             android:layout_height="45dp"
@@ -234,11 +234,12 @@
             app:layout_constraintBottom_toBottomOf="@+id/real_talk_box"
             tools:layout_editor_absoluteX="46dp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_select_true2"
             android:layout_width="160dp"
             android:layout_height="45dp"
             android:background="@drawable/bg_parent_refusal_button_down2"
+
             android:text="확인"
             android:textColor="#252525"
             android:textSize="15sp" />

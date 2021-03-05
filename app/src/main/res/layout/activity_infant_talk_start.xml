@@ -5,7 +5,7 @@
     android:id="@+id/infant_talk_start"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_infant_room_sunset_bg"
+    android:background="@drawable/img_infant_room_morning_bg"
     tools:context=".infant.talk.view.InfantTalkStartActivity">
 
     <ImageView
@@ -25,10 +25,10 @@
         android:layout_marginBottom="16dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_infant_chatbox"
-        app:layout_constraintBottom_toTopOf="@+id/char_dam"
-        app:layout_constraintEnd_toEndOf="@+id/char_dam"
+        app:layout_constraintBottom_toTopOf="@+id/talk_start_char_dam"
+        app:layout_constraintEnd_toEndOf="@+id/talk_start_char_dam"
         app:layout_constraintHorizontal_bias="0.315"
-        app:layout_constraintStart_toStartOf="@+id/char_dam" />
+        app:layout_constraintStart_toStartOf="@+id/talk_start_char_dam" />
 
     <TextView
         android:id="@+id/talk_txtview"
@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.263" />
 
     <ImageView
-        android:id="@+id/char_dam"
+        android:id="@+id/talk_start_char_dam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"

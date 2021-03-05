@@ -1,6 +1,7 @@
 package com.all_the_best.knock_knock.infant.setting.view
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
@@ -16,13 +17,18 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_select_character)
 
+        //상태바 색상 지정
+        window.statusBarColor = Color.parseColor("#74DAFF")
+
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         val intent2 = Intent(this, InfantSelectIdActivity::class.java)
         select_btn_ok.setOnClickListener{
             startActivity(intent1)
+            overridePendingTransition(0, 0)
         }
         select_btn_back.setOnClickListener {
             startActivity(intent2)
+            overridePendingTransition(0, 0)
         }
 
         selectViewPagerAdapter =

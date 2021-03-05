@@ -8,7 +8,7 @@
     android:id="@+id/infant_switch_character"
     android:background="@drawable/img_infant_home_morning_bg">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/switch_btn_back"
         android:layout_width="43dp"
         android:layout_height="40dp"
@@ -46,7 +46,7 @@
         app:selectedDotColor="#5375FF" />
      -->
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/change_btn_left"
         android:layout_width="20dp"
         android:layout_height="48dp"
@@ -56,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/change_btn_right"
         android:layout_width="20dp"
         android:layout_height="48dp"
