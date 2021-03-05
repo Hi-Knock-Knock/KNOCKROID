@@ -18,11 +18,13 @@ class SelectModeActivity : AppCompatActivity() {
 
         val intent1 = Intent(this, ParentHomeActivity::class.java)
         val intent2 = Intent(this, InfantSelectIdActivity::class.java)
-        select_btn_infantmode.setOnClickListener{
+        select_btn_infantmode.setOnClickListener {
             startActivity(intent2)
+            overridePendingTransition(0, 0)
         }
         select_btn_parentmode.setOnClickListener {
             startActivity(intent1)
+            overridePendingTransition(0, 0)
         }
     }
 }
