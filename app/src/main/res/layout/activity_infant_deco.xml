@@ -5,7 +5,7 @@
     android:id="@+id/infant_deco"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_infant_deco_bg"
+    android:background="@drawable/img_infant_deco_morning_bg"
     tools:context=".infant.deco.view.InfantDecoActivity">
 
     <ImageView
@@ -45,12 +45,11 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/deco_tab_view"
-        android:layout_width="329dp"
-        android:layout_height="235dp"
-        android:layout_marginTop="29dp"
+        android:layout_width="338dp"
+        android:layout_height="244dp"
 
+        android:layout_marginTop="29dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tab" />
 

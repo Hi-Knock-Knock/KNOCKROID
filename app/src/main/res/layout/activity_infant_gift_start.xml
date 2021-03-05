@@ -69,20 +69,11 @@
         app:layout_constraintVertical_bias="0.263" />
 
     <ImageView
-        android:id="@+id/infant_gift_branch"
-        android:layout_width="385dp"
-        android:layout_height="69dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/infant_gift_char"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_infant_gift_branch" />
-
-    <ImageView
         android:id="@+id/infant_gift_char"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,15 +81,15 @@
         app:srcCompat="@drawable/img_infant_gift_char" />
 
     <ImageView
-        android:id="@+id/infant_empty_cookie1"
+        android:id="@+id/infant_empty_cookie3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="19dp"
         android:src="@drawable/img_infant_empty_cookie"
         app:layout_constraintBottom_toBottomOf="@+id/infant_empty_cookie2"
-        app:layout_constraintEnd_toEndOf="@+id/infant_empty_cookie2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/infant_empty_cookie2"
         app:layout_constraintTop_toTopOf="@+id/infant_empty_cookie2" />
-
     <ImageView
         android:id="@+id/infant_empty_cookie2"
         android:layout_width="wrap_content"
@@ -110,13 +101,15 @@
         app:layout_constraintTop_toBottomOf="@+id/infant_gift_char" />
 
     <ImageView
-        android:id="@+id/infant_empty_cookie3"
+        android:id="@+id/infant_empty_cookie1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
         android:src="@drawable/img_infant_empty_cookie"
         app:layout_constraintBottom_toBottomOf="@+id/infant_empty_cookie2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/infant_empty_cookie2"
+        app:layout_constraintEnd_toEndOf="@+id/infant_empty_cookie2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/infant_empty_cookie2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@
 package com.all_the_best.knock_knock.infant.home.view
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,9 @@ class InfantHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_home)
 
+        //상태바 색상 지정
+
+
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
         val formatted = current.format(formatter)
@@ -37,24 +41,28 @@ class InfantHomeActivity : AppCompatActivity() {
                 char_deco_btn.setImageResource(R.drawable.ic_infant_deco_btn_1)
                 char_talk_btn.setImageResource(R.drawable.ic_infant_chat_btn_1)
                 char_change_btn.setImageResource(R.drawable.ic_infant_change_btn_1)
+                window.statusBarColor = Color.parseColor("#57DDFF")
             }
             in "14:00:000".."19:59:999" -> {
-                infant_home.setBackgroundResource(R.drawable.img_infant_home_sunset_bg)
+                infant_home.setBackgroundResource(R.drawable.img_infant_home_after_bg)
                 char_deco_btn.setImageResource(R.drawable.ic_infant_deco_btn_2)
                 char_talk_btn.setImageResource(R.drawable.ic_infant_chat_btn_2)
                 char_change_btn.setImageResource(R.drawable.ic_infant_change_btn_2)
+                window.statusBarColor = Color.parseColor("#FF6471")
             }
             in "20:00:00".."23:59:999" -> {
                 infant_home.setBackgroundResource(R.drawable.img_infant_home_night_bg)
                 char_deco_btn.setImageResource(R.drawable.ic_infant_deco_btn_3)
                 char_talk_btn.setImageResource(R.drawable.ic_infant_chat_btn_3)
                 char_change_btn.setImageResource(R.drawable.ic_infant_change_btn_3)
+                window.statusBarColor = Color.parseColor("#0F0E15")
             }
             !in "08:00:00".."23:59:999" -> {
                 infant_home.setBackgroundResource(R.drawable.img_infant_home_night_bg)
                 char_deco_btn.setImageResource(R.drawable.ic_infant_deco_btn_3)
                 char_talk_btn.setImageResource(R.drawable.ic_infant_chat_btn_3)
                 char_change_btn.setImageResource(R.drawable.ic_infant_change_btn_3)
+                window.statusBarColor = Color.parseColor("#0F0E15")
             }
         }
 

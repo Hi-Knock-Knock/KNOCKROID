@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_splash_background"
+    android:background="@drawable/img_infant_splash_bg"
     tools:context=".infant.setting.view.InfantSelectIdActivity">
 
     <LinearLayout
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button1"
             android:layout_width="128dp"
             android:layout_height="154dp"
@@ -29,17 +29,18 @@
             android:background="@drawable/bg_whitebox"
             android:drawableTop="@drawable/img_infantprofile_1"
             android:paddingTop="8dp"
-            android:text="짱아">
+            android:text="짱아"/>
 
-        </Button>
 
-        <Button
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button2"
             android:layout_width="128dp"
             android:layout_height="154dp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="40dp"
             android:background="@drawable/bg_whitebox"
+            android:backgroundTint="@null"
             android:drawableTop="@drawable/img_infantprofile_2"
             android:paddingTop="8dp"
             android:text="짱구"

@@ -129,7 +129,7 @@
         app:layout_constraintStart_toStartOf="@+id/linearLayout4"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_select_false"
             android:layout_width="160dp"
             android:layout_height="45dp"
@@ -140,7 +140,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/real_talk_box"
             tools:layout_editor_absoluteX="46dp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_select_true"
             android:layout_width="160dp"
             android:layout_height="45dp"

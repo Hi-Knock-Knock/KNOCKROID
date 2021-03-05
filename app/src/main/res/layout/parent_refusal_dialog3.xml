@@ -101,7 +101,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/refusal_btn_send"
         android:layout_width="320dp"
         android:layout_height="44dp"
