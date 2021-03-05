@@ -4,12 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.util.StatusBarUtil
 import kotlinx.android.synthetic.main.parent_refusal_dialog1.*
 
 class ParentRealTalkRefDialog1Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.parent_refusal_dialog1)
+
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.semi_black_status_bar, null))
+
         //수정하기
         val intentselect_q = Intent(this, ParentRealTalkRefDialog2Activity::class.java)
         modify_select_q_home.setOnClickListener {

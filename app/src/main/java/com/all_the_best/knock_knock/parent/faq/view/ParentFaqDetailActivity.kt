@@ -6,12 +6,15 @@ import android.os.Bundle
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.parent.home.view.ParentHomeActivity
 import com.all_the_best.knock_knock.parent.faq.adapter.ParentFaqData
+import com.all_the_best.knock_knock.util.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_parent_faq_detail.*
 
 class ParentFaqDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parent_faq_detail)
+
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.light_blue_status_bar, null))
 
         val intent1 = Intent(this, ParentHomeActivity::class.java)
         faqdetail_btn_back.setOnClickListener{

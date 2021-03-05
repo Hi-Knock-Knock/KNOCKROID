@@ -8,11 +8,14 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.ActivitySignupBinding
+import com.all_the_best.knock_knock.util.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_signup.*
 
 class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.blue_status_bar, null))
 
         val binding: ActivitySignupBinding = DataBindingUtil.setContentView(this, R.layout.activity_signup)
 

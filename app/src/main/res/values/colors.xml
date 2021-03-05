@@ -8,4 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange_red">#ff3e18</color>
+
+<!--    StatusBar Color 선언
+        <color name="액티비티명_status_bar>컬러코드</color>-->
+    <color name="light_blue_status_bar">#74daff</color>
+    <color name="blue_status_bar">#85aeff</color>
+    <color name="white_status_bar">#ffffff</color>
+    <color name="semi_black_status_bar">#cc000000</color>
+
 </resources>

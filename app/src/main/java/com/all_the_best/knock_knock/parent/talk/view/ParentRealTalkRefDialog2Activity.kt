@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.util.StatusBarUtil
 import kotlinx.android.synthetic.main.parent_refusal_dialog2.*
 import kotlinx.android.synthetic.main.parent_refusal_dialog2.select_q_txt
 
@@ -15,6 +16,8 @@ class ParentRealTalkRefDialog2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // 수정하기 dialog
         setContentView(R.layout.parent_refusal_dialog2)
+
+        StatusBarUtil.setStatusBar(this, resources.getColor(R.color.semi_black_status_bar, null))
 
         //라디오 버튼 클릭시 선택한 질문 텍스트 벼경
         select_q_radiogroup.setOnCheckedChangeListener { p0, checkedId ->

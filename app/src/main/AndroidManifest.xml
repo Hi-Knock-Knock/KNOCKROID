@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.all_the_best.knock_knock">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_appicon"
@@ -9,7 +11,7 @@
         android:roundIcon="@mipmap/ic_appicon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knock_Knock">
-        <activity android:name=".infant.cookie.view.InfantGetCookiePopupActivity"></activity>
+        <activity android:name=".infant.cookie.view.InfantGetCookiePopupActivity" />
         <activity android:name=".parent.talk.view.ParentRealTalkAccept2" />
         <activity android:name=".parent.talk.view.ParentRealTalkAccept1" />
         <activity android:name=".parent.talk.view.ParentRealTalkRefDialog3Activity" />
@@ -22,7 +24,7 @@
         <activity android:name=".parent.mypage.view.ParentMyPageActivity" />
         <activity android:name=".parent.record.view.ParentRecordMemoActivity" />
         <activity android:name=".parent.record.view.ParentRecordDetailActivity" />
-        <activity android:name=".parent.record.view.ParentRecordActivity"></activity>
+        <activity android:name=".parent.record.view.ParentRecordActivity" />
         <activity android:name=".parent.alarm.view.ParentNoticeActivity" />
         <activity android:name=".parent.setting.view.ParentAccountActivity" />
         <activity android:name=".parent.setting.view.ParentAlarmSettingActivity" />
@@ -41,7 +43,7 @@
         <activity android:name=".infant.setting.view.InfantSelectIdActivity" />
         <activity android:name=".infant.home.view.InfantHomeActivity" />
         <activity android:name=".parent.faq.view.ParentFaqDetailActivity" />
-        <activity android:name=".parent.home.view.ParentHomeActivity"></activity>
+        <activity android:name=".parent.home.view.ParentHomeActivity" />
         <activity android:name=".parent.base.view.SelectModeActivity" />
         <activity android:name=".parent.base.view.SignupActivity" />
         <activity android:name=".parent.base.view.LoginActivity" />
