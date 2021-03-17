@@ -16,4 +16,7 @@
     <color name="white_status_bar">#ffffff</color>
     <color name="semi_black_status_bar">#cc000000</color>
 
+    <color name="floating_btn_blue">#5c7cff</color>
+    <color name="floating_btn_gray">#a3a3a3</color>
+
 </resources>
