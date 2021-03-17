@@ -10,13 +10,16 @@ import kotlinx.android.synthetic.main.activity_infant_cookie_save.*
 import kotlinx.android.synthetic.main.activity_infant_deco.*
 
 class InfantCookieSaveActivity : AppCompatActivity() {
+    private var bgSelect: Int = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_cookie_save)
+        bgSelect = intent.getIntExtra("bgSelect",1)
         window.statusBarColor = Color.parseColor("#FCC364")
 
         val intent = Intent(this, InfantHomeActivity::class.java)
         infant_icon_out_cookie.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

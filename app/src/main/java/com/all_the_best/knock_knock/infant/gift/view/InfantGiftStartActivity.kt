@@ -10,12 +10,13 @@ import kotlinx.android.synthetic.main.activity_infant_gift_start.*
 import kotlinx.android.synthetic.main.activity_infant_gift_start.infant_cookie_count
 
 class InfantGiftStartActivity : AppCompatActivity() {
-
+    private var bgSelect: Int = 1
     //var imageTrue:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_gift_start)
+        bgSelect = intent.getIntExtra("bgSelect",1)
         var count:Int = 5 //보유 쿠키 개수
         var count3:Int = 0 //소비한 쿠키 개
 
@@ -23,12 +24,13 @@ class InfantGiftStartActivity : AppCompatActivity() {
 
         val intent = Intent(this, InfantHomeActivity::class.java)
         infant_icon_gift_out1.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
 
         val intent1 = Intent(this, InfantGiftBoxActivity::class.java)
-
+        intent1.putExtra("bgSelect",bgSelect)
 
         infant_empty_cookie1.setOnClickListener {
             if(count!=2){

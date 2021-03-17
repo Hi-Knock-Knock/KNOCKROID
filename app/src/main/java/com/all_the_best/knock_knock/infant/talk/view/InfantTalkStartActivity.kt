@@ -12,10 +12,11 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class InfantTalkStartActivity : AppCompatActivity() {
+    private var bgSelect: Int = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_talk_start)
-
+        bgSelect = intent.getIntExtra("bgSelect",1)
         window.statusBarColor = Color.parseColor("#FCC364")
 
         val current = LocalDateTime.now()
@@ -39,6 +40,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         infant_icon_out.setOnClickListener{
+            intent1.putExtra("bgSelect", bgSelect)
             startActivity(intent1)
             overridePendingTransition(0, 0)
         }
