@@ -14,17 +14,6 @@
         android:background="@drawable/img_main_background"
         tools:context=".parent.talk.view.ParentTalkFragment">
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/talk_navigationView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="#ffffff"
-            app:itemTextColor="#252525"
-            app:headerLayout="@layout/parent_drawer_header"
-            app:itemIconTint="#5375FF"
-            app:menu="@menu/drawer" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -78,15 +67,17 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/talk_constraint"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="25dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/bg_whitebox"
                 android:paddingStart="20dp"
                 android:paddingTop="16dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@id/talk_btn_submit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/talk_txt_info">
@@ -135,18 +126,24 @@
                     app:layout_constraintStart_toStartOf="@id/talk_linear_division"
                     app:layout_constraintTop_toBottomOf="@id/talk_linear_division" />
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/talk_txt_list"
                     app:layout_constraintTop_toBottomOf="@+id/talk_txt_list">
 
                     <ScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:overScrollMode="never"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -246,10 +243,42 @@
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
+                                <RadioButton
+                                    android:id="@+id/rb12"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="26dp"
+                                    android:text="동생이랑 노는 거 즐거워?"
+                                    android:textColor="#252525"
+                                    android:textSize="14sp" />
+
+                                <RadioButton
+                                    android:id="@+id/rb13"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="26dp"
+                                    android:text="엄마가 어떻게 해줬으면 좋겠어?"
+                                    android:textColor="#252525"
+                                    android:textSize="14sp" />
+
+                                <RadioButton
+                                    android:id="@+id/rb14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="26dp"
+                                    android:text="동생이랑 노는 거 즐거워?"
+                                    android:textColor="#252525"
+                                    android:textSize="14sp" />
+
+                                <RadioButton
+                                    android:id="@+id/rb15"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="26dp"
+                                    android:text="엄마가 어떻게 해줬으면 좋겠어?"
+                                    android:textColor="#252525"
+                                    android:textSize="14sp" />
+
                             </RadioGroup>
                         </LinearLayout>
                     </ScrollView>
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -257,8 +286,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="17dp"
                 android:layout_marginEnd="50dp"
+                android:layout_marginBottom="130dp"
                 android:backgroundTint="#5c7cff"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
@@ -268,12 +297,22 @@
                 android:textColor="#ffffff"
                 android:textSize="18sp"
                 app:cornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/talk_constraint" />
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/talk_navigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#ffffff"
+            app:headerLayout="@layout/parent_drawer_header"
+            app:itemIconTint="#5375FF"
+            app:itemTextColor="#252525"
+            app:menu="@menu/drawer" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

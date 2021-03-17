@@ -18,7 +18,6 @@ class ParentHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parent_home)
-
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.blue_status_bar, null))
 
         viewPagerAdapter = ParentViewPagerAdapter(supportFragmentManager)
@@ -29,9 +28,9 @@ class ParentHomeActivity : AppCompatActivity() {
             override fun onPageScrollStateChanged(state: Int) {}
 
             override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
             ) {
             }
 
@@ -39,6 +38,10 @@ class ParentHomeActivity : AppCompatActivity() {
                 parent_bottom_navi.menu.getItem(position).isChecked = true
             }
         })
+
+        if(intent.getBooleanExtra("goFaq", false)){
+            parent_viewpager.setCurrentItem(2)
+        }
 
         parent_bottom_navi.setOnNavigationItemSelectedListener {
             var index by Delegates.notNull<Int>()

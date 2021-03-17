@@ -12,7 +12,7 @@ import com.all_the_best.knock_knock.parent.home.model.ParentHomeRecord
 
 class ParentHomeRcvAdapter :
     ListAdapter<ParentHomeRecord, ParentHomeRcvAdapter.ParentHomeRcvViewHolder>(
-        ParentHomeRecordDiffUtil()
+        ParentHomeRcvDiffUtil()
     ) {
     inner class ParentHomeRcvViewHolder(private val binding: ItemParentHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -38,7 +38,7 @@ class ParentHomeRcvAdapter :
         holder.bind(getItem(position))
     }
 
-    private class ParentHomeRecordDiffUtil : DiffUtil.ItemCallback<ParentHomeRecord>() {
+    private class ParentHomeRcvDiffUtil : DiffUtil.ItemCallback<ParentHomeRecord>() {
         override fun areItemsTheSame(
             oldItem: ParentHomeRecord,
             newItem: ParentHomeRecord
