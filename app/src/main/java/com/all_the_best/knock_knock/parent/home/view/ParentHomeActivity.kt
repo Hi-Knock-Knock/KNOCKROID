@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.ViewPager
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.databinding.ActivityParentHomeBinding
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.parent.home.adapter.ParentViewPagerAdapter
 import com.all_the_best.knock_knock.util.StatusBarUtil
@@ -13,37 +15,23 @@ import kotlinx.android.synthetic.main.activity_parent_home.*
 import kotlin.properties.Delegates
 
 class ParentHomeActivity : AppCompatActivity() {
-    private lateinit var viewPagerAdapter: ParentViewPagerAdapter
+    private lateinit var binding: ActivityParentHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_parent_home)
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.blue_status_bar, null))
-
-        viewPagerAdapter = ParentViewPagerAdapter(supportFragmentManager)
-
-        parent_viewpager.adapter = viewPagerAdapter
-
-        parent_viewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {}
-
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-            }
-
-            override fun onPageSelected(position: Int) {
-                parent_bottom_navi.menu.getItem(position).isChecked = true
-            }
-        })
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_home)
 
         if(intent.getBooleanExtra("goFaq", false)){
             parent_viewpager.setCurrentItem(2)
         }
 
-        parent_bottom_navi.setOnNavigationItemSelectedListener {
+        setViewPagerAdapter()
+        setOnItemSelectedListenerForBottomNavigation()
+    }
+
+    private fun setOnItemSelectedListenerForBottomNavigation() {
+        binding.parentBottomNavi.setOnNavigationItemSelectedListener {
             var index by Delegates.notNull<Int>()
             when(it.itemId){
                 R.id.menu_home -> index = 0
@@ -53,8 +41,29 @@ class ParentHomeActivity : AppCompatActivity() {
             parent_viewpager.currentItem = index
             true
         }
-
     }
+
+    private fun setViewPagerAdapter() {
+        val viewPagerAdapter = ParentViewPagerAdapter(supportFragmentManager)
+        binding.parentViewpager.apply {
+            adapter = viewPagerAdapter
+            addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+                override fun onPageScrollStateChanged(state: Int) {}
+
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+                }
+
+                override fun onPageSelected(position: Int) {
+                    parent_bottom_navi.menu.getItem(position).isChecked = true
+                }
+            })
+        }
+    }
+
     var time3: Long = 0 //백버튼 두번 누를 때 종료 동작에서 첫번째 누른시간
     override fun onBackPressed() {
         var cutPlace = 0    //문자열 끊을 위치 -> fragmentList[i].toString().substring(0, cutPlace) 여기서 사용됨
