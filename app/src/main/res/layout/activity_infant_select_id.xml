@@ -29,8 +29,8 @@
             android:background="@drawable/bg_whitebox"
             android:drawableTop="@drawable/img_infantprofile_1"
             android:paddingTop="8dp"
-            android:text="짱아"/>
-
+            android:text="짱아"
+            android:textColor="#000000" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -44,8 +44,7 @@
             android:drawableTop="@drawable/img_infantprofile_2"
             android:paddingTop="8dp"
             android:text="짱구"
-
-            />
+            android:textColor="#000000" />
     </LinearLayout>
 
 

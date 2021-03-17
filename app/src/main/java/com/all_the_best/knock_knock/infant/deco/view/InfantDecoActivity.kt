@@ -1,9 +1,11 @@
 package com.all_the_best.knock_knock.infant.deco.view
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
 import com.all_the_best.knock_knock.R
@@ -18,16 +20,22 @@ class InfantDecoActivity : AppCompatActivity() {
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
     private val formatted = current.format(formatter)
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_deco)
         setBgSelectObserve()
         setDecoItemSelectedListener()
+        setOnClickListenerForGoBack()
+    }
 
-        val intent = Intent(this, InfantHomeActivity::class.java)
-        intent.putExtra("bgSelect", infantDecoViewModel.bgSelect.value)
+    private fun setOnClickListenerForGoBack() {
         infant_icon_deco_out1.setOnClickListener {
-            startActivity(intent)
+            val intent = Intent()
+            intent.putExtra("bgSelect", infantDecoViewModel.bgSelect.value)
+            setResult(Activity.RESULT_OK, intent)
+            finish()
             overridePendingTransition(0, 0)
         }
     }
@@ -56,61 +64,38 @@ class InfantDecoActivity : AppCompatActivity() {
     private fun setBgSelectObserve() {
         infantDecoViewModel.bgSelect.observe(this) { bgSelect ->
             bgSelect.let {
+                Log.d("home_deco", "$bgSelect")
                 when (formatted) {
                     in "08:00:000".."13:59:999" -> {
                         window.statusBarColor = Color.parseColor("#57DDFF")
                         when (bgSelect) {
-                            1 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_morning_bg)
-                            }
-                            2 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower1)
-                            }
-                            3 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea1)
-                            }
+                            1 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_morning_bg)
+                            2 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower1)
+                            3 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea1)
                         }
                     }
                     in "14:00:000".."19:59:999" -> {
                         window.statusBarColor = Color.parseColor("#FF6471")
                         when (bgSelect) {
-                            1 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_after_bg)
-                            }
-                            2 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower2)
-                            }
-                            3 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea2)
-                            }
+                            1 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_after_bg)
+                            2 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower2)
+                            3 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea2)
                         }
                     }
                     in "20:00:00".."23:59:999" -> {
                         window.statusBarColor = Color.parseColor("#0F0E15")
                         when (bgSelect) {
-                            1 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_night_bg)
-                            }
-                            2 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower3)
-                            }
-                            3 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea3)
-                            }
+                            1 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_night_bg)
+                            2 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower3)
+                            3 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea3)
                         }
                     }
                     !in "08:00:00".."23:59:999" -> {
                         window.statusBarColor = Color.parseColor("#0F0E15")
                         when (bgSelect) {
-                            1 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_night_bg)
-                            }
-                            2 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower3)
-                            }
-                            3 -> {
-                                infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea3)
-                            }
+                            1 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_night_bg)
+                            2 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower3)
+                            3 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea3)
                         }
                     }
                 }

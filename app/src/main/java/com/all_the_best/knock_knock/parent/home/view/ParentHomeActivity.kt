@@ -26,7 +26,7 @@ class ParentHomeActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_home)
 
         if (intent.getBooleanExtra("goFaq", false)) {
-            parent_viewpager.setCurrentItem(2)
+            binding.parentViewpager.currentItem = 2
         }
         setViewPagerAdapter()
         setOnItemSelectedListenerForBottomNavigation()
