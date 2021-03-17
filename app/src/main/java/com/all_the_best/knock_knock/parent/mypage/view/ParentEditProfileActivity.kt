@@ -12,9 +12,7 @@ class ParentEditProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityParentEditProfileBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.white_status_bar, null))
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_edit_profile)
         binding.txtOk = "확인"
         setOnClickListenerForBtnGoBack()
