@@ -1,5 +1,6 @@
 package com.all_the_best.knock_knock.parent.mypage.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -27,6 +28,10 @@ class ParentMyPageActivity : AppCompatActivity() {
         setParentMyPageRcvAdapter()
         setParentMyPageBabyObserve()
         setSnapHelper()
+        setOnClickListenerForGoBack()
+        setOnClickListenerForEditProfile()
+        setOnClickListenerForShowMoreBaby()
+        setOnClickListenerForShowMoreScrap()
     }
 
     private fun setParentMyPageRcvAdapter() {
@@ -48,4 +53,32 @@ class ParentMyPageActivity : AppCompatActivity() {
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.parentMyPageRcvBaby)
     }
+
+    private fun setOnClickListenerForGoBack() {
+        binding.parentMyPageBtnBack.setOnClickListener{
+            onBackPressed()
+        }
+    }
+
+    private fun setOnClickListenerForEditProfile() {
+        binding.parentMyPageTxtEditProfile.setOnClickListener {
+            val intent = Intent(this, ParentEditProfileActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setOnClickListenerForShowMoreBaby() {
+        binding.parentMyPageTxtShowMoreBaby.setOnClickListener {
+            val intent = Intent(this, ParentMyBabyActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setOnClickListenerForShowMoreScrap() {
+        binding.parentMyPageTxtShowMoreScrap.setOnClickListener {
+            val intent = Intent(this, ParentMyScrapActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
 }
