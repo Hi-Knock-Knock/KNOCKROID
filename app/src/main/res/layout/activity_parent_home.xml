@@ -44,12 +44,11 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/parent_home_btn_floating"
+            style="@style/floating_btn"
+            android:theme="@style/floating_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/floating_btn_blue"
             android:outlineSpotShadowColor="@android:color/transparent"
-            android:src="@drawable/ic_talk"
-            app:borderWidth="0dp"
             app:layout_anchor="@id/parent_bottom_appbar" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

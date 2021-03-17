@@ -159,6 +159,7 @@
                                     android:id="@+id/rb1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="없음"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -167,6 +168,7 @@
                                     android:id="@+id/rb2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="엄마랑 아빠랑 싸우면 기분이 어때?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -175,6 +177,7 @@
                                     android:id="@+id/rb3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="동생은 어떤 존재야?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -183,6 +186,7 @@
                                     android:id="@+id/rb4"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="동생이랑 노는 거 즐거워?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -191,6 +195,7 @@
                                     android:id="@+id/rb5"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="엄마가 어떻게 해줬으면 좋겠어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -199,6 +204,7 @@
                                     android:id="@+id/rb6"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="아빠한테 속상한 거 있어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -207,6 +213,7 @@
                                     android:id="@+id/rb7"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="엄마한테 속상한 거 있어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -215,6 +222,7 @@
                                     android:id="@+id/rb8"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="엄마랑 아빠랑 싸우면 기분이 어때?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -223,6 +231,7 @@
                                     android:id="@+id/rb9"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="동생은 어떤 존재야?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -231,6 +240,7 @@
                                     android:id="@+id/rb10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="동생이랑 노는 거 즐거워?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -239,6 +249,7 @@
                                     android:id="@+id/rb11"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="엄마가 어떻게 해줬으면 좋겠어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -247,6 +258,7 @@
                                     android:id="@+id/rb12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="동생이랑 노는 거 즐거워?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -255,6 +267,7 @@
                                     android:id="@+id/rb13"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="엄마가 어떻게 해줬으면 좋겠어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -263,6 +276,7 @@
                                     android:id="@+id/rb14"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="동생이랑 노는 거 즐거워?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -271,6 +285,7 @@
                                     android:id="@+id/rb15"
                                     android:layout_width="wrap_content"
                                     android:layout_height="26dp"
+                                    android:buttonTint="#252525"
                                     android:text="엄마가 어떻게 해줬으면 좋겠어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />

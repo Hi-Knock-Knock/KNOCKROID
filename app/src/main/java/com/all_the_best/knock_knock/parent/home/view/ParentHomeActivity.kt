@@ -3,34 +3,52 @@ package com.all_the_best.knock_knock.parent.home.view
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat.setBackgroundTintList
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import androidx.viewpager.widget.ViewPager
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.ActivityParentHomeBinding
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.parent.home.adapter.ParentViewPagerAdapter
+import com.all_the_best.knock_knock.parent.home.viewmodel.ParentHomeViewModel
 import com.all_the_best.knock_knock.util.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_parent_home.*
 import kotlin.properties.Delegates
 
 class ParentHomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityParentHomeBinding
-
+    private val parentHomeViewModel: ParentHomeViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.blue_status_bar, null))
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_home)
 
         if (intent.getBooleanExtra("goFaq", false)) {
-            binding.parentViewpager.currentItem = 2
+            Log.d("parent_home","${intent.getBooleanExtra("goFaq",false)}")
+            parentHomeViewModel.setGoFaqFlag(true)
+            Log.d("parent_home","${binding.parentViewpager.currentItem}")
         }
         setViewPagerAdapter()
         setOnItemSelectedListenerForBottomNavigation()
         setOnClickListenerForFloatingBtn()
+        setGoFaqFlagObserve()
+    }
+
+    private fun setGoFaqFlagObserve(){
+        parentHomeViewModel.goFaqFlag.observe(this){goFaqFlag ->
+            goFaqFlag.let{
+                if(goFaqFlag){
+                    binding.parentViewpager.currentItem = 2
+                }
+            }
+        }
     }
 
     private fun setOnClickListenerForFloatingBtn() {
