@@ -43,9 +43,10 @@
         </com.google.android.material.bottomappbar.BottomAppBar>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/parent_home_btn_floating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#a3a3a3"
+            android:backgroundTint="@color/floating_btn_blue"
             android:outlineSpotShadowColor="@android:color/transparent"
             android:src="@drawable/ic_talk"
             app:borderWidth="0dp"
