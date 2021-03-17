@@ -22,7 +22,7 @@
         android:id="@+id/char_dam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="252dp"
+        android:layout_marginBottom="156dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,27 +30,87 @@
         app:layout_constraintVertical_bias="0.501"
         app:srcCompat="@drawable/img_char_dam" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab"
-        style="@style/ChipTabLayout"
-        android:layout_width="180dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintStart_toStartOf="@+id/deco_tab_view"
+    <LinearLayout
+        android:id="@+id/deco_box_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/img_infant_deco_item_box"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/char_dam"
+        app:layout_constraintStart_toStartOf="@+id/char_dam"
         app:layout_constraintTop_toBottomOf="@+id/char_dam">
 
-    </com.google.android.material.tabs.TabLayout>
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/deco_box_layout"
+            app:layout_constraintEnd_toEndOf="@+id/deco_box_layout"
+            app:layout_constraintStart_toStartOf="@+id/deco_box_layout"
+            app:layout_constraintTop_toTopOf="@+id/deco_box_layout">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/deco_tab_view"
-        android:layout_width="338dp"
-        android:layout_height="244dp"
+            <TableRow>
+                <ImageView
+                    android:id="@+id/deco_item_bg1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/bg_deco_select_item"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/img_infant_deco_item_basic"/>
 
-        android:layout_marginTop="29dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tab" />
+                <ImageView
+                    android:id="@+id/deco_item_bg2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/bg_deco_unselect_item"
+                    android:src="@drawable/img_infant_deco_item_flower" />
 
+                <ImageView
+                    android:id="@+id/deco_item_bg3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/bg_deco_unselect_item"
+                    android:src="@drawable/img_infant_deco_item_sea" />
+            </TableRow>
+
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/deco_item_bg4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="16dp"
+
+                    android:scaleType="centerInside"
+                    android:background="@drawable/bg_deco_unselect_item"
+                    android:src="@drawable/img_infant_deco_itembox_false" />
+
+                <ImageView
+                    android:id="@+id/deco_item_bg5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/bg_deco_unselect_item"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/img_infant_deco_itembox_false" />
+
+                <ImageView
+                    android:id="@+id/deco_item_bg6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/bg_deco_unselect_item"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/img_infant_deco_itembox_false" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
