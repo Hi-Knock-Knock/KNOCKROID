@@ -22,7 +22,7 @@
         android:id="@+id/char_dam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="252dp"
+        android:layout_marginBottom="156dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,9 +34,10 @@
         android:id="@+id/deco_box_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/img_infant_deco_item_box"
         android:gravity="center"
         android:orientation="horizontal"
-        android:background="@drawable/img_infant_deco_item_box"
         app:layout_constraintEnd_toEndOf="@+id/char_dam"
         app:layout_constraintStart_toStartOf="@+id/char_dam"
         app:layout_constraintTop_toBottomOf="@+id/char_dam">
@@ -49,52 +50,65 @@
             app:layout_constraintEnd_toEndOf="@+id/deco_box_layout"
             app:layout_constraintStart_toStartOf="@+id/deco_box_layout"
             app:layout_constraintTop_toTopOf="@+id/deco_box_layout">
+
             <TableRow>
                 <ImageView
-                    android:id="@+id/deco_bg1"
+                    android:id="@+id/deco_item_bg1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="17dp"
-                    android:src="@drawable/img_infant_deco_itembox_false" />
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/bg_deco_select_item"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/img_infant_deco_item_basic"/>
 
                 <ImageView
-                    android:id="@+id/deco_bg2"
+                    android:id="@+id/deco_item_bg2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="17dp"
-                    android:src="@drawable/img_infant_deco_itembox_false" />
+                    android:layout_marginRight="16dp"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/bg_deco_unselect_item"
+                    android:src="@drawable/img_infant_deco_item_flower" />
 
                 <ImageView
-                    android:id="@+id/deco_bg3"
+                    android:id="@+id/deco_item_bg3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:src="@drawable/img_infant_deco_itembox_false" />
+                    android:scaleType="centerInside"
+                    android:background="@drawable/bg_deco_unselect_item"
+                    android:src="@drawable/img_infant_deco_item_sea" />
             </TableRow>
 
             <TableRow>
+
                 <ImageView
-                    android:id="@+id/deco_bg4"
+                    android:id="@+id/deco_item_bg4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="16dp"
+
+                    android:scaleType="centerInside"
+                    android:background="@drawable/bg_deco_unselect_item"
                     android:src="@drawable/img_infant_deco_itembox_false" />
 
                 <ImageView
-                    android:id="@+id/deco_bg5"
+                    android:id="@+id/deco_item_bg5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="17dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/bg_deco_unselect_item"
+                    android:scaleType="centerInside"
                     android:src="@drawable/img_infant_deco_itembox_false" />
 
                 <ImageView
-                    android:id="@+id/deco_bg6"
+                    android:id="@+id/deco_item_bg6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/bg_deco_unselect_item"
+                    android:scaleType="centerInside"
                     android:src="@drawable/img_infant_deco_itembox_false" />
             </TableRow>
         </TableLayout>
