@@ -81,7 +81,11 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 R.id.rb9 -> "동생은 어떤 존재야?"
                 R.id.rb10 -> "동생이랑 노는 거 즐거워?"
                 R.id.rb11 -> "엄마가 어떻게 해줬으면 좋겠어?"
-                else -> "없"
+                R.id.rb12 -> "동생이랑 노는 거 즐거워?"
+                R.id.rb13 -> "엄마가 어떻게 해줬으면 좋겠어?"
+                R.id.rb14 -> "동생이랑 노는 거 즐거워?"
+                R.id.rb15 -> "엄마가 어떻게 해줬으면 좋겠어?"
+                else -> "없음"
             }
         }
     }

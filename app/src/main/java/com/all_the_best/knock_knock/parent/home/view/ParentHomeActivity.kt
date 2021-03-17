@@ -28,9 +28,9 @@ class ParentHomeActivity : AppCompatActivity() {
             override fun onPageScrollStateChanged(state: Int) {}
 
             override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
             ) {
             }
 

@@ -1,47 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".parent.home.view.ParentHomeActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/parent_viewpager"
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        tools:context=".parent.home.view.ParentHomeActivity">
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/parent_bottom_appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:backgroundTint="#ffffff"
-        app:contentInsetEnd="0dp"
-        app:contentInsetLeft="0dp"
-        app:contentInsetRight="0dp"
-        app:contentInsetStart="0dp"
-        app:fabAlignmentMode="center"
-        app:fabCradleMargin="6dp"
-        app:fabCradleRoundedCornerRadius="10dp"
-        app:fabCradleVerticalOffset="0dp">
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/parent_bottom_navi"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/parent_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/background_transparent"
-            app:itemIconTint="@color/parent_bottom_navi_color"
-            app:itemTextColor="@color/parent_bottom_navi_color"
-            app:menu="@menu/parent_bottom_menu" />
-    </com.google.android.material.bottomappbar.BottomAppBar>
+            android:layout_height="wrap_content" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#a3a3a3"
-        android:outlineSpotShadowColor="@android:color/transparent"
-        android:src="@drawable/ic_talk"
-        app:borderWidth="0dp"
-        app:layout_anchor="@id/parent_bottom_appbar" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/parent_bottom_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="#ffffff"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp"
+            app:fabAlignmentMode="center"
+            app:fabCradleMargin="6dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="0dp">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/parent_bottom_navi"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_transparent"
+                app:itemIconTint="@color/parent_bottom_navi_color"
+                app:itemTextColor="@color/parent_bottom_navi_color"
+                app:menu="@menu/parent_bottom_menu" />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#a3a3a3"
+            android:outlineSpotShadowColor="@android:color/transparent"
+            android:src="@drawable/ic_talk"
+            app:borderWidth="0dp"
+            app:layout_anchor="@id/parent_bottom_appbar" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
