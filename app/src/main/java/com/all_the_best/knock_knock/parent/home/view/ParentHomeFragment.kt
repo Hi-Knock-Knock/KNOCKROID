@@ -48,6 +48,7 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_parent_home, container, false)
+        binding.lifecycleOwner = this
         binding.homeNavigationView.setNavigationItemSelectedListener(this)
         parentHomeViewModel.setParentRecordList()
         setParentHomeRecordRcvAdapter()
@@ -71,7 +72,7 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed,
 
     private fun setParentHomeRecordObserve() {
         parentHomeViewModel.parentHomeRecordList.observe(viewLifecycleOwner) { parentHomeRecordList ->
-            parentHomeRecordList?.let {
+            parentHomeRecordList.let {
                 if (binding.parentHomeRcv.adapter != null) with(binding.parentHomeRcv.adapter as ParentHomeRcvAdapter) {
                     submitList(parentHomeRecordList)
                 }
