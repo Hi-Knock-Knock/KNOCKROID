@@ -97,6 +97,7 @@
                 app:layout_constraintTop_toTopOf="@id/parent_my_page_img_profile" />
 
             <TextView
+                android:id="@+id/parent_my_page_txt_edit_profile"
                 setUnderLine="@{txtEdit}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -154,6 +155,7 @@
                 tools:listitem="@layout/item_parent_my_page_baby" />
 
             <TextView
+                android:id="@+id/parent_my_page_txt_show_more_baby"
                 setUnderLine="@{txtShowMore}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -291,6 +293,7 @@
                 app:layout_constraintTop_toTopOf="@id/parent_my_page_img_bookmark3" />
 
             <TextView
+                android:id="@+id/parent_my_page_txt_show_more_scrap"
                 setUnderLine="@{txtShowMore}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

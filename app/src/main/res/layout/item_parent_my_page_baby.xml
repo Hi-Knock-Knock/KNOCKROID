@@ -1,66 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="16dp"
-    android:background="@drawable/bg_mypage_baby_rcv"
-    android:padding="16dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/item_my_page_baby_img"
+    <data>
+        <variable
+            name="parentMyPageBabyData"
+            type="com.all_the_best.knock_knock.parent.mypage.model.ParentMyPageBaby" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="44dp"
-        android:src="@drawable/img_mypage_baby1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_mypage_baby_rcv"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/item_my_page_baby_txt_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:text="짱구"
-        android:textColor="#252525"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@id/item_my_page_baby_img"
-        app:layout_constraintStart_toStartOf="@id/item_my_page_baby_img"
-        app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_img" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_my_page_baby_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginEnd="44dp"
+            android:src="@drawable/img_mypage_baby1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/item_my_page_baby_txt_gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="성별 : 남"
-        android:textColor="#252525"
-        android:textSize="14sp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_txt_name" />
+        <TextView
+            android:id="@+id/item_my_page_baby_txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@{parentMyPageBabyData.name}"
+            android:textColor="#252525"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/item_my_page_baby_img"
+            app:layout_constraintStart_toStartOf="@id/item_my_page_baby_img"
+            app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_img" />
 
-    <TextView
-        android:id="@+id/item_my_page_baby_txt_birth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="생년월일 : 14.10.04"
-        android:textColor="#252525"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_txt_gender" />
+        <TextView
+            android:id="@+id/item_my_page_baby_txt_gender_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="성별 : "
+            android:textColor="#252525"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_txt_name" />
 
-    <TextView
-        android:id="@+id/item_my_page_baby_txt_nickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="별명 : 짱구"
-        android:textColor="#252525"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_txt_birth" />
+        <TextView
+            android:id="@+id/item_my_page_baby_txt_gender_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{parentMyPageBabyData.gender}"
+            android:textColor="#252525"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/item_my_page_baby_txt_gender_left"
+            app:layout_constraintTop_toTopOf="@id/item_my_page_baby_txt_gender_left" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/item_my_page_baby_txt_birth_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="생년월일 : "
+            android:textColor="#252525"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_txt_gender_left" />
+
+        <TextView
+            android:id="@+id/item_my_page_baby_txt_birth_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{parentMyPageBabyData.birth}"
+            android:textColor="#252525"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/item_my_page_baby_txt_birth_left"
+            app:layout_constraintTop_toTopOf="@id/item_my_page_baby_txt_birth_left" />
+
+        <TextView
+            android:id="@+id/item_my_page_baby_txt_nickname_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="별명 : "
+            android:textColor="#252525"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_txt_birth_left" />
+
+        <TextView
+            android:id="@+id/item_my_page_baby_txt_nickname_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{parentMyPageBabyData.nickname}"
+            android:textColor="#252525"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/item_my_page_baby_txt_nickname_left"
+            app:layout_constraintTop_toTopOf="@id/item_my_page_baby_txt_nickname_left" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

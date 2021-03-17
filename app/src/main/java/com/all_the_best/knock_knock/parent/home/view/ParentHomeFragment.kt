@@ -17,24 +17,29 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.FragmentParentHomeBinding
+import com.all_the_best.knock_knock.parent.alarm.view.ParentNoticeActivity
 import com.all_the_best.knock_knock.parent.faq.view.ParentFaqDetailActivity
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.parent.home.adapter.ParentHomeRcvAdapter
 import com.all_the_best.knock_knock.parent.home.viewmodel.ParentHomeViewModel
+import com.all_the_best.knock_knock.parent.mypage.view.ParentMyPageActivity
+import com.all_the_best.knock_knock.parent.setting.view.ParentAlarmSettingActivity
+import com.all_the_best.knock_knock.parent.setting.view.ParentSettingActivity
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_parent_home.*
 
-class ParentHomeFragment : Fragment(), FragmentOnBackPressed, NavigationView.OnNavigationItemSelectedListener {
+class ParentHomeFragment : Fragment(), FragmentOnBackPressed,
+    NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: FragmentParentHomeBinding
-    private val parentHomeViewModel : ParentHomeViewModel by activityViewModels()
+    private val parentHomeViewModel: ParentHomeViewModel by activityViewModels()
 
     override fun onBackPressed(): Boolean {
-        if (home_drawer_layout.isDrawerOpen(GravityCompat.START)) {
+        return if (binding.homeDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             Log.d("프래그먼트", "홈화면 if")
-            home_drawer_layout.closeDrawers()
-            return true
+            binding.homeDrawerLayout.closeDrawers()
+            true
         } else {
-            return false
+            false
         }
     }
 
@@ -43,33 +48,31 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed, NavigationView.OnN
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_parent_home, container, false)
+        binding.lifecycleOwner = this
         binding.homeNavigationView.setNavigationItemSelectedListener(this)
-        //onSelectNavigationMenu()
         parentHomeViewModel.setParentRecordList()
         setParentHomeRecordRcvAdapter()
         setParentHomeRecordObserve()
         setSnapHelper()
+        setOnClickListenerForHamburger()
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+    private fun setOnClickListenerForHamburger() {
         //햄버거바 클릭시 DrawerLayout 열림
-        home_btn_hamburger.setOnClickListener {
-            home_drawer_layout.openDrawer(GravityCompat.START) //네비게이션 드로어 열기
+        binding.homeBtnHamburger.setOnClickListener {
+            binding.homeDrawerLayout.openDrawer(GravityCompat.START) //네비게이션 드로어 열기
         }
-
-        super.onViewCreated(view, savedInstanceState)
     }
 
-    private fun setParentHomeRecordRcvAdapter(){
+    private fun setParentHomeRecordRcvAdapter() {
         val parentHomeRecordAdapter = ParentHomeRcvAdapter()
         binding.parentHomeRcv.adapter = parentHomeRecordAdapter
     }
 
-    private fun setParentHomeRecordObserve(){
-        parentHomeViewModel.parentHomeRecordList.observe(viewLifecycleOwner) {parentHomeRecordList->
-            parentHomeRecordList?.let{
+    private fun setParentHomeRecordObserve() {
+        parentHomeViewModel.parentHomeRecordList.observe(viewLifecycleOwner) { parentHomeRecordList ->
+            parentHomeRecordList.let {
                 if (binding.parentHomeRcv.adapter != null) with(binding.parentHomeRcv.adapter as ParentHomeRcvAdapter) {
                     submitList(parentHomeRecordList)
                 }
@@ -82,19 +85,14 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed, NavigationView.OnN
         snapHelper.attachToRecyclerView(binding.parentHomeRcv)
     }
 
-    private fun onSelectNavigationMenu() {
-        binding.homeNavigationView.setNavigationItemSelectedListener(this)
-        var detailIntent= Intent(context, ParentFaqDetailActivity::class.java)
-        //startActivity(detailIntent)
-
-    }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.item_mypage -> Toast.makeText(activity, "account clicked", Toast.LENGTH_SHORT).show()
-            R.id.item_alarm -> Toast.makeText(activity, "item2 clicked", Toast.LENGTH_SHORT).show()
-            R.id.item_settings -> Toast.makeText(activity, "item3 clicked", Toast.LENGTH_SHORT).show()
+        lateinit var intent: Intent
+        when (item.itemId) {
+            R.id.item_mypage -> intent = Intent(context, ParentMyPageActivity::class.java)
+            R.id.item_alarm -> intent = Intent(context, ParentNoticeActivity::class.java)
+            R.id.item_settings -> intent = Intent(context, ParentSettingActivity::class.java)
         }
+        startActivity(intent)
         return false
     }
 }
