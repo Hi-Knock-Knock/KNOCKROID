@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.FragmentParentHomeBinding
@@ -18,9 +21,10 @@ import com.all_the_best.knock_knock.parent.faq.view.ParentFaqDetailActivity
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.parent.home.adapter.ParentHomeRcvAdapter
 import com.all_the_best.knock_knock.parent.home.viewmodel.ParentHomeViewModel
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_parent_home.*
 
-class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
+class ParentHomeFragment : Fragment(), FragmentOnBackPressed, NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: FragmentParentHomeBinding
     private val parentHomeViewModel : ParentHomeViewModel by activityViewModels()
 
@@ -39,7 +43,8 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_parent_home, container, false)
-        onSelectNavigationMenu()
+        binding.homeNavigationView.setNavigationItemSelectedListener(this)
+        //onSelectNavigationMenu()
         parentHomeViewModel.setParentRecordList()
         setParentHomeRecordRcvAdapter()
         setParentHomeRecordObserve()
@@ -63,13 +68,13 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
     }
 
     private fun setParentHomeRecordObserve(){
-        parentHomeViewModel.parentHomeRecordList.observe(viewLifecycleOwner, Observer{parentHomeRecordList->
+        parentHomeViewModel.parentHomeRecordList.observe(viewLifecycleOwner) {parentHomeRecordList->
             parentHomeRecordList?.let{
                 if (binding.parentHomeRcv.adapter != null) with(binding.parentHomeRcv.adapter as ParentHomeRcvAdapter) {
                     submitList(parentHomeRecordList)
                 }
             }
-        })
+        }
     }
 
     private fun setSnapHelper() {
@@ -78,19 +83,18 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed {
     }
 
     private fun onSelectNavigationMenu() {
-//        binding.homeNavigationView.setNavigationItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.item_mypage -> Toast.makeText(this, "account clicked", Toast.LENGTH_SHORT).show()
-//                R.id.item_childrecord -> Toast.makeText(this, "item2 clicked", Toast.LENGTH_SHORT).show()
-//                R.id.item_alarm -> Toast.makeText(this, "item3 clicked", Toast.LENGTH_SHORT).show()
-//                R.id.item_settings ->
-//            }
-//            return false
-//        }
+        binding.homeNavigationView.setNavigationItemSelectedListener(this)
         var detailIntent= Intent(context, ParentFaqDetailActivity::class.java)
         //startActivity(detailIntent)
 
     }
 
-
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.item_mypage -> Toast.makeText(activity, "account clicked", Toast.LENGTH_SHORT).show()
+            R.id.item_alarm -> Toast.makeText(activity, "item2 clicked", Toast.LENGTH_SHORT).show()
+            R.id.item_settings -> Toast.makeText(activity, "item3 clicked", Toast.LENGTH_SHORT).show()
+        }
+        return false
+    }
 }

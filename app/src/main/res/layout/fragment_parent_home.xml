@@ -14,17 +14,6 @@
         android:background="@drawable/img_main_background"
         tools:context=".parent.home.view.ParentHomeFragment">
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/home_navigationView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="#ffffff"
-            app:headerLayout="@layout/parent_drawer_header"
-            app:itemIconTint="#5375FF"
-            app:itemTextColor="#252525"
-            app:menu="@menu/drawer" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -80,6 +69,16 @@
                 tools:listitem="@layout/item_parent_home" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/home_navigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#ffffff"
+            app:headerLayout="@layout/parent_drawer_header"
+            app:itemIconTint="#5375FF"
+            app:itemTextColor="#252525"
+            app:menu="@menu/drawer" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>
