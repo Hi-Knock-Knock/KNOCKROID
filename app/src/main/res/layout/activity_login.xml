@@ -19,8 +19,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/login_txt_title"
@@ -29,7 +29,7 @@
                 android:src="@drawable/ic_logo_big"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/login_linear_white"
@@ -63,6 +63,8 @@
                     android:background="@drawable/bg_login_edt"
                     android:hint="email을 입력해주세요."
                     android:padding="5dp"
+                    android:singleLine="true"
+                    android:textColor="#858585"
                     android:textColorHint="#858585"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="@id/login_txt_id"
@@ -89,6 +91,8 @@
                     android:hint="비밀번호를 입력해주세요."
                     android:inputType="textPassword"
                     android:padding="5dp"
+                    android:singleLine="true"
+                    android:textColor="#858585"
                     android:textColorHint="#858585"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -170,8 +174,6 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
