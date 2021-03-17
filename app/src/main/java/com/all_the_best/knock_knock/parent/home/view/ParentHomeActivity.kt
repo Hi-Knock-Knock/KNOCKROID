@@ -19,7 +19,6 @@ import kotlin.properties.Delegates
 
 class ParentHomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityParentHomeBinding
-    private var color = R.color.floating_btn_gray
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
