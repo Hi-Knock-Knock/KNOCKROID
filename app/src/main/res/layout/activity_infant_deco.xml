@@ -30,27 +30,73 @@
         app:layout_constraintVertical_bias="0.501"
         app:srcCompat="@drawable/img_char_dam" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab"
-        style="@style/ChipTabLayout"
-        android:layout_width="180dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintStart_toStartOf="@+id/deco_tab_view"
+    <LinearLayout
+        android:id="@+id/deco_box_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@drawable/img_infant_deco_item_box"
+        app:layout_constraintEnd_toEndOf="@+id/char_dam"
+        app:layout_constraintStart_toStartOf="@+id/char_dam"
         app:layout_constraintTop_toBottomOf="@+id/char_dam">
 
-    </com.google.android.material.tabs.TabLayout>
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/deco_box_layout"
+            app:layout_constraintEnd_toEndOf="@+id/deco_box_layout"
+            app:layout_constraintStart_toStartOf="@+id/deco_box_layout"
+            app:layout_constraintTop_toTopOf="@+id/deco_box_layout">
+            <TableRow>
+                <ImageView
+                    android:id="@+id/deco_bg1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/img_infant_deco_itembox_false" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/deco_tab_view"
-        android:layout_width="338dp"
-        android:layout_height="244dp"
+                <ImageView
+                    android:id="@+id/deco_bg2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/img_infant_deco_itembox_false" />
 
-        android:layout_marginTop="29dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tab" />
+                <ImageView
+                    android:id="@+id/deco_bg3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
+                    android:src="@drawable/img_infant_deco_itembox_false" />
+            </TableRow>
+
+            <TableRow>
+                <ImageView
+                    android:id="@+id/deco_bg4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/img_infant_deco_itembox_false" />
+
+                <ImageView
+                    android:id="@+id/deco_bg5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="17dp"
+                    android:src="@drawable/img_infant_deco_itembox_false" />
+
+                <ImageView
+                    android:id="@+id/deco_bg6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+
+                    android:src="@drawable/img_infant_deco_itembox_false" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

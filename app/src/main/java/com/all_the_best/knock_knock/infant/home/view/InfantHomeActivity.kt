@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.change.view.InfantSwitchCharacterActivity
 import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
@@ -34,6 +35,10 @@ class InfantHomeActivity : AppCompatActivity() {
         infant_talk1.setOnClickListener{
             Log.d("time", formatted)
         }
+// lottie
+//        char_dam.repeatMode = LottieDrawable.REVERSE
+//        char_dam.repeatCount = LottieDrawable.INFINITE
+//        char_dam.playAnimation()
 
         when(formatted){
             in "08:00:000".."13:59:999" -> {
