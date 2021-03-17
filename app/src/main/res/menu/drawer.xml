@@ -5,10 +5,6 @@
         android:icon="@drawable/ic_drawer_mypage"
         android:title="마이페이지" />
     <item
-        android:id="@+id/item_childrecord"
-        android:icon="@drawable/ic_drawer_childrecord"
-        android:title="우리 아이 녹음"/>
-    <item
         android:id="@+id/item_alarm"
         android:icon="@drawable/ic_drawer_alarm"
         android:title="알림"/>
