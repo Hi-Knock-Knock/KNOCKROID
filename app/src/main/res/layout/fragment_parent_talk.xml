@@ -14,17 +14,6 @@
         android:background="@drawable/img_main_background"
         tools:context=".parent.talk.view.ParentTalkFragment">
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/talk_navigationView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="#ffffff"
-            app:itemTextColor="#252525"
-            app:headerLayout="@layout/parent_drawer_header"
-            app:itemIconTint="#5375FF"
-            app:menu="@menu/drawer" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -274,6 +263,16 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/talk_navigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#ffffff"
+            app:itemTextColor="#252525"
+            app:headerLayout="@layout/parent_drawer_header"
+            app:itemIconTint="#5375FF"
+            app:menu="@menu/drawer" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>
