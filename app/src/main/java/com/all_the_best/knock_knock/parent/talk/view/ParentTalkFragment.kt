@@ -21,9 +21,8 @@ import com.all_the_best.knock_knock.parent.alarm.view.ParentNoticeActivity
 import com.all_the_best.knock_knock.parent.mypage.view.ParentMyPageActivity
 import com.all_the_best.knock_knock.parent.setting.view.ParentSettingActivity
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
-import com.google.android.material.datepicker.MaterialDatePicker.Builder.datePicker
+import com.all_the_best.knock_knock.util.StatusBarUtil
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.fragment_parent_faq.*
 import kotlinx.android.synthetic.main.fragment_parent_talk.*
 import kotlinx.android.synthetic.main.help_dialog.view.*
 
@@ -57,7 +56,21 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         setOnClickListenerForBtnHamburger()
         setOnClickListenerForBtnSubmit()
         setOnClickListenerForBtnHelp()
+        setOnClickListnerForSwitchMode()
         return binding.root
+    }
+
+    private fun setOnClickListnerForSwitchMode(){
+        binding.talkVerBtnSwitchMode.setOnClickListener{
+            binding.realTalkVerConstraint.visibility = View.VISIBLE
+            binding.talkVerConstraint.visibility = View.INVISIBLE
+            StatusBarUtil.setStatusBar(requireActivity(), resources.getColor(R.color.light_blue_status_bar, null))
+        }
+        binding.realTalkVerBtnSwitchMode.setOnClickListener {
+            binding.realTalkVerConstraint.visibility = View.INVISIBLE
+            binding.talkVerConstraint.visibility = View.VISIBLE
+            StatusBarUtil.setStatusBar(requireActivity(), resources.getColor(R.color.blue_status_bar, null))
+        }
     }
 
     private fun setOnClickListenerForBtnHelp() {

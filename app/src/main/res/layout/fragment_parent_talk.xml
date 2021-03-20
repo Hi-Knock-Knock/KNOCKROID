@@ -11,13 +11,22 @@
         android:id="@+id/talk_drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/img_main_background"
         tools:context=".parent.talk.view.ParentTalkFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/talk_ver_constraint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:visibility="invisible">
+            android:background="@drawable/img_main_background"
+            android:visibility="visible">
+
+            <View
+                android:id="@+id/talk_ver_btn_switch_mode"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:backgroundTint="@android:color/transparent"/>
 
             <ImageButton
                 android:id="@+id/talk_btn_hamburger"
@@ -320,8 +329,218 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/real_talk_ver_constraint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:background="@drawable/img_parent_real_talk_background">
+
+            <View
+                android:id="@+id/real_talk_ver_btn_switch_mode"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:backgroundTint="@android:color/transparent"/>
+
+            <ImageButton
+                android:id="@+id/real_talk_btn_hamburger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_hamburger"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/real_talk_txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="대화/질문하기"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/real_talk_btn_hamburger"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/real_talk_btn_hamburger" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.4">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/real_talk_img_child"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="44dp"
+                    android:src="@drawable/ic_parent_talk_dam_profile"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_parent_talk_link"
+                    app:layout_constraintBottom_toBottomOf="@id/real_talk_img_child"
+                    app:layout_constraintEnd_toStartOf="@id/real_talk_img_parent"
+                    app:layout_constraintStart_toEndOf="@id/real_talk_img_child"
+                    app:layout_constraintTop_toTopOf="@id/real_talk_img_child" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/real_talk_img_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="44dp"
+                    android:src="@drawable/ic_parent_talk_men_profile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/real_talk_txt_child_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="짱구가"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/real_talk_img_child" />
+
+                <TextView
+                    android:id="@+id/real_talk_txt_request"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="대화를 요청했습니다."
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/real_talk_txt_child_name" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/bg_dialog_whitebox"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/real_talk_txt_request">
+
+                    <TextView
+                        android:id="@+id/real_talk_txt_box"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginTop="26dp"
+                        android:layout_marginEnd="48dp"
+                        android:text="제한시간 안에 응답해주세요."
+                        android:textColor="#252525"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/real_talk_constraint_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/real_talk_txt_box">
+
+                        <ImageView
+                            android:id="@+id/real_talk_img_alarm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_parent_alarm"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="01:30"
+                            android:textColor="#252525"
+                            android:textSize="27sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/real_talk_img_alarm"
+                            app:layout_constraintStart_toEndOf="@id/real_talk_img_alarm"
+                            app:layout_constraintTop_toTopOf="@id/real_talk_img_alarm" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:id="@+id/real_talk_view_horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="20dp"
+                        android:background="#d6d6d6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/real_talk_constraint_time" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/real_talk_view_horizontal">
+
+                        <View
+                            android:id="@+id/real_talk_view_vertical"
+                            android:layout_width="2dp"
+                            android:layout_height="0dp"
+                            android:background="#d6d6d6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+                        <TextView
+                            android:id="@+id/real_talk_txt_rno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="30dp"
+                            android:paddingVertical="12dp"
+                            android:text="거절"
+                            android:textColor="#ff3e18"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/real_talk_view_vertical"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/real_talk_txt_ok"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="30dp"
+                            android:paddingVertical="12dp"
+                            android:text="수락"
+                            android:textColor="#252525"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/real_talk_view_vertical"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/talk_navigationView"
