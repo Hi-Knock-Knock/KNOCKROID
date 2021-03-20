@@ -22,10 +22,14 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
 
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         val intent2 = Intent(this, InfantSelectIdActivity::class.java)
+
+        // 홈화면
         select_btn_ok.setOnClickListener{
             startActivity(intent1)
             overridePendingTransition(0, 0)
         }
+
+        // 아이 계정 선택 화면
         select_btn_back.setOnClickListener {
             startActivity(intent2)
             overridePendingTransition(0, 0)
