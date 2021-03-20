@@ -30,14 +30,31 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/cookie_talk_txt"
+        android:id="@+id/cookie_save_count_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="5개의 쿠키가 있어!"
+        android:layout_marginStart="16dp"
+        android:text="5개"
+        android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/infant_cookie_talk"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.263" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="10dp"
+        android:text="의 쿠키가 있어!"
         android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/infant_cookie_talk"
         app:layout_constraintEnd_toEndOf="@+id/infant_cookie_talk"
         app:layout_constraintStart_toStartOf="@+id/infant_cookie_talk"
@@ -70,6 +87,7 @@
 
 
         <TableLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

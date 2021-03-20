@@ -6,6 +6,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
 import com.all_the_best.knock_knock.R
@@ -32,8 +33,10 @@ class InfantDecoActivity : AppCompatActivity() {
 
     private fun setOnClickListenerForGoBack() {
         infant_icon_deco_out1.setOnClickListener {
+            //val cookieCount: TextView = findViewById(R.id.infant_home_cookie_count_txt)
             val intent = Intent()
             intent.putExtra("bgSelect", infantDecoViewModel.bgSelect.value)
+            //intent.putExtra("cookieCount", cookieCount.text)
             setResult(Activity.RESULT_OK, intent)
             finish()
             overridePendingTransition(0, 0)

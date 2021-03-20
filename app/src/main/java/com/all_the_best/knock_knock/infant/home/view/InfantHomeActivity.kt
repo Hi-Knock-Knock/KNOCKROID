@@ -5,13 +5,17 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.change.view.InfantSwitchCharacterActivity
 import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
 import com.all_the_best.knock_knock.infant.deco.view.InfantDecoActivity
+import com.all_the_best.knock_knock.infant.deco.viewmodel.InfantDecoViewModel
 import com.all_the_best.knock_knock.infant.gift.view.InfantGiftStartActivity
+import com.all_the_best.knock_knock.infant.home.viewmodel.InfantHomeViewModel
 import com.all_the_best.knock_knock.infant.talk.view.InfantSelectFeelActivity
 import kotlinx.android.synthetic.main.activity_infant_home.*
 import java.time.LocalDateTime
@@ -19,6 +23,7 @@ import java.time.format.DateTimeFormatter
 
 
 class InfantHomeActivity : AppCompatActivity() {
+   // private val infantHomeViewModel: InfantHomeViewModel by viewModels()
     private var bgSelect: Int = 1
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
@@ -39,31 +44,50 @@ class InfantHomeActivity : AppCompatActivity() {
 //        char_dam.repeatCount = LottieDrawable.INFINITE
 //        char_dam.playAnimation()
 
+        //선물상자에서 줄어든 쿠키 갯수 반영
+        val cookieCount: TextView = findViewById(R.id.infant_home_cookie_count_txt)
+        if(intent.hasExtra("cookieCount")){
+            cookieCount.text = intent.getStringExtra("cookieCount")
+        }else{
+            Toast.makeText(this, "잘못 전달되었습니다.", Toast.LENGTH_SHORT).show()
+        }
+
+        //대화하기 버튼
         val intent1 = Intent(this, InfantSelectFeelActivity::class.java)
         char_talk_btn.setOnClickListener{
             intent1.putExtra("bgSelect", bgSelect)
+            intent1.putExtra("cookieCount",cookieCount.text)
             startActivity(intent1)
         }
+
+        // 캐릭터 바꾸기 버튼
         val intent2 = Intent(this, InfantSwitchCharacterActivity::class.java)
         char_change_btn.setOnClickListener{
             intent2.putExtra("bgSelect",bgSelect)
+            intent2.putExtra("cookieCount",cookieCount.text)
             startActivity(intent2)
         }
 
+        // 선물상자 버튼
         val intent3 = Intent(this, InfantGiftStartActivity::class.java)
         infant_icon_gift.setOnClickListener{
             intent3.putExtra("bgSelect",bgSelect)
+            intent3.putExtra("cookieCount",cookieCount.text)
             startActivity(intent3)
         }
 
+        // 배경 꾸미기 버튼
         val intent4 = Intent(this, InfantDecoActivity::class.java)
         char_deco_btn.setOnClickListener{
             startActivityForResult(intent4,1)
+            intent4.putExtra("cookieCount",cookieCount.text)
         }
 
+        // 쿠키 저장 다람이 버튼
         val intent5 = Intent(this, InfantCookieSaveActivity::class.java)
         infant_cookie_view.setOnClickListener{
             intent5.putExtra("bgSelect",bgSelect)
+            intent5.putExtra("cookieCount",cookieCount.text)
             startActivity(intent5)
         }
     }

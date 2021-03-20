@@ -4,10 +4,11 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
+import android.widget.Toast
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import kotlinx.android.synthetic.main.activity_infant_gift_start.*
-import kotlinx.android.synthetic.main.activity_infant_gift_start.infant_cookie_count
 
 class InfantGiftStartActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
@@ -16,21 +17,23 @@ class InfantGiftStartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_gift_start)
+        val cookieCount: TextView = findViewById(R.id.infant_gift_start_cookie_count)
         bgSelect = intent.getIntExtra("bgSelect",1)
         var count:Int = 5 //보유 쿠키 개수
         var count3:Int = 0 //소비한 쿠키 개
 
         window.statusBarColor = Color.parseColor("#8A2A6C")
 
-        val intent = Intent(this, InfantHomeActivity::class.java)
-        infant_icon_gift_out1.setOnClickListener{
-            intent.putExtra("bgSelect",bgSelect)
-            startActivity(intent)
-            overridePendingTransition(0, 0)
+        if(intent.hasExtra("cookieCount")){
+            cookieCount.text = intent.getStringExtra("cookieCount")
+        }else{
+            Toast.makeText(this, "잘못 전달되었습니다.", Toast.LENGTH_SHORT).show()
         }
 
+        // 선물 상자 받는 화면으로 이동
         val intent1 = Intent(this, InfantGiftBoxActivity::class.java)
         intent1.putExtra("bgSelect",bgSelect)
+
 
         infant_empty_cookie1.setOnClickListener {
             if(count!=2){
@@ -42,7 +45,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 overridePendingTransition(0, 0)
             }
             infant_empty_cookie1.setImageResource(R.drawable.img_infant_full_cookie)
-            infant_cookie_count.setText(count.toString() + "개")
+            infant_gift_start_cookie_count.setText(count.toString() + "개")
         }
 
         infant_empty_cookie2.setOnClickListener {
@@ -55,7 +58,8 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 overridePendingTransition(0, 0)
             }
             infant_empty_cookie2.setImageResource(R.drawable.img_infant_full_cookie)
-            infant_cookie_count.setText(count.toString() + "개")
+            infant_gift_start_cookie_count.setText(count.toString() + "개")
+
 
         }
 
@@ -65,11 +69,21 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 count3++
             }
             if(count3==3){
+                infant_gift_start_cookie_count.setText(count.toString() + "개")
+                intent1.putExtra("cookieCount",cookieCount.text) //줄어든 쿠키갯수 받기
                 startActivity(intent1)
                 overridePendingTransition(0, 0)
             }
             infant_empty_cookie3.setImageResource(R.drawable.img_infant_full_cookie)
-            infant_cookie_count.setText(count.toString() + "개")
+        }
+
+        // 홈화면으로 돌아가기
+        val intentGoHome = Intent(this, InfantHomeActivity::class.java)
+        infant_icon_gift_out1.setOnClickListener{
+            intentGoHome.putExtra("bgSelect",bgSelect)
+            intentGoHome.putExtra("cookieCount",cookieCount.text)
+            startActivity(intentGoHome)
+            overridePendingTransition(0, 0)
         }
 
     }
