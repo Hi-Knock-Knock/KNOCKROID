@@ -12,12 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Knock_Knock">
         <activity android:name=".infant.cookie.view.InfantGetCookiePopupActivity" />
-        <activity android:name=".parent.talk.view.ParentRealTalkAccept2" />
-        <activity android:name=".parent.talk.view.ParentRealTalkAccept1" />
-        <activity android:name=".parent.talk.view.ParentRealTalkRefDialog3Activity" />
-        <activity android:name=".parent.talk.view.ParentRealTalkRefDialog1Activity" />
-        <activity android:name=".parent.talk.view.ParentRealTalkRefDialog2Activity" />
-        <activity android:name=".parent.talk.view.ParentRealTalkActivity" />
         <activity android:name=".parent.mypage.view.ParentMyScrapActivity" />
         <activity android:name=".parent.mypage.view.ParentMyBabyActivity" />
         <activity android:name=".parent.mypage.view.ParentEditProfileActivity" />
