@@ -15,17 +15,18 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.all_the_best.knock_knock.R
-import com.all_the_best.knock_knock.databinding.FragmentParentFaqBinding
 import com.all_the_best.knock_knock.databinding.FragmentParentTalkBinding
 import com.all_the_best.knock_knock.databinding.HelpDialogBinding
 import com.all_the_best.knock_knock.parent.alarm.view.ParentNoticeActivity
 import com.all_the_best.knock_knock.parent.mypage.view.ParentMyPageActivity
 import com.all_the_best.knock_knock.parent.setting.view.ParentSettingActivity
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
+import com.google.android.material.datepicker.MaterialDatePicker.Builder.datePicker
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_parent_faq.*
 import kotlinx.android.synthetic.main.fragment_parent_talk.*
 import kotlinx.android.synthetic.main.help_dialog.view.*
+
 
 class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     NavigationView.OnNavigationItemSelectedListener {
@@ -66,11 +67,12 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
             val dialog = builder.setView(dialogBinding.root).create()
             val color = ColorDrawable(Color.TRANSPARENT)
             val inset = InsetDrawable(color, 40)
-
+            if (dialogBinding.root.parent != null) (dialogBinding.root.parent as ViewGroup).removeView(
+                dialogBinding.root
+            )
             dialogBinding.root.help_txt_ok.setOnClickListener {
                 dialog.dismiss()
             }
-
             dialog.apply {
                 window!!.setBackgroundDrawable(inset)
                 show()
