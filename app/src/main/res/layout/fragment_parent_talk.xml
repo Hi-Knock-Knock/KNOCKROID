@@ -18,15 +18,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/img_main_background"
-            android:visibility="visible">
+            tools:visibility="gone">
 
             <View
                 android:id="@+id/talk_ver_btn_switch_mode"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:backgroundTint="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:backgroundTint="@android:color/transparent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/talk_btn_hamburger"
@@ -332,16 +332,17 @@
             android:id="@+id/real_talk_ver_constraint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/img_background"
             android:visibility="invisible"
-            android:background="@drawable/img_parent_real_talk_background">
+            tools:visibility="visible">
 
             <View
                 android:id="@+id/real_talk_ver_btn_switch_mode"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:backgroundTint="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:backgroundTint="@android:color/transparent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/real_talk_btn_hamburger"
@@ -370,8 +371,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.4">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -380,16 +381,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="44dp"
                     android:src="@drawable/ic_parent_talk_dam_profile"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/real_talk_img_link"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
+                    android:id="@+id/real_talk_img_link"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="12dp"
                     android:src="@drawable/ic_parent_talk_link"
                     app:layout_constraintBottom_toBottomOf="@id/real_talk_img_child"
-                    app:layout_constraintEnd_toStartOf="@id/real_talk_img_parent"
-                    app:layout_constraintStart_toEndOf="@id/real_talk_img_child"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/real_talk_img_child" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -398,7 +401,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="44dp"
                     android:src="@drawable/ic_parent_talk_men_profile"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/real_talk_img_link"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -426,8 +429,9 @@
                     app:layout_constraintTop_toBottomOf="@id/real_talk_txt_child_name" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="32dp"
                     android:background="@drawable/bg_dialog_whitebox"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -501,10 +505,10 @@
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:background="#d6d6d6"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/real_talk_txt_rno"
