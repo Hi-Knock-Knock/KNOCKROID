@@ -1,76 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg_help_whitebox">
+    xmlns:help_dialog="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/help_txt_title"
+    <data>
+
+        <variable
+            name="txtTitle"
+            type="String" />
+
+        <variable
+            name="txtContentTop"
+            type="String" />
+
+        <variable
+            name="txtContentBottom"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="여기서 보내는 질문이란?"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        style="bold"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:background="@drawable/bg_dialog_whitebox">
 
-    <TextView
-        android:id="@+id/help_txt_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="부모가 아이와 실시간 대화가\n불가능할 경우 선택한\n한가지 질문으로 캐릭터가 아이에게\n부모 대신 물어보게 됩니다."
-        android:textColor="#252525"
-        android:textSize="25sp"
-        android:gravity="center"
-        android:layout_marginTop="41dp"
-        app:layout_constraintTop_toBottomOf="@id/help_txt_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/help_txt_title"
+            style="bold"
+            setUnderLine="@{txtTitle}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/help_txt_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="단 한 개의 질문만\n선택할 수 있으며,\n아이가 대화를 시도하기 전\n질문을 수정할 수 있습니다."
-        android:textSize="25sp"
-        android:textColor="#252525"
-        android:gravity="center"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/help_txt_1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/help_txt_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="41dp"
+            android:gravity="center"
+            android:textColor="#252525"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/help_txt_title"
+            help_dialog:end="@{txtContentTop.length()}"
+            help_dialog:start="@{24}"
+            help_dialog:txt="@{txtContentTop}" />
 
-    <TextView
-        android:id="@+id/help_txt_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="아이에게 하고 싶었던\n질문을 골라보세요!"
-        android:textSize="25sp"
-        android:textColor="#252525"
-        android:gravity="center"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/help_txt_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <View
-        android:id="@+id/help_division"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#d6d6d6"
-        android:layout_marginTop="45dp"
-        app:layout_constraintTop_toBottomOf="@id/help_txt_3" />
-<!--    <Button-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="55dp"-->
-<!--        android:text="확인"-->
-<!--        android:background="#ffffff"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/help_division"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
+        <TextView
+            android:id="@+id/help_txt_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:textColor="#252525"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/help_txt_1"
+            help_dialog:end="@{5}"
+            help_dialog:start="@{1}"
+            help_dialog:txt="@{txtContentBottom}" />
+
+        <TextView
+            android:id="@+id/help_txt_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="아이에게 하고 싶었던\n질문을 골라보세요!"
+            android:textColor="#252525"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/help_txt_2" />
+
+        <View
+            android:id="@+id/help_division"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="45dp"
+            android:background="#d6d6d6"
+            app:layout_constraintTop_toBottomOf="@id/help_txt_3" />
+
+        <TextView
+            android:id="@+id/help_txt_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="12dp"
+            android:paddingHorizontal="120dp"
+            android:text="확인"
+            android:textColor="#252525"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/help_division"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
