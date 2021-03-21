@@ -373,7 +373,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.4">
+                app:layout_constraintVertical_bias="0.455">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/real_talk_img_child"
@@ -455,7 +455,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/real_talk_constraint_time"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_marginTop="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -464,22 +464,24 @@
                         <ImageView
                             android:id="@+id/real_talk_img_alarm"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:src="@drawable/ic_parent_alarm"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
 
                         <TextView
+                            android:id="@+id/real_Talk_txt_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:text="01:30"
+                            android:text="01 : 30"
                             android:textColor="#252525"
                             android:textSize="27sp"
                             android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@id/real_talk_img_alarm"
                             app:layout_constraintStart_toEndOf="@id/real_talk_img_alarm"
-                            app:layout_constraintTop_toTopOf="@id/real_talk_img_alarm" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
