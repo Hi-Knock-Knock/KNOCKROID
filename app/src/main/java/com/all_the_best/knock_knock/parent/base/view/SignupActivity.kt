@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.all_the_best.knock_knock.R
@@ -21,6 +22,12 @@ class SignupActivity : AppCompatActivity() {
 
         binding.txtPlusChild = "+자녀추가"
         binding.txtSignUp = "회원가입"
+        binding.txtLogin = "로그인"
+
+        binding.signupBtnAddInfant.setOnClickListener {
+            binding.signupLinearInfant2.visibility = View.VISIBLE
+        }
+
 
         val intent = Intent(this, LoginActivity::class.java)
         signup_btn_signup.setOnClickListener{

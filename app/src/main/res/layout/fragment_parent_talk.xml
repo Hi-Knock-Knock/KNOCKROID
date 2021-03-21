@@ -17,16 +17,15 @@
             android:id="@+id/talk_ver_constraint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/img_main_background"
-            android:visibility="visible">
+            android:background="@drawable/img_main_background">
 
             <View
                 android:id="@+id/talk_ver_btn_switch_mode"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:backgroundTint="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:backgroundTint="@android:color/transparent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/talk_btn_hamburger"
@@ -57,12 +56,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                android:text="실시간 대화가,\n불가능할 경우\n보낼 질문을 골라주세요!"
+                android:layout_marginTop="36dp"
+                android:includeFontPadding="false"
+                android:text="실시간 대화가,"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/talk_txt_title" />
+                app:layout_constraintTop_toBottomOf="@id/talk_btn_hamburger" />
+
+            <TextView
+                android:id="@+id/talk_txt_info2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="불가능할 경우"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/talk_txt_info"
+                app:layout_constraintTop_toBottomOf="@id/talk_txt_info" />
+
+            <TextView
+                android:id="@+id/talk_txt_info3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="보낼 질문을 골라주세요!"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/talk_txt_info"
+                app:layout_constraintTop_toBottomOf="@id/talk_txt_info2" />
+
 
             <ImageButton
                 android:id="@+id/talk_btn_help"
@@ -78,11 +101,10 @@
                 android:id="@+id/talk_constraint"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="25dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="25dp"
                 android:layout_marginBottom="32dp"
-                android:background="@drawable/bg_whitebox"
+                android:background="@drawable/bg_whitebox_10dp"
                 android:paddingStart="20dp"
                 android:paddingTop="16dp"
                 android:paddingEnd="20dp"
@@ -90,14 +112,14 @@
                 app:layout_constraintBottom_toTopOf="@id/talk_btn_submit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/talk_txt_info">
+                app:layout_constraintTop_toBottomOf="@id/talk_txt_info3">
 
                 <TextView
                     android:id="@+id/talk_txt_question"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="선택한 질문"
-                    android:textColor="#000000"
+                    android:textColor="#252525"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -106,9 +128,9 @@
                     android:id="@+id/talk_txt_selected_question"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="8dp"
                     android:text="없음"
-                    android:textColor="#000000"
+                    android:textColor="#252525"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/talk_txt_question"
@@ -128,9 +150,9 @@
                     android:id="@+id/talk_txt_list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="16dp"
                     android:text="질문 목록"
-                    android:textColor="#000000"
+                    android:textColor="#252525"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/talk_linear_division"
@@ -139,8 +161,6 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="25dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/talk_txt_list"
@@ -152,6 +172,10 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginBottom="0dp"
                         android:overScrollMode="never"
+                        android:paddingVertical="4dp"
+                        android:scrollbarStyle="outsideOverlay"
+                        android:scrollbarThumbVertical="@color/scrollabr_thumb"
+                        android:scrollbarTrackVertical="@color/scrollbar_track"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -168,8 +192,12 @@
                                 <RadioButton
                                     android:id="@+id/rb1"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="없음"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -177,8 +205,12 @@
                                 <RadioButton
                                     android:id="@+id/rb2"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="엄마랑 아빠랑 싸우면 기분이 어때?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -186,8 +218,12 @@
                                 <RadioButton
                                     android:id="@+id/rb3"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="동생은 어떤 존재야?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -195,8 +231,12 @@
                                 <RadioButton
                                     android:id="@+id/rb4"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="동생이랑 노는 거 즐거워?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -204,8 +244,12 @@
                                 <RadioButton
                                     android:id="@+id/rb5"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="엄마가 어떻게 해줬으면 좋겠어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -213,8 +257,12 @@
                                 <RadioButton
                                     android:id="@+id/rb6"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="아빠한테 속상한 거 있어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -222,8 +270,12 @@
                                 <RadioButton
                                     android:id="@+id/rb7"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="엄마한테 속상한 거 있어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -231,8 +283,12 @@
                                 <RadioButton
                                     android:id="@+id/rb8"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="엄마랑 아빠랑 싸우면 기분이 어때?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -240,8 +296,12 @@
                                 <RadioButton
                                     android:id="@+id/rb9"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="동생은 어떤 존재야?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -249,8 +309,12 @@
                                 <RadioButton
                                     android:id="@+id/rb10"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="동생이랑 노는 거 즐거워?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -258,8 +322,12 @@
                                 <RadioButton
                                     android:id="@+id/rb11"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="엄마가 어떻게 해줬으면 좋겠어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -267,8 +335,12 @@
                                 <RadioButton
                                     android:id="@+id/rb12"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="동생이랑 노는 거 즐거워?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -276,8 +348,12 @@
                                 <RadioButton
                                     android:id="@+id/rb13"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="엄마가 어떻게 해줬으면 좋겠어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -285,8 +361,12 @@
                                 <RadioButton
                                     android:id="@+id/rb14"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="동생이랑 노는 거 즐거워?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -294,8 +374,12 @@
                                 <RadioButton
                                     android:id="@+id/rb15"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="26dp"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
                                     android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
                                     android:text="엄마가 어떻게 해줬으면 좋겠어?"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
@@ -312,7 +396,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
-                android:layout_marginBottom="130dp"
                 android:backgroundTint="#5c7cff"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
@@ -320,11 +403,14 @@
                 android:paddingBottom="6dp"
                 android:text="저장하기"
                 android:textColor="#ffffff"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 app:cornerRadius="10dp"
+                android:includeFontPadding="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.82" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -332,16 +418,17 @@
             android:id="@+id/real_talk_ver_constraint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/img_background"
             android:visibility="invisible"
-            android:background="@drawable/img_parent_real_talk_background">
+            tools:visibility="gone">
 
             <View
                 android:id="@+id/real_talk_ver_btn_switch_mode"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:backgroundTint="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:backgroundTint="@android:color/transparent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/real_talk_btn_hamburger"
@@ -370,9 +457,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.4">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.455">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/real_talk_img_child"
@@ -380,16 +467,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="44dp"
                     android:src="@drawable/ic_parent_talk_dam_profile"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/real_talk_img_link"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
+                    android:id="@+id/real_talk_img_link"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="12dp"
                     android:src="@drawable/ic_parent_talk_link"
                     app:layout_constraintBottom_toBottomOf="@id/real_talk_img_child"
-                    app:layout_constraintEnd_toStartOf="@id/real_talk_img_parent"
-                    app:layout_constraintStart_toEndOf="@id/real_talk_img_child"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/real_talk_img_child" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -398,7 +487,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="44dp"
                     android:src="@drawable/ic_parent_talk_men_profile"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/real_talk_img_link"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -426,10 +515,11 @@
                     app:layout_constraintTop_toBottomOf="@id/real_talk_txt_child_name" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="32dp"
-                    android:background="@drawable/bg_dialog_whitebox"
+                    android:background="@drawable/bg_whitebox_10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/real_talk_txt_request">
@@ -451,7 +541,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/real_talk_constraint_time"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_marginTop="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -460,22 +550,24 @@
                         <ImageView
                             android:id="@+id/real_talk_img_alarm"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:src="@drawable/ic_parent_alarm"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
+                            android:id="@+id/real_Talk_txt_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:text="01:30"
+                            android:text="01 : 30"
                             android:textColor="#252525"
                             android:textSize="27sp"
                             android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@id/real_talk_img_alarm"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@id/real_talk_img_alarm"
-                            app:layout_constraintTop_toTopOf="@id/real_talk_img_alarm" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -501,13 +593,13 @@
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:background="#d6d6d6"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/real_talk_txt_rno"
+                            android:id="@+id/real_talk_txt_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingHorizontal="30dp"
