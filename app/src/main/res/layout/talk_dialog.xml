@@ -118,12 +118,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="32dp"
             android:textColor="#252525"
             android:textSize="15sp"
-            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@id/talk_dialog_view_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/talk_dialog_view"
-            app:layout_constraintBottom_toTopOf="@id/talk_dialog_view_horizontal"/>
+            app:layout_constraintTop_toBottomOf="@id/talk_dialog_view" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/talk_dialog_constraint_radio_btn"
@@ -137,9 +137,9 @@
             android:paddingStart="2dp"
             android:paddingEnd="10dp"
             android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/talk_dialog_view_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/talk_dialog_view_horizontal"
             app:layout_constraintTop_toBottomOf="@id/talk_dialog_txt_sub_selected">
 
             <ScrollView
@@ -372,17 +372,17 @@
             android:layout_width="0dp"
             android:layout_height="2dp"
             android:background="#d6d6d6"
+            app:layout_constraintBottom_toTopOf="@id/talk_dialog_constraint_btn_no_ok"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/talk_dialog_constraint_submit" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/talk_dialog_constraint_submit"
+            android:id="@+id/talk_dialog_constraint_btn_no_ok"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <View
                 android:id="@+id/talk_dialog_view_vertical"
