@@ -97,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="선택한 질문"
-                    android:textColor="#000000"
+                    android:textColor="#252525"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -106,9 +106,9 @@
                     android:id="@+id/talk_txt_selected_question"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="8dp"
                     android:text="없음"
-                    android:textColor="#000000"
+                    android:textColor="#252525"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/talk_txt_question"
@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
                     android:text="질문 목록"
-                    android:textColor="#000000"
+                    android:textColor="#252525"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/talk_linear_division"
@@ -140,7 +140,6 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="25dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/talk_txt_list"
@@ -152,6 +151,8 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginBottom="0dp"
                         android:overScrollMode="never"
+                        android:scrollbarTrackVertical="@color/scrollbar_track"
+                        android:scrollbarThumbVertical="@color/scrollabr_thumb"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -513,7 +514,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/real_talk_txt_rno"
+                            android:id="@+id/real_talk_txt_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingHorizontal="30dp"

@@ -21,4 +21,7 @@
 
     <color name="help_dialog_blue">#5c7cff</color>
 
+    <color name="scrollbar_track">#d6d6d6</color>
+    <color name="scrollabr_thumb">#000000</color>
+
 </resources>

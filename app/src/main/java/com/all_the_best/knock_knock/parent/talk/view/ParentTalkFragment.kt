@@ -12,11 +12,13 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
+import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.FragmentParentTalkBinding
 import com.all_the_best.knock_knock.databinding.HelpDialogBinding
+import com.all_the_best.knock_knock.databinding.TalkDialogBinding
 import com.all_the_best.knock_knock.parent.alarm.view.ParentNoticeActivity
 import com.all_the_best.knock_knock.parent.mypage.view.ParentMyPageActivity
 import com.all_the_best.knock_knock.parent.setting.view.ParentSettingActivity
@@ -25,12 +27,14 @@ import com.all_the_best.knock_knock.util.StatusBarUtil
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_parent_talk.*
 import kotlinx.android.synthetic.main.help_dialog.view.*
+import kotlinx.android.synthetic.main.talk_dialog.view.*
 
 
 class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: FragmentParentTalkBinding
     private lateinit var dialogBinding: HelpDialogBinding
+    private lateinit var refuseDialogBinding: TalkDialogBinding
 
     override fun onBackPressed(): Boolean {
         return if (binding.talkDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -53,23 +57,34 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         dialogBinding.txtContentTop =
             "부모가 아이와 실시간 대화가\n불가능할 경우 선택한\n한가지 질문으로 캐릭터가 아이에게\n부모 대신 물어보게 됩니다."
         dialogBinding.txtContentBottom = "단 한 개의 질문만\n선택할 수 있으며,\n아이가 대화를 시도하기 전\n질문을 수정할 수 있습니다."
+        refuseDialogBinding =
+            DataBindingUtil.inflate(inflater, R.layout.talk_dialog, container, false)
+        refuseDialogBinding.txtTitle = "실시간 대화 거절"
+        refuseDialogBinding.txtEdit = "수정하기"
         setOnClickListenerForBtnHamburger()
         setOnClickListenerForBtnSubmit()
         setOnClickListenerForBtnHelp()
         setOnClickListnerForSwitchMode()
+        setOnClickListenerFroBtnRefuse()
         return binding.root
     }
 
-    private fun setOnClickListnerForSwitchMode(){
-        binding.talkVerBtnSwitchMode.setOnClickListener{
+    private fun setOnClickListnerForSwitchMode() {
+        binding.talkVerBtnSwitchMode.setOnClickListener {
             binding.realTalkVerConstraint.visibility = View.VISIBLE
             binding.talkVerConstraint.visibility = View.INVISIBLE
-            StatusBarUtil.setStatusBar(requireActivity(), resources.getColor(R.color.light_blue_status_bar, null))
+            StatusBarUtil.setStatusBar(
+                requireActivity(),
+                resources.getColor(R.color.light_blue_status_bar, null)
+            )
         }
         binding.realTalkVerBtnSwitchMode.setOnClickListener {
             binding.realTalkVerConstraint.visibility = View.INVISIBLE
             binding.talkVerConstraint.visibility = View.VISIBLE
-            StatusBarUtil.setStatusBar(requireActivity(), resources.getColor(R.color.blue_status_bar, null))
+            StatusBarUtil.setStatusBar(
+                requireActivity(),
+                resources.getColor(R.color.blue_status_bar, null)
+            )
         }
     }
 
@@ -92,6 +107,36 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
             }
         }
 
+    }
+
+    private fun setOnClickListenerFroBtnRefuse() {
+        binding.realTalkTxtNo.setOnClickListener {
+            val builder = AlertDialog.Builder(requireContext())
+            val dialog = builder.setView(refuseDialogBinding.root).create()
+            val color = ColorDrawable(Color.TRANSPARENT)
+            val inset = InsetDrawable(color, 40)
+            if (refuseDialogBinding.root.parent != null) (refuseDialogBinding.root.parent as ViewGroup).removeView(
+                refuseDialogBinding.root
+            )
+            refuseDialogBinding.root.talk_dialog_txt_ok.setOnClickListener {
+                refuseDialogBinding.talkDialogConstraintRadioBtn.visibility = View.GONE
+                refuseDialogBinding.talkDialogTxtEdit.visibility = View.VISIBLE
+                dialog.dismiss()
+            }
+            refuseDialogBinding.root.talk_dialog_txt_edit.setOnClickListener {
+                refuseDialogBinding.talkDialogConstraintRadioBtn.visibility = View.VISIBLE
+                refuseDialogBinding.talkDialogTxtEdit.visibility = View.GONE
+            }
+            refuseDialogBinding.root.talk_dialog_txt_no.setOnClickListener {
+                refuseDialogBinding.talkDialogConstraintRadioBtn.visibility = View.GONE
+                refuseDialogBinding.talkDialogTxtEdit.visibility = View.VISIBLE
+                dialog.dismiss()
+            }
+            dialog.apply {
+                window!!.setBackgroundDrawable(inset)
+                show()
+            }
+        }
     }
 
     private fun setOnClickListenerForBtnSubmit() {
