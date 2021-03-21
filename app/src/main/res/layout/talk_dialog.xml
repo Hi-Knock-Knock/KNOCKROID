@@ -100,6 +100,39 @@
             app:layout_constraintStart_toStartOf="@id/talk_dialog_txt_selected_question"
             app:layout_constraintTop_toBottomOf="@id/talk_dialog_txt_selected_question" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/talk_submit_dialog_constraint_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/talk_dialog_view"
+            app:layout_constraintBottom_toTopOf="@id/talk_dialog_view_horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/talk_submit_dialog_txt_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="전송되었습니다."
+                android:textColor="#252525"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/ic_check"
+                app:layout_constraintBottom_toBottomOf="@id/talk_submit_dialog_txt_submit"
+                app:layout_constraintEnd_toStartOf="@id/talk_submit_dialog_txt_submit"
+                app:layout_constraintTop_toTopOf="@id/talk_submit_dialog_txt_submit" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <TextView
             android:id="@+id/talk_dialog_txt_sub_selected"
             android:layout_width="wrap_content"
@@ -420,6 +453,31 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/talk_dialog_view_vertical"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/talk_dialog_constraint_finish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/talk_dialog_txt_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="60dp"
+                android:paddingVertical="12dp"
+                android:text="확인"
+                android:textColor="#252525"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

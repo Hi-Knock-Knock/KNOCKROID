@@ -12,14 +12,12 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
-import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.FragmentParentTalkBinding
 import com.all_the_best.knock_knock.databinding.HelpDialogBinding
 import com.all_the_best.knock_knock.databinding.TalkDialogBinding
-import com.all_the_best.knock_knock.databinding.TalkSubmitDialogBinding
 import com.all_the_best.knock_knock.parent.alarm.view.ParentNoticeActivity
 import com.all_the_best.knock_knock.parent.mypage.view.ParentMyPageActivity
 import com.all_the_best.knock_knock.parent.setting.view.ParentSettingActivity
@@ -29,7 +27,6 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_parent_talk.*
 import kotlinx.android.synthetic.main.help_dialog.view.*
 import kotlinx.android.synthetic.main.talk_dialog.view.*
-import kotlinx.android.synthetic.main.talk_submit_dialog.view.*
 
 
 class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
@@ -37,7 +34,6 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     private lateinit var binding: FragmentParentTalkBinding
     private lateinit var dialogBinding: HelpDialogBinding
     private lateinit var refuseDialogBinding: TalkDialogBinding
-    private lateinit var submitDialogBinding: TalkSubmitDialogBinding
 
     override fun onBackPressed(): Boolean {
         return if (binding.talkDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -64,9 +60,6 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
             DataBindingUtil.inflate(inflater, R.layout.talk_dialog, container, false)
         refuseDialogBinding.txtTitle = "실시간 대화 거절"
         refuseDialogBinding.txtEdit = "수정하기"
-        submitDialogBinding =
-            DataBindingUtil.inflate(inflater, R.layout.talk_submit_dialog, container, false)
-        submitDialogBinding.txtTitle = "실시간 대화 거절"
         setOnClickListenerForBtnHamburger()
         setOnClickListenerForBtnSubmit()
         setOnClickListenerForBtnHelp()
@@ -117,9 +110,16 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
 
     private fun setOnClickListenerFroBtnRefuse() {
         binding.realTalkTxtNo.setOnClickListener {
-            refuseDialogBinding.talkDialogTxtEdit.visibility = View.VISIBLE
-            refuseDialogBinding.talkDialogConstraintRadioBtn.visibility = View.GONE
-            refuseDialogBinding.talkDialogRadiogroup.clearCheck()
+            refuseDialogBinding.apply {
+                talkDialogTxtEdit.visibility = View.VISIBLE
+                talkDialogConstraintRadioBtn.visibility = View.GONE
+                talkDialogConstraintFinish.visibility = View.INVISIBLE
+                talkDialogConstraintBtnNoOk.visibility = View.VISIBLE
+                talkDialogTxtEdit.visibility = View.VISIBLE
+                talkDialogTxtSubSelected.visibility = View.VISIBLE
+                talkSubmitDialogConstraintSubmit.visibility = View.GONE
+                talkDialogRadiogroup.clearCheck()
+            }
 
             val builder = AlertDialog.Builder(requireContext())
             val dialog = builder.setView(refuseDialogBinding.root).create()
@@ -131,43 +131,37 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
             )
 
             refuseDialogBinding.root.talk_dialog_txt_ok.setOnClickListener {
-                dialog.dismiss()
-                showSubmitDialog()
+                //dialog.dismiss()
+                refuseDialogBinding.apply {
+                    talkDialogConstraintFinish.visibility = View.VISIBLE
+                    talkDialogConstraintBtnNoOk.visibility = View.INVISIBLE
+                    talkDialogConstraintRadioBtn.visibility = View.GONE
+                    talkDialogTxtEdit.visibility = View.GONE
+                    talkDialogTxtSubSelected.visibility = View.GONE
+                    talkSubmitDialogConstraintSubmit.visibility = View.VISIBLE
+                }
             }
 
             refuseDialogBinding.root.talk_dialog_txt_edit.setOnClickListener {
-                refuseDialogBinding.talkDialogConstraintRadioBtn.visibility = View.VISIBLE
-                refuseDialogBinding.talkDialogTxtEdit.visibility = View.GONE
+                refuseDialogBinding.apply {
+                    talkDialogConstraintRadioBtn.visibility = View.VISIBLE
+                    talkDialogTxtEdit.visibility = View.GONE
+                }
             }
 
-            refuseDialogBinding.root.talk_dialog_txt_no.setOnClickListener {
-                dialog.dismiss()
+            refuseDialogBinding.apply {
+                root.talk_dialog_txt_no.setOnClickListener {
+                    dialog.dismiss()
+                }
+                root.talk_dialog_txt_finish.setOnClickListener {
+                    dialog.dismiss()
+                }
             }
 
             dialog.apply {
                 window!!.setBackgroundDrawable(inset)
                 show()
             }
-        }
-    }
-
-    private fun showSubmitDialog() {
-        val builder = AlertDialog.Builder(requireContext())
-        val dialog = builder.setView(submitDialogBinding.root).create()
-        val color = ColorDrawable(Color.TRANSPARENT)
-        val inset = InsetDrawable(color, 40)
-
-        if (submitDialogBinding.root.parent != null) (submitDialogBinding.root.parent as ViewGroup).removeView(
-            submitDialogBinding.root
-        )
-
-        submitDialogBinding.root.talk_submit_dialog_txt_finish.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        dialog.apply {
-            window!!.setBackgroundDrawable(inset)
-            show()
         }
     }
 
