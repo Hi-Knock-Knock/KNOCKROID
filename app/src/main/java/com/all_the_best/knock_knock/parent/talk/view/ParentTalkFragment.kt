@@ -117,7 +117,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 talkDialogConstraintBtnNoOk.visibility = View.VISIBLE
                 talkDialogTxtEdit.visibility = View.VISIBLE
                 talkDialogTxtSubSelected.visibility = View.VISIBLE
-                talkSubmitDialogConstraintSubmit.visibility = View.GONE
+                talkDialogConstraintSubmit.visibility = View.GONE
                 talkDialogRadiogroup.clearCheck()
             }
 
@@ -138,7 +138,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                     talkDialogConstraintRadioBtn.visibility = View.GONE
                     talkDialogTxtEdit.visibility = View.GONE
                     talkDialogTxtSubSelected.visibility = View.GONE
-                    talkSubmitDialogConstraintSubmit.visibility = View.VISIBLE
+                    talkDialogConstraintSubmit.visibility = View.VISIBLE
                 }
             }
 
