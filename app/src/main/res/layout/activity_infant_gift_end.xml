@@ -46,10 +46,10 @@
         android:id="@+id/infant_talk3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="344dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_infant_chatbox"
-        app:layout_constraintBottom_toTopOf="@+id/char_dam"
+        app:layout_constraintBottom_toBottomOf="@+id/char_dam"
         app:layout_constraintEnd_toEndOf="@+id/char_dam"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="@+id/char_dam" />
@@ -73,11 +73,10 @@
         android:id="@+id/char_dam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="144dp"
+        android:layout_marginBottom="132dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_char_gift_yglass_dam" /> />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

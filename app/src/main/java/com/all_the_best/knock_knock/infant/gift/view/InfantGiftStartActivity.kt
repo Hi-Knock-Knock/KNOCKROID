@@ -12,13 +12,17 @@ import kotlinx.android.synthetic.main.activity_infant_gift_start.*
 
 class InfantGiftStartActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
+    private var chSelect: Int = 0
     //var imageTrue:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_gift_start)
+
         val cookieCount: TextView = findViewById(R.id.infant_gift_start_cookie_count)
         bgSelect = intent.getIntExtra("bgSelect",1)
+        chSelect = intent.getIntExtra("chSelect",0)
+
         var count:Int = 5 //보유 쿠키 개수
         var count3:Int = 0 //소비한 쿠키 개
 
@@ -33,6 +37,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
         // 선물 상자 받는 화면으로 이동
         val intent1 = Intent(this, InfantGiftBoxActivity::class.java)
         intent1.putExtra("bgSelect",bgSelect)
+        intent1.putExtra("chSelect",chSelect)
 
 
         infant_empty_cookie1.setOnClickListener {
@@ -81,6 +86,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
         val intentGoHome = Intent(this, InfantHomeActivity::class.java)
         infant_icon_gift_out1.setOnClickListener{
             intentGoHome.putExtra("bgSelect",bgSelect)
+            intentGoHome.putExtra("chSelect",chSelect)
             intentGoHome.putExtra("cookieCount",cookieCount.text)
             startActivity(intentGoHome)
             overridePendingTransition(0, 0)

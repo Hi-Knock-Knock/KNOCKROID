@@ -71,8 +71,8 @@ class InfantHomeActivity : AppCompatActivity() {
         char_change_btn.setOnClickListener{
             intent2.putExtra("bgSelect",bgSelect)
             intent2.putExtra("cookieCount",cookieCount.text)
-            intent2.putExtra("chSelect",chSelect)
-            startActivity(intent2)
+            //intent2.putExtra("chSelect",chSelect)
+            startActivityForResult(intent2,0)
         }
 
         // 선물상자 버튼
@@ -90,7 +90,6 @@ class InfantHomeActivity : AppCompatActivity() {
             intent4.putExtra("cookieCount",cookieCount.text)
             intent4.putExtra("chSelect",chSelect)
             startActivityForResult(intent4,1)
-
         }
 
         // 쿠키 저장 다람이 버튼
@@ -108,6 +107,13 @@ class InfantHomeActivity : AppCompatActivity() {
         if(requestCode == 1){
             if (resultCode==RESULT_OK) {
                 bgSelect = data!!.getIntExtra("bgSelect",1)
+                setBackgroundForTime()
+                Log.d("home", "$bgSelect")
+            }else{
+            }
+        }else if(requestCode == 0){
+            if (resultCode==RESULT_OK) {
+                chSelect = data!!.getIntExtra("chSelect",0)
                 setBackgroundForTime()
                 Log.d("home", "$bgSelect")
             }else{

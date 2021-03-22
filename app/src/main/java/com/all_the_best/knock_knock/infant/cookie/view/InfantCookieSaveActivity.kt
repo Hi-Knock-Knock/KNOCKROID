@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.main.activity_infant_deco.*
 class InfantCookieSaveActivity : AppCompatActivity() {
 
     private var bgSelect: Int = 1
+    private var chSelect: Int = 0
+
     //private var i:Int = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,8 @@ class InfantCookieSaveActivity : AppCompatActivity() {
         val cookieCount: TextView =findViewById(R.id.cookie_save_count_txt)
 
         bgSelect = intent.getIntExtra("bgSelect",1)
+        chSelect = intent.getIntExtra("chSelect",0)
+
         window.statusBarColor = Color.parseColor("#FCC364")
         //var getCookieId= getResources().getIdentifier("ic_cookie_false$i","id", packageName)
         // 홈화면 쿠키 개수 불러오기
@@ -54,6 +58,7 @@ class InfantCookieSaveActivity : AppCompatActivity() {
         val intent = Intent(this, InfantHomeActivity::class.java)
         infant_icon_out_cookie.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount.text)
             startActivity(intent)
             overridePendingTransition(0, 0)
