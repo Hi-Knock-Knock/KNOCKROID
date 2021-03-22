@@ -25,8 +25,6 @@ import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.util.StatusBarUtil
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_parent_talk.*
-import kotlinx.android.synthetic.main.help_dialog.view.*
-import kotlinx.android.synthetic.main.talk_dialog.view.*
 
 
 class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
@@ -64,7 +62,8 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         setOnClickListenerForBtnSubmit()
         setOnClickListenerForBtnHelp()
         setOnClickListnerForSwitchMode()
-        setOnClickListenerFroBtnRefuse()
+        setOnClickListenerForBtnAccept()
+        setOnClickListenerForBtnRefuse()
         return binding.root
     }
 
@@ -112,7 +111,14 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
 
     }
 
-    private fun setOnClickListenerFroBtnRefuse() {
+    private fun setOnClickListenerForBtnAccept() {
+        binding.realTalkTxtOk.setOnClickListener {
+            val intent = Intent(requireContext(), ParentRealTalkActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setOnClickListenerForBtnRefuse() {
         binding.realTalkTxtNo.setOnClickListener {
             refuseDialogBinding.apply {
                 talkDialogTxtEdit.visibility = View.VISIBLE
