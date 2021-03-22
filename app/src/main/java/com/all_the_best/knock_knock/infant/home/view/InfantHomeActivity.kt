@@ -1,12 +1,14 @@
 
 package com.all_the_best.knock_knock.infant.home.view
 
+import android.app.ProgressDialog.show
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toast.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.all_the_best.knock_knock.R
@@ -25,6 +27,7 @@ import java.time.format.DateTimeFormatter
 class InfantHomeActivity : AppCompatActivity() {
    // private val infantHomeViewModel: InfantHomeViewModel by viewModels()
     private var bgSelect: Int = 1
+    private var chSelect: Int = 1
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
     private val formatted = current.format(formatter)
@@ -33,8 +36,10 @@ class InfantHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_home)
         bgSelect = intent.getIntExtra("bgSelect",1)
+        chSelect = intent.getIntExtra("chSelect",1)
+        //makeText(this, chSelect, LENGTH_SHORT).show()
         setBackgroundForTime()
-        //상태바 색상 지정
+        setSelectCharacter()
 
         infant_talk1.setOnClickListener{
             Log.d("time", formatted)
@@ -49,7 +54,7 @@ class InfantHomeActivity : AppCompatActivity() {
         if(intent.hasExtra("cookieCount")){
             cookieCount.text = intent.getStringExtra("cookieCount")
         }else{
-            Toast.makeText(this, "잘못 전달되었습니다.", Toast.LENGTH_SHORT).show()
+            makeText(this, "잘못 전달되었습니다.", LENGTH_SHORT).show()
         }
 
         //대화하기 버튼
@@ -115,7 +120,7 @@ class InfantHomeActivity : AppCompatActivity() {
                 char_deco_btn.setImageResource(R.drawable.ic_infant_deco_btn_1)
                 char_talk_btn.setImageResource(R.drawable.ic_infant_chat_btn_1)
                 char_change_btn.setImageResource(R.drawable.ic_infant_change_btn_1)
-                window.statusBarColor = Color.parseColor("#57DDFF")
+                window.statusBarColor = Color.parseColor("#57DDFF")         //상태바 색상 지정
             }
             in "14:00:000".."19:59:999" -> {
                 when (bgSelect) {
@@ -150,6 +155,15 @@ class InfantHomeActivity : AppCompatActivity() {
                 char_change_btn.setImageResource(R.drawable.ic_infant_change_btn_3)
                 window.statusBarColor = Color.parseColor("#0F0E15")
             }
+        }
+    }
+
+    private fun setSelectCharacter(){
+        when(chSelect){
+
+            1 -> char_img.setImageResource(R.drawable.img_char_dam)
+            2 -> char_img.setImageResource(R.drawable.img_char_knock)
+            3 -> char_img.setImageResource(R.drawable.img_char_timi)
         }
     }
 }

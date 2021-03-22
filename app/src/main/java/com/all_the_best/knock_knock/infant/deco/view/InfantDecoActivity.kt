@@ -32,7 +32,7 @@ class InfantDecoActivity : AppCompatActivity() {
     }
 
     private fun setOnClickListenerForGoBack() {
-        infant_icon_deco_out1.setOnClickListener {
+        infant_icon_deco_out1. setOnClickListener {
             //val cookieCount: TextView = findViewById(R.id.infant_home_cookie_count_txt)
             val intent = Intent()
             intent.putExtra("bgSelect", infantDecoViewModel.bgSelect.value)

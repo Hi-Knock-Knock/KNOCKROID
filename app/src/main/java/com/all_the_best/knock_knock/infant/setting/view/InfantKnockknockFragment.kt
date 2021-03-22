@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.infant.setting.viewmodel.InfantSelectChViewModel
 
-class InfantKnockknockFragment : Fragment() {override fun onCreate(savedInstanceState: Bundle?) {
+class InfantKnockknockFragment : Fragment() {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
         }
