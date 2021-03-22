@@ -44,8 +44,8 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
             in "14:00:000".."19:59:999" -> {
                 when (bgSelect) {
                     1 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_after_bg)
-                    2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower1)
-                    3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea1)
+                    2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower2)
+                    3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea2)
                 }
                 window.statusBarColor = Color.parseColor("#FF6471")
             }

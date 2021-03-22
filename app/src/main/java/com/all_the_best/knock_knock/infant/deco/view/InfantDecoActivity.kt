@@ -13,11 +13,15 @@ import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.deco.viewmodel.InfantDecoViewModel
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import kotlinx.android.synthetic.main.activity_infant_deco.*
+import kotlinx.android.synthetic.main.activity_infant_deco.char_dam
+import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class InfantDecoActivity : AppCompatActivity() {
     private val infantDecoViewModel: InfantDecoViewModel by viewModels()
+    private var bgSelect: Int = 1
+    private var chSelect: Int = 0
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
     private val formatted = current.format(formatter)
@@ -26,7 +30,10 @@ class InfantDecoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_deco)
+        bgSelect = intent.getIntExtra("bgSelect",1)
+        chSelect = intent.getIntExtra("chSelect",0)
         setBgSelectObserve()
+        setSelectCharacter()
         setDecoItemSelectedListener()
         setOnClickListenerForGoBack()
     }
@@ -36,10 +43,20 @@ class InfantDecoActivity : AppCompatActivity() {
             //val cookieCount: TextView = findViewById(R.id.infant_home_cookie_count_txt)
             val intent = Intent()
             intent.putExtra("bgSelect", infantDecoViewModel.bgSelect.value)
+            intent.putExtra("chSelect",chSelect)
             //intent.putExtra("cookieCount", cookieCount.text)
             setResult(Activity.RESULT_OK, intent)
             finish()
             overridePendingTransition(0, 0)
+        }
+    }
+
+
+    private fun setSelectCharacter(){
+        when(chSelect){
+            0 -> char_dam.setImageResource(R.drawable.img_char_dam)
+            1 -> char_dam.setImageResource(R.drawable.img_char_knock)
+            2 -> char_dam.setImageResource(R.drawable.img_char_timi)
         }
     }
 

@@ -87,9 +87,9 @@ class InfantHomeActivity : AppCompatActivity() {
         // 배경 꾸미기 버튼
         val intent4 = Intent(this, InfantDecoActivity::class.java)
         char_deco_btn.setOnClickListener{
-            startActivityForResult(intent4,1)
             intent4.putExtra("cookieCount",cookieCount.text)
             intent4.putExtra("chSelect",chSelect)
+            startActivityForResult(intent4,1)
 
         }
 
