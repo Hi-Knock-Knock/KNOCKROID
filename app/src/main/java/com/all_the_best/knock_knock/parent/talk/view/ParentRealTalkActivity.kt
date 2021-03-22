@@ -10,6 +10,7 @@ import com.all_the_best.knock_knock.databinding.ActivityParentRealTalkBinding
 import com.all_the_best.knock_knock.parent.talk.adapter.ParentTalkAcceptTipRcvAdapter
 import com.all_the_best.knock_knock.parent.talk.viewmodel.ParentTalkViewModel
 import com.all_the_best.knock_knock.util.StatusBarUtil
+import java.text.SimpleDateFormat
 import java.util.*
 
 class ParentRealTalkActivity : AppCompatActivity() {
@@ -25,10 +26,14 @@ class ParentRealTalkActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_real_talk)
         binding.txtDate
         setTipRcvAdapter()
+        getToday()
     }
 
     private fun getToday() {
         val currentTime: Date = Calendar.getInstance().getTime()
+        val simpleDate = SimpleDateFormat("yyyy.MM.dd")
+        val date = simpleDate.format(currentTime)
+        binding.txtDate = date.toString()
     }
 
     private fun setTipRcvAdapter() {
