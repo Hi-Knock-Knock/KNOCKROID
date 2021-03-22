@@ -19,6 +19,8 @@ import java.time.format.DateTimeFormatter
 class InfantSwitchCharacterActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
+    private var cookieCount: Int = 5
+
     private lateinit var switchViewPagerAdapter: InfantSwitchViewPagerAdapter
     //private val infantSelectChViewModel: InfantSelectChViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +28,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_infant_switch_character)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
+        cookieCount = intent.getIntExtra("cookieCount",5)
 
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
@@ -102,6 +105,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
         switch_btn_back.setOnClickListener {
             intent.putExtra("bgSelect", bgSelect)
             intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

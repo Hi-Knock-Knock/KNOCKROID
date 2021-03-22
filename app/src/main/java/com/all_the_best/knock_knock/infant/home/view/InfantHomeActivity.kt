@@ -1,23 +1,21 @@
 
 package com.all_the_best.knock_knock.infant.home.view
 
-import android.app.ProgressDialog.show
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import android.widget.Toast
 import android.widget.Toast.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.change.view.InfantSwitchCharacterActivity
 import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
+import com.all_the_best.knock_knock.infant.cookie.viewmodel.InfantCookieViewModel
 import com.all_the_best.knock_knock.infant.deco.view.InfantDecoActivity
-import com.all_the_best.knock_knock.infant.deco.viewmodel.InfantDecoViewModel
 import com.all_the_best.knock_knock.infant.gift.view.InfantGiftStartActivity
-import com.all_the_best.knock_knock.infant.home.viewmodel.InfantHomeViewModel
+import com.all_the_best.knock_knock.infant.setting.viewmodel.InfantSelectChViewModel
 import com.all_the_best.knock_knock.infant.talk.view.InfantSelectFeelActivity
 import kotlinx.android.synthetic.main.activity_infant_home.*
 import java.time.LocalDateTime
@@ -25,9 +23,12 @@ import java.time.format.DateTimeFormatter
 
 
 class InfantHomeActivity : AppCompatActivity() {
-   // private val infantHomeViewModel: InfantHomeViewModel by viewModels()
-    private var bgSelect: Int = 1
+
     private var chSelect: Int = 0
+    private var bgSelect: Int = 1
+    private var cookieCount: Int = 5
+    private val infantCookieViewModel: InfantCookieViewModel by viewModels()
+
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
     private val formatted = current.format(formatter)
@@ -37,7 +38,8 @@ class InfantHomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_infant_home)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
-        //makeText(this, chSelect, LENGTH_SHORT).show()
+        cookieCount = intent.getIntExtra("cookieCount",5)
+
         setBackgroundForTime()
         setSelectCharacter()
 
@@ -50,18 +52,14 @@ class InfantHomeActivity : AppCompatActivity() {
 //        char_dam.playAnimation()
 
         //선물상자에서 줄어든 쿠키 갯수 반영
-        val cookieCount: TextView = findViewById(R.id.infant_home_cookie_count_txt)
-        if(intent.hasExtra("cookieCount")){
-            cookieCount.text = intent.getStringExtra("cookieCount")
-        }else{
-            makeText(this, "잘못 전달되었습니다.", LENGTH_SHORT).show()
-        }
+        val cookieCountHome: TextView = findViewById(R.id.infant_home_cookie_count_txt)
+        cookieCountHome.text = cookieCount.toString()
 
         //대화하기 버튼
         val intent1 = Intent(this, InfantSelectFeelActivity::class.java)
         char_talk_btn.setOnClickListener{
             intent1.putExtra("bgSelect", bgSelect)
-            intent1.putExtra("cookieCount",cookieCount.text)
+            intent1.putExtra("cookieCount",cookieCount)
             intent1.putExtra("chSelect",chSelect)
             startActivity(intent1)
         }
@@ -70,7 +68,7 @@ class InfantHomeActivity : AppCompatActivity() {
         val intent2 = Intent(this, InfantSwitchCharacterActivity::class.java)
         char_change_btn.setOnClickListener{
             intent2.putExtra("bgSelect",bgSelect)
-            intent2.putExtra("cookieCount",cookieCount.text)
+            intent2.putExtra("cookieCount",cookieCount)
             //intent2.putExtra("chSelect",chSelect)
             startActivityForResult(intent2,0)
         }
@@ -79,7 +77,7 @@ class InfantHomeActivity : AppCompatActivity() {
         val intent3 = Intent(this, InfantGiftStartActivity::class.java)
         infant_icon_gift.setOnClickListener{
             intent3.putExtra("bgSelect",bgSelect)
-            intent3.putExtra("cookieCount",cookieCount.text)
+            intent3.putExtra("cookieCount",infantCookieViewModel.cookieCount.value)
             intent3.putExtra("chSelect",chSelect)
             startActivity(intent3)
         }
@@ -87,7 +85,7 @@ class InfantHomeActivity : AppCompatActivity() {
         // 배경 꾸미기 버튼
         val intent4 = Intent(this, InfantDecoActivity::class.java)
         char_deco_btn.setOnClickListener{
-            intent4.putExtra("cookieCount",cookieCount.text)
+            intent4.putExtra("cookieCount",cookieCount)
             intent4.putExtra("chSelect",chSelect)
             startActivityForResult(intent4,1)
         }
@@ -96,7 +94,7 @@ class InfantHomeActivity : AppCompatActivity() {
         val intent5 = Intent(this, InfantCookieSaveActivity::class.java)
         infant_cookie_view.setOnClickListener{
             intent5.putExtra("bgSelect",bgSelect)
-            intent5.putExtra("cookieCount",cookieCount.text)
+            intent5.putExtra("cookieCount",cookieCount)
             intent5.putExtra("chSelect",chSelect)
             startActivity(intent5)
         }
@@ -115,7 +113,7 @@ class InfantHomeActivity : AppCompatActivity() {
             if (resultCode==RESULT_OK) {
                 chSelect = data!!.getIntExtra("chSelect",0)
                 setBackgroundForTime()
-                Log.d("home", "$bgSelect")
+                Log.d("home", "$chSelect")
             }else{
             }
         }

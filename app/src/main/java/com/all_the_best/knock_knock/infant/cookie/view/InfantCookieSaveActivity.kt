@@ -18,33 +18,23 @@ class InfantCookieSaveActivity : AppCompatActivity() {
 
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
+    private var cookieCount: Int = 5
 
     //private var i:Int = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_cookie_save)
 
-        val cookieCount: TextView =findViewById(R.id.cookie_save_count_txt)
+        val cookieSaveCount: TextView =findViewById(R.id.cookie_save_count_txt)
 
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
+        cookieCount = intent.getIntExtra("cookieCount",5)
+        cookieSaveCount.text = cookieCount.toString()
 
         window.statusBarColor = Color.parseColor("#FCC364")
         //var getCookieId= getResources().getIdentifier("ic_cookie_false$i","id", packageName)
-        // 홈화면 쿠키 개수 불러오기
-        if(intent.hasExtra("cookieCount")){
-            cookieCount.text = intent.getStringExtra("cookieCount")
-//            val str = cookieCount.text.toString()
-//            val countInt = Integer.parseInt(str)
-//            if (countInt==2){
-//                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-//                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-//            }else{
-//
-//            }
-        }else{
-            Toast.makeText(this, "잘못 전달되었습니다.", Toast.LENGTH_SHORT).show()
-        }
+
         ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
         ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
         //쿠키 채우기
@@ -59,7 +49,7 @@ class InfantCookieSaveActivity : AppCompatActivity() {
         infant_icon_out_cookie.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
-            intent.putExtra("cookieCount",cookieCount.text)
+            intent.putExtra("cookieCount",cookieCount)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

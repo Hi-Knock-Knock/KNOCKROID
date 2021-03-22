@@ -15,11 +15,15 @@ import java.time.format.DateTimeFormatter
 class InfantTalkStartActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
+    private var cookieCount: Int = 5
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_talk_start)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
+        cookieCount = intent.getIntExtra("cookieCount",5)
+
         setSelectCharacter()
         window.statusBarColor = Color.parseColor("#FCC364")
 
@@ -45,6 +49,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         infant_icon_out.setOnClickListener{
             intent1.putExtra("bgSelect", bgSelect)
             intent1.putExtra("chSelect",chSelect)
+            intent1.putExtra("cookieCount",cookieCount)
             startActivity(intent1)
             overridePendingTransition(0, 0)
         }

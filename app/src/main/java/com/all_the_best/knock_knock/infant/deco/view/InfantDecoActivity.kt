@@ -22,6 +22,8 @@ class InfantDecoActivity : AppCompatActivity() {
     private val infantDecoViewModel: InfantDecoViewModel by viewModels()
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
+    private var cookieCount: Int = 5
+
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
     private val formatted = current.format(formatter)
@@ -32,6 +34,7 @@ class InfantDecoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_infant_deco)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
+        cookieCount = intent.getIntExtra("cookieCount",5)
         setBgSelectObserve()
         setSelectCharacter()
         setDecoItemSelectedListener()
@@ -40,11 +43,10 @@ class InfantDecoActivity : AppCompatActivity() {
 
     private fun setOnClickListenerForGoBack() {
         infant_icon_deco_out1. setOnClickListener {
-            //val cookieCount: TextView = findViewById(R.id.infant_home_cookie_count_txt)
             val intent = Intent()
             intent.putExtra("bgSelect", infantDecoViewModel.bgSelect.value)
             intent.putExtra("chSelect",chSelect)
-            //intent.putExtra("cookieCount", cookieCount.text)
+            intent.putExtra("cookieCount",cookieCount)
             setResult(Activity.RESULT_OK, intent)
             finish()
             overridePendingTransition(0, 0)

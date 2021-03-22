@@ -12,11 +12,15 @@ import java.time.format.DateTimeFormatter
 class InfantSelectPersonActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
+    private var cookieCount: Int = 5
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_select_person)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
+        cookieCount = intent.getIntExtra("cookieCount",5)
+
         setSelectCharacter()
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
@@ -63,30 +67,35 @@ class InfantSelectPersonActivity : AppCompatActivity() {
         infant_emj_person_1.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
         infant_emj_person_2.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
         infant_emj_person_3.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
         infant_emj_person_4.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
         infant_emj_person_5.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
