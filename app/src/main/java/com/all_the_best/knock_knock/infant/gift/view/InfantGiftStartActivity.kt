@@ -14,6 +14,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
+    //private var btnTrue:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +24,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
+        val intentGoHome = Intent(this, InfantHomeActivity::class.java)
         cookieGiftCount1.text = cookieCount.toString()
 
         //var count:Int = cookieCount //보유 쿠키 개수
@@ -36,51 +38,79 @@ class InfantGiftStartActivity : AppCompatActivity() {
         intent1.putExtra("chSelect",chSelect)
         intent1.putExtra("cookieCount",cookieCount)
 
-
         infant_empty_cookie1.setOnClickListener {
-            if(cookieCount!=2){
-                cookieCount--
-                count3++
+            if(cookieCount<=2){
+                Toast.makeText(this, "쿠키가 부족해요!ㅠㅠ", Toast.LENGTH_SHORT).show()
+            }else{
+                if(cookieCount==0){
+                    Toast.makeText(this, "쿠키가 부족해요!ㅠㅠ", Toast.LENGTH_SHORT).show()
+                    cookieCount++
+                    intentGoHome.putExtra("bgSelect",bgSelect)
+                    intentGoHome.putExtra("chSelect",chSelect)
+                    intentGoHome.putExtra("cookieCount",cookieCount)
+                    startActivity(intentGoHome)
+                    overridePendingTransition(0, 0)
+                }else{
+                    cookieCount--
+                    count3++
+                    infant_empty_cookie1.setImageResource(R.drawable.img_infant_full_cookie)
+                }
+                if(count3==3){
+                    infant_empty_cookie1.setImageResource(R.drawable.img_infant_full_cookie)
+                    startActivity(intent1)
+                    overridePendingTransition(0, 0)
+                }
             }
-            if(count3==3){
-                startActivity(intent1)
-                overridePendingTransition(0, 0)
-            }
-            infant_empty_cookie1.setImageResource(R.drawable.img_infant_full_cookie)
             cookieGiftCount1.text = cookieCount.toString()
         }
 
         infant_empty_cookie2.setOnClickListener {
-            if(cookieCount!=2){
+            if(cookieCount==0){
+                Toast.makeText(this, "쿠키가 부족해요!ㅠㅠ", Toast.LENGTH_SHORT).show()
+                cookieCount++
+                intentGoHome.putExtra("bgSelect",bgSelect)
+                intentGoHome.putExtra("chSelect",chSelect)
+                intentGoHome.putExtra("cookieCount",cookieCount)
+                startActivity(intentGoHome)
+                overridePendingTransition(0, 0)
+            }else{
                 cookieCount--
                 count3++
+                infant_empty_cookie2.setImageResource(R.drawable.img_infant_full_cookie)
             }
             if(count3==3){
+                infant_empty_cookie2.setImageResource(R.drawable.img_infant_full_cookie)
                 startActivity(intent1)
                 overridePendingTransition(0, 0)
             }
-            infant_empty_cookie2.setImageResource(R.drawable.img_infant_full_cookie)
             cookieGiftCount1.text = cookieCount.toString()
-
-
         }
 
         infant_empty_cookie3.setOnClickListener {
-            if(cookieCount!=2){
+            if(cookieCount==0){
+                Toast.makeText(this, "쿠키가 부족해요!ㅠㅠ", Toast.LENGTH_SHORT).show()
+                cookieCount++
+                intentGoHome.putExtra("bgSelect",bgSelect)
+                intentGoHome.putExtra("chSelect",chSelect)
+                intentGoHome.putExtra("cookieCount",cookieCount)
+                startActivity(intentGoHome)
+                overridePendingTransition(0, 0)
+            }else{
                 cookieCount--
                 count3++
+                infant_empty_cookie3.setImageResource(R.drawable.img_infant_full_cookie)
             }
             if(count3==3){
+                infant_empty_cookie3.setImageResource(R.drawable.img_infant_full_cookie)
                 cookieGiftCount1.text = cookieCount.toString()
                 intent1.putExtra("cookieCount",cookieCount) //줄어든 쿠키갯수 받기
                 startActivity(intent1)
                 overridePendingTransition(0, 0)
             }
-            infant_empty_cookie3.setImageResource(R.drawable.img_infant_full_cookie)
         }
 
         // 홈화면으로 돌아가기
-        val intentGoHome = Intent(this, InfantHomeActivity::class.java)
+        //val intentGoHome = Intent(this, InfantHomeActivity::class.java)
         infant_icon_gift_out1.setOnClickListener{
             intentGoHome.putExtra("bgSelect",bgSelect)
             intentGoHome.putExtra("chSelect",chSelect)
