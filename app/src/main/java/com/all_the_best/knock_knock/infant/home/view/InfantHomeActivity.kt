@@ -27,7 +27,7 @@ class InfantHomeActivity : AppCompatActivity() {
     private var chSelect: Int = 0
     private var bgSelect: Int = 1
     private var cookieCount: Int = 5
-    private val infantCookieViewModel: InfantCookieViewModel by viewModels()
+    //private val infantCookieViewModel: InfantCookieViewModel by viewModels()
 
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
@@ -77,7 +77,7 @@ class InfantHomeActivity : AppCompatActivity() {
         val intent3 = Intent(this, InfantGiftStartActivity::class.java)
         infant_icon_gift.setOnClickListener{
             intent3.putExtra("bgSelect",bgSelect)
-            intent3.putExtra("cookieCount",infantCookieViewModel.cookieCount.value)
+            intent3.putExtra("cookieCount",cookieCount)
             intent3.putExtra("chSelect",chSelect)
             startActivity(intent3)
         }

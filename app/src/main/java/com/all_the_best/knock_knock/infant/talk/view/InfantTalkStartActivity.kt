@@ -1,18 +1,26 @@
 package com.all_the_best.knock_knock.infant.talk.view
 
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.cookie.view.InfantGetCookiePopupActivity
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
+import com.all_the_best.knock_knock.parent.base.view.LoginActivity
 import kotlinx.android.synthetic.main.activity_infant_home.*
 import kotlinx.android.synthetic.main.activity_infant_talk_start.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class InfantTalkStartActivity : AppCompatActivity() {
+
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
@@ -47,17 +55,19 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         infant_icon_out.setOnClickListener{
+            // 쿠키 받는 팝업
+            val cookiePopUp = Dialog(this)
+            cookiePopUp?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            cookiePopUp.setContentView(R.layout.activity_infant_get_cookie_popup)
+            cookiePopUp.show()
+            cookieCount += 1
             intent1.putExtra("bgSelect", bgSelect)
             intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("cookieCount",cookieCount)
-            startActivity(intent1)
-            overridePendingTransition(0, 0)
-        }
-
-        val intent2 = Intent(this, InfantGetCookiePopupActivity::class.java)
-        talk_start_char_dam.setOnClickListener{
-            intent2.putExtra("chSelect",chSelect)
-            startActivity(intent2)
+            Handler(Looper.getMainLooper()).postDelayed ({
+                startActivity(intent1)
+                finish()
+            }, 2000)
             overridePendingTransition(0, 0)
         }
     }
