@@ -5,17 +5,19 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.all_the_best.knock_knock.R
-import kotlinx.android.synthetic.main.activity_infant_home.*
 import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class InfantSelectFeelActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
+    private var chSelect: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_select_feel)
         bgSelect = intent.getIntExtra("bgSelect",1)
+        chSelect = intent.getIntExtra("chSelect",0)
+        setSelectCharacter()
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
         val formatted = current.format(formatter)
@@ -60,33 +62,46 @@ class InfantSelectFeelActivity : AppCompatActivity() {
         //감정선택버튼
         infant_emj_feel_1.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_2.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_3.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_4.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_5.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_6.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
+        }
+    }
+    private fun setSelectCharacter(){
+        when(chSelect){
+            0 -> char_dam.setImageResource(R.drawable.img_char_dam)
+            1 -> char_dam.setImageResource(R.drawable.img_char_knock)
+            2 -> char_dam.setImageResource(R.drawable.img_char_timi)
         }
     }
 
