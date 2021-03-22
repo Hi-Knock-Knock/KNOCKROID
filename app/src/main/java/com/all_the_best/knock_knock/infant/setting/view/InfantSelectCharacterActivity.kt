@@ -35,6 +35,15 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
 
         infant_viewpager_select.adapter = selectViewPagerAdapter
 
+
+        // 아이 계정 선택 화면
+        val intent2 = Intent(this, InfantSelectIdActivity::class.java)
+        select_btn_back.setOnClickListener {
+            intent2.putExtra("chSelect", infantSelectChViewModel.chSelect.value)
+            startActivity(intent2)
+            overridePendingTransition(0, 0)
+        }
+
         infant_viewpager_select.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
             override fun onPageScrollStateChanged(state: Int) {
 
@@ -53,7 +62,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
                     infantSelectChViewModel.setchSelect(0)
                 }else if(position == 1){
                     infantSelectChViewModel.setchSelect(1)
-                }else{
+                }else if(position == 2){
                     infantSelectChViewModel.setchSelect(2)
                 }
             }
@@ -67,12 +76,6 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
 
-        // 아이 계정 선택 화면
-        val intent2 = Intent(this, InfantSelectIdActivity::class.java)
-        select_btn_back.setOnClickListener {
-            startActivity(intent2)
-            overridePendingTransition(0, 0)
-        }
 
     }
 

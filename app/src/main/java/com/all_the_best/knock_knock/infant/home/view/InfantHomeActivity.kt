@@ -62,6 +62,7 @@ class InfantHomeActivity : AppCompatActivity() {
         char_talk_btn.setOnClickListener{
             intent1.putExtra("bgSelect", bgSelect)
             intent1.putExtra("cookieCount",cookieCount.text)
+            intent1.putExtra("chSelect",chSelect)
             startActivity(intent1)
         }
 
@@ -70,6 +71,7 @@ class InfantHomeActivity : AppCompatActivity() {
         char_change_btn.setOnClickListener{
             intent2.putExtra("bgSelect",bgSelect)
             intent2.putExtra("cookieCount",cookieCount.text)
+            intent2.putExtra("chSelect",chSelect)
             startActivity(intent2)
         }
 
@@ -78,6 +80,7 @@ class InfantHomeActivity : AppCompatActivity() {
         infant_icon_gift.setOnClickListener{
             intent3.putExtra("bgSelect",bgSelect)
             intent3.putExtra("cookieCount",cookieCount.text)
+            intent3.putExtra("chSelect",chSelect)
             startActivity(intent3)
         }
 
@@ -86,6 +89,8 @@ class InfantHomeActivity : AppCompatActivity() {
         char_deco_btn.setOnClickListener{
             startActivityForResult(intent4,1)
             intent4.putExtra("cookieCount",cookieCount.text)
+            intent4.putExtra("chSelect",chSelect)
+
         }
 
         // 쿠키 저장 다람이 버튼
@@ -93,6 +98,7 @@ class InfantHomeActivity : AppCompatActivity() {
         infant_cookie_view.setOnClickListener{
             intent5.putExtra("bgSelect",bgSelect)
             intent5.putExtra("cookieCount",cookieCount.text)
+            intent5.putExtra("chSelect",chSelect)
             startActivity(intent5)
         }
     }

@@ -88,10 +88,10 @@
         android:id="@+id/infant_talk1"
         android:layout_width="239dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="344dp"
+        android:layout_marginBottom="16dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_infant_chatbox2"
-        app:layout_constraintBottom_toBottomOf="@+id/char_img"
+        app:layout_constraintBottom_toTopOf="@+id/char_img"
         app:layout_constraintEnd_toEndOf="@+id/char_img"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="@+id/char_img" />
