@@ -17,7 +17,8 @@
             android:id="@+id/talk_ver_constraint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/img_main_background">
+            android:background="@drawable/img_main_background"
+            tools:visibility="gone">
 
             <View
                 android:id="@+id/talk_ver_btn_switch_mode"
@@ -398,6 +399,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
                 android:backgroundTint="#5c7cff"
+                android:includeFontPadding="false"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:paddingTop="6dp"
@@ -406,7 +408,6 @@
                 android:textColor="#ffffff"
                 android:textSize="15sp"
                 app:cornerRadius="10dp"
-                android:includeFontPadding="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -421,7 +422,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/img_background"
             android:visibility="invisible"
-            tools:visibility="gone">
+            tools:visibility="visible">
 
             <View
                 android:id="@+id/real_talk_ver_btn_switch_mode"
@@ -456,11 +457,13 @@
                 app:layout_constraintTop_toTopOf="@id/real_talk_btn_hamburger" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/real_talk_constraint_before_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.455">
+                app:layout_constraintVertical_bias="0.455"
+                tools:visibility="invisible">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/real_talk_img_child"
@@ -630,6 +633,78 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/real_talk_constraint_after_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/real_talk_img_child_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="44dp"
+                    android:src="@drawable/ic_parent_talk_dam_profile"
+                    app:layout_constraintEnd_toStartOf="@id/real_talk_img_link_submit"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/real_talk_img_link_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="12dp"
+                    android:src="@drawable/ic_parent_talk_link"
+                    app:layout_constraintBottom_toBottomOf="@id/real_talk_img_child_submit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/real_talk_img_child_submit" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/real_talk_img_parent_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="44dp"
+                    android:src="@drawable/ic_parent_talk_men_profile"
+                    app:layout_constraintStart_toEndOf="@id/real_talk_img_link_submit"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/real_talk_txt_1_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:includeFontPadding="false"
+                    android:text="캐릭터와"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/real_talk_img_child_submit" />
+
+                <TextView
+                    android:id="@+id/real_talk_txt_2_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="대화중입니다."
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/real_talk_txt_1_submit" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_real_talk_deco"
+                    app:layout_constraintBottom_toBottomOf="@id/real_talk_txt_2_submit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/real_talk_txt_1_submit" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

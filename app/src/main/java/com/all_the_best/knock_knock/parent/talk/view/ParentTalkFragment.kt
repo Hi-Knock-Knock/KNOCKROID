@@ -69,21 +69,25 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     }
 
     private fun setOnClickListnerForSwitchMode() {
-        binding.talkVerBtnSwitchMode.setOnClickListener {
-            binding.realTalkVerConstraint.visibility = View.VISIBLE
-            binding.talkVerConstraint.visibility = View.INVISIBLE
-            StatusBarUtil.setStatusBar(
-                requireActivity(),
-                resources.getColor(R.color.light_blue_status_bar, null)
-            )
-        }
-        binding.realTalkVerBtnSwitchMode.setOnClickListener {
-            binding.realTalkVerConstraint.visibility = View.INVISIBLE
-            binding.talkVerConstraint.visibility = View.VISIBLE
-            StatusBarUtil.setStatusBar(
-                requireActivity(),
-                resources.getColor(R.color.blue_status_bar, null)
-            )
+        binding.apply {
+            talkVerBtnSwitchMode.setOnClickListener {
+                realTalkConstraintBeforeSubmit.visibility = View.VISIBLE
+                realTalkConstraintAfterSubmit.visibility = View.GONE
+                realTalkVerConstraint.visibility = View.VISIBLE
+                talkVerConstraint.visibility = View.INVISIBLE
+                StatusBarUtil.setStatusBar(
+                    requireActivity(),
+                    resources.getColor(R.color.light_blue_status_bar, null)
+                )
+            }
+            realTalkVerBtnSwitchMode.setOnClickListener {
+                realTalkVerConstraint.visibility = View.INVISIBLE
+                talkVerConstraint.visibility = View.VISIBLE
+                StatusBarUtil.setStatusBar(
+                    requireActivity(),
+                    resources.getColor(R.color.blue_status_bar, null)
+                )
+            }
         }
     }
 
@@ -146,12 +150,8 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 talkDialogTxtNo.setOnClickListener { dialog.dismiss() }
                 talkDialogTxtFinish.setOnClickListener {
                     dialog.dismiss()
-                    binding.talkVerConstraint.visibility = View.VISIBLE
-                    binding.realTalkVerConstraint.visibility = View.GONE
-                    StatusBarUtil.setStatusBar(
-                        requireActivity(),
-                        resources.getColor(R.color.blue_status_bar, null)
-                    )
+                    binding.realTalkConstraintBeforeSubmit.visibility = View.GONE
+                    binding.realTalkConstraintAfterSubmit.visibility = View.VISIBLE
                 }
                 talkDialogRadiogroup.setOnCheckedChangeListener { questionGroup, checkedId ->
                     talkDialogTxtSelectedQuestion.text =
