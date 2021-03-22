@@ -37,7 +37,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
 
         infant_viewpager_select.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
             override fun onPageScrollStateChanged(state: Int) {
-                infantSelectChViewModel.setchSelect(state)
+
             }
 
             override fun onPageScrolled(
@@ -48,6 +48,14 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
+                if(position == 0){  // if you want the second page, for example
+                    //Your code here
+                    infantSelectChViewModel.setchSelect(0)
+                }else if(position == 1){
+                    infantSelectChViewModel.setchSelect(1)
+                }else{
+                    infantSelectChViewModel.setchSelect(2)
+                }
             }
         })
 

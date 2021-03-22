@@ -27,7 +27,7 @@ import java.time.format.DateTimeFormatter
 class InfantHomeActivity : AppCompatActivity() {
    // private val infantHomeViewModel: InfantHomeViewModel by viewModels()
     private var bgSelect: Int = 1
-    private var chSelect: Int = 1
+    private var chSelect: Int = 0
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
     private val formatted = current.format(formatter)
@@ -36,7 +36,7 @@ class InfantHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_home)
         bgSelect = intent.getIntExtra("bgSelect",1)
-        chSelect = intent.getIntExtra("chSelect",1)
+        chSelect = intent.getIntExtra("chSelect",0)
         //makeText(this, chSelect, LENGTH_SHORT).show()
         setBackgroundForTime()
         setSelectCharacter()
@@ -160,10 +160,9 @@ class InfantHomeActivity : AppCompatActivity() {
 
     private fun setSelectCharacter(){
         when(chSelect){
-
-            1 -> char_img.setImageResource(R.drawable.img_char_dam)
-            2 -> char_img.setImageResource(R.drawable.img_char_knock)
-            3 -> char_img.setImageResource(R.drawable.img_char_timi)
+            0 -> char_img.setImageResource(R.drawable.img_char_dam)
+            1 -> char_img.setImageResource(R.drawable.img_char_knock)
+            2 -> char_img.setImageResource(R.drawable.img_char_timi)
         }
     }
 }

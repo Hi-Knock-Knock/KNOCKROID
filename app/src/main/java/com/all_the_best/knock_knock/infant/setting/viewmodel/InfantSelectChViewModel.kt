@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class InfantSelectChViewModel : ViewModel() {
-    private var _chSelect = MutableLiveData(1)
+    private var _chSelect = MutableLiveData(0)
     val chSelect: LiveData<Int>
         get() = _chSelect
 

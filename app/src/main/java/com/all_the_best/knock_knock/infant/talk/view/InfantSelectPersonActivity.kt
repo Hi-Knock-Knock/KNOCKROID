@@ -57,6 +57,27 @@ class InfantSelectPersonActivity : AppCompatActivity() {
         }
 
         val intent = Intent(this, InfantTalkStartActivity::class.java)
+        // 대상 선택 버튼
+        infant_emj_person_1.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+        infant_emj_person_2.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+        infant_emj_person_3.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+        infant_emj_person_4.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
         infant_emj_person_5.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
             startActivity(intent)

@@ -57,11 +57,37 @@ class InfantSelectFeelActivity : AppCompatActivity() {
         }
 
         val intent = Intent(this, InfantSelectPersonActivity::class.java)
+        //감정선택버튼
+        infant_emj_feel_1.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+        infant_emj_feel_2.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
         infant_emj_feel_3.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
-
+        infant_emj_feel_4.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+        infant_emj_feel_5.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+        infant_emj_feel_6.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
     }
+
 }
