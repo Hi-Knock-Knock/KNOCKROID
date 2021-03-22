@@ -25,8 +25,6 @@ import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.util.StatusBarUtil
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.fragment_parent_talk.*
-import kotlinx.android.synthetic.main.help_dialog.view.*
-import kotlinx.android.synthetic.main.talk_dialog.view.*
 
 
 class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
@@ -64,26 +62,31 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         setOnClickListenerForBtnSubmit()
         setOnClickListenerForBtnHelp()
         setOnClickListnerForSwitchMode()
-        setOnClickListenerFroBtnRefuse()
+        setOnClickListenerForBtnAccept()
+        setOnClickListenerForBtnRefuse()
         return binding.root
     }
 
     private fun setOnClickListnerForSwitchMode() {
-        binding.talkVerBtnSwitchMode.setOnClickListener {
-            binding.realTalkVerConstraint.visibility = View.VISIBLE
-            binding.talkVerConstraint.visibility = View.INVISIBLE
-            StatusBarUtil.setStatusBar(
-                requireActivity(),
-                resources.getColor(R.color.light_blue_status_bar, null)
-            )
-        }
-        binding.realTalkVerBtnSwitchMode.setOnClickListener {
-            binding.realTalkVerConstraint.visibility = View.INVISIBLE
-            binding.talkVerConstraint.visibility = View.VISIBLE
-            StatusBarUtil.setStatusBar(
-                requireActivity(),
-                resources.getColor(R.color.blue_status_bar, null)
-            )
+        binding.apply {
+            talkVerBtnSwitchMode.setOnClickListener {
+                realTalkConstraintBeforeSubmit.visibility = View.VISIBLE
+                realTalkConstraintAfterSubmit.visibility = View.GONE
+                realTalkVerConstraint.visibility = View.VISIBLE
+                talkVerConstraint.visibility = View.INVISIBLE
+                StatusBarUtil.setStatusBar(
+                    requireActivity(),
+                    resources.getColor(R.color.light_blue_status_bar, null)
+                )
+            }
+            realTalkVerBtnSwitchMode.setOnClickListener {
+                realTalkVerConstraint.visibility = View.INVISIBLE
+                talkVerConstraint.visibility = View.VISIBLE
+                StatusBarUtil.setStatusBar(
+                    requireActivity(),
+                    resources.getColor(R.color.blue_status_bar, null)
+                )
+            }
         }
     }
 
@@ -97,7 +100,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
             if (dialogBinding.root.parent != null) (dialogBinding.root.parent as ViewGroup).removeView(
                 dialogBinding.root
             )
-            dialogBinding.root.help_txt_ok.setOnClickListener {
+            dialogBinding.helpTxtOk.setOnClickListener {
                 dialog.dismiss()
             }
             dialog.apply {
@@ -108,7 +111,14 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
 
     }
 
-    private fun setOnClickListenerFroBtnRefuse() {
+    private fun setOnClickListenerForBtnAccept() {
+        binding.realTalkTxtOk.setOnClickListener {
+            val intent = Intent(requireContext(), ParentRealTalkActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setOnClickListenerForBtnRefuse() {
         binding.realTalkTxtNo.setOnClickListener {
             refuseDialogBinding.apply {
                 talkDialogTxtEdit.visibility = View.VISIBLE
@@ -130,9 +140,8 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 refuseDialogBinding.root
             )
 
-            refuseDialogBinding.root.talk_dialog_txt_ok.setOnClickListener {
-                //dialog.dismiss()
-                refuseDialogBinding.apply {
+            refuseDialogBinding.apply {
+                talkDialogTxtOk.setOnClickListener {
                     talkDialogConstraintFinish.visibility = View.VISIBLE
                     talkDialogConstraintBtnNoOk.visibility = View.INVISIBLE
                     talkDialogConstraintRadioBtn.visibility = View.GONE
@@ -140,21 +149,36 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                     talkDialogTxtSubSelected.visibility = View.GONE
                     talkDialogConstraintSubmit.visibility = View.VISIBLE
                 }
-            }
-
-            refuseDialogBinding.root.talk_dialog_txt_edit.setOnClickListener {
-                refuseDialogBinding.apply {
+                talkDialogTxtEdit.setOnClickListener {
                     talkDialogConstraintRadioBtn.visibility = View.VISIBLE
                     talkDialogTxtEdit.visibility = View.GONE
                 }
-            }
-
-            refuseDialogBinding.apply {
-                root.talk_dialog_txt_no.setOnClickListener {
+                talkDialogTxtNo.setOnClickListener { dialog.dismiss() }
+                talkDialogTxtFinish.setOnClickListener {
                     dialog.dismiss()
+                    binding.realTalkConstraintBeforeSubmit.visibility = View.GONE
+                    binding.realTalkConstraintAfterSubmit.visibility = View.VISIBLE
                 }
-                root.talk_dialog_txt_finish.setOnClickListener {
-                    dialog.dismiss()
+                talkDialogRadiogroup.setOnCheckedChangeListener { questionGroup, checkedId ->
+                    talkDialogTxtSelectedQuestion.text =
+                        when (checkedId) {
+                            R.id.rb1_dialog -> "없음"
+                            R.id.rb2_dialog -> "엄마랑 아빠랑 싸우면 기분이 어때?"
+                            R.id.rb3_dialog -> "동생은 어떤 존재야?"
+                            R.id.rb4_dialog -> "동생이랑 노는 거 즐거워?"
+                            R.id.rb5_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
+                            R.id.rb6_dialog -> "아빠한테 속상한 거 있어?"
+                            R.id.rb7_dialog -> "엄마한테 속상한 거 있어?"
+                            R.id.rb8_dialog -> "엄마랑 아빠랑 싸우면 기분이 어때?"
+                            R.id.rb9_dialog -> "동생은 어떤 존재야?"
+                            R.id.rb10_dialog -> "동생이랑 노는 거 즐거워?"
+                            R.id.rb11_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
+                            R.id.rb12_dialog -> "동생이랑 노는 거 즐거워?"
+                            R.id.rb13_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
+                            R.id.rb14_dialog -> "동생이랑 노는 거 즐거워?"
+                            R.id.rb15_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
+                            else -> "없음"
+                        }
                 }
             }
 
@@ -162,6 +186,56 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 window!!.setBackgroundDrawable(inset)
                 show()
             }
+
+//            refuseDialogBinding.root.talk_dialog_txt_ok.setOnClickListener {
+//                //dialog.dismiss()
+//                refuseDialogBinding.apply {
+//                    talkDialogConstraintFinish.visibility = View.VISIBLE
+//                    talkDialogConstraintBtnNoOk.visibility = View.INVISIBLE
+//                    talkDialogConstraintRadioBtn.visibility = View.GONE
+//                    talkDialogTxtEdit.visibility = View.GONE
+//                    talkDialogTxtSubSelected.visibility = View.GONE
+//                    talkDialogConstraintSubmit.visibility = View.VISIBLE
+//                }
+//            }
+
+//            refuseDialogBinding.root.talk_dialog_txt_edit.setOnClickListener {
+//                refuseDialogBinding.apply {
+//                    talkDialogConstraintRadioBtn.visibility = View.VISIBLE
+//                    talkDialogTxtEdit.visibility = View.GONE
+//                }
+//            }
+
+//            refuseDialogBinding.root.apply {
+//                talk_dialog_txt_no.setOnClickListener {
+//                    dialog.dismiss()
+//                }
+//                talk_dialog_txt_finish.setOnClickListener {
+//                    dialog.dismiss()
+//                }
+//                talk_dialog_radiogroup.setOnCheckedChangeListener { questionGroup, checkedId ->
+//                    talk_dialog_txt_selected_question.text =
+//                        when (checkedId) {
+//                            R.id.rb1_dialog -> "없음"
+//                            R.id.rb2_dialog -> "엄마랑 아빠랑 싸우면 기분이 어때?"
+//                            R.id.rb3_dialog -> "동생은 어떤 존재야?"
+//                            R.id.rb4_dialog -> "동생이랑 노는 거 즐거워?"
+//                            R.id.rb5_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
+//                            R.id.rb6_dialog -> "아빠한테 속상한 거 있어?"
+//                            R.id.rb7_dialog -> "엄마한테 속상한 거 있어?"
+//                            R.id.rb8_dialog -> "엄마랑 아빠랑 싸우면 기분이 어때?"
+//                            R.id.rb9_dialog -> "동생은 어떤 존재야?"
+//                            R.id.rb10_dialog -> "동생이랑 노는 거 즐거워?"
+//                            R.id.rb11_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
+//                            R.id.rb12_dialog -> "동생이랑 노는 거 즐거워?"
+//                            R.id.rb13_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
+//                            R.id.rb14_dialog -> "동생이랑 노는 거 즐거워?"
+//                            R.id.rb15_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
+//                            else -> "없음"
+//                        }
+//                }
+//            }
+//        }
         }
     }
 
