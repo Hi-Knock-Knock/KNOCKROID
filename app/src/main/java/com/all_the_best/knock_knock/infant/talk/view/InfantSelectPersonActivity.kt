@@ -5,17 +5,23 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.all_the_best.knock_knock.R
-import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 import kotlinx.android.synthetic.main.activity_infant_select_person.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class InfantSelectPersonActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
+    private var chSelect: Int = 0
+    private var cookieCount: Int = 5
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_select_person)
         bgSelect = intent.getIntExtra("bgSelect",1)
+        chSelect = intent.getIntExtra("chSelect",0)
+        cookieCount = intent.getIntExtra("cookieCount",5)
+
+        setSelectCharacter()
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
         val formatted = current.format(formatter)
@@ -57,10 +63,49 @@ class InfantSelectPersonActivity : AppCompatActivity() {
         }
 
         val intent = Intent(this, InfantTalkStartActivity::class.java)
-        infant_emj_person_5.setOnClickListener{
+        // 대상 선택 버튼
+        infant_emj_person_1.setOnClickListener{
             intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
             startActivity(intent)
             overridePendingTransition(0, 0)
+        }
+        infant_emj_person_2.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+        infant_emj_person_3.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+        infant_emj_person_4.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+        infant_emj_person_5.setOnClickListener{
+            intent.putExtra("bgSelect",bgSelect)
+            intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+    }
+
+    private fun setSelectCharacter(){
+        when(chSelect){
+            0 -> char_dam.setImageResource(R.drawable.img_char_dam)
+            1 -> char_dam.setImageResource(R.drawable.img_char_knock)
+            2 -> char_dam.setImageResource(R.drawable.img_char_timi)
         }
     }
 }

@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#CC000000"
+    android:background="#00FFFFFF"
     tools:context=".infant.cookie.view.InfantGetCookiePopupActivity">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/popup_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
@@ -25,10 +25,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
         android:src="@drawable/ic_infant_get_cookie"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintEnd_toEndOf="@+id/imageView5"
-        app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+        app:layout_constraintBottom_toBottomOf="@+id/popup_image"
+        app:layout_constraintEnd_toEndOf="@+id/popup_image"
+        app:layout_constraintStart_toStartOf="@+id/popup_image"
+        app:layout_constraintTop_toTopOf="@+id/popup_image" />
 
     <ImageView
         android:layout_width="wrap_content"

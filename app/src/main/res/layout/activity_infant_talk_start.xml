@@ -22,10 +22,10 @@
         android:id="@+id/infant_talk1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="344dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_infant_chatbox"
-        app:layout_constraintBottom_toTopOf="@+id/talk_start_char_dam"
+        app:layout_constraintBottom_toBottomOf="@+id/talk_start_char_dam"
         app:layout_constraintEnd_toEndOf="@+id/talk_start_char_dam"
         app:layout_constraintHorizontal_bias="0.315"
         app:layout_constraintStart_toStartOf="@+id/talk_start_char_dam" />
@@ -49,12 +49,28 @@
         android:id="@+id/talk_start_char_dam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginBottom="148dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.501"
         app:srcCompat="@drawable/img_char_dam" />
+
+    <Button
+        android:id="@+id/startRecordBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="대화시작"
+        app:layout_constraintStart_toStartOf="@+id/talk_start_char_dam"
+        app:layout_constraintTop_toBottomOf="@+id/talk_start_char_dam" />
+
+    <Button
+        android:id="@+id/stopRecordBtn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="대화끝 "
+        app:layout_constraintEnd_toEndOf="@+id/talk_start_char_dam"
+        app:layout_constraintStart_toEndOf="@+id/startRecordBtn"
+        app:layout_constraintTop_toBottomOf="@+id/talk_start_char_dam" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

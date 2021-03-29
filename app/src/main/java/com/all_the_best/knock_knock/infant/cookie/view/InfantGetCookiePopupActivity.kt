@@ -11,7 +11,5 @@ class InfantGetCookiePopupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_get_cookie_popup)
         window.statusBarColor = Color.parseColor("#000000")
-
-
     }
 }

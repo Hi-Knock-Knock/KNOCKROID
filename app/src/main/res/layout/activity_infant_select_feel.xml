@@ -12,10 +12,10 @@
         android:id="@+id/infant_talk1"
         android:layout_width="239dp"
         android:layout_height="75dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="344dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_infant_chatbox2"
-        app:layout_constraintBottom_toTopOf="@+id/char_dam"
+        app:layout_constraintBottom_toBottomOf="@+id/char_dam"
         app:layout_constraintEnd_toEndOf="@+id/char_dam"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="@+id/char_dam" />
@@ -39,24 +39,22 @@
         android:id="@+id/char_dam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginBottom="188dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.501"
         app:srcCompat="@drawable/img_char_dam" />
 
     <LinearLayout
         android:id="@+id/infant_feel_emjbar"
         android:layout_width="match_parent"
         android:layout_height="280dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginTop="326dp"
         android:background="@drawable/ic_infant_emj_bg"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/char_dam">
+        app:layout_constraintTop_toBottomOf="@+id/infant_talk1">
 
         <TableLayout
             android:layout_width="wrap_content"

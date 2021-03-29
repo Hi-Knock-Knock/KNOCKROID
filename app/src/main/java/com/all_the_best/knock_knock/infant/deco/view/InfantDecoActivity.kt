@@ -6,17 +6,24 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.deco.viewmodel.InfantDecoViewModel
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import kotlinx.android.synthetic.main.activity_infant_deco.*
+import kotlinx.android.synthetic.main.activity_infant_deco.char_dam
+import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class InfantDecoActivity : AppCompatActivity() {
     private val infantDecoViewModel: InfantDecoViewModel by viewModels()
+    private var bgSelect: Int = 1
+    private var chSelect: Int = 0
+    private var cookieCount: Int = 5
+
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
     private val formatted = current.format(formatter)
@@ -25,18 +32,33 @@ class InfantDecoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_deco)
+        bgSelect = intent.getIntExtra("bgSelect",1)
+        chSelect = intent.getIntExtra("chSelect",0)
+        cookieCount = intent.getIntExtra("cookieCount",5)
         setBgSelectObserve()
+        setSelectCharacter()
         setDecoItemSelectedListener()
         setOnClickListenerForGoBack()
     }
 
     private fun setOnClickListenerForGoBack() {
-        infant_icon_deco_out1.setOnClickListener {
+        infant_icon_deco_out1. setOnClickListener {
             val intent = Intent()
             intent.putExtra("bgSelect", infantDecoViewModel.bgSelect.value)
+            intent.putExtra("chSelect",chSelect)
+            intent.putExtra("cookieCount",cookieCount)
             setResult(Activity.RESULT_OK, intent)
             finish()
             overridePendingTransition(0, 0)
+        }
+    }
+
+
+    private fun setSelectCharacter(){
+        when(chSelect){
+            0 -> char_dam.setImageResource(R.drawable.img_char_dam)
+            1 -> char_dam.setImageResource(R.drawable.img_char_knock)
+            2 -> char_dam.setImageResource(R.drawable.img_char_timi)
         }
     }
 

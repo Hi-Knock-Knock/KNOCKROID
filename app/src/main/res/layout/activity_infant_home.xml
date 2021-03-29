@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="캐릭터 꾸미기"
+        android:text="배경 꾸미기"
         android:textColor="#000000"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -84,6 +84,18 @@
         app:layout_constraintStart_toStartOf="@+id/char_change_btn"
         app:layout_constraintTop_toBottomOf="@id/char_change_btn" />
 
+
+    <ImageView
+        android:id="@+id/char_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="188dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_char_knock" />
+
+
     <ImageView
         android:id="@+id/infant_talk1"
         android:layout_width="239dp"
@@ -91,10 +103,10 @@
         android:layout_marginBottom="344dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_infant_chatbox2"
-        app:layout_constraintBottom_toBottomOf="@+id/char_dam"
-        app:layout_constraintEnd_toEndOf="@+id/char_dam"
+        app:layout_constraintBottom_toBottomOf="@+id/char_img"
+        app:layout_constraintEnd_toEndOf="@+id/char_img"
         app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="@+id/char_dam" />
+        app:layout_constraintStart_toStartOf="@+id/char_img" />
 
     <TextView
         android:id="@+id/talk_txtview"
@@ -110,17 +122,6 @@
         app:layout_constraintStart_toStartOf="@+id/infant_talk1"
         app:layout_constraintTop_toTopOf="@id/infant_talk1"
         app:layout_constraintVertical_bias="0.263" />
-
-
-    <ImageView
-        android:id="@+id/char_dam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="207dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_char_dam" />
 
     <ImageView
         android:id="@+id/infant_icon_gift"
@@ -141,14 +142,25 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_infant_home_cookie"  />
+        app:srcCompat="@drawable/ic_infant_home_cookie" />
 
     <TextView
-        android:id="@+id/infant_home_cookie_txt"
+        android:id="@+id/infant_home_cookie_count_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="34dp"
+        android:text="5"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/infant_cookie_view"
+        app:layout_constraintEnd_toEndOf="@+id/infant_cookie_view"
+        app:layout_constraintTop_toTopOf="@+id/infant_cookie_view" />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="5개"
+        android:text="개"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
