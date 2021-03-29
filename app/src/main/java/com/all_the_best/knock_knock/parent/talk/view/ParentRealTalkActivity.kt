@@ -24,7 +24,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
             resources.getColor(R.color.blue_status_bar, null)
         )
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_real_talk)
-        binding.txtDate
+        binding.txtSubmit = "전송하기"
         setTipRcvAdapter()
         getToday()
     }
