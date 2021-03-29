@@ -10,6 +10,7 @@ import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import com.all_the_best.knock_knock.infant.change.adapter.InfantSwitchViewPagerAdapter
 import com.all_the_best.knock_knock.infant.setting.viewmodel.InfantSelectChViewModel
+import kotlinx.android.synthetic.main.activity_infant_deco.*
 import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 
 import kotlinx.android.synthetic.main.activity_infant_switch_character.*
@@ -41,6 +42,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
                     1 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_morning_bg)
                     2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower1)
                     3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea1)
+                    4 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space1) // 우주
                 }
                 window.statusBarColor = Color.parseColor("#57DDFF")
             }
@@ -49,6 +51,8 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
                     1 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_after_bg)
                     2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower2)
                     3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea2)
+                    4 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space2) // 우주
+
                 }
                 window.statusBarColor = Color.parseColor("#FF6471")
             }
@@ -57,6 +61,8 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
                     1 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_night_bg)
                     2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower3)
                     3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea3)
+                    4 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space3) // 우주
+
                 }
                 window.statusBarColor = Color.parseColor("#0F0E15")
             }
@@ -65,6 +71,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
                     1 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_night_bg)
                     2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower3)
                     3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea3)
+                    4 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space3) // 우주
                 }
                 window.statusBarColor = Color.parseColor("#0F0E15")
             }

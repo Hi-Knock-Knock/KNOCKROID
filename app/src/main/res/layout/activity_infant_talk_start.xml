@@ -18,6 +18,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <ImageView
+        android:id="@+id/talk_start_char_dam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="148dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/img_char_knock" />
+
     <ImageView
         android:id="@+id/infant_talk1"
         android:layout_width="wrap_content"
@@ -45,17 +56,7 @@
         app:layout_constraintTop_toTopOf="@id/infant_talk1"
         app:layout_constraintVertical_bias="0.263" />
 
-    <ImageView
-        android:id="@+id/talk_start_char_dam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="148dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_char_dam" />
-
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/startRecordBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -63,22 +64,20 @@
         app:layout_constraintStart_toStartOf="@+id/talk_start_char_dam"
         app:layout_constraintTop_toBottomOf="@+id/talk_start_char_dam" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/stopRecordBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="대화끝 "
         app:layout_constraintEnd_toEndOf="@+id/talk_start_char_dam"
-        app:layout_constraintStart_toEndOf="@+id/startRecordBtn"
         app:layout_constraintTop_toBottomOf="@+id/talk_start_char_dam" />
 
-    <Button
-        android:id="@+id/btnUpload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="upload"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDownload"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="녹음 듣기 "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

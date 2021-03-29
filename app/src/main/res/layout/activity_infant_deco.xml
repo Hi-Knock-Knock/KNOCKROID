@@ -88,7 +88,7 @@
 
                     android:scaleType="centerInside"
                     android:background="@drawable/bg_deco_unselect_item"
-                    android:src="@drawable/img_infant_deco_itembox_false" />
+                    android:src="@drawable/img_infant_deco_item_space" />
 
                 <ImageView
                     android:id="@+id/deco_item_bg5"

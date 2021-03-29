@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.all_the_best.knock_knock.R
 import kotlinx.android.synthetic.main.activity_infant_select_feel.*
+import kotlinx.android.synthetic.main.activity_infant_switch_character.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -33,6 +34,8 @@ class InfantSelectFeelActivity : AppCompatActivity() {
                     1 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_morning_bg)
                     2 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_flower1)
                     3 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_sea1)
+                    4 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_space1) // 우주
+
                 }
                 window.statusBarColor = Color.parseColor("#57DDFF")
             }
@@ -41,6 +44,8 @@ class InfantSelectFeelActivity : AppCompatActivity() {
                     1 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_after_bg)
                     2 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_flower2)
                     3 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_sea2)
+                    4 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_space2) // 우주
+
                 }
                 window.statusBarColor = Color.parseColor("#FF6471")
             }
@@ -49,6 +54,8 @@ class InfantSelectFeelActivity : AppCompatActivity() {
                     1 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_night_bg)
                     2 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_flower3)
                     3 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_sea3)
+                    4 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_space3) // 우주
+
                 }
                 window.statusBarColor = Color.parseColor("#0F0E15")
             }
@@ -57,6 +64,8 @@ class InfantSelectFeelActivity : AppCompatActivity() {
                     1 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_night_bg)
                     2 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_flower3)
                     3 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_sea3)
+                    4 -> infant_select_feel.setBackgroundResource(R.drawable.img_infant_home_bg_space3) // 우주
+
                 }
                 window.statusBarColor = Color.parseColor("#0F0E15")
             }

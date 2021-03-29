@@ -1,9 +1,13 @@
 package com.all_the_best.knock_knock.infant.gift.view
 
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.TextView
 import android.widget.Toast
 import com.all_the_best.knock_knock.R
@@ -38,13 +42,21 @@ class InfantGiftBoxActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
 
-        // 선물 받는 화면으로 가기
-        val intent1 = Intent(this, InfantGiftEndActivity::class.java)
+        // 선물 받는 팝업창
+        //val intent1 = Intent(this, InfantGiftEndActivity::class.java)
         infant_gift_box.setOnClickListener {
-            intent1.putExtra("bgSelect",bgSelect)
-            intent1.putExtra("chSelect",chSelect)
-            intent1.putExtra("cookieCount",cookieCount)
-            startActivity(intent1)
+            // 배경 얻는 팝업창
+            val getBgPopup = Dialog(this)
+            getBgPopup?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            getBgPopup.setContentView(R.layout.infant_gift_get_popup)
+            getBgPopup.show()
+            intentGoHome.putExtra("bgSelect",bgSelect)
+            intentGoHome.putExtra("chSelect",chSelect)
+            intentGoHome.putExtra("cookieCount",cookieCount)
+            Handler(Looper.getMainLooper()).postDelayed ({
+                startActivity(intentGoHome)
+                finish()
+            }, 2000)
             overridePendingTransition(0, 0)
         }
     }

@@ -5,7 +5,9 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.all_the_best.knock_knock.R
+import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 import kotlinx.android.synthetic.main.activity_infant_select_person.*
+import kotlinx.android.synthetic.main.activity_infant_select_person.char_dam
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -33,6 +35,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
                     1 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_morning_bg)
                     2 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_flower1)
                     3 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_sea1)
+                    4 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_space1) // 우주
                 }
                 window.statusBarColor = Color.parseColor("#57DDFF")
             }
@@ -41,6 +44,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
                     1 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_after_bg)
                     2 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_flower2)
                     3 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_sea2)
+                    4 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_space2) // 우주
                 }
                 window.statusBarColor = Color.parseColor("#FF6471")
             }
@@ -49,6 +53,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
                     1 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_night_bg)
                     2 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_flower3)
                     3 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_sea3)
+                    4 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_space3) // 우주
                 }
                 window.statusBarColor = Color.parseColor("#0F0E15")
             }
@@ -57,6 +62,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
                     1 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_night_bg)
                     2 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_flower3)
                     3 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_sea3)
+                    4 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_space3) // 우주
                 }
                 window.statusBarColor = Color.parseColor("#0F0E15")
             }

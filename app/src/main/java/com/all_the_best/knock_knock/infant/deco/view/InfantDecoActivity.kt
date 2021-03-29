@@ -6,15 +6,12 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.deco.viewmodel.InfantDecoViewModel
-import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import kotlinx.android.synthetic.main.activity_infant_deco.*
 import kotlinx.android.synthetic.main.activity_infant_deco.char_dam
-import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -53,33 +50,44 @@ class InfantDecoActivity : AppCompatActivity() {
         }
     }
 
-
+    // 캐릭터 바꾸기
     private fun setSelectCharacter(){
         when(chSelect){
             0 -> char_dam.setImageResource(R.drawable.img_char_dam)
             1 -> char_dam.setImageResource(R.drawable.img_char_knock)
-            2 -> char_dam.setImageResource(R.drawable.img_char_timi)
+            2 -> char_dam.setImageResource(R.drawable.img_char_timi_unear)
         }
     }
 
+    // 아이템 선택 유무
     private fun setDecoItemSelectedListener() {
         deco_item_bg1.setOnClickListener {
             infantDecoViewModel.setBgSelect(1)
             deco_item_bg1.setBackgroundResource(R.drawable.bg_deco_select_item)
             deco_item_bg2.setBackgroundResource(R.drawable.bg_deco_unselect_item)
             deco_item_bg3.setBackgroundResource(R.drawable.bg_deco_unselect_item)
+            deco_item_bg4.setBackgroundResource(R.drawable.bg_deco_unselect_item)
         }
         deco_item_bg2.setOnClickListener {
             infantDecoViewModel.setBgSelect(2)
             deco_item_bg1.setBackgroundResource(R.drawable.bg_deco_unselect_item)
             deco_item_bg2.setBackgroundResource(R.drawable.bg_deco_select_item)
             deco_item_bg3.setBackgroundResource(R.drawable.bg_deco_unselect_item)
+            deco_item_bg4.setBackgroundResource(R.drawable.bg_deco_unselect_item)
         }
         deco_item_bg3.setOnClickListener {
             infantDecoViewModel.setBgSelect(3)
             deco_item_bg1.setBackgroundResource(R.drawable.bg_deco_unselect_item)
             deco_item_bg2.setBackgroundResource(R.drawable.bg_deco_unselect_item)
             deco_item_bg3.setBackgroundResource(R.drawable.bg_deco_select_item)
+            deco_item_bg4.setBackgroundResource(R.drawable.bg_deco_unselect_item)
+        }
+        deco_item_bg4.setOnClickListener {
+            infantDecoViewModel.setBgSelect(4)
+            deco_item_bg1.setBackgroundResource(R.drawable.bg_deco_unselect_item)
+            deco_item_bg2.setBackgroundResource(R.drawable.bg_deco_unselect_item)
+            deco_item_bg3.setBackgroundResource(R.drawable.bg_deco_unselect_item)
+            deco_item_bg4.setBackgroundResource(R.drawable.bg_deco_select_item)
         }
     }
 
@@ -91,9 +99,10 @@ class InfantDecoActivity : AppCompatActivity() {
                     in "08:00:000".."13:59:999" -> {
                         window.statusBarColor = Color.parseColor("#57DDFF")
                         when (bgSelect) {
-                            1 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_morning_bg)
-                            2 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower1)
-                            3 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea1)
+                            1 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_morning_bg) //기본 홈
+                            2 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower1) // 꽃
+                            3 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea1) // 바다
+                            4 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_space1) // 우주
                         }
                     }
                     in "14:00:000".."19:59:999" -> {
@@ -102,6 +111,7 @@ class InfantDecoActivity : AppCompatActivity() {
                             1 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_after_bg)
                             2 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower2)
                             3 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea2)
+                            4 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_space2) // 우주
                         }
                     }
                     in "20:00:00".."23:59:999" -> {
@@ -110,6 +120,7 @@ class InfantDecoActivity : AppCompatActivity() {
                             1 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_night_bg)
                             2 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower3)
                             3 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea3)
+                            4 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_space3) // 우주
                         }
                     }
                     !in "08:00:00".."23:59:999" -> {
@@ -118,6 +129,7 @@ class InfantDecoActivity : AppCompatActivity() {
                             1 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_night_bg)
                             2 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_flower3)
                             3 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_sea3)
+                            4 -> infant_deco.setBackgroundResource(R.drawable.img_infant_deco_bg_space3) // 우주
                         }
                     }
                 }
