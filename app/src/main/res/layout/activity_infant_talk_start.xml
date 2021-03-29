@@ -36,9 +36,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="무슨 일이야?"
+        android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/infant_talk1"
         app:layout_constraintEnd_toEndOf="@+id/infant_talk1"
         app:layout_constraintStart_toStartOf="@+id/infant_talk1"
@@ -71,6 +71,14 @@
         app:layout_constraintEnd_toEndOf="@+id/talk_start_char_dam"
         app:layout_constraintStart_toEndOf="@+id/startRecordBtn"
         app:layout_constraintTop_toBottomOf="@+id/talk_start_char_dam" />
+
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="upload"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

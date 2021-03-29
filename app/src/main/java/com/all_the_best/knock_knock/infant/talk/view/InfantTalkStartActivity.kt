@@ -1,5 +1,6 @@
 package com.all_the_best.knock_knock.infant.talk.view
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.ContentValues
 import android.content.Intent
@@ -44,7 +45,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_talk_start)
+        getToday()
         setOnBtnRecordClick()
+        setOnBtnAudioUploadClick()
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
@@ -106,6 +109,19 @@ class InfantTalkStartActivity : AppCompatActivity() {
         val simpleDate = SimpleDateFormat("yyyy-MM-dd")
         val date = simpleDate.format(currentTime)
         fileName = date.toString()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            when (requestCode) {
+                1 -> {
+                    val selectedAudio: Uri? = data.data
+                    uploadAudioUri(selectedAudio!!)
+                }
+            }
+        }
     }
 
     private fun setOnBtnRecordClick() {
@@ -190,10 +206,10 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
 
     private fun setOnBtnAudioUploadClick() {
-        talk_start_char_dam.setOnClickListener {
+        btnUpload.setOnClickListener {
             val audioIntent =
                 Intent(Intent.ACTION_PICK, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(audioIntent, 2)
+            startActivityForResult(audioIntent, 1)
         }
     }
 
