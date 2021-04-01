@@ -20,6 +20,7 @@ class InfantCookieSaveActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
+    private var giftSelect:Int=0
 
     //private var i:Int = 1
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +32,7 @@ class InfantCookieSaveActivity : AppCompatActivity() {
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
+        giftSelect = intent.getIntExtra("giftSelect",0)
         cookieSaveCount.text = cookieCount.toString()
         setTrueCookieCountImage()
 
@@ -42,6 +44,7 @@ class InfantCookieSaveActivity : AppCompatActivity() {
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
+            intent.putExtra("giftSelect",giftSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

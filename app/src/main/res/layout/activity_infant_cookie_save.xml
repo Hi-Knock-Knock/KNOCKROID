@@ -99,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="17dp"
-                    android:src="@drawable/ic_cookies_true" />
+                    android:src="@drawable/ic_cookies_false" />
 
                 <ImageView
                     android:id="@+id/ic_cookie_false2"

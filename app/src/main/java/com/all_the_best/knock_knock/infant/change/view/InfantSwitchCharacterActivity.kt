@@ -21,6 +21,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
+    private var giftSelect:Int=0
 
     private lateinit var switchViewPagerAdapter: InfantSwitchViewPagerAdapter
     //private val infantSelectChViewModel: InfantSelectChViewModel by viewModels()
@@ -30,6 +31,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
+        giftSelect = intent.getIntExtra("giftSelect",0)
 
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
@@ -113,8 +115,14 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
             intent.putExtra("bgSelect", bgSelect)
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
+            intent.putExtra("giftSelect",giftSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
+
     }
+//    override fun onBackPressed() {
+//        startActivity(Intent(this, InfantHomeActivity::class.java))
+//        finish()
+//    }
 }

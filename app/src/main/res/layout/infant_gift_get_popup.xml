@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center"
     android:background="#00ffffff">
 
     <ImageView
         android:id="@+id/gift_popup_image"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
         android:src="@drawable/img_infant_gift_get_bg"
@@ -18,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/deco_item_bg1"
+        android:id="@+id/img_get_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -39,9 +40,9 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/deco_item_bg1"
-        app:layout_constraintStart_toStartOf="@+id/deco_item_bg1"
-        app:layout_constraintTop_toBottomOf="@+id/deco_item_bg1" />
+        app:layout_constraintEnd_toEndOf="@+id/img_get_item"
+        app:layout_constraintStart_toStartOf="@+id/img_get_item"
+        app:layout_constraintTop_toBottomOf="@+id/img_get_item" />
 
 
 

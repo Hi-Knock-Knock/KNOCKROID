@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.change.view.InfantSwitchCharacterActivity
@@ -24,8 +25,9 @@ class InfantHomeActivity : AppCompatActivity() {
     private var chSelect: Int = 0
     private var bgSelect: Int = 1
     private var cookieCount: Int = 5
-    //private val infantCookieViewModel: InfantCookieViewModel by viewModels()
+    private var giftSelect:Int=0
 
+    var time3: Long = 0
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
     private val formatted = current.format(formatter)
@@ -36,6 +38,7 @@ class InfantHomeActivity : AppCompatActivity() {
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
+        giftSelect = intent.getIntExtra("giftSelect",0)
 
         setBackgroundForTime()
         setSelectCharacter()
@@ -58,6 +61,7 @@ class InfantHomeActivity : AppCompatActivity() {
             intent1.putExtra("bgSelect", bgSelect)
             intent1.putExtra("cookieCount",cookieCount)
             intent1.putExtra("chSelect",chSelect)
+            intent1.putExtra("giftSelect",giftSelect)
             startActivity(intent1)
         }
 
@@ -66,7 +70,7 @@ class InfantHomeActivity : AppCompatActivity() {
         char_change_btn.setOnClickListener{
             intent2.putExtra("bgSelect",bgSelect)
             intent2.putExtra("cookieCount",cookieCount)
-            //intent2.putExtra("chSelect",chSelect)
+            intent2.putExtra("giftSelect",giftSelect)
             startActivityForResult(intent2,0)
         }
 
@@ -76,6 +80,7 @@ class InfantHomeActivity : AppCompatActivity() {
             intent3.putExtra("bgSelect",bgSelect)
             intent3.putExtra("cookieCount",cookieCount)
             intent3.putExtra("chSelect",chSelect)
+            intent3.putExtra("giftSelect",giftSelect)
             startActivity(intent3)
         }
 
@@ -84,6 +89,7 @@ class InfantHomeActivity : AppCompatActivity() {
         char_deco_btn.setOnClickListener{
             intent4.putExtra("cookieCount",cookieCount)
             intent4.putExtra("chSelect",chSelect)
+            intent4.putExtra("giftSelect",giftSelect)
             startActivityForResult(intent4,1)
         }
 
@@ -93,9 +99,24 @@ class InfantHomeActivity : AppCompatActivity() {
             intent5.putExtra("bgSelect",bgSelect)
             intent5.putExtra("cookieCount",cookieCount)
             intent5.putExtra("chSelect",chSelect)
+            intent5.putExtra("giftSelect",giftSelect)
             startActivity(intent5)
         }
+
     }
+
+//    override fun onBackPressed() {
+//        val time1 = System.currentTimeMillis()
+//        val time2 = time1 - time3
+//        if (time2 in 0..2000) {
+//            finish()
+//        }
+//        else {
+//            time3 = time1
+//            //Toast.makeText(applicationContext, "한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -119,6 +140,7 @@ class InfantHomeActivity : AppCompatActivity() {
     private fun setBackgroundForTime(){
         when(formatted){
             in "08:00:000".."13:59:999" -> {
+                window.statusBarColor = Color.parseColor("#57DDFF")         //상태바 색상 지정
                 when (bgSelect) {
                     1 -> infant_home.setBackgroundResource(R.drawable.img_infant_home_morning_bg)
                     2 -> infant_home.setBackgroundResource(R.drawable.img_infant_home_bg_flower1)
@@ -130,14 +152,17 @@ class InfantHomeActivity : AppCompatActivity() {
                 char_change_btn.setImageResource(R.drawable.ic_infant_change_btn_1)
                 when(bgSelect){
                     4-> {
+                        window.statusBarColor = Color.parseColor("#0F0E15")
                         char_deco_btn.setImageResource(R.drawable.ic_infant_deco_btn_3)
                         char_talk_btn.setImageResource(R.drawable.ic_infant_chat_btn_3)
                         char_change_btn.setImageResource(R.drawable.ic_infant_change_btn_3)
+
                     }
                 }
-                window.statusBarColor = Color.parseColor("#57DDFF")         //상태바 색상 지정
+
             }
             in "14:00:000".."19:59:999" -> {
+                window.statusBarColor = Color.parseColor("#FF6471")
                 when (bgSelect) {
                     1 -> infant_home.setBackgroundResource(R.drawable.img_infant_home_after_bg)
                     2 -> infant_home.setBackgroundResource(R.drawable.img_infant_home_bg_flower2)
@@ -150,12 +175,13 @@ class InfantHomeActivity : AppCompatActivity() {
                 char_change_btn.setImageResource(R.drawable.ic_infant_change_btn_2)
                 when(bgSelect){
                     4-> {
+                        window.statusBarColor = Color.parseColor("#0F0E15")
                         char_deco_btn.setImageResource(R.drawable.ic_infant_deco_btn_3)
                         char_talk_btn.setImageResource(R.drawable.ic_infant_chat_btn_3)
                         char_change_btn.setImageResource(R.drawable.ic_infant_change_btn_3)
                     }
                 }
-                window.statusBarColor = Color.parseColor("#FF6471")
+
             }
             in "20:00:00".."23:59:999" -> {
                 when(bgSelect){

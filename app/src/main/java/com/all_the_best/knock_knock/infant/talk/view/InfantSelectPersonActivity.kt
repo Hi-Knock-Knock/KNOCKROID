@@ -15,6 +15,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
+    private var giftSelect:Int=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +23,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
+        giftSelect = intent.getIntExtra("giftSelect",0)
 
         setSelectCharacter()
         val current = LocalDateTime.now()
@@ -31,22 +33,30 @@ class InfantSelectPersonActivity : AppCompatActivity() {
 
         when(formatted){
             in "08:00:000".."13:59:999" -> {
+                window.statusBarColor = Color.parseColor("#57DDFF")
                 when (bgSelect) {
                     1 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_morning_bg)
                     2 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_flower1)
                     3 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_sea1)
-                    4 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_space1) // 우주
+                    4 -> {
+                        infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_space1)
+                        window.statusBarColor = Color.parseColor("#0F0E15")
+                    } // 우주
                 }
-                window.statusBarColor = Color.parseColor("#57DDFF")
+
             }
             in "14:00:000".."19:59:999" -> {
+                window.statusBarColor = Color.parseColor("#FF6471")
                 when (bgSelect) {
                     1 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_after_bg)
                     2 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_flower2)
                     3 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_sea2)
-                    4 -> infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_space2) // 우주
+                    4 -> {
+                        infant_select_person.setBackgroundResource(R.drawable.img_infant_home_bg_space2)
+                        window.statusBarColor = Color.parseColor("#0F0E15")
+                    } // 우주
                 }
-                window.statusBarColor = Color.parseColor("#FF6471")
+
             }
             in "20:00:00".."23:59:999" -> {
                 when (bgSelect) {
@@ -74,6 +84,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
+            intent.putExtra("giftSelect",giftSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -81,6 +92,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
+            intent.putExtra("giftSelect",giftSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -88,6 +100,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
+            intent.putExtra("giftSelect",giftSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -95,6 +108,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
+            intent.putExtra("giftSelect",giftSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -102,6 +116,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("bgSelect",bgSelect)
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
+            intent.putExtra("giftSelect",giftSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

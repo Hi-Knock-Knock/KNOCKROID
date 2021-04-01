@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.viewpager.widget.ViewPager
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.cookie.viewmodel.InfantCookieViewModel
+import com.all_the_best.knock_knock.infant.gift.viewmodel.InfantGiftBgViewModel
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import com.all_the_best.knock_knock.infant.setting.adapter.InfantViewPagerAdapter
 import com.all_the_best.knock_knock.infant.setting.viewmodel.InfantSelectChViewModel
@@ -23,6 +24,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
     private lateinit var selectViewPagerAdapter: InfantViewPagerAdapter
     private val infantSelectChViewModel: InfantSelectChViewModel by viewModels()
     private val infantCookieViewModel: InfantCookieViewModel by viewModels()
+    private val infantGiftBgViewModel: InfantGiftBgViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +46,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
         select_btn_back.setOnClickListener {
             intent2.putExtra("chSelect", infantSelectChViewModel.chSelect.value)
             intent2.putExtra("cookieCount", infantCookieViewModel.cookieCount.value)
+            intent2.putExtra("giftSelect", infantGiftBgViewModel.giftSelect.value)
             startActivity(intent2)
             overridePendingTransition(0, 0)
         }
@@ -76,6 +79,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         select_btn_ok.setOnClickListener{
             intent1.putExtra("chSelect", infantSelectChViewModel.chSelect.value)
+            intent1.putExtra("giftSelect", infantGiftBgViewModel.giftSelect.value)
             startActivity(intent1)
             overridePendingTransition(0, 0)
         }
