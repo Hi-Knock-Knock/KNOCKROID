@@ -60,7 +60,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
 
             getBgPopup?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             //getBgPopup.getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
-            getBgPopup.setContentView(R.layout.infant_gift_get_popup)
+            getBgPopup.setContentView(R.layout.activity_infant_get_gift_popup)
             getBgPopup.window!!.attributes.width = WindowManager.LayoutParams.MATCH_PARENT
             getBgPopup.window!!.attributes.height = WindowManager.LayoutParams.MATCH_PARENT
             when(giftSelect){

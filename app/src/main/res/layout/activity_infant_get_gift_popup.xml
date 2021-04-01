@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/get_gift_popup"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:layout_gravity="center"
-    android:background="#00ffffff">
+    android:background="#00ffffff"
+
+    tools:context=".infant.gift.view.InfantGetGiftPopupActivity">
 
     <ImageView
         android:id="@+id/gift_popup_image"
@@ -14,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
         android:src="@drawable/img_infant_gift_get_bg"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +48,4 @@
         app:layout_constraintEnd_toEndOf="@+id/img_get_item"
         app:layout_constraintStart_toStartOf="@+id/img_get_item"
         app:layout_constraintTop_toBottomOf="@+id/img_get_item" />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

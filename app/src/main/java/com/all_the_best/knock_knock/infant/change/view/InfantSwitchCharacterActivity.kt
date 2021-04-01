@@ -40,23 +40,31 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
 
         when(formatted){
             in "08:00:000".."13:59:999" -> {
+                window.statusBarColor = Color.parseColor("#57DDFF")
                 when (bgSelect) {
                     1 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_morning_bg)
                     2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower1)
                     3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea1)
-                    4 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space1) // 우주
+                    4 -> {
+                        infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space1)
+                        window.statusBarColor = Color.parseColor("#0F0E15")
+                    } // 우주
                 }
-                window.statusBarColor = Color.parseColor("#57DDFF")
+
             }
             in "14:00:000".."19:59:999" -> {
+                window.statusBarColor = Color.parseColor("#FF6471")
                 when (bgSelect) {
                     1 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_after_bg)
                     2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower2)
                     3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea2)
-                    4 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space2) // 우주
+                    4 -> {
+                        infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space2)
+                        window.statusBarColor = Color.parseColor("#0F0E15")
+                    } // 우주
 
                 }
-                window.statusBarColor = Color.parseColor("#FF6471")
+
             }
             in "20:00:00".."23:59:999" -> {
                 when (bgSelect) {
