@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.NonNull
@@ -167,9 +169,10 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnDownLoadRecordClick(){
         btnDownload.setOnClickListener{
-           // downLoadRecording()
+            getDataFromStorage()
         }
     }
+
 
 
     @Suppress("DEPRECATION")
@@ -240,39 +243,24 @@ class InfantTalkStartActivity : AppCompatActivity() {
             }
     }
 
-//    private fun downLoadRecording() {
-//        // Create a storage reference from our app
-//        val storageRef = firebaseStorage.reference
-//
-//        // Create a reference with an initial file path and name
-//        val pathReference = storageRef.child("audioFile/2021-03-29.mp4")
-//
-//        // Create a reference to a file from a Google Cloud Storage URI
-//        val gsReference = firebaseStorage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com/audioFile/2021-03-29.mp4")
-//        var islandRef = storageRef.child("audioFile/2021-03-29.mp4")
-//
-//        val ONE_MEGABYTE: Long = 5246 * 5246
-//        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener {
-//            // Data for "images/island.jpg" is returned, use this as needed
-//            Toast.makeText(this, "다운로드 완료", Toast.LENGTH_SHORT).show()
-//        }.addOnFailureListener {
-//            // Handle any errors
-//            Toast.makeText(this, "다운로드 실패", Toast.LENGTH_SHORT).show()
-//        }
-//
-//
-////        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-////        val storageDir: File = Environment
-////            .getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
-////        val localFile = File.createTempFile("Record_${timeStamp}_", ".mp4", storageDir)
-////        val photoRef = firebaseStorage.reference.child("audioFile/${fileName}.mp4")
-////        photoRef.getFile(localFile).addOnSuccessListener {
-////            Toast.makeText(this, "다운로드 완료", Toast.LENGTH_SHORT).show()
-////            Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE).also { mediaScanIntent ->
-////                val f = File(localFile.absolutePath)
-////                mediaScanIntent.data = Uri.fromFile(f)
-////                sendBroadcast(mediaScanIntent)
-////            }
-////        }
-//    }
+    private fun getDataFromStorage() {
+        var pathReference = firebaseStorage.reference.child("audioFile").child("$fileName.mp4")
+
+        // createTempFile : 임시파일 생성 (so, 사용이 끝나면 삭제해줘야함.)
+        // deleteOnExit을 사용해서 파일 삭제 -> 특징 : 파일을 바로 삭제하는 것이 아니라, JVM이 종료될 때 자동으로 저장된 파일을 삭제함.
+        val localFile = File.createTempFile("temp_download", "mp4")
+        localFile.deleteOnExit()
+
+        pathReference.getFile(localFile).addOnSuccessListener {
+            // Local temp file has been created
+            val player = MediaPlayer()
+            player.setDataSource(localFile.path)
+            player.prepare()
+            player.start()
+            Log.d("getAudio", "success")
+        }.addOnFailureListener {
+            // Handle any errors
+            Log.d("getAudio", "fail")
+        }
+    }
 }
