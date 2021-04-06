@@ -23,6 +23,7 @@ import androidx.annotation.NonNull
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.cookie.view.InfantGetCookiePopupActivity
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
@@ -31,6 +32,7 @@ import com.google.firebase.storage.FileDownloadTask
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_infant_home.*
+import kotlinx.android.synthetic.main.activity_infant_select_person.*
 import kotlinx.android.synthetic.main.activity_infant_talk_start.*
 import java.io.File
 import java.io.IOException
@@ -38,6 +40,7 @@ import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.properties.Delegates
 
 @Suppress("DEPRECATION")
 class InfantTalkStartActivity : AppCompatActivity() {
@@ -46,7 +49,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
     private var giftSelect:Int=0
+    private var lottieSelect:Int=0
 
+    //private var loading by Delegates.notNull<Int>()
     private lateinit var fileName: String
     private lateinit var mediaRecorder: MediaRecorder
     private lateinit var audioUri:Uri
@@ -61,14 +66,17 @@ class InfantTalkStartActivity : AppCompatActivity() {
         setContentView(R.layout.activity_infant_talk_start)
         getToday()
         setOnBtnRecordClick()
+        setSelectCharacter()
+        setOnLottieStart()
         setOnBtnDownLoadRecordClick()
         //setOnBtnAudioUploadClick()
+        //loading = 0
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
         giftSelect = intent.getIntExtra("giftSelect",0)
+        lottieSelect = intent.getIntExtra("lottieSelect",0)
 
-        setSelectCharacter()
         window.statusBarColor = Color.parseColor("#FCC364")
 
         val current = LocalDateTime.now()
@@ -91,6 +99,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         infant_icon_out.setOnClickListener{
+            setMotionInit()
             // 쿠키 받는 팝업
             val cookiePopUp = Dialog(this)
             cookiePopUp?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -101,6 +110,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
             intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("cookieCount",cookieCount)
             intent1.putExtra("giftSelect",giftSelect)
+            intent1.putExtra("lottieSelect",lottieSelect)
             Handler(Looper.getMainLooper()).postDelayed ({
                 startActivity(intent1)
                 finish()
@@ -110,11 +120,34 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
     private fun setSelectCharacter(){
         when(chSelect){
-            0 -> talk_start_char_dam.setImageResource(R.drawable.img_char_dam)
-            1 -> talk_start_char_dam.setImageResource(R.drawable.img_char_knock)
-            2 -> talk_start_char_dam.setImageResource(R.drawable.img_char_timi)
+            0 -> {
+                 talk_start_char_dam.setAnimation("dami_ear.json")
+                //talk_start_char_dam.setAnimation("dami_think.json")
+            }
+            //1 -> talk_start_char_dam.setImageResource(R.drawable.img_char_knock)
+            //2 -> talk_start_char_dam.setImageResource(R.drawable.img_char_timi)
         }
     }
+
+    private fun setMotionInit(){
+        when(lottieSelect){
+            in 1..6 ->  lottieSelect = 0
+        }
+    }
+
+    private fun setOnLottieStart(){
+        talk_start_char_dam.repeatMode = LottieDrawable.REVERSE
+        talk_start_char_dam.repeatCount = LottieDrawable.INFINITE
+        talk_start_char_dam.playAnimation()
+    }
+
+    //  로딩 모션
+//    private fun CharLodingMotion() {
+//        when(loading){
+//            0 -> talk_start_char_dam.setAnimation("dami_ear.json")
+//            1-> talk_start_char_dam.setAnimation("dami_think.json")
+//        }
+//    }
 
     private fun getToday() {
         val currentTime: Date = Calendar.getInstance().getTime()
@@ -161,8 +194,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
         }
     }
 
-    private fun setOnBtnRecordStopClick() {
+    private fun setOnBtnRecordStopClick(){
         stopRecordBtn.setOnClickListener {
+            //loading = 1
             stopRecording()
         }
     }
@@ -172,8 +206,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
             getDataFromStorage()
         }
     }
-
-
 
     @Suppress("DEPRECATION")
     private fun startRecording() {
@@ -232,6 +264,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
 //            startActivityForResult(audioIntent, 1)
 //        }
 //    }
+
 
     private fun uploadAudioUri(file: Uri) {
         //val file = Uri.fromFile(file)

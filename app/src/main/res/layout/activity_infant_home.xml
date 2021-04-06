@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@id/char_change_btn" />
 
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/char_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_char_knock" />
+        app:lottie_fileName="dami_idle.json"  />
 
 
     <ImageView

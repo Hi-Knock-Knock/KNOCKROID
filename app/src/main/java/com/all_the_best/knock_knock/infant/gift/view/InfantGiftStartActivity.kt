@@ -7,11 +7,13 @@ import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.cookie.viewmodel.InfantCookieViewModel
 import com.all_the_best.knock_knock.infant.gift.viewmodel.InfantGiftBgViewModel
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import kotlinx.android.synthetic.main.activity_infant_gift_start.*
+import kotlinx.android.synthetic.main.activity_infant_talk_start.*
 
 class InfantGiftStartActivity : AppCompatActivity() {
 
@@ -25,7 +27,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_gift_start)
-
+        setOnLottieStart()
         val cookieGiftCount1: TextView = findViewById(R.id.infant_gift_start_cookie_count)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
@@ -133,4 +135,12 @@ class InfantGiftStartActivity : AppCompatActivity() {
         }
 
     }
+
+    // 로티 적용
+    private fun setOnLottieStart() {
+        infant_gift_char.repeatMode = LottieDrawable.REVERSE
+        infant_gift_char.repeatCount = LottieDrawable.INFINITE
+        infant_gift_char.playAnimation()
+    }
+
 }

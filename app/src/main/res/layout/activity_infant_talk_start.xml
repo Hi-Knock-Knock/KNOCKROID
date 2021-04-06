@@ -18,8 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/talk_start_char_dam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_char_knock" />
+        app:lottie_fileName="dami_ear.json"/>
 
     <ImageView
         android:id="@+id/infant_talk1"

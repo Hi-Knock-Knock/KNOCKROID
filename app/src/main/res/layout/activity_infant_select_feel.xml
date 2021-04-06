@@ -9,15 +9,15 @@
     tools:context=".infant.talk.view.InfantSelectFeelActivity">
 
 
-    <ImageView
-        android:id="@+id/char_dam"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/char_talk_feel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="207dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_char_knock" />
+        app:lottie_fileName="dami_idle.json"  />
 
 
     <ImageView
@@ -27,10 +27,10 @@
         android:layout_marginBottom="344dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_infant_chatbox2"
-        app:layout_constraintBottom_toBottomOf="@+id/char_dam"
-        app:layout_constraintEnd_toEndOf="@+id/char_dam"
+        app:layout_constraintBottom_toBottomOf="@+id/char_talk_feel"
+        app:layout_constraintEnd_toEndOf="@+id/char_talk_feel"
         app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="@+id/char_dam" />
+        app:layout_constraintStart_toStartOf="@+id/char_talk_feel" />
 
     <TextView
         android:id="@+id/talk_txtview"

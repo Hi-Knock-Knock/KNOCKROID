@@ -4,10 +4,10 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
-import kotlinx.android.synthetic.main.activity_infant_select_feel.*
+import kotlinx.android.synthetic.main.activity_infant_home.*
 import kotlinx.android.synthetic.main.activity_infant_select_person.*
-import kotlinx.android.synthetic.main.activity_infant_select_person.char_dam
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -16,6 +16,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
     private var giftSelect:Int=0
+    private var lottieSelect:Int=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +25,11 @@ class InfantSelectPersonActivity : AppCompatActivity() {
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
         giftSelect = intent.getIntExtra("giftSelect",0)
+        lottieSelect = intent.getIntExtra("lottieSelect",0)
 
-        setSelectCharacter()
+        //setSelectCharacter()
+        setSelectFeelMotion()
+
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
         val formatted = current.format(formatter)
@@ -85,6 +89,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
             intent.putExtra("giftSelect",giftSelect)
+            intent.putExtra("lottieSelect",lottieSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -93,6 +98,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
             intent.putExtra("giftSelect",giftSelect)
+            intent.putExtra("lottieSelect",lottieSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -101,6 +107,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
             intent.putExtra("giftSelect",giftSelect)
+            intent.putExtra("lottieSelect",lottieSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -109,6 +116,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
             intent.putExtra("giftSelect",giftSelect)
+            intent.putExtra("lottieSelect",lottieSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -117,6 +125,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
             intent.putExtra("giftSelect",giftSelect)
+            intent.putExtra("lottieSelect",lottieSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -124,9 +133,52 @@ class InfantSelectPersonActivity : AppCompatActivity() {
 
     private fun setSelectCharacter(){
         when(chSelect){
-            0 -> char_dam.setImageResource(R.drawable.img_char_dam)
-            1 -> char_dam.setImageResource(R.drawable.img_char_knock)
-            2 -> char_dam.setImageResource(R.drawable.img_char_timi)
+            0 -> char_talk_person.setImageResource(R.drawable.img_char_dam)
+            1 -> char_talk_person.setImageResource(R.drawable.img_char_knock)
+            2 -> char_talk_person.setImageResource(R.drawable.img_char_timi)
         }
+    }
+
+    // 기분 모션 선택
+    private fun setSelectFeelMotion(){
+        when(chSelect){
+            0 -> {
+                when(lottieSelect){
+                    1 -> char_talk_person.setAnimation("dami_happy.json")
+                    2 -> char_talk_person.setAnimation("dami_happy.json")
+                    3 -> char_talk_person.setAnimation("dami_sad.json")
+                    4 -> char_talk_person.setAnimation("dami_sad.json")
+                    5 -> char_talk_person.setAnimation("dami_scared.json")
+                    6 -> char_talk_person.setAnimation("dami_angry.json")
+                }
+            }
+            1 -> { // 녹녹이일때
+                when(lottieSelect){
+                    1 -> char_talk_person.setAnimation("dami_happy.json")
+                    2 -> char_talk_person.setAnimation("dami_happy.json")
+                    3 -> char_talk_person.setAnimation("dami_sad.json")
+                    4 -> char_talk_person.setAnimation("dami_sad.json")
+                    5 -> char_talk_person.setAnimation("dami_scared.json")
+                    6 -> char_talk_person.setAnimation("dami_angry.json")
+                }
+            }
+            2 -> { // 티미일때
+                when(lottieSelect){
+                    1 -> char_talk_person.setAnimation("dami_happy.json")
+                    2 -> char_talk_person.setAnimation("dami_happy.json")
+                    3 -> char_talk_person.setAnimation("dami_sad.json")
+                    4 -> char_talk_person.setAnimation("dami_sad.json")
+                    5 -> char_talk_person.setAnimation("dami_scared.json")
+                    6 -> char_talk_person.setAnimation("dami_angry.json")
+                }
+            }
+        }
+        setOnMotionStart()
+    }
+
+    private fun setOnMotionStart(){
+        char_talk_person.repeatMode = LottieDrawable.REVERSE
+        char_talk_person.repeatCount = LottieDrawable.INFINITE
+        char_talk_person.playAnimation()
     }
 }

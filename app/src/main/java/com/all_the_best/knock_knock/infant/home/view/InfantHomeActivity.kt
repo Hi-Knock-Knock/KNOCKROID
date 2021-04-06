@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.change.view.InfantSwitchCharacterActivity
 import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
@@ -26,6 +27,7 @@ class InfantHomeActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
     private var cookieCount: Int = 5
     private var giftSelect:Int=0
+    private var lottieSelect:Int=0
 
     var time3: Long = 0
     private val current = LocalDateTime.now()
@@ -35,10 +37,12 @@ class InfantHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_home)
+
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
         giftSelect = intent.getIntExtra("giftSelect",0)
+        lottieSelect = intent.getIntExtra("lottieSelect",0)
 
         setBackgroundForTime()
         setSelectCharacter()
@@ -46,10 +50,6 @@ class InfantHomeActivity : AppCompatActivity() {
         infant_talk1.setOnClickListener{
             Log.d("time", formatted)
         }
-// lottie
-//        char_dam.repeatMode = LottieDrawable.REVERSE
-//        char_dam.repeatCount = LottieDrawable.INFINITE
-//        char_dam.playAnimation()
 
         //선물상자에서 줄어든 쿠키 갯수 반영
         val cookieCountHome: TextView = findViewById(R.id.infant_home_cookie_count_txt)
@@ -60,6 +60,7 @@ class InfantHomeActivity : AppCompatActivity() {
         char_talk_btn.setOnClickListener{
             intent1.putExtra("bgSelect", bgSelect)
             intent1.putExtra("cookieCount",cookieCount)
+            intent1.putExtra("lottieSelect",lottieSelect)
             intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("giftSelect",giftSelect)
             startActivity(intent1)
@@ -71,6 +72,7 @@ class InfantHomeActivity : AppCompatActivity() {
             intent2.putExtra("bgSelect",bgSelect)
             intent2.putExtra("cookieCount",cookieCount)
             intent2.putExtra("giftSelect",giftSelect)
+            intent2.putExtra("lottieSelect",lottieSelect)
             startActivityForResult(intent2,0)
         }
 
@@ -81,6 +83,7 @@ class InfantHomeActivity : AppCompatActivity() {
             intent3.putExtra("cookieCount",cookieCount)
             intent3.putExtra("chSelect",chSelect)
             intent3.putExtra("giftSelect",giftSelect)
+            intent3.putExtra("lottieSelect",lottieSelect)
             startActivity(intent3)
         }
 
@@ -90,6 +93,7 @@ class InfantHomeActivity : AppCompatActivity() {
             intent4.putExtra("cookieCount",cookieCount)
             intent4.putExtra("chSelect",chSelect)
             intent4.putExtra("giftSelect",giftSelect)
+            intent4.putExtra("lottieSelect",lottieSelect)
             startActivityForResult(intent4,1)
         }
 
@@ -100,6 +104,7 @@ class InfantHomeActivity : AppCompatActivity() {
             intent5.putExtra("cookieCount",cookieCount)
             intent5.putExtra("chSelect",chSelect)
             intent5.putExtra("giftSelect",giftSelect)
+            intent5.putExtra("lottieSelect",lottieSelect)
             startActivity(intent5)
         }
 
@@ -212,9 +217,24 @@ class InfantHomeActivity : AppCompatActivity() {
 
     private fun setSelectCharacter(){
         when(chSelect){
-            0 -> char_img.setImageResource(R.drawable.img_char_dam)
-            1 -> char_img.setImageResource(R.drawable.img_char_knock)
-            2 -> char_img.setImageResource(R.drawable.img_char_timi)
+            0 -> {char_img.setAnimation("dami_idle.json")
+                char_img.setOnClickListener{
+                    char_img.setAnimation("dami_hi.json")
+                    char_img.repeatMode = LottieDrawable.REVERSE
+                    char_img.repeatCount = LottieDrawable.INFINITE
+                    char_img.playAnimation()
+                }
+            } // 담이 idle
+            1 -> char_img.setAnimation("dami_ear.json") //녹녹이 idle로 바꾸기
+            2 -> char_img.setAnimation("dami_hi.json") // 티미 idle로 바꾸기
         }
+        setOnMotionStart()
+    }
+
+    // lottie -> 캐릭터 change가 되면 애니메이션이 움직이도록 해야되니까...이미지를 다 애니메이션으로 바꿔야되는ㅋㅋ ..
+    private fun setOnMotionStart(){
+        char_img.repeatMode = LottieDrawable.REVERSE
+        char_img.repeatCount = LottieDrawable.INFINITE
+        char_img.playAnimation()
     }
 }
