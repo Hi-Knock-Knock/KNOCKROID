@@ -50,6 +50,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="20dp"
+                android:theme="@style/search_view_query_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/faq_txt_title" />
@@ -71,11 +72,11 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
+                        android:overScrollMode="never"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:listitem="@layout/rcv_parent_faq"
-                        android:overScrollMode="never" />
+                        tools:listitem="@layout/rcv_parent_faq" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

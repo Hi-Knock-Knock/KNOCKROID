@@ -40,7 +40,9 @@
         <activity android:name=".infant.setting.view.InfantSelectIdActivity" />
         <activity android:name=".infant.home.view.InfantHomeActivity" />
         <activity android:name=".parent.faq.view.ParentFaqDetailActivity" />
-        <activity android:name=".parent.home.view.ParentHomeActivity" />
+        <activity
+            android:name=".parent.home.view.ParentHomeActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".parent.base.view.SelectModeActivity" />
         <activity android:name=".parent.base.view.SignupActivity" />
         <activity android:name=".parent.base.view.LoginActivity" />

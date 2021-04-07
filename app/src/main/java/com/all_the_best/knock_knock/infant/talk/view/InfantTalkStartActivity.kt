@@ -57,6 +57,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
     private lateinit var audioUri:Uri
     private var state = false
     private val firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
+    private var recordNum: Int = 1
     //private val storageReference: StorageReference = firebaseStorage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com");
 
     //gs://knockknock-29f42.appspot.com/audioFile
@@ -268,16 +269,17 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun uploadAudioUri(file: Uri) {
         //val file = Uri.fromFile(file)
-        firebaseStorage.reference.child("audioFile").child(fileName + ".mp4")
+        firebaseStorage.reference.child(fileName).child("child").child("child($recordNum).mp4")
             .putFile(file).addOnCompleteListener {
                 if (it.isSuccessful) {
                     //Log.d("storage", "upload success")
                 }
             }
+        recordNum++
     }
 
     private fun getDataFromStorage() {
-        var pathReference = firebaseStorage.reference.child("audioFile").child("$fileName.mp4")
+        var pathReference = firebaseStorage.reference.child(fileName).child("parent").child("parent($recordNum).mp4")
 
         // createTempFile : 임시파일 생성 (so, 사용이 끝나면 삭제해줘야함.)
         // deleteOnExit을 사용해서 파일 삭제 -> 특징 : 파일을 바로 삭제하는 것이 아니라, JVM이 종료될 때 자동으로 저장된 파일을 삭제함.

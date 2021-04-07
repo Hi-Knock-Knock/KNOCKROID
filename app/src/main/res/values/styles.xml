@@ -14,9 +14,18 @@
         <item name="android:textColorPrimary">#b1c1ff</item>
         <item name="queryBackground">@android:color/transparent</item>
         <item name="android:background">@drawable/bg_faq_search</item>
+        <item name="submitBackground">@android:color/transparent</item>
         <item name="android:textColorHint">#b1c1ff</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">#b1c1ff</item>
+    </style>
+
+    <style name="search_view_query_color" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColorHint">#b1c1ff</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#b1c1ff</item>
+        <item name="editTextColor">#b1c1ff</item>
+        <item name="android:textColorPrimary">#b1c1ff</item>
     </style>
 
     <style name="floating_btn" parent="Widget.Design.FloatingActionButton">
