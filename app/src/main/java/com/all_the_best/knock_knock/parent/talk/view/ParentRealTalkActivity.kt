@@ -41,6 +41,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
     private lateinit var fileName: String
     private lateinit var audioUri: Uri
     private var recordNum: Int = 1
+    private var getDataNum: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,7 +83,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
     }
 
     private fun getDataFromStorage() {
-        pathReference = firebaseStorage.reference.child(fileName).child("child").child("child($recordNum).mp4")
+        pathReference = firebaseStorage.reference.child(fileName).child("child").child("child($getDataNum).mp4")
 
         // createTempFile : 임시파일 생성 (so, 사용이 끝나면 삭제해줘야함.)
         // deleteOnExit을 사용해서 파일 삭제 -> 특징 : 파일을 바로 삭제하는 것이 아니라, JVM이 종료될 때 자동으로 저장된 파일을 삭제함.
@@ -96,6 +97,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
             player.prepare()
             player.start()
             Log.d("getAudio", "success")
+            getDataNum++
         }.addOnFailureListener {
             // Handle any errors
             Log.d("getAudio", "fail")
