@@ -12,9 +12,11 @@ import androidx.fragment.app.viewModels
 import androidx.viewpager.widget.ViewPager
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.cookie.viewmodel.InfantCookieViewModel
+import com.all_the_best.knock_knock.infant.gift.viewmodel.InfantGiftBgViewModel
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import com.all_the_best.knock_knock.infant.setting.adapter.InfantViewPagerAdapter
 import com.all_the_best.knock_knock.infant.setting.viewmodel.InfantSelectChViewModel
+import com.all_the_best.knock_knock.infant.talk.viewmodel.InfantTalkLottieViewModel
 import kotlinx.android.synthetic.main.activity_infant_deco.*
 import kotlinx.android.synthetic.main.activity_infant_select_character.*
 
@@ -23,6 +25,8 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
     private lateinit var selectViewPagerAdapter: InfantViewPagerAdapter
     private val infantSelectChViewModel: InfantSelectChViewModel by viewModels()
     private val infantCookieViewModel: InfantCookieViewModel by viewModels()
+    private val infantGiftBgViewModel: InfantGiftBgViewModel by viewModels()
+    private val infantTalkLottieViewModel: InfantTalkLottieViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +43,15 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
         infant_viewpager_select.adapter = selectViewPagerAdapter
 
 
+
         // 아이 계정 선택 화면
         val intent2 = Intent(this, InfantSelectIdActivity::class.java)
         select_btn_back.setOnClickListener {
+            infantTalkLottieViewModel.setlottieSelect(0)
             intent2.putExtra("chSelect", infantSelectChViewModel.chSelect.value)
             intent2.putExtra("cookieCount", infantCookieViewModel.cookieCount.value)
+            intent2.putExtra("giftSelect", infantGiftBgViewModel.giftSelect.value)
+            intent2.putExtra("lottieSelect", infantTalkLottieViewModel.lottieSelect.value)
             startActivity(intent2)
             overridePendingTransition(0, 0)
         }
@@ -75,7 +83,10 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
         // 홈화면
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         select_btn_ok.setOnClickListener{
+            //infantTalkLottieViewModel.setlottieSelect(0)
             intent1.putExtra("chSelect", infantSelectChViewModel.chSelect.value)
+            intent1.putExtra("giftSelect", infantGiftBgViewModel.giftSelect.value)
+            intent1.putExtra("lottieSelect", infantTalkLottieViewModel.lottieSelect.value)
             startActivity(intent1)
             overridePendingTransition(0, 0)
         }

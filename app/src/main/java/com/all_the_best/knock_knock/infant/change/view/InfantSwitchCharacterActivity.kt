@@ -10,6 +10,7 @@ import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import com.all_the_best.knock_knock.infant.change.adapter.InfantSwitchViewPagerAdapter
 import com.all_the_best.knock_knock.infant.setting.viewmodel.InfantSelectChViewModel
+import kotlinx.android.synthetic.main.activity_infant_deco.*
 import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 
 import kotlinx.android.synthetic.main.activity_infant_switch_character.*
@@ -20,6 +21,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
+    private var giftSelect:Int=0
 
     private lateinit var switchViewPagerAdapter: InfantSwitchViewPagerAdapter
     //private val infantSelectChViewModel: InfantSelectChViewModel by viewModels()
@@ -29,6 +31,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
+        giftSelect = intent.getIntExtra("giftSelect",0)
 
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
@@ -37,26 +40,39 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
 
         when(formatted){
             in "08:00:000".."13:59:999" -> {
+                window.statusBarColor = Color.parseColor("#57DDFF")
                 when (bgSelect) {
                     1 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_morning_bg)
                     2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower1)
                     3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea1)
+                    4 -> {
+                        infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space1)
+                        window.statusBarColor = Color.parseColor("#0F0E15")
+                    } // 우주
                 }
-                window.statusBarColor = Color.parseColor("#57DDFF")
+
             }
             in "14:00:000".."19:59:999" -> {
+                window.statusBarColor = Color.parseColor("#FF6471")
                 when (bgSelect) {
                     1 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_after_bg)
                     2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower2)
                     3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea2)
+                    4 -> {
+                        infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space2)
+                        window.statusBarColor = Color.parseColor("#0F0E15")
+                    } // 우주
+
                 }
-                window.statusBarColor = Color.parseColor("#FF6471")
+
             }
             in "20:00:00".."23:59:999" -> {
                 when (bgSelect) {
                     1 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_night_bg)
                     2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower3)
                     3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea3)
+                    4 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space3) // 우주
+
                 }
                 window.statusBarColor = Color.parseColor("#0F0E15")
             }
@@ -65,6 +81,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
                     1 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_night_bg)
                     2 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_flower3)
                     3 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_sea3)
+                    4 -> infant_switch_character.setBackgroundResource(R.drawable.img_infant_home_bg_space3) // 우주
                 }
                 window.statusBarColor = Color.parseColor("#0F0E15")
             }
@@ -106,8 +123,14 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
             intent.putExtra("bgSelect", bgSelect)
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
+            intent.putExtra("giftSelect",giftSelect)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
+
     }
+//    override fun onBackPressed() {
+//        startActivity(Intent(this, InfantHomeActivity::class.java))
+//        finish()
+//    }
 }

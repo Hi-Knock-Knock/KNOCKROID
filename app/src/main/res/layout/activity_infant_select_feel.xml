@@ -8,6 +8,18 @@
     android:background="@drawable/img_infant_home_morning_bg"
     tools:context=".infant.talk.view.InfantSelectFeelActivity">
 
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/char_talk_feel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="207dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_fileName="dami_idle.json"  />
+
+
     <ImageView
         android:id="@+id/infant_talk1"
         android:layout_width="239dp"
@@ -15,10 +27,10 @@
         android:layout_marginBottom="344dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_infant_chatbox2"
-        app:layout_constraintBottom_toBottomOf="@+id/char_dam"
-        app:layout_constraintEnd_toEndOf="@+id/char_dam"
+        app:layout_constraintBottom_toBottomOf="@+id/char_talk_feel"
+        app:layout_constraintEnd_toEndOf="@+id/char_talk_feel"
         app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="@+id/char_dam" />
+        app:layout_constraintStart_toStartOf="@+id/char_talk_feel" />
 
     <TextView
         android:id="@+id/talk_txtview"
@@ -34,16 +46,6 @@
         app:layout_constraintStart_toStartOf="@+id/infant_talk1"
         app:layout_constraintTop_toTopOf="@id/infant_talk1"
         app:layout_constraintVertical_bias="0.263" />
-
-    <ImageView
-        android:id="@+id/char_dam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="188dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img_char_dam" />
 
     <LinearLayout
         android:id="@+id/infant_feel_emjbar"

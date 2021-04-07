@@ -7,52 +7,76 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.cookie.view.InfantGetCookiePopupActivity
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import com.all_the_best.knock_knock.parent.base.view.LoginActivity
+import com.google.firebase.storage.FileDownloadTask
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_infant_home.*
+import kotlinx.android.synthetic.main.activity_infant_select_person.*
 import kotlinx.android.synthetic.main.activity_infant_talk_start.*
+import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.properties.Delegates
 
+@Suppress("DEPRECATION")
 class InfantTalkStartActivity : AppCompatActivity() {
 
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
+    private var giftSelect:Int=0
+    private var lottieSelect:Int=0
+
+    //private var loading by Delegates.notNull<Int>()
     private lateinit var fileName: String
     private lateinit var mediaRecorder: MediaRecorder
+    private lateinit var audioUri:Uri
     private var state = false
     private val firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
+    //private val storageReference: StorageReference = firebaseStorage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com");
+
+    //gs://knockknock-29f42.appspot.com/audioFile
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_talk_start)
         getToday()
         setOnBtnRecordClick()
-        setOnBtnAudioUploadClick()
+        setSelectCharacter()
+        setOnLottieStart()
+        setOnBtnDownLoadRecordClick()
+        //setOnBtnAudioUploadClick()
+        //loading = 0
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
+        giftSelect = intent.getIntExtra("giftSelect",0)
+        lottieSelect = intent.getIntExtra("lottieSelect",0)
 
-        setSelectCharacter()
         window.statusBarColor = Color.parseColor("#FCC364")
 
         val current = LocalDateTime.now()
@@ -73,13 +97,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
             }
         }
 
-        // 아이 녹음 하기(대화시작)
-        talk_start_char_dam.setOnClickListener {
-
-        }
-
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         infant_icon_out.setOnClickListener{
+            setMotionInit()
             // 쿠키 받는 팝업
             val cookiePopUp = Dialog(this)
             cookiePopUp?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -89,6 +109,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
             intent1.putExtra("bgSelect", bgSelect)
             intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("cookieCount",cookieCount)
+            intent1.putExtra("giftSelect",giftSelect)
+            intent1.putExtra("lottieSelect",lottieSelect)
             Handler(Looper.getMainLooper()).postDelayed ({
                 startActivity(intent1)
                 finish()
@@ -98,11 +120,34 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
     private fun setSelectCharacter(){
         when(chSelect){
-            0 -> talk_start_char_dam.setImageResource(R.drawable.img_char_dam)
-            1 -> talk_start_char_dam.setImageResource(R.drawable.img_char_knock)
-            2 -> talk_start_char_dam.setImageResource(R.drawable.img_char_timi)
+            0 -> {
+                 talk_start_char_dam.setAnimation("dami_ear.json")
+                //talk_start_char_dam.setAnimation("dami_think.json")
+            }
+            //1 -> talk_start_char_dam.setImageResource(R.drawable.img_char_knock)
+            //2 -> talk_start_char_dam.setImageResource(R.drawable.img_char_timi)
         }
     }
+
+    private fun setMotionInit(){
+        when(lottieSelect){
+            in 1..6 ->  lottieSelect = 0
+        }
+    }
+
+    private fun setOnLottieStart(){
+        talk_start_char_dam.repeatMode = LottieDrawable.REVERSE
+        talk_start_char_dam.repeatCount = LottieDrawable.INFINITE
+        talk_start_char_dam.playAnimation()
+    }
+
+    //  로딩 모션
+//    private fun CharLodingMotion() {
+//        when(loading){
+//            0 -> talk_start_char_dam.setAnimation("dami_ear.json")
+//            1-> talk_start_char_dam.setAnimation("dami_think.json")
+//        }
+//    }
 
     private fun getToday() {
         val currentTime: Date = Calendar.getInstance().getTime()
@@ -149,12 +194,18 @@ class InfantTalkStartActivity : AppCompatActivity() {
         }
     }
 
-    private fun setOnBtnRecordStopClick() {
+    private fun setOnBtnRecordStopClick(){
         stopRecordBtn.setOnClickListener {
+            //loading = 1
             stopRecording()
         }
     }
 
+    private fun setOnBtnDownLoadRecordClick(){
+        btnDownload.setOnClickListener{
+            getDataFromStorage()
+        }
+    }
 
     @Suppress("DEPRECATION")
     private fun startRecording() {
@@ -169,7 +220,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         values.put(MediaStore.Audio.Media.DATA, fileName)
         values.put(MediaStore.Audio.Media.RELATIVE_PATH, "Music/Recordings/");
 
-        val audioUri = contentResolver.insert(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, values)
+        audioUri = contentResolver.insert(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, values)!!
         val file = audioUri?.let { getContentResolver().openFileDescriptor(it, "w") };
 
         mediaRecorder = MediaRecorder()
@@ -198,20 +249,22 @@ class InfantTalkStartActivity : AppCompatActivity() {
             mediaRecorder?.reset()
             mediaRecorder?.release()
             state = false
-            Toast.makeText(this, "중지 되었습니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "중지 되었습니다. 업로드 되었습니다.", Toast.LENGTH_SHORT).show()
+            uploadAudioUri(audioUri)
 
         } else {
             Toast.makeText(this, "레코딩 상태가 아닙니다.", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun setOnBtnAudioUploadClick() {
-        btnUpload.setOnClickListener {
-            val audioIntent =
-                Intent(Intent.ACTION_PICK, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(audioIntent, 1)
-        }
-    }
+//    private fun setOnBtnAudioUploadClick() {
+//        talk_start_char_dam.setOnClickListener {
+//            val audioIntent =
+//                Intent(Intent.ACTION_PICK, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI)
+//            startActivityForResult(audioIntent, 1)
+//        }
+//    }
+
 
     private fun uploadAudioUri(file: Uri) {
         //val file = Uri.fromFile(file)
@@ -221,5 +274,26 @@ class InfantTalkStartActivity : AppCompatActivity() {
                     //Log.d("storage", "upload success")
                 }
             }
+    }
+
+    private fun getDataFromStorage() {
+        var pathReference = firebaseStorage.reference.child("audioFile").child("$fileName.mp4")
+
+        // createTempFile : 임시파일 생성 (so, 사용이 끝나면 삭제해줘야함.)
+        // deleteOnExit을 사용해서 파일 삭제 -> 특징 : 파일을 바로 삭제하는 것이 아니라, JVM이 종료될 때 자동으로 저장된 파일을 삭제함.
+        val localFile = File.createTempFile("temp_download", "mp4")
+        localFile.deleteOnExit()
+
+        pathReference.getFile(localFile).addOnSuccessListener {
+            // Local temp file has been created
+            val player = MediaPlayer()
+            player.setDataSource(localFile.path)
+            player.prepare()
+            player.start()
+            Log.d("getAudio", "success")
+        }.addOnFailureListener {
+            // Handle any errors
+            Log.d("getAudio", "fail")
+        }
     }
 }

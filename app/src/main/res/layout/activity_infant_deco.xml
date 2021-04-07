@@ -57,6 +57,7 @@
                     android:layout_marginRight="16dp"
                     android:background="@drawable/bg_deco_select_item"
                     android:scaleType="centerInside"
+                    android:enabled="true"
                     android:src="@drawable/img_infant_deco_item_basic"/>
 
                 <ImageView
@@ -65,6 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="16dp"
                     android:scaleType="centerInside"
+                    android:enabled="true"
                     android:background="@drawable/bg_deco_unselect_item"
                     android:src="@drawable/img_infant_deco_item_flower" />
 
@@ -73,8 +75,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="centerInside"
+                    android:clickable="false"
                     android:background="@drawable/bg_deco_unselect_item"
-                    android:src="@drawable/img_infant_deco_item_sea" />
+                    android:src="@drawable/img_infant_deco_itembox_false" />
             </TableRow>
 
             <TableRow>
@@ -85,8 +88,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
                     android:layout_marginRight="16dp"
-
                     android:scaleType="centerInside"
+                    android:clickable="false"
                     android:background="@drawable/bg_deco_unselect_item"
                     android:src="@drawable/img_infant_deco_itembox_false" />
 
@@ -96,6 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
                     android:layout_marginRight="16dp"
+                    android:clickable="false"
                     android:background="@drawable/bg_deco_unselect_item"
                     android:scaleType="centerInside"
                     android:src="@drawable/img_infant_deco_itembox_false" />
@@ -105,6 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
+                    android:clickable="false"
                     android:background="@drawable/bg_deco_unselect_item"
                     android:scaleType="centerInside"
                     android:src="@drawable/img_infant_deco_itembox_false" />
