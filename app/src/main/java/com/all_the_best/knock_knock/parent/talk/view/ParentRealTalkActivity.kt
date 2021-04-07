@@ -3,6 +3,7 @@ package com.all_the_best.knock_knock.parent.talk.view
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Bundle
@@ -24,6 +25,7 @@ import com.all_the_best.knock_knock.parent.talk.viewmodel.ParentTalkViewModel
 import com.all_the_best.knock_knock.util.StatusBarUtil
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -48,6 +50,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
         )
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_real_talk)
         binding.txtSubmit = "전송하기"
+        setGetChildRecordClick()
         setTipRcvAdapter()
         setSubmitClick()
         setRecordBtnClick()
@@ -70,6 +73,33 @@ class ParentRealTalkActivity : AppCompatActivity() {
         binding.acceptTalkRcv.adapter = tipRcvAdapter
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.acceptTalkRcv)
+    }
+
+    private fun setGetChildRecordClick(){
+        binding.acceptTalkBtnChildRecordPlay.setOnClickListener {
+            getDataFromStorage()
+        }
+    }
+
+    private fun getDataFromStorage() {
+        pathReference = firebaseStorage.reference.child(fileName).child("child").child("child($recordNum).mp4")
+
+        // createTempFile : 임시파일 생성 (so, 사용이 끝나면 삭제해줘야함.)
+        // deleteOnExit을 사용해서 파일 삭제 -> 특징 : 파일을 바로 삭제하는 것이 아니라, JVM이 종료될 때 자동으로 저장된 파일을 삭제함.
+        val localFile = File.createTempFile("temp_download", "mp4")
+        localFile.deleteOnExit()
+
+        pathReference.getFile(localFile).addOnSuccessListener {
+            // Local temp file has been created
+            val player = MediaPlayer()
+            player.setDataSource(localFile.path)
+            player.prepare()
+            player.start()
+            Log.d("getAudio", "success")
+        }.addOnFailureListener {
+            // Handle any errors
+            Log.d("getAudio", "fail")
+        }
     }
 
     private fun setRecordBtnClick() {

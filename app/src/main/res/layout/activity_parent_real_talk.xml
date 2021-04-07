@@ -57,7 +57,7 @@
             app:layout_constraintTop_toBottomOf="@id/accept_talk_txt_title" />
 
         <ImageButton
-            android:id="@+id/accept_talk_btn_play"
+            android:id="@+id/accept_talk_btn_child_record_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_transparent"
@@ -89,7 +89,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/accept_talk_img_profile"
             app:layout_constraintStart_toStartOf="@id/accept_talk_img_profile"
-            app:layout_constraintTop_toBottomOf="@id/accept_talk_btn_play"
+            app:layout_constraintTop_toBottomOf="@id/accept_talk_btn_child_record_play"
             tools:text="2020.10.08" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
