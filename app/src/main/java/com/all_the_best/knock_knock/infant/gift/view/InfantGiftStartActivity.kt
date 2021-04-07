@@ -6,24 +6,34 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
+import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.infant.cookie.viewmodel.InfantCookieViewModel
+import com.all_the_best.knock_knock.infant.gift.viewmodel.InfantGiftBgViewModel
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import kotlinx.android.synthetic.main.activity_infant_gift_start.*
+import kotlinx.android.synthetic.main.activity_infant_talk_start.*
 
 class InfantGiftStartActivity : AppCompatActivity() {
+
+
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
+    private var giftSelect:Int=0
     //private var btnTrue:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_gift_start)
-
+        setOnLottieStart()
         val cookieGiftCount1: TextView = findViewById(R.id.infant_gift_start_cookie_count)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
+        giftSelect = intent.getIntExtra("giftSelect",0)
+
         val intentGoHome = Intent(this, InfantHomeActivity::class.java)
         cookieGiftCount1.text = cookieCount.toString()
 
@@ -37,6 +47,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
         intent1.putExtra("bgSelect",bgSelect)
         intent1.putExtra("chSelect",chSelect)
         intent1.putExtra("cookieCount",cookieCount)
+        intent1.putExtra("giftSelect",giftSelect)
 
         infant_empty_cookie1.setOnClickListener {
             if(cookieCount<=2){
@@ -48,6 +59,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                     intentGoHome.putExtra("bgSelect",bgSelect)
                     intentGoHome.putExtra("chSelect",chSelect)
                     intentGoHome.putExtra("cookieCount",cookieCount)
+                    intentGoHome.putExtra("giftSelect",giftSelect)
                     startActivity(intentGoHome)
                     overridePendingTransition(0, 0)
                 }else{
@@ -71,6 +83,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 intentGoHome.putExtra("bgSelect",bgSelect)
                 intentGoHome.putExtra("chSelect",chSelect)
                 intentGoHome.putExtra("cookieCount",cookieCount)
+                intentGoHome.putExtra("giftSelect",giftSelect)
                 startActivity(intentGoHome)
                 overridePendingTransition(0, 0)
             }else{
@@ -93,6 +106,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 intentGoHome.putExtra("bgSelect",bgSelect)
                 intentGoHome.putExtra("chSelect",chSelect)
                 intentGoHome.putExtra("cookieCount",cookieCount)
+                intentGoHome.putExtra("giftSelect",giftSelect)
                 startActivity(intentGoHome)
                 overridePendingTransition(0, 0)
             }else{
@@ -115,9 +129,18 @@ class InfantGiftStartActivity : AppCompatActivity() {
             intentGoHome.putExtra("bgSelect",bgSelect)
             intentGoHome.putExtra("chSelect",chSelect)
             intentGoHome.putExtra("cookieCount",cookieCount)
+            intentGoHome.putExtra("giftSelect",giftSelect)
             startActivity(intentGoHome)
             overridePendingTransition(0, 0)
         }
 
     }
+
+    // 로티 적용
+    private fun setOnLottieStart() {
+        infant_gift_char.repeatMode = LottieDrawable.REVERSE
+        infant_gift_char.repeatCount = LottieDrawable.INFINITE
+        infant_gift_char.playAnimation()
+    }
+
 }

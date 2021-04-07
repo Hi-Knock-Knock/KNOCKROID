@@ -7,7 +7,7 @@ import com.all_the_best.knock_knock.R
 
 class InfantCookieViewModel: ViewModel() {
     //private val cookie_count_txt:TextView = findViewById(R.id.infant_home_cookie_count_txt)
-    private var _cookieCount = MutableLiveData(5)
+    private var _cookieCount = MutableLiveData(6)
     val cookieCount: LiveData<Int>
         get() = _cookieCount
 

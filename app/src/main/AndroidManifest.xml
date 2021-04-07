@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_appicon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knock_Knock">
-        <activity android:name=".parent.talk.view.ParentRealTalkActivity"></activity>
+        <activity android:name=".infant.gift.view.InfantGetGiftPopupActivity"></activity>
+        <activity android:name=".parent.talk.view.ParentRealTalkActivity" />
         <activity android:name=".infant.cookie.view.InfantGetCookiePopupActivity" />
         <activity android:name=".parent.mypage.view.ParentMyScrapActivity" />
         <activity android:name=".parent.mypage.view.ParentMyBabyActivity" />

@@ -26,7 +26,6 @@
         android:src="@drawable/ic_infant_chatbox3"
         app:layout_constraintBottom_toTopOf="@+id/char_cookie_save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -100,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="17dp"
-                    android:src="@drawable/ic_cookies_true" />
+                    android:src="@drawable/ic_cookies_false" />
 
                 <ImageView
                     android:id="@+id/ic_cookie_false2"
