@@ -15,6 +15,8 @@ import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
 import com.all_the_best.knock_knock.infant.deco.view.InfantDecoActivity
 import com.all_the_best.knock_knock.infant.gift.view.InfantGiftStartActivity
 import com.all_the_best.knock_knock.infant.talk.view.InfantSelectFeelActivity
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_infant_deco.*
 import kotlinx.android.synthetic.main.activity_infant_home.*
 import java.time.LocalDateTime
@@ -33,6 +35,10 @@ class InfantHomeActivity : AppCompatActivity() {
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
     private val formatted = current.format(formatter)
+
+    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
+    private val databaseReference: DatabaseReference = database.reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +69,7 @@ class InfantHomeActivity : AppCompatActivity() {
             intent1.putExtra("lottieSelect",lottieSelect)
             intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("giftSelect",giftSelect)
+            setStartTalkAtFirebase()
             startActivity(intent1)
         }
 
@@ -236,5 +243,13 @@ class InfantHomeActivity : AppCompatActivity() {
         char_img.repeatMode = LottieDrawable.REVERSE
         char_img.repeatCount = LottieDrawable.INFINITE
         char_img.playAnimation()
+    }
+
+    private fun setStartTalkAtFirebase() {
+        val parentId = "부모1"
+        val childName = "아이1"
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("startTalk")
+            .setValue(true)
+        Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
     }
 }
