@@ -20,14 +20,6 @@
             android:background="@drawable/img_main_background"
             tools:visibility="gone">
 
-            <View
-                android:id="@+id/talk_ver_btn_switch_mode"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@android:color/transparent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <ImageButton
                 android:id="@+id/talk_btn_hamburger"
                 android:layout_width="wrap_content"
@@ -423,14 +415,6 @@
             android:background="@drawable/img_background"
             android:visibility="invisible"
             tools:visibility="visible">
-
-            <View
-                android:id="@+id/real_talk_ver_btn_switch_mode"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@android:color/transparent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/real_talk_btn_hamburger"

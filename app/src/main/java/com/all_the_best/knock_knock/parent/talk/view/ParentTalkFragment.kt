@@ -67,7 +67,6 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         setOnClickListenerForBtnHamburger()
         setOnClickListenerForBtnSubmit()
         setOnClickListenerForBtnHelp()
-        setOnClickListnerForSwitchMode()
         setOnClickListenerForBtnAccept()
         setOnClickListenerForBtnRefuse()
         setMode()
@@ -111,29 +110,6 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         })
     }
 
-    private fun setOnClickListnerForSwitchMode() {
-        binding.apply {
-            talkVerBtnSwitchMode.setOnClickListener {
-                realTalkConstraintBeforeSubmit.visibility = View.VISIBLE
-                realTalkConstraintAfterSubmit.visibility = View.GONE
-                realTalkVerConstraint.visibility = View.VISIBLE
-                talkVerConstraint.visibility = View.INVISIBLE
-                StatusBarUtil.setStatusBar(
-                    requireActivity(),
-                    resources.getColor(R.color.light_blue_status_bar, null)
-                )
-            }
-            realTalkVerBtnSwitchMode.setOnClickListener {
-                realTalkVerConstraint.visibility = View.INVISIBLE
-                talkVerConstraint.visibility = View.VISIBLE
-                StatusBarUtil.setStatusBar(
-                    requireActivity(),
-                    resources.getColor(R.color.blue_status_bar, null)
-                )
-            }
-        }
-    }
-
     private fun setOnClickListenerForBtnHelp() {
         //도움말 버튼(물음표 버튼) 누르면 도움말 창 띄우기
         binding.talkBtnHelp.setOnClickListener {
@@ -152,11 +128,18 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 show()
             }
         }
+    }
 
+    private fun setParentAcceptTalkAtFirebase(isAccept: Boolean) {
+        val parentId = "부모1"
+        val childName = "아이1"
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("parentAcceptTalk")
+            .setValue(isAccept)
     }
 
     private fun setOnClickListenerForBtnAccept() {
         binding.realTalkTxtOk.setOnClickListener {
+            setParentAcceptTalkAtFirebase(true)
             val intent = Intent(requireContext(), ParentRealTalkActivity::class.java)
             startActivity(intent)
         }
@@ -164,6 +147,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
 
     private fun setOnClickListenerForBtnRefuse() {
         binding.realTalkTxtNo.setOnClickListener {
+            setParentAcceptTalkAtFirebase(false)
             refuseDialogBinding.apply {
                 talkDialogTxtEdit.visibility = View.VISIBLE
                 talkDialogConstraintRadioBtn.visibility = View.GONE
