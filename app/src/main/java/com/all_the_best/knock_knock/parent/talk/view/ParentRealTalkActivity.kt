@@ -252,10 +252,10 @@ class ParentRealTalkActivity : AppCompatActivity() {
             .putFile(file).addOnCompleteListener {
                 if (it.isSuccessful) {
                     Log.d("storage", "upload success")
+                    setFinishRecordParentAtFirebase(true)
                 }
             }
         recordNum++
-        setFinishRecordParentAtFirebase(true)
     }
 
 }
