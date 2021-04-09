@@ -17,6 +17,7 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.NonNull
@@ -28,6 +29,7 @@ import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.cookie.view.InfantGetCookiePopupActivity
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import com.all_the_best.knock_knock.parent.base.view.LoginActivity
+import com.google.firebase.database.*
 import com.google.firebase.storage.FileDownloadTask
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -63,9 +65,14 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     //gs://knockknock-29f42.appspot.com/audioFile
 
+    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
+    private val databaseReference: DatabaseReference = database.reference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_talk_start)
+        setPlayParentRecord()
         getToday()
         setOnBtnRecordClick()
         setSelectCharacter()
@@ -101,6 +108,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         infant_icon_out.setOnClickListener{
+            setDefaultVariableAtFirebase()
             setMotionInit()
             // 쿠키 받는 팝업
             val cookiePopUp = Dialog(this)
@@ -200,6 +208,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         stopRecordBtn.setOnClickListener {
             //loading = 1
             stopRecording()
+            setFinishRecordChildAtFirebase()
         }
     }
 
@@ -299,5 +308,45 @@ class InfantTalkStartActivity : AppCompatActivity() {
             // Handle any errors
             Log.d("getAudio", "fail")
         }
+    }
+
+    private fun setFinishRecordChildAtFirebase() {
+        val parentId = "부모1"
+        val childName = "아이1"
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
+            .setValue(true)
+        Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setPlayParentRecord() {
+        val parentId = "부모1"
+        val childName = "아이1"
+        val myValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("finishRecordParent")
+        myValue.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.value as Boolean) {
+                    getDataFromStorage()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    private fun setDefaultVariableAtFirebase() {
+        val parentId = "부모1"
+        val childName = "아이1"
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("startTalkChild")
+            .setValue(false)
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("parentAcceptTalk")
+            .setValue(false)
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
+            .setValue(false)
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordParent")
+            .setValue(false)
     }
 }

@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ import com.all_the_best.knock_knock.parent.setting.view.ParentSettingActivity
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.util.StatusBarUtil
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_parent_talk.*
 
 
@@ -32,6 +34,9 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     private lateinit var binding: FragmentParentTalkBinding
     private lateinit var dialogBinding: HelpDialogBinding
     private lateinit var refuseDialogBinding: TalkDialogBinding
+    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
+    private val databaseReference: DatabaseReference = database.reference
 
     override fun onBackPressed(): Boolean {
         return if (binding.talkDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -61,33 +66,47 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         setOnClickListenerForBtnHamburger()
         setOnClickListenerForBtnSubmit()
         setOnClickListenerForBtnHelp()
-        setOnClickListnerForSwitchMode()
         setOnClickListenerForBtnAccept()
         setOnClickListenerForBtnRefuse()
+        setMode()
         return binding.root
     }
 
-    private fun setOnClickListnerForSwitchMode() {
-        binding.apply {
-            talkVerBtnSwitchMode.setOnClickListener {
-                realTalkConstraintBeforeSubmit.visibility = View.VISIBLE
-                realTalkConstraintAfterSubmit.visibility = View.GONE
-                realTalkVerConstraint.visibility = View.VISIBLE
-                talkVerConstraint.visibility = View.INVISIBLE
-                StatusBarUtil.setStatusBar(
-                    requireActivity(),
-                    resources.getColor(R.color.light_blue_status_bar, null)
-                )
+    private fun setMode() {
+        val parentId = "부모1"
+        val childName = "아이1"
+        val myValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("startTalkChild")
+        myValue.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.value as Boolean) {
+                    binding.apply {
+                        realTalkConstraintBeforeSubmit.visibility = View.VISIBLE
+                        realTalkConstraintAfterSubmit.visibility = View.GONE
+                        realTalkVerConstraint.visibility = View.VISIBLE
+                        talkVerConstraint.visibility = View.INVISIBLE
+                    }
+                    StatusBarUtil.setStatusBar(
+                        requireActivity(),
+                        resources.getColor(R.color.light_blue_status_bar, null)
+                    )
+                } else {
+                    binding.apply {
+                        realTalkVerConstraint.visibility = View.INVISIBLE
+                        talkVerConstraint.visibility = View.VISIBLE
+                    }
+                    StatusBarUtil.setStatusBar(
+                        requireActivity(),
+                        resources.getColor(R.color.blue_status_bar, null)
+                    )
+                }
             }
-            realTalkVerBtnSwitchMode.setOnClickListener {
-                realTalkVerConstraint.visibility = View.INVISIBLE
-                talkVerConstraint.visibility = View.VISIBLE
-                StatusBarUtil.setStatusBar(
-                    requireActivity(),
-                    resources.getColor(R.color.blue_status_bar, null)
-                )
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
             }
-        }
+        })
     }
 
     private fun setOnClickListenerForBtnHelp() {
@@ -108,11 +127,18 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 show()
             }
         }
+    }
 
+    private fun setParentAcceptTalkAtFirebase(isAccept: Boolean) {
+        val parentId = "부모1"
+        val childName = "아이1"
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("parentAcceptTalk")
+            .setValue(isAccept)
     }
 
     private fun setOnClickListenerForBtnAccept() {
         binding.realTalkTxtOk.setOnClickListener {
+            setParentAcceptTalkAtFirebase(true)
             val intent = Intent(requireContext(), ParentRealTalkActivity::class.java)
             startActivity(intent)
         }
@@ -120,6 +146,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
 
     private fun setOnClickListenerForBtnRefuse() {
         binding.realTalkTxtNo.setOnClickListener {
+            setParentAcceptTalkAtFirebase(false)
             refuseDialogBinding.apply {
                 talkDialogTxtEdit.visibility = View.VISIBLE
                 talkDialogConstraintRadioBtn.visibility = View.GONE
