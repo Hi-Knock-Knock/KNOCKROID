@@ -35,7 +35,6 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     private lateinit var dialogBinding: HelpDialogBinding
     private lateinit var refuseDialogBinding: TalkDialogBinding
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
 

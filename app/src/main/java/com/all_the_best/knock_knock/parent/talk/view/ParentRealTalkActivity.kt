@@ -1,6 +1,5 @@
 package com.all_the_best.knock_knock.parent.talk.view
 
-import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
@@ -15,7 +14,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.toColorInt
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.all_the_best.knock_knock.R
@@ -23,6 +21,7 @@ import com.all_the_best.knock_knock.databinding.ActivityParentRealTalkBinding
 import com.all_the_best.knock_knock.parent.talk.adapter.ParentTalkAcceptTipRcvAdapter
 import com.all_the_best.knock_knock.parent.talk.viewmodel.ParentTalkViewModel
 import com.all_the_best.knock_knock.util.StatusBarUtil
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.File
@@ -43,6 +42,11 @@ class ParentRealTalkActivity : AppCompatActivity() {
     private var recordNum: Int = 1
     private var getDataNum: Int = 1
 
+    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+
+    // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
+    private val databaseReference: DatabaseReference = database.reference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         StatusBarUtil.setStatusBar(
@@ -56,6 +60,36 @@ class ParentRealTalkActivity : AppCompatActivity() {
         setSubmitClick()
         setRecordBtnClick()
         getToday()
+        setLayout()
+    }
+
+    private fun setLayout() {
+        val parentId = "부모1"
+        val childName = "아이1"
+        val myValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("finishRecordChild")
+        myValue.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.value as Boolean) {
+                    binding.apply {
+                        acceptTalkConstraintQuestion.visibility = View.VISIBLE
+                        acceptTalkConstraintRecord.visibility = View.VISIBLE
+                        acceptTalkConstraintLoading.visibility = View.GONE
+                    }
+                } else {
+                    binding.apply {
+                        acceptTalkConstraintQuestion.visibility = View.GONE
+                        acceptTalkConstraintRecord.visibility = View.GONE
+                        acceptTalkConstraintLoading.visibility = View.VISIBLE
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
     private fun getToday() {
@@ -76,14 +110,15 @@ class ParentRealTalkActivity : AppCompatActivity() {
         snapHelper.attachToRecyclerView(binding.acceptTalkRcv)
     }
 
-    private fun setGetChildRecordClick(){
+    private fun setGetChildRecordClick() {
         binding.acceptTalkBtnChildRecordPlay.setOnClickListener {
             getDataFromStorage()
         }
     }
 
     private fun getDataFromStorage() {
-        pathReference = firebaseStorage.reference.child(fileName).child("child").child("child($getDataNum).mp4")
+        pathReference =
+            firebaseStorage.reference.child(fileName).child("child").child("child($getDataNum).mp4")
 
         // createTempFile : 임시파일 생성 (so, 사용이 끝나면 삭제해줘야함.)
         // deleteOnExit을 사용해서 파일 삭제 -> 특징 : 파일을 바로 삭제하는 것이 아니라, JVM이 종료될 때 자동으로 저장된 파일을 삭제함.
@@ -136,14 +171,24 @@ class ParentRealTalkActivity : AppCompatActivity() {
             stopRecording()
             binding.acceptTalkBtnRecordStop.visibility = View.INVISIBLE
             binding.acceptTalkBtnRecord.visibility = View.VISIBLE
-            binding.acceptTalkSubmit.setTextColor(ContextCompat.getColor(this, R.color.talk_submit_blue))
+            binding.acceptTalkSubmit.setTextColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color.talk_submit_blue
+                )
+            )
         }
     }
 
-    private fun setSubmitClick(){
+    private fun setSubmitClick() {
         binding.acceptTalkSubmit.setOnClickListener {
             uploadAudioUri(audioUri)
-            binding.acceptTalkSubmit.setTextColor(ContextCompat.getColor(this, R.color.talk_submit_gray))
+            binding.acceptTalkSubmit.setTextColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color.talk_submit_gray
+                )
+            )
         }
     }
 

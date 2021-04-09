@@ -107,6 +107,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         infant_icon_out.setOnClickListener{
+            setParentAcceptTalkAtFirebase(false)
             setFinishTalkAtFirebase()
             setMotionInit()
             // 쿠키 받는 팝업
@@ -325,5 +326,12 @@ class InfantTalkStartActivity : AppCompatActivity() {
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
             .setValue(false)
         Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setParentAcceptTalkAtFirebase(isAccept: Boolean) {
+        val parentId = "부모1"
+        val childName = "아이1"
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("parentAcceptTalk")
+            .setValue(isAccept)
     }
 }
