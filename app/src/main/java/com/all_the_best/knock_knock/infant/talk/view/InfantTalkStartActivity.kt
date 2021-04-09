@@ -36,6 +36,7 @@ import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_infant_home.*
 import kotlinx.android.synthetic.main.activity_infant_select_person.*
 import kotlinx.android.synthetic.main.activity_infant_talk_start.*
+import kotlinx.coroutines.delay
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
