@@ -7,9 +7,15 @@ import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.setting.view.InfantSelectIdActivity
 import com.all_the_best.knock_knock.parent.home.view.ParentHomeActivity
 import com.all_the_best.knock_knock.util.StatusBarUtil
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_select_mode.*
 
 class SelectModeActivity : AppCompatActivity() {
+    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
+    private val databaseReference: DatabaseReference = database.reference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_mode)
@@ -26,5 +32,19 @@ class SelectModeActivity : AppCompatActivity() {
             startActivity(intent1)
             overridePendingTransition(0, 0)
         }
+        setDefaultVariableAtFirebase()
+    }
+
+    private fun setDefaultVariableAtFirebase() {
+        val parentId = "부모1"
+        val childName = "아이1"
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("startTalkChild")
+            .setValue(false)
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("parentAcceptTalk")
+            .setValue(false)
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
+            .setValue(false)
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordParent")
+            .setValue(false)
     }
 }

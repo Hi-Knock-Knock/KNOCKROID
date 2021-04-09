@@ -77,7 +77,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         val childName = "아이1"
         val myValue: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
-                .child("startTalk")
+                .child("startTalkChild")
         myValue.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.value as Boolean) {

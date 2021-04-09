@@ -248,7 +248,7 @@ class InfantHomeActivity : AppCompatActivity() {
     private fun setStartTalkAtFirebase() {
         val parentId = "부모1"
         val childName = "아이1"
-        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("startTalk")
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("startTalkChild")
             .setValue(true)
         Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
     }

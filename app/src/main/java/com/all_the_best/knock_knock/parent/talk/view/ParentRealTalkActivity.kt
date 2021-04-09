@@ -43,7 +43,6 @@ class ParentRealTalkActivity : AppCompatActivity() {
     private var getDataNum: Int = 1
 
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
 
@@ -61,6 +60,13 @@ class ParentRealTalkActivity : AppCompatActivity() {
         setRecordBtnClick()
         getToday()
         setLayout()
+    }
+
+    private fun setFinishRecordParentAtFirebase(isDone: Boolean) {
+        val parentId = "부모1"
+        val childName = "아이1"
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordParent")
+            .setValue(isDone)
     }
 
     private fun setLayout() {
@@ -141,6 +147,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
 
     private fun setRecordBtnClick() {
         binding.acceptTalkBtnRecord.setOnClickListener {
+            setFinishRecordParentAtFirebase(false)
             binding.acceptTalkBtnRecord.visibility = View.INVISIBLE
             binding.acceptTalkBtnRecordStop.visibility = View.VISIBLE
             if (ContextCompat.checkSelfPermission(
@@ -248,6 +255,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
                 }
             }
         recordNum++
+        setFinishRecordParentAtFirebase(true)
     }
 
 }
