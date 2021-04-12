@@ -37,7 +37,7 @@
         android:src="@drawable/ic_infant_chatbox"
         app:layout_constraintBottom_toBottomOf="@+id/talk_start_char_dam"
         app:layout_constraintEnd_toEndOf="@+id/talk_start_char_dam"
-        app:layout_constraintHorizontal_bias="0.315"
+
         app:layout_constraintStart_toStartOf="@+id/talk_start_char_dam" />
 
     <TextView
@@ -55,28 +55,22 @@
         app:layout_constraintTop_toTopOf="@id/infant_talk1"
         app:layout_constraintVertical_bias="0.263" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/startRecordBtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="대화시작"
+    <ImageView
+        android:id="@+id/stopRecordBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_infant_talk_finish_btn"
+        app:layout_constraintEnd_toEndOf="@+id/talk_start_char_dam"
         app:layout_constraintStart_toStartOf="@+id/talk_start_char_dam"
         app:layout_constraintTop_toBottomOf="@+id/talk_start_char_dam" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/stopRecordBtn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="대화끝 "
-        app:layout_constraintEnd_toEndOf="@+id/talk_start_char_dam"
-        app:layout_constraintTop_toBottomOf="@+id/talk_start_char_dam" />
-
-    <androidx.appcompat.widget.AppCompatButton
+<!--    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDownload"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="녹음 듣기 "
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" /> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

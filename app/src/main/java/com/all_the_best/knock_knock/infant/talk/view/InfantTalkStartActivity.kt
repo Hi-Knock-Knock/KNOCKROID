@@ -83,7 +83,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         getToday()
         setOnBtnRecordClick()
         setOnLottieStart()
-        setOnBtnDownLoadRecordClick()
+        //setOnBtnDownLoadRecordClick()
         //setOnBtnAudioUploadClick()
         //loading = 0
         window.statusBarColor = Color.parseColor("#FCC364")
@@ -177,7 +177,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
 
     private fun setOnBtnRecordClick() {
-        startRecordBtn.setOnClickListener {
+        talk_start_char_dam.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
                     this,
                     android.Manifest.permission.RECORD_AUDIO
@@ -209,11 +209,11 @@ class InfantTalkStartActivity : AppCompatActivity() {
         }
     }
 
-    private fun setOnBtnDownLoadRecordClick(){
-        btnDownload.setOnClickListener{
-            getDataFromStorage()
-        }
-    }
+//    private fun setOnBtnDownLoadRecordClick(){
+//        btnDownload.setOnClickListener{
+//            getDataFromStorage()
+//        }
+//    }
 
     @Suppress("DEPRECATION")
     private fun startRecording() {
