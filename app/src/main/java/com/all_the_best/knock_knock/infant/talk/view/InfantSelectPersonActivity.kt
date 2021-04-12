@@ -154,22 +154,22 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             }
             1 -> { // 녹녹이일때
                 when(lottieSelect){
-                    1 -> char_talk_person.setAnimation("dami_happy.json")
-                    2 -> char_talk_person.setAnimation("dami_happy.json")
-                    3 -> char_talk_person.setAnimation("dami_sad.json")
-                    4 -> char_talk_person.setAnimation("dami_sad.json")
-                    5 -> char_talk_person.setAnimation("dami_scared.json")
-                    6 -> char_talk_person.setAnimation("dami_angry.json")
+                    1 -> char_talk_person.setAnimation("knock_happy.json")
+                    2 -> char_talk_person.setAnimation("knock_happy.json")
+                    3 -> char_talk_person.setAnimation("knock_sad.json")
+                    4 -> char_talk_person.setAnimation("knock_sad.json")
+                    5 -> char_talk_person.setAnimation("knock_scared.json")
+                    6 -> char_talk_person.setAnimation("knock_angry.json")
                 }
             }
             2 -> { // 티미일때
                 when(lottieSelect){
-                    1 -> char_talk_person.setAnimation("dami_happy.json")
-                    2 -> char_talk_person.setAnimation("dami_happy.json")
-                    3 -> char_talk_person.setAnimation("dami_sad.json")
-                    4 -> char_talk_person.setAnimation("dami_sad.json")
-                    5 -> char_talk_person.setAnimation("dami_scared.json")
-                    6 -> char_talk_person.setAnimation("dami_angry.json")
+                    1 -> char_talk_person.setAnimation("timi_happy.json")
+                    2 -> char_talk_person.setAnimation("timi_happy.json")
+                    3 -> char_talk_person.setAnimation("timi_sad.json")
+                    4 -> char_talk_person.setAnimation("timi_sad.json")
+                    5 -> char_talk_person.setAnimation("timi_scared.json")
+                    6 -> char_talk_person.setAnimation("timi_angry.json")
                 }
             }
         }

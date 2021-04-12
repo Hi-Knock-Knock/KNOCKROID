@@ -232,8 +232,23 @@ class InfantHomeActivity : AppCompatActivity() {
                     char_img.playAnimation()
                 }
             } // 담이 idle
-            1 -> char_img.setAnimation("dami_ear.json") //녹녹이 idle로 바꾸기
-            2 -> char_img.setAnimation("dami_hi.json") // 티미 idle로 바꾸기
+            1 -> {
+                char_img.setAnimation("knock_idle.json")
+                char_img.setOnClickListener{
+                    char_img.setAnimation("knock_wink.json")
+                    char_img.repeatMode = LottieDrawable.REVERSE
+                    char_img.repeatCount = LottieDrawable.INFINITE
+                    char_img.playAnimation()
+                }
+            } //녹녹이 idle로 바꾸기
+            2 -> {char_img.setAnimation("timi_idle.json")
+                char_img.setOnClickListener{
+                    char_img.setAnimation("timi_jump.json")
+                    char_img.repeatMode = LottieDrawable.REVERSE
+                    char_img.repeatCount = LottieDrawable.INFINITE
+                    char_img.playAnimation()
+                }
+            } // 티미 idle
         }
         setOnMotionStart()
     }
