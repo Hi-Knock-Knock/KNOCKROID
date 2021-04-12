@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_infant_gift_bg_3"
+    android:background="@drawable/infant_gift_bg_gift"
     tools:context=".infant.gift.view.InfantGiftBoxActivity">
 
 
@@ -81,27 +81,27 @@
         app:layout_constraintVertical_bias="0.263" />
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/infant_gift_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
+        app:layout_constraintTop_toBottomOf="@+id/infant_gift_talk2"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="leaves_gift.json"
+        app:lottie_loop="false"
+        tools:layout_editor_absoluteX="22dp"
+        tools:ignore="MissingConstraints" />
+
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/infant_gift_char"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="57dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_fileName="owl.json" />
-    <!--175-->
-    <ImageView
-        android:id="@+id/infant_gift_box"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/infant_gift_char"
-        app:layout_constraintStart_toStartOf="@+id/infant_gift_char"
-        app:layout_constraintTop_toBottomOf="@+id/infant_gift_char"
-        app:srcCompat="@drawable/img_infant_gift_box" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

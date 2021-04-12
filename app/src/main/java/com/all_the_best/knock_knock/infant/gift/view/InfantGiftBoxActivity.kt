@@ -93,6 +93,9 @@ class InfantGiftBoxActivity : AppCompatActivity() {
     private fun setOnLottieStart() {
         infant_gift_char.repeatMode = LottieDrawable.REVERSE
         infant_gift_char.repeatCount = LottieDrawable.INFINITE
+        infant_gift_box.repeatMode = LottieDrawable.REVERSE
+        infant_gift_box.repeatCount = 0
+        infant_gift_box.playAnimation()
         infant_gift_char.playAnimation()
     }
 }

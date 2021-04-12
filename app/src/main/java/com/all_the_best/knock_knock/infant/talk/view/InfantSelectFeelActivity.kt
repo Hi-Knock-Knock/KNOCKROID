@@ -168,8 +168,8 @@ class InfantSelectFeelActivity : AppCompatActivity() {
     private fun setSelectCharacter(){
         when(chSelect){
             0 -> char_talk_feel.setAnimation("dami_hi.json")
-            1 -> char_talk_feel.setAnimation("dami_idle.json")
-            2 -> char_talk_feel.setAnimation("dami_idle.json")
+            1 -> char_talk_feel.setAnimation("knock_wink.json") // 녹녹이
+            2 -> char_talk_feel.setAnimation("timi_jump.json")
         }
         setOnMotionStart()
     }

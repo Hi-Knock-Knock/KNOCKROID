@@ -73,20 +73,19 @@ class InfantTalkStartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_talk_start)
-        setPlayParentRecord()
-        getToday()
-        setOnBtnRecordClick()
-        setSelectCharacter()
-        setOnLottieStart()
-        setOnBtnDownLoadRecordClick()
-        //setOnBtnAudioUploadClick()
-        //loading = 0
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
         giftSelect = intent.getIntExtra("giftSelect",0)
         lottieSelect = intent.getIntExtra("lottieSelect",0)
-
+        setSelectCharacter()
+        setPlayParentRecord()
+        getToday()
+        setOnBtnRecordClick()
+        setOnLottieStart()
+        setOnBtnDownLoadRecordClick()
+        //setOnBtnAudioUploadClick()
+        //loading = 0
         window.statusBarColor = Color.parseColor("#FCC364")
 
         val current = LocalDateTime.now()
@@ -131,12 +130,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
     private fun setSelectCharacter(){
         when(chSelect){
-            0 -> {
-                 talk_start_char_dam.setAnimation("dami_ear.json")
-                //talk_start_char_dam.setAnimation("dami_think.json")
-            }
-            //1 -> talk_start_char_dam.setImageResource(R.drawable.img_char_knock)
-            //2 -> talk_start_char_dam.setImageResource(R.drawable.img_char_timi)
+            0 -> talk_start_char_dam.setAnimation("dami_ear.json")
+            1 -> talk_start_char_dam.setAnimation("knock_ear.json")
+            2 -> talk_start_char_dam.setAnimation("timi_ear.json")
         }
     }
 
