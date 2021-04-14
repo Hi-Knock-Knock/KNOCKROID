@@ -13,6 +13,14 @@
             name="txtSubmit"
             type="String" />
 
+        <variable
+            name="txtFeeling"
+            type="String" />
+
+        <variable
+            name="txtPerson"
+            type="String" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -177,7 +185,7 @@
                 android:id="@+id/accept_talk_txt_answer_feel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="속상해"
+                android:text="@{txtFeeling}"
                 android:textColor="#252525"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -188,11 +196,11 @@
                 android:id="@+id/accept_talk_txt_answer_with"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="가족"
+                android:text="@{txtPerson}"
                 android:textColor="#252525"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/accept_talk_txt_answer_feel"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/accept_talk_txt_qustion_with" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -226,8 +234,8 @@
                 android:background="@drawable/background_transparent"
                 android:padding="20dp"
                 android:src="@drawable/ic_record_stop"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

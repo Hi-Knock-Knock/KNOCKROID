@@ -1,4 +1,4 @@
-package com.all_the_best.knock_knock.parent.faq.adapter
+package com.all_the_best.knock_knock.parent.faq.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
