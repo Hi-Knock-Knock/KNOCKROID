@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.parent.faq.model.ParentFaqData
 
 class ParentFaqAdapter (private val context: Context): RecyclerView.Adapter<ParentFaqViewHolder>(){
     var data = mutableListOf<ParentFaqData>()

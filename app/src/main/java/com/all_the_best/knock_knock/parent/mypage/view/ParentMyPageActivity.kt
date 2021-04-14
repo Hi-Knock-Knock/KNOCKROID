@@ -9,6 +9,7 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.ActivityParentMyPageBinding
+import com.all_the_best.knock_knock.databinding.ItemParentMyPageBabyBinding
 import com.all_the_best.knock_knock.parent.mypage.adapter.ParentMyPageRcvAdapter
 import com.all_the_best.knock_knock.parent.mypage.viewmodel.ParentMyPageViewModel
 import com.all_the_best.knock_knock.util.StatusBarUtil
@@ -35,14 +36,14 @@ class ParentMyPageActivity : AppCompatActivity() {
     }
 
     private fun setParentMyPageRcvAdapter() {
-        val parentMyPageRcvAdapter = ParentMyPageRcvAdapter()
+        val parentMyPageRcvAdapter = ParentMyPageRcvAdapter<ItemParentMyPageBabyBinding>(R.layout.item_parent_my_page_baby)
         binding.parentMyPageRcvBaby.adapter = parentMyPageRcvAdapter
     }
 
     private fun setParentMyPageBabyObserve() {
         parentMyPageViewModel.parentMyPageBabyList.observe(this) { parentMyPageBabyList ->
             parentMyPageBabyList.let {
-                if (binding.parentMyPageRcvBaby.adapter != null) with(binding.parentMyPageRcvBaby.adapter as ParentMyPageRcvAdapter) {
+                if (binding.parentMyPageRcvBaby.adapter != null) with(binding.parentMyPageRcvBaby.adapter as ParentMyPageRcvAdapter<*>) {
                     submitList(parentMyPageBabyList)
                 }
             }

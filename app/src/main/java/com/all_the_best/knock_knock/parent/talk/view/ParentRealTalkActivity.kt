@@ -7,6 +7,7 @@ import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.renderscript.Sampler
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -43,6 +44,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
     private var getDataNum: Int = 1
 
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
 
@@ -54,6 +56,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
         )
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_real_talk)
         binding.txtSubmit = "전송하기"
+        setSelectedFeelingAndPerson()
         setGetChildRecordClick()
         setTipRcvAdapter()
         setSubmitClick()
@@ -62,10 +65,38 @@ class ParentRealTalkActivity : AppCompatActivity() {
         setLayout()
     }
 
+    private fun setSelectedFeelingAndPerson(){
+        val parentId = "부모1"
+        val childName = "아이1"
+        val selectedFeeling: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("childFeel")
+        val selectedPerson: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("childPerson")
+        selectedFeeling.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                binding.txtFeeling = snapshot.value as String
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+        selectedPerson.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                binding.txtPerson = snapshot.value as String
+            }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
     private fun setFinishRecordParentAtFirebase(isDone: Boolean) {
         val parentId = "부모1"
         val childName = "아이1"
-        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordParent")
+        databaseReference.child(parentId).child(parentId + "의 child " + childName)
+            .child("finishRecordParent")
             .setValue(isDone)
     }
 

@@ -345,5 +345,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
             .setValue(false)
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordParent")
             .setValue(false)
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("childFeel")
+            .setValue("")
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("childPerson")
+            .setValue("")
     }
 }

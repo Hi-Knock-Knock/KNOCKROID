@@ -6,6 +6,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.parent.faq.model.ParentFaqData
 import com.all_the_best.knock_knock.parent.faq.view.ParentFaqDetailActivity
 
 class ParentFaqViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){

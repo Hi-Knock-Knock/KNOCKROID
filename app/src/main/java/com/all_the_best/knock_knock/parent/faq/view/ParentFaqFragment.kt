@@ -17,8 +17,7 @@ import com.all_the_best.knock_knock.databinding.FragmentParentFaqBinding
 import com.all_the_best.knock_knock.parent.alarm.view.ParentNoticeActivity
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.parent.faq.adapter.ParentFaqAdapter
-import com.all_the_best.knock_knock.parent.faq.adapter.ParentFaqData
-import com.all_the_best.knock_knock.parent.faq.adapter.ParentFaqItemDeco
+import com.all_the_best.knock_knock.parent.faq.model.ParentFaqData
 import com.all_the_best.knock_knock.parent.mypage.view.ParentMyPageActivity
 import com.all_the_best.knock_knock.parent.setting.view.ParentSettingActivity
 import com.google.android.material.navigation.NavigationView
