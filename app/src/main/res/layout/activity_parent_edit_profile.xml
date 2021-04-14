@@ -50,7 +50,7 @@
             <View
                 android:id="@+id/parent_edit_profile_view"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.2dp"
                 android:layout_marginTop="14dp"
                 android:background="#7c7c7c"
                 app:layout_constraintTop_toBottomOf="@id/parent_edit_profile_txt_title" />
