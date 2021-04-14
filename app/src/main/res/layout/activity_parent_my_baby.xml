@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/img_main_background"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        android:paddingHorizontal="20dp"
         tools:context=".parent.mypage.view.ParentMyBabyActivity">
 
         <ImageButton
@@ -51,12 +50,15 @@
             app:layout_constraintTop_toBottomOf="@id/parent_my_baby_txt_title" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/parent_my_baby_rcv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="42dp"
             android:orientation="vertical"
+            android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/parent_my_baby_txt_info"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_parent_my_baby" />
 
 
