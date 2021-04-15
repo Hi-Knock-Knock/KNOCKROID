@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffffff"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp">
 
             <ImageButton
                 android:id="@+id/parent_my_scrap_btn_back"
@@ -50,7 +51,7 @@
             <View
                 android:id="@+id/parent_my_scrap_view"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.2dp"
                 android:layout_marginTop="14dp"
                 android:background="#7c7c7c"
                 app:layout_constraintTop_toBottomOf="@id/parent_my_scrap_txt_title" />
@@ -71,15 +72,17 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/parent_my_scrap_rcv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="20dp"
             android:orientation="vertical"
+            android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/parent_my_scrap_txt_go_faq"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_parent_my_scrap"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

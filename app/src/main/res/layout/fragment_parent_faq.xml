@@ -73,10 +73,12 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
                         android:overScrollMode="never"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:listitem="@layout/rcv_parent_faq" />
+                        app:spanCount="2"
+                        tools:listitem="@layout/item_parent_faq" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
