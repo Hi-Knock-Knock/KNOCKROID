@@ -27,7 +27,7 @@ class InfantHomeActivity : AppCompatActivity() {
 
     private var chSelect: Int = 0
     private var bgSelect: Int = 1
-    private var cookieCount: Int = 5
+    private var cookieCount: Int = 6
     private var giftSelect:Int=0
     private var lottieSelect:Int=0
 
@@ -46,7 +46,7 @@ class InfantHomeActivity : AppCompatActivity() {
 
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
-        cookieCount = intent.getIntExtra("cookieCount",5)
+        cookieCount = intent.getIntExtra("cookieCount",6)
         giftSelect = intent.getIntExtra("giftSelect",0)
         lottieSelect = intent.getIntExtra("lottieSelect",0)
 

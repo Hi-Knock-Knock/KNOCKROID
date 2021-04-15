@@ -145,7 +145,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
     // 기분 모션 선택
     private fun setSelectFeelMotion() {
         when (chSelect) {
-            0 -> {
+            0 -> { // 담이일때
                 when (lottieSelect) {
                     1 -> char_talk_person.setAnimation("dami_happy.json")
                     2 -> char_talk_person.setAnimation("dami_happy.json")

@@ -26,18 +26,19 @@ class InfantGiftBoxActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
-    private var giftSelect:Int=0
+    private var giftSelect: Int = 0
+    private lateinit var getBgPopup: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_gift_box)
         setOnLottieStart()
-        val cookieGiftCount2:TextView=findViewById(R.id.infant_cookie_count_box)
+        val cookieGiftCount2: TextView = findViewById(R.id.infant_cookie_count_box)
 
-        bgSelect = intent.getIntExtra("bgSelect",1)
-        chSelect = intent.getIntExtra("chSelect",0)
-        cookieCount = intent.getIntExtra("cookieCount",5)
-        giftSelect = intent.getIntExtra("giftSelect",0)
+        bgSelect = intent.getIntExtra("bgSelect", 1)
+        chSelect = intent.getIntExtra("chSelect", 0)
+        cookieCount = intent.getIntExtra("cookieCount", 5)
+        giftSelect = intent.getIntExtra("giftSelect", 0)
 
         cookieGiftCount2.text = cookieCount.toString()
 
@@ -45,11 +46,11 @@ class InfantGiftBoxActivity : AppCompatActivity() {
 
         // 홈으로 돌아가기
         val intentGoHome = Intent(this, InfantHomeActivity::class.java)
-        infant_icon_gift_out2.setOnClickListener{
-            intentGoHome.putExtra("bgSelect",bgSelect)
-            intentGoHome.putExtra("chSelect",chSelect)
-            intentGoHome.putExtra("cookieCount",cookieCount)
-            intentGoHome.putExtra("giftSelect",giftSelect)
+        infant_icon_gift_out2.setOnClickListener {
+            intentGoHome.putExtra("bgSelect", bgSelect)
+            intentGoHome.putExtra("chSelect", chSelect)
+            intentGoHome.putExtra("cookieCount", cookieCount)
+            intentGoHome.putExtra("giftSelect", giftSelect)
 
             startActivity(intentGoHome)
             overridePendingTransition(0, 0)
@@ -58,7 +59,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
         // 선물 받는 팝업창
         infant_gift_box.setOnClickListener {
             // 배경 얻는 팝업창
-            val getBgPopup = Dialog(this)
+            getBgPopup = Dialog(this)
             // Dialog 사이즈 조절 하기
             //LayoutParams params = getBgPopup.getWindow().getAttributes();
 
@@ -67,20 +68,20 @@ class InfantGiftBoxActivity : AppCompatActivity() {
             getBgPopup.setContentView(R.layout.activity_infant_get_gift_popup)
             getBgPopup.window!!.attributes.width = WindowManager.LayoutParams.MATCH_PARENT
             getBgPopup.window!!.attributes.height = WindowManager.LayoutParams.MATCH_PARENT
-            when(giftSelect){
-                0->giftSelect=1
-                1-> {
+            when (giftSelect) {
+                0 -> giftSelect = 1
+                1 -> {
                     giftSelect = 2
-                    //img_get_item.setImageResource(R.drawable.img_infant_deco_item_space)
-                    //txt_get_bg.text = "우주를 받았어!!"
+//                    img_get_item.setImageResource(R.drawable.img_infant_deco_item_space)
+//                    txt_get_bg.text = "우주를 받았어!!"
                 }
             }
             getBgPopup.show()
-            intentGoHome.putExtra("bgSelect",bgSelect)
-            intentGoHome.putExtra("chSelect",chSelect)
-            intentGoHome.putExtra("cookieCount",cookieCount)
-            intentGoHome.putExtra("giftSelect",giftSelect)
-            Handler(Looper.getMainLooper()).postDelayed ({
+            intentGoHome.putExtra("bgSelect", bgSelect)
+            intentGoHome.putExtra("chSelect", chSelect)
+            intentGoHome.putExtra("cookieCount", cookieCount)
+            intentGoHome.putExtra("giftSelect", giftSelect)
+            Handler(Looper.getMainLooper()).postDelayed({
                 startActivity(intentGoHome)
                 overridePendingTransition(0, 0)
                 finish()
@@ -98,4 +99,9 @@ class InfantGiftBoxActivity : AppCompatActivity() {
         infant_gift_box.playAnimation()
         infant_gift_char.playAnimation()
     }
+
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        getBgPopup.dismiss()
+//    }
 }
