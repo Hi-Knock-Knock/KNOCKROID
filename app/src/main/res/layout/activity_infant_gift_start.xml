@@ -40,6 +40,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/infant_cookie_bg"
         app:layout_constraintEnd_toEndOf="@+id/infant_cookie_bg"
         app:layout_constraintTop_toTopOf="@+id/infant_cookie_bg" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,9 +70,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="쿠키 3개를 줘!"
+        android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/infant_gift_talk1"
         app:layout_constraintEnd_toEndOf="@+id/infant_gift_talk1"
         app:layout_constraintStart_toStartOf="@+id/infant_gift_talk1"
@@ -82,11 +83,11 @@
         android:id="@+id/infant_gift_char"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="57dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38"
         app:lottie_fileName="owl.json" />
 
     <ImageView
@@ -99,6 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/infant_empty_cookie2"
         app:layout_constraintTop_toTopOf="@+id/infant_empty_cookie2" />
+
     <ImageView
         android:id="@+id/infant_empty_cookie2"
         android:layout_width="wrap_content"
