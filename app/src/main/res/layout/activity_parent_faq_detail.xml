@@ -1,98 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/img_background"
-    tools:context=".parent.faq.view.ParentFaqDetailActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/faqdetail_txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FAQ"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/faqdetail_btn_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/faqdetail_btn_back" />
+    <data>
 
-    <ImageButton
-        android:id="@+id/faqdetail_btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_back_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <variable
+            name="faqDetailData"
+            type="com.all_the_best.knock_knock.parent.faq.model.ParentFaqData" />
 
-    <TextView
-        android:id="@+id/faqdetail_txt_faqtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:text="Q. 아이를 바르게 대하는 방법"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/faqdetail_txt_title" />
-
-    <ImageButton
-        android:id="@+id/faqdetail_bookmark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_bookmark_unchecked"
-        app:layout_constraintBottom_toBottomOf="@id/faqdetail_txt_faqtitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/faqdetail_txt_faqtitle" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="52dp"
-        android:background="@drawable/bg_whitebox_14dp"
-        android:paddingStart="20dp"
-        android:paddingTop="16dp"
-        android:paddingEnd="20dp"
-        android:paddingBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/faqdetail_txt_faqtitle">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/img_background"
+        tools:context=".parent.faq.view.ParentFaqDetailActivity">
 
         <TextView
-            android:id="@+id/faqdetail_txt_a"
+            android:id="@+id/faqdetail_txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="A"
-            android:textColor="#252525"
+            android:text="FAQ"
+            android:textColor="#ffffff"
             android:textSize="20sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/faqdetail_btn_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/faqdetail_btn_back" />
+
+        <ImageButton
+            android:id="@+id/faqdetail_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/faqdetail_txt_answer"
+            android:id="@+id/faqdetail_txt_faqtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-answer\n-answer\n-answer\n-answer\n"
-            android:textColor="#252525"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@id/faqdetail_txt_a"
-            app:layout_constraintTop_toBottomOf="@id/faqdetail_txt_a" />
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="Q. "
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/faqdetail_txt_title" />
+
+        <ImageButton
+            android:id="@+id/faqdetail_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:src="@{faqDetailData.isScrapped == true ? @drawable/ic_bookmark_checked : @drawable/ic_bookmark_unchecked}"
+            app:layout_constraintBottom_toBottomOf="@id/faqdetail_txt_faqtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/faqdetail_txt_faqtitle" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="52dp"
+            android:background="@drawable/bg_whitebox_14dp"
+            android:paddingStart="20dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/faqdetail_txt_faqtitle">
+
+            <TextView
+                android:id="@+id/faqdetail_txt_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:textColor="#252525"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/faqdetail_txt_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{faqDetailData.content}"
+                android:textColor="#252525"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/faqdetail_txt_a"
+                app:layout_constraintTop_toBottomOf="@id/faqdetail_txt_a" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

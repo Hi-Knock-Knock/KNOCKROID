@@ -2,4 +2,17 @@
     <string name="app_name">Knock_Knock</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="faq_data_content">- \"미안해\" 를 강요하지 마세요.\n
+                - 따뜻한 눈길로 바라봐주세요\n
+                - 칭찬과 애정표현을 자주해주세요\n
+                - 아이 스스로 문제를 해결할 수 있게 \n
+                하세요.\n
+                - 아이의 사소한 고민도 진지하게 \n
+                들어주세요.\n
+                - 야단보다는 잘못된 이유를 \n
+                설명해주세요.\n
+                - 아이의 시간에 맞춰 정말 재밌게 \n
+                놀아주세요.\n
+                - 인내심을 가지고 귀를 기울여주세요.\n
+                - 그림책을 함께 읽는 시간을 보내주세요.</string>
 </resources>

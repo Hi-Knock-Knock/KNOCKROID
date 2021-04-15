@@ -16,7 +16,7 @@ class ParentFaqViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){
     fun onBind(data: ParentFaqData){
         faqTitle.text = data.title
 
-        if(data.checked){
+        if(data.isScrapped){
             //넘어온 값이 true, 즉 북마크 체크 되어야 할 경우
             faqBookmark.setImageResource(R.drawable.ic_bookmark_checked)
         }else{
@@ -25,13 +25,13 @@ class ParentFaqViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){
         }
 
         faqBookmark.setOnClickListener {
-            if(data.checked){
+            if(data.isScrapped){
                 //버튼 클릭했을 시, 체크되어있는 북마크일 경우 -> 클릭하면 체크 해제 되도록
-                data.checked = false
+                data.isScrapped = false
                 faqBookmark.setBackgroundResource(R.drawable.ic_bookmark_unchecked)
             }else{
                 //버튼 클릭했을 시, 체크되어있지 않은 북마크일 경우 -> 클릭하면 체크 되도록
-                data.checked = true
+                data.isScrapped = true
                 faqBookmark.setBackgroundResource(R.drawable.ic_bookmark_checked)
             }
         }

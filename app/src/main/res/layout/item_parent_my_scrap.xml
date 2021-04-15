@@ -1,57 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:background="@drawable/bg_parent_myscrap_rcv"
-    android:paddingStart="20dp"
-    android:paddingTop="16dp"
-    android:paddingEnd="20dp"
-    android:paddingBottom="16dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageButton
-        android:id="@+id/item_my_scrap_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_bookmark_checked"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="myScrapData"
+            type="com.all_the_best.knock_knock.parent.faq.model.ParentFaqData" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="아이를 바르게 대하는 방법"
-        android:textColor="#252525"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/item_my_scrap_img"
-        app:layout_constraintStart_toEndOf="@id/item_my_scrap_img"
-        app:layout_constraintTop_toTopOf="@id/item_my_scrap_img" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_scrap_constraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_parent_myscrap_rcv_child"
-        android:paddingStart="10dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="82dp"
-        android:paddingBottom="16dp"
-        app:layout_constraintTop_toBottomOf="@id/item_my_scrap_img">
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_parent_myscrap_rcv"
+        android:paddingStart="20dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="16dp">
+
+        <ImageButton
+            android:id="@+id/item_my_scrap_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_bookmark_checked"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            tools:text="아이를 바르게 대하는 방법"
+            android:text="@{myScrapData.title}"
+            android:textColor="#252525"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/item_my_scrap_img"
+            app:layout_constraintStart_toEndOf="@id/item_my_scrap_img"
+            app:layout_constraintTop_toTopOf="@id/item_my_scrap_img" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="3"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="- 미안해 를 강요하지 마세요. \n- 따뜻한 눈길로 바라봐주세요 \n- 칭찬과 애정표현을 자주해주세요 \n가나다"
-            android:textColor="#6d6d6d"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_parent_myscrap_rcv_child"
+            android:paddingStart="10dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="82dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintTop_toBottomOf="@id/item_my_scrap_img">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="3"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@{myScrapData.content}"
+                android:textColor="#6d6d6d" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

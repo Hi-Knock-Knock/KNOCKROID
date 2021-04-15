@@ -1,134 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/img_white_background"
-    tools:context=".parent.setting.view.ParentAlarmSettingActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageButton
-        android:id="@+id/parent_alarm_setting_btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_back_black_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        android:id="@+id/parent_alarm_setting_txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="알림 설정"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/parent_alarm_setting_btn_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/parent_alarm_setting_btn_back" />
-
-    <View
-        android:id="@+id/parent_alarm_setting_view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="14dp"
-        android:background="#7c7c7c"
-        app:layout_constraintTop_toBottomOf="@id/parent_alarm_setting_txt_title" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/parent_alarm_setting_rectangle_permission"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/bg_alarm_setting"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/parent_alarm_setting_view">
-
-        <TextView
-            android:id="@+id/parent_alarm_setting_txt_permission"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="알림 허용"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/parent_alarm_setting_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="19dp"
-            android:checked="true"
-            android:thumb="@drawable/switch_thumb"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:track="@drawable/switch_selector" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/parent_alarm_setting_constraint_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintTop_toBottomOf="@id/parent_alarm_setting_rectangle_permission">
+        android:layout_height="match_parent"
+        android:background="@drawable/img_white_background"
+        tools:context=".parent.setting.view.ParentAlarmSettingActivity">
 
-        <TextView
-            android:id="@+id/parent_alarm_setting_txt_title_sound"
+        <ImageButton
+            android:id="@+id/parent_alarm_setting_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="알림음"
-            android:textColor="#000000"
-            android:textSize="15sp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back_black_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/parent_alarm_setting_txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="알림 설정"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/parent_alarm_setting_btn_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/parent_alarm_setting_btn_back" />
+
+        <View
+            android:id="@+id/parent_alarm_setting_view"
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_marginTop="14dp"
+            android:background="#7c7c7c"
+            app:layout_constraintTop_toBottomOf="@id/parent_alarm_setting_txt_title" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/parent_alarm_setting_rectangle_sound"
+            android:id="@+id/parent_alarm_setting_rectangle_permission"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/bg_alarm_setting"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/parent_alarm_setting_txt_title_sound"
-            app:layout_constraintTop_toBottomOf="@id/parent_alarm_setting_txt_title_sound">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/parent_alarm_setting_view">
 
             <TextView
-                android:id="@+id/parent_alarm_setting_txt_sound"
+                android:id="@+id/parent_alarm_setting_txt_permission"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="알림음(기본 설정)"
+                android:text="알림 허용"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/parent_alarm_setting_btn_sound"
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/parent_alarm_setting_switch"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_down"
+                android:layout_height="19dp"
+                android:checked="true"
+                android:thumb="@drawable/switch_thumb"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:track="@drawable/switch_selector" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -140,8 +91,10 @@
             android:text="알림 크기"
             android:textColor="#000000"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="@id/parent_alarm_setting_txt_title_sound"
-            app:layout_constraintTop_toBottomOf="@id/parent_alarm_setting_rectangle_sound" />
+            app:layout_constraintStart_toStartOf="@id/parent_alarm_setting_rectangle_permission"
+            app:layout_constraintTop_toBottomOf="@id/parent_alarm_setting_rectangle_permission"
+            tools:layout_editor_absoluteX="20dp"
+            tools:layout_editor_absoluteY="105dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/parent_alarm_setting_img_volume"
@@ -150,8 +103,9 @@
             android:layout_marginTop="12dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_volume"
-            app:layout_constraintStart_toStartOf="@id/parent_alarm_setting_txt_title_sound"
-            app:layout_constraintTop_toBottomOf="@id/parent_alarm_setting_txt_volume" />
+            app:layout_constraintStart_toStartOf="@id/parent_alarm_setting_txt_volume"
+            app:layout_constraintTop_toBottomOf="@id/parent_alarm_setting_txt_volume"
+            tools:layout_editor_absoluteX="20dp" />
 
         <SeekBar
             android:id="@+id/parent_alarm_setting_seek_bar_volume"
@@ -167,7 +121,6 @@
             app:layout_constraintStart_toStartOf="@id/parent_alarm_setting_img_volume"
             app:layout_constraintTop_toTopOf="@id/parent_alarm_setting_img_volume" />
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -11,24 +11,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.FragmentParentFaqBinding
+import com.all_the_best.knock_knock.databinding.ItemParentFaqBinding
 import com.all_the_best.knock_knock.parent.alarm.view.ParentNoticeActivity
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
-import com.all_the_best.knock_knock.parent.faq.adapter.ParentFaqAdapter
-import com.all_the_best.knock_knock.parent.faq.model.ParentFaqData
+import com.all_the_best.knock_knock.parent.faq.adapter.ParentFaqRcvAdapter
+import com.all_the_best.knock_knock.parent.faq.viewmodel.ParentFaqViewModel
 import com.all_the_best.knock_knock.parent.mypage.view.ParentMyPageActivity
 import com.all_the_best.knock_knock.parent.setting.view.ParentSettingActivity
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.fragment_parent_faq.*
 
 
 class ParentFaqFragment : Fragment(), FragmentOnBackPressed,
     NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: FragmentParentFaqBinding
-    private lateinit var parentFaqAdapter: ParentFaqAdapter
-    private lateinit var rcvLayoutManager: GridLayoutManager
+    private val parentFaqViewModel: ParentFaqViewModel by activityViewModels()
 
     override fun onBackPressed(): Boolean {
         return if (binding.faqDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -43,41 +43,15 @@ class ParentFaqFragment : Fragment(), FragmentOnBackPressed,
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_parent_faq, container, false)
         binding.faqNavigationView.setNavigationItemSelectedListener(this)
-
+        binding.lifecycleOwner = this
+        parentFaqViewModel.setFaqList()
         setOnClickListenerForBtnHamburger()
+        setFaqRcvAdapter()
+        setFaqListObserve()
         return binding.root
-    }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //setRcvFaqAdapter()
-        parentFaqAdapter = ParentFaqAdapter(view.context)
-        rcvLayoutManager = GridLayoutManager(view.context, 2)
-        parent_faq_rcv.apply {
-            adapter = parentFaqAdapter
-            layoutManager = GridLayoutManager(view.context, 2)
-        }
-
-        var faqList = mutableListOf(
-            ParentFaqData(0, "자존감이\n" + "낮은 아이", false),
-            ParentFaqData(1, "아이를\n" + "바르게\n" + "대하는 방법", false),
-            ParentFaqData(2, "자존감이\n" + "낮은 아이", false),
-            ParentFaqData(3, "자존감이\n" + "낮은 아이", false),
-            ParentFaqData(4, "아이가\n" + "싫어하는 행동을\n" + "표현한 경우", false),
-            ParentFaqData(5, "아이가\n" + "싫어하는 행동을\n" + "표현한 경우", false),
-            ParentFaqData(6, "참는 성향이\n" + "있는 아이", false),
-            ParentFaqData(7, "참는 성향이\n" + "있는 아이", false),
-            ParentFaqData(8, "아이를\n" + "바르게\n" + "대하는 방법", false)
-        )
-
-        parentFaqAdapter.data = faqList
-
-        parentFaqAdapter.notifyDataSetChanged()
-
-        super.onViewCreated(view, savedInstanceState)
     }
 
     private fun setOnClickListenerForBtnHamburger() {
@@ -87,8 +61,19 @@ class ParentFaqFragment : Fragment(), FragmentOnBackPressed,
         }
     }
 
-    private fun setRcvFaqAdapter() {
+    private fun setFaqRcvAdapter() {
+        binding.parentFaqRcv.adapter =
+            ParentFaqRcvAdapter<ItemParentFaqBinding>(R.layout.item_parent_faq, requireContext())
+    }
 
+    private fun setFaqListObserve() {
+        parentFaqViewModel.faqList.observe(viewLifecycleOwner) { faqList ->
+            faqList.let {
+                if (binding.parentFaqRcv.adapter != null) with(binding.parentFaqRcv.adapter as ParentFaqRcvAdapter<*>) {
+                    submitList(faqList)
+                }
+            }
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -101,5 +86,4 @@ class ParentFaqFragment : Fragment(), FragmentOnBackPressed,
         startActivity(intent)
         return false
     }
-
 }

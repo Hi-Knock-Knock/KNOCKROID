@@ -1,123 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/img_white_background"
-    tools:context=".parent.setting.view.ParentAccountActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageButton
-        android:id="@+id/parent_account_btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_back_black_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        android:id="@+id/parent_account_txt_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="계정"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/parent_account_btn_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/parent_account_btn_back" />
+    </data>
 
-    <View
-        android:id="@+id/parent_account_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="14dp"
-        android:background="#7c7c7c"
-        app:layout_constraintTop_toBottomOf="@id/parent_account_txt_title" />
+        android:layout_height="match_parent"
+        android:background="@drawable/img_white_background"
+        tools:context=".parent.setting.view.ParentAccountActivity">
 
-    <TextView
-        android:id="@+id/parent_account_txt_login_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="32dp"
-        android:text="로그인 정보"
-        android:textColor="#252525"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/parent_account_view" />
+        <ImageButton
+            android:id="@+id/parent_account_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back_black_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/parent_account_txt_id_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="아이디"
-        android:textColor="#252525"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/parent_account_txt_login_info"
-        app:layout_constraintTop_toBottomOf="@id/parent_account_txt_login_info" />
+        <TextView
+            android:id="@+id/parent_account_txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="계정"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/parent_account_btn_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/parent_account_btn_back" />
 
-    <TextView
-        android:id="@+id/parent_account_txt_change_pw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="비밀번호 변경"
-        android:textColor="#252525"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/parent_account_txt_id_info"
-        app:layout_constraintTop_toBottomOf="@id/parent_account_txt_id_info" />
+        <View
+            android:id="@+id/parent_account_view"
+            android:layout_width="match_parent"
+            android:layout_height="0.2dp"
+            android:layout_marginTop="14dp"
+            android:background="#7c7c7c"
+            app:layout_constraintTop_toBottomOf="@id/parent_account_txt_title" />
 
-    <TextView
-        android:id="@+id/parent_account_txt_nickname_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="닉네임"
-        android:textColor="#252525"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@id/parent_account_txt_change_pw"
-        app:layout_constraintTop_toBottomOf="@id/parent_account_txt_change_pw" />
+        <TextView
+            android:id="@+id/parent_account_txt_login_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+            android:text="로그인 정보"
+            android:textColor="#252525"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/parent_account_view" />
 
-    <TextView
-        android:id="@+id/parent_account_txt_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:text="abc@google.com"
-        android:textColor="#252525"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/parent_account_txt_id_info" />
+        <TextView
+            android:id="@+id/parent_account_txt_id_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="아이디"
+            android:textColor="#252525"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/parent_account_txt_login_info"
+            app:layout_constraintTop_toBottomOf="@id/parent_account_txt_login_info" />
 
-    <TextView
-        android:id="@+id/parent_account_txt_nickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:text="짱구짱아맘"
-        android:textColor="#252525"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/parent_account_txt_nickname_info" />
+        <TextView
+            android:id="@+id/parent_account_txt_change_pw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="비밀번호 변경"
+            android:textColor="#252525"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/parent_account_txt_id_info"
+            app:layout_constraintTop_toBottomOf="@id/parent_account_txt_id_info" />
 
-    <TextView
-        android:id="@+id/parent_account_txt_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
-        android:text="로그아웃"
-        android:textColor="#ff6076"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/parent_account_txt_change_pw"
-        app:layout_constraintTop_toBottomOf="@id/parent_account_txt_change_pw" />
+        <TextView
+            android:id="@+id/parent_account_txt_nickname_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="닉네임"
+            android:textColor="#252525"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/parent_account_txt_change_pw"
+            app:layout_constraintTop_toBottomOf="@id/parent_account_txt_change_pw" />
+
+        <TextView
+            android:id="@+id/parent_account_txt_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="abc@google.com"
+            android:textColor="#252525"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/parent_account_txt_id_info" />
+
+        <TextView
+            android:id="@+id/parent_account_txt_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:text="짱구짱아맘"
+            android:textColor="#252525"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/parent_account_txt_nickname_info" />
+
+        <TextView
+            android:id="@+id/parent_account_txt_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="132dp"
+            android:text="로그아웃"
+            android:textColor="#ff6076"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/parent_account_txt_change_pw"
+            app:layout_constraintTop_toBottomOf="@id/parent_account_txt_change_pw" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
