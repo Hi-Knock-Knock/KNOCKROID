@@ -181,7 +181,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
 
     private fun setOnMotionStart() {
         char_talk_person.repeatMode = LottieDrawable.REVERSE
-        char_talk_person.repeatCount = LottieDrawable.INFINITE
+        char_talk_person.repeatCount = 3
         char_talk_person.playAnimation()
     }
 

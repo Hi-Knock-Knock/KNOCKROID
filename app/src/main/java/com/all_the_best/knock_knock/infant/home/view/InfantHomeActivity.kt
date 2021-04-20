@@ -228,7 +228,7 @@ class InfantHomeActivity : AppCompatActivity() {
                 char_img.setOnClickListener{
                     char_img.setAnimation("dami_hi.json")
                     char_img.repeatMode = LottieDrawable.REVERSE
-                    char_img.repeatCount = LottieDrawable.INFINITE
+                    char_img.repeatCount = 1
                     char_img.playAnimation()
                 }
             } // 담이 idle
@@ -237,7 +237,7 @@ class InfantHomeActivity : AppCompatActivity() {
                 char_img.setOnClickListener{
                     char_img.setAnimation("knock_wink.json")
                     char_img.repeatMode = LottieDrawable.REVERSE
-                    char_img.repeatCount = LottieDrawable.INFINITE
+                    char_img.repeatCount = 1
                     char_img.playAnimation()
                 }
             } //녹녹이 idle로 바꾸기
@@ -245,7 +245,7 @@ class InfantHomeActivity : AppCompatActivity() {
                 char_img.setOnClickListener{
                     char_img.setAnimation("timi_jump.json")
                     char_img.repeatMode = LottieDrawable.REVERSE
-                    char_img.repeatCount = LottieDrawable.INFINITE
+                    char_img.repeatCount = 1
                     char_img.playAnimation()
                 }
             } // 티미 idle
@@ -253,7 +253,7 @@ class InfantHomeActivity : AppCompatActivity() {
         setOnMotionStart()
     }
 
-    // lottie -> 캐릭터 change가 되면 애니메이션이 움직이도록 해야되니까...이미지를 다 애니메이션으로 바꿔야되는ㅋㅋ ..
+
     private fun setOnMotionStart(){
         char_img.repeatMode = LottieDrawable.REVERSE
         char_img.repeatCount = LottieDrawable.INFINITE

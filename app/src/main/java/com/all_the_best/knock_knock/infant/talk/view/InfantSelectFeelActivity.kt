@@ -175,15 +175,15 @@ class InfantSelectFeelActivity : AppCompatActivity() {
     private fun setSelectCharacter() {
         when (chSelect) {
             0 -> char_talk_feel.setAnimation("dami_hi.json")
-            1 -> char_talk_feel.setAnimation("knock_wink.json") // 녹녹이
-            2 -> char_talk_feel.setAnimation("timi_jump.json")
+            1 -> char_talk_feel.setAnimation("knock_earup.json") // 녹녹이
+            2 -> char_talk_feel.setAnimation("timi_earout.json")
         }
         setOnMotionStart()
     }
 
     private fun setOnMotionStart() {
         char_talk_feel.repeatMode = LottieDrawable.REVERSE
-        char_talk_feel.repeatCount = LottieDrawable.INFINITE
+        char_talk_feel.repeatCount = 1
         char_talk_feel.playAnimation()
     }
 
