@@ -203,7 +203,26 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordStopClick(){
         stopRecordBtn.setOnClickListener {
-            //loading = 1
+            when(chSelect){
+                0 -> {
+                    talk_start_char_dam.setAnimation("dami_think.json")
+                    talk_start_char_dam.repeatMode = LottieDrawable.REVERSE
+                    talk_start_char_dam.repeatCount = LottieDrawable.INFINITE
+                    talk_start_char_dam.playAnimation()
+                }
+                1 -> {
+                    talk_start_char_dam.setAnimation("knock_think.json")
+                    talk_start_char_dam.repeatMode = LottieDrawable.REVERSE
+                    talk_start_char_dam.repeatCount = LottieDrawable.INFINITE
+                    talk_start_char_dam.playAnimation()
+                }
+                2 -> {
+                    talk_start_char_dam.setAnimation("timi_think.json")
+                    talk_start_char_dam.repeatMode = LottieDrawable.REVERSE
+                    talk_start_char_dam.repeatCount = LottieDrawable.INFINITE
+                    talk_start_char_dam.playAnimation()
+                }
+            }
             stopRecording()
             setFinishRecordChildAtFirebase()
         }
@@ -315,7 +334,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
     }
 
-    private fun setPlayParentRecord() {
+    private fun setPlayParentRecord() {0
         val parentId = "부모1"
         val childName = "아이1"
         val myValue: DatabaseReference =
@@ -324,6 +343,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
         myValue.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.value as Boolean) {
+                    setSelectCharacter()
+                    setOnLottieStart()
                     getDataFromStorage()
                 }
             }
