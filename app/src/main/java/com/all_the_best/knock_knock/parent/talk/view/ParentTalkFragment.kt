@@ -197,6 +197,9 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                             R.id.rb6_dialog -> R.string.talk_question_5.toString()
                             R.id.rb7_dialog -> R.string.talk_question_6.toString()
                             R.id.rb8_dialog -> R.string.talk_question_7.toString()
+                            R.id.rb9_dialog -> R.string.talk_question_8.toString()
+                            R.id.rb10_dialog -> R.string.talk_question_9.toString()
+                            R.id.rb11_dialog -> R.string.talk_question_10.toString()
                             else -> "없음"
                         }
                 }
@@ -272,6 +275,9 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                     R.id.rb6 -> R.string.talk_question_5.toString()
                     R.id.rb7 -> R.string.talk_question_6.toString()
                     R.id.rb8 -> R.string.talk_question_7.toString()
+                    R.id.rb9 -> R.string.talk_question_8.toString()
+                    R.id.rb10 -> R.string.talk_question_9.toString()
+                    R.id.rb11 -> R.string.talk_question_10.toString()
                     else -> "없음"
                 }
         }

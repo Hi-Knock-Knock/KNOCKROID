@@ -23,4 +23,7 @@
     <string name="talk_question_5">아빠한테 하고 싶은 말 있어?</string>
     <string name="talk_question_6">아빠한테 속상한 거 있어?</string>
     <string name="talk_question_7">엄마한테 속상한 거 있어?</string>
+    <string name="talk_question_8">너는 가장 친한친구가 누구야?</string>
+    <string name="talk_question_9">오늘 어린이집에서 재밌었어?</string>
+    <string name="talk_question_10">오늘 친구하고 뭐하고 놀았어?</string>
 </resources>

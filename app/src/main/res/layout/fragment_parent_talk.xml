@@ -287,6 +287,45 @@
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
+                                <RadioButton
+                                    android:id="@+id/rb9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
+                                    android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
+                                    android:text="@string/talk_question_8"
+                                    android:textColor="#252525"
+                                    android:textSize="14sp" />
+
+                                <RadioButton
+                                    android:id="@+id/rb10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
+                                    android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
+                                    android:text="@string/talk_question_9"
+                                    android:textColor="#252525"
+                                    android:textSize="14sp" />
+
+                                <RadioButton
+                                    android:id="@+id/rb11"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="16dp"
+                                    android:layout_marginVertical="5dp"
+                                    android:button="@drawable/custom_radio_button"
+                                    android:buttonTint="#252525"
+                                    android:includeFontPadding="false"
+                                    android:paddingStart="8dp"
+                                    android:text="@string/talk_question_10"
+                                    android:textColor="#252525"
+                                    android:textSize="14sp" />
+
                             </RadioGroup>
                         </LinearLayout>
                     </ScrollView>
