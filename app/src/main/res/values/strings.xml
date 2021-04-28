@@ -15,4 +15,12 @@
                 놀아주세요.\n
                 - 인내심을 가지고 귀를 기울여주세요.\n
                 - 그림책을 함께 읽는 시간을 보내주세요.</string>
+    <string name="talk_question_0">없음</string>
+    <string name="talk_question_1">엄마 아빠랑 싸우면 기분이 어때?</string>
+    <string name="talk_question_2">동생이랑 노는거 즐거워?</string>
+    <string name="talk_question_3">동생은 어떤 존재야?</string>
+    <string name="talk_question_4">엄마한테 하고 싶은 말 있어?</string>
+    <string name="talk_question_5">아빠한테 하고 싶은 말 있어?</string>
+    <string name="talk_question_6">아빠한테 속상한 거 있어?</string>
+    <string name="talk_question_7">엄마한테 속상한 거 있어?</string>
 </resources>
