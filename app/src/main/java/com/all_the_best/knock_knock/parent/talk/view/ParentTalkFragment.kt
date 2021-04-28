@@ -189,22 +189,18 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 talkDialogRadiogroup.setOnCheckedChangeListener { questionGroup, checkedId ->
                     talkDialogTxtSelectedQuestion.text =
                         when (checkedId) {
-                            R.id.rb1_dialog -> "없음"
-                            R.id.rb2_dialog -> "엄마랑 아빠랑 싸우면 기분이 어때?"
-                            R.id.rb3_dialog -> "동생은 어떤 존재야?"
-                            R.id.rb4_dialog -> "동생이랑 노는 거 즐거워?"
-                            R.id.rb5_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
-                            R.id.rb6_dialog -> "아빠한테 속상한 거 있어?"
-                            R.id.rb7_dialog -> "엄마한테 속상한 거 있어?"
-                            R.id.rb8_dialog -> "엄마랑 아빠랑 싸우면 기분이 어때?"
-                            R.id.rb9_dialog -> "동생은 어떤 존재야?"
-                            R.id.rb10_dialog -> "동생이랑 노는 거 즐거워?"
-                            R.id.rb11_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
-                            R.id.rb12_dialog -> "동생이랑 노는 거 즐거워?"
-                            R.id.rb13_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
-                            R.id.rb14_dialog -> "동생이랑 노는 거 즐거워?"
-                            R.id.rb15_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
-                            else -> "없음"
+                            R.id.rb1_dialog -> getString(R.string.talk_question_0)
+                            R.id.rb2_dialog -> getString(R.string.talk_question_1)
+                            R.id.rb3_dialog -> getString(R.string.talk_question_2)
+                            R.id.rb4_dialog -> getString(R.string.talk_question_3)
+                            R.id.rb5_dialog -> getString(R.string.talk_question_4)
+                            R.id.rb6_dialog -> getString(R.string.talk_question_5)
+                            R.id.rb7_dialog -> getString(R.string.talk_question_6)
+                            R.id.rb8_dialog -> getString(R.string.talk_question_7)
+                            R.id.rb9_dialog -> getString(R.string.talk_question_8)
+                            R.id.rb10_dialog -> getString(R.string.talk_question_9)
+                            R.id.rb11_dialog -> getString(R.string.talk_question_10)
+                            else -> getString(R.string.talk_question_0)
                         }
                 }
             }
@@ -271,22 +267,18 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         binding.talkBtnSubmit.setOnClickListener {
             binding.talkTxtSelectedQuestion.text =
                 when (binding.talkRadiogroup.checkedRadioButtonId) {
-                    R.id.rb1 -> "없음"
-                    R.id.rb2 -> "엄마랑 아빠랑 싸우면 기분이 어때?"
-                    R.id.rb3 -> "동생은 어떤 존재야?"
-                    R.id.rb4 -> "동생이랑 노는 거 즐거워?"
-                    R.id.rb5 -> "엄마가 어떻게 해줬으면 좋겠어?"
-                    R.id.rb6 -> "아빠한테 속상한 거 있어?"
-                    R.id.rb7 -> "엄마한테 속상한 거 있어?"
-                    R.id.rb8 -> "엄마랑 아빠랑 싸우면 기분이 어때?"
-                    R.id.rb9 -> "동생은 어떤 존재야?"
-                    R.id.rb10 -> "동생이랑 노는 거 즐거워?"
-                    R.id.rb11 -> "엄마가 어떻게 해줬으면 좋겠어?"
-                    R.id.rb12 -> "동생이랑 노는 거 즐거워?"
-                    R.id.rb13 -> "엄마가 어떻게 해줬으면 좋겠어?"
-                    R.id.rb14 -> "동생이랑 노는 거 즐거워?"
-                    R.id.rb15 -> "엄마가 어떻게 해줬으면 좋겠어?"
-                    else -> "없음"
+                    R.id.rb1 -> getString(R.string.talk_question_0)
+                    R.id.rb2 -> getString(R.string.talk_question_1)
+                    R.id.rb3 -> getString(R.string.talk_question_2)
+                    R.id.rb4 -> getString(R.string.talk_question_3)
+                    R.id.rb5 -> getString(R.string.talk_question_4)
+                    R.id.rb6 -> getString(R.string.talk_question_5)
+                    R.id.rb7 -> getString(R.string.talk_question_6)
+                    R.id.rb8 -> getString(R.string.talk_question_7)
+                    R.id.rb9 -> getString(R.string.talk_question_8)
+                    R.id.rb10 -> getString(R.string.talk_question_9)
+                    R.id.rb11 -> getString(R.string.talk_question_10)
+                    else -> getString(R.string.talk_question_0)
                 }
         }
     }

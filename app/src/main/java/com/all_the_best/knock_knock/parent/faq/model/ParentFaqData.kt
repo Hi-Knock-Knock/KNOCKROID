@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ParentFaqData(
         val index: Int,
-        val title: String,
+        val title: Int,
         val content: Int,
         var isScrapped: Boolean
 ): Parcelable

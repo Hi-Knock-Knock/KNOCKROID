@@ -63,7 +63,7 @@ class ParentFaqFragment : Fragment(), FragmentOnBackPressed,
 
     private fun setFaqRcvAdapter() {
         binding.parentFaqRcv.adapter =
-            ParentFaqRcvAdapter<ItemParentFaqBinding>(R.layout.item_parent_faq, requireContext())
+            ParentFaqRcvAdapter<ItemParentFaqBinding>(R.layout.item_parent_faq, requireContext(), parentFaqViewModel)
     }
 
     private fun setFaqListObserve() {

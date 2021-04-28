@@ -15,10 +15,15 @@ import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.*
 import com.all_the_best.knock_knock.parent.faq.model.ParentFaqData
 import com.all_the_best.knock_knock.parent.faq.view.ParentFaqDetailActivity
+import com.all_the_best.knock_knock.parent.faq.viewmodel.ParentFaqViewModel
 import com.all_the_best.knock_knock.parent.mypage.adapter.ParentMyPageRcvAdapter
 import com.all_the_best.knock_knock.parent.mypage.model.ParentMyPageBaby
 
-class ParentFaqRcvAdapter<B : ViewDataBinding>(val layout: Int, val context: Context) :
+class ParentFaqRcvAdapter<B : ViewDataBinding>(
+    val layout: Int,
+    val context: Context,
+    val viewModel: ParentFaqViewModel
+) :
     ListAdapter<ParentFaqData, ParentFaqRcvAdapter<B>.ParentFaqRcvViewHolder<B>>(
         ParentFaqRcvDiffUtil()
     ) {
@@ -31,6 +36,7 @@ class ParentFaqRcvAdapter<B : ViewDataBinding>(val layout: Int, val context: Con
                         setVariable(BR.faqData, parentFaqData)
                         executePendingBindings()
                         setOnItemClickListenerAtFaq(binding, parentFaqData, context)
+                        setOnScrapBtnClick(binding, parentFaqData, viewModel)
                     }
                 }
                 else -> {
@@ -101,4 +107,19 @@ class ParentFaqRcvAdapter<B : ViewDataBinding>(val layout: Int, val context: Con
         }
     }
 
+    private fun setOnScrapBtnClick(
+        binding: ItemParentFaqBinding,
+        data: ParentFaqData,
+        viewModel: ParentFaqViewModel
+    ) {
+        binding.rcvFaqBookmark.setOnClickListener {
+            data.isScrapped = !data.isScrapped
+            viewModel.faqDetailList[data.index].isScrapped = data.isScrapped
+            if(data.isScrapped){
+                binding.rcvFaqBookmark.setBackgroundResource(R.drawable.ic_bookmark_checked)
+            }else{
+                binding.rcvFaqBookmark.setBackgroundResource(R.drawable.ic_bookmark_unchecked)
+            }
+        }
+    }
 }

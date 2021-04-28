@@ -2,17 +2,159 @@
     <string name="app_name">Knock_Knock</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="faq_data_content">- \"미안해\" 를 강요하지 마세요.\n
-                - 따뜻한 눈길로 바라봐주세요\n
-                - 칭찬과 애정표현을 자주해주세요\n
-                - 아이 스스로 문제를 해결할 수 있게 \n
-                하세요.\n
-                - 아이의 사소한 고민도 진지하게 \n
-                들어주세요.\n
-                - 야단보다는 잘못된 이유를 \n
-                설명해주세요.\n
-                - 아이의 시간에 맞춰 정말 재밌게 \n
-                놀아주세요.\n
-                - 인내심을 가지고 귀를 기울여주세요.\n
-                - 그림책을 함께 읽는 시간을 보내주세요.</string>
+    <string name="talk_question_0">없음</string>
+    <string name="talk_question_1">엄마 아빠랑 싸우면 기분이 어때?</string>
+    <string name="talk_question_2">동생이랑 노는거 즐거워?</string>
+    <string name="talk_question_3">동생은 어떤 존재야?</string>
+    <string name="talk_question_4">엄마한테 하고 싶은 말 있어?</string>
+    <string name="talk_question_5">아빠한테 하고 싶은 말 있어?</string>
+    <string name="talk_question_6">아빠한테 속상한 거 있어?</string>
+    <string name="talk_question_7">엄마한테 속상한 거 있어?</string>
+    <string name="talk_question_8">너는 가장 친한친구가 누구야?</string>
+    <string name="talk_question_9">오늘 어린이집에서 재밌었어?</string>
+    <string name="talk_question_10">오늘 친구하고 뭐하고 놀았어?</string>
+    <string name="faq_title_1">아이를\n바르게\n대하는 방법</string>
+    <string name="faq_title_2">동생이\n밉다고\n느끼는 아이</string>
+    <string name="faq_title_3">나쁜 말을\n하는 아이</string>
+    <string name="faq_title_4">자존감이\n낮은 아이</string>
+    <string name="faq_title_5">자주\n우는 아이</string>
+    <string name="faq_title_6">아이가 싫어\n하는 행동을\n표현한 경우</string>
+    <string name="faq_title_7">첫 도전을\n실패한 아이</string>
+    <string name="faq_title_8">참는 성향이\n있는 아이</string>
+    <string name="faq_title_9">엄마 아빠가\n밉다고\n하는 아이</string>
+    <string name="faq_title_10">친구한테\n거절당해\n속상한 아이</string>
+    <string name="faq_title_11">말을\n더듬는 아이</string>
+    <string name="faq_title_12">거짓말을\n하는 아이</string>
+    <string name="faq_title_13">모른다는\n대답만\n하는 아이</string>
+    <string name="faq_detail_title_1">아이를 바르게 대하는 방법</string>
+    <string name="faq_detail_title_2">동생이 밉다고 느끼는 아이</string>
+    <string name="faq_detail_title_3">나쁜 말을 하는 아이</string>
+    <string name="faq_detail_title_4">자존감이 낮은 아이</string>
+    <string name="faq_detail_title_5">자주 우는 아이</string>
+    <string name="faq_detail_title_6">아이가 싫어 하는 행동을 표현한 경우</string>
+    <string name="faq_detail_title_7">첫 도전을 실패한 아이</string>
+    <string name="faq_detail_title_8">참는 성향이 있는 아이</string>
+    <string name="faq_detail_title_9">엄마 아빠가 밉다고 하는 아이</string>
+    <string name="faq_detail_title_10">친구한테 거절당해 속상한 아이</string>
+    <string name="faq_detail_title_11">말을 더듬는 아이</string>
+    <string name="faq_detail_title_12">거짓말을 하는 아이</string>
+    <string name="faq_detail_title_13">모른다는 대답만 하는 아이</string>
+    <string name="faq_data_content_1">
+        - \"미안해\" 를 강요하지 마세요.
+        \n- 따뜻한 눈길로 바라봐주세요
+        \n- 칭찬과 애정표현을 자주해주세요
+        \n- 아이 스스로 문제를 해결할 수 있게 \n하세요.
+        \n- 아이의 사소한 고민도 진지하게 \n들어주세요.
+        \n- 야단보다는 잘못된 이유를 \n설명해주세요.
+        \n- 아이의 시간에 맞춰 정말 재밌게 \n놀아주세요.
+        \n- 인내심을 가지고 귀를 기울여주세요.
+        \n- 그림책을 함께 읽는 시간을 보내주세요.</string>
+    <string name="faq_data_content_2">
+        아이가 동생이 밉다는 마음을
+        \n이해하는 말을 먼저 해 주세요.
+        \n아이를 평가하지 말고
+        \n“00이는 동생이 밉다고 느끼는 구나”,
+        \n“맞아 동생이 조금 미운 행동을 했다.”,
+        \n“우리 00이 많이 속상했구나.” 와
+        \n같은 말로 수긍해주세요.
+        \n그럼 아이는 솔직한 이야기를 시작합니다.
+        \n아이의 말에 담긴 마음을 먼저 느껴주세요.</string>
+    <string name="faq_data_content_3">
+        외부 환경에 노출될수록
+        \n무의식 적으로 나쁜 말을 사용할 수 있어요.
+        \n하지만 바로 “나쁜 말이야” 라고
+        \n말하며 단정지어버린다면
+        \n아이의 감정을 실은 언어가 억압되어버려요.
+        \n그러면 아이의 마음에 접근할 수 있는 길이
+        \n막혀버립니다.
+        \n마음에 접근하지 못 하면 그 상황을 통해
+        \n무언가를 가르치지도 못해요.
+        \n그러니 혼내기보다는
+        \n“너는 이 말 을 할 때 기분이 어때?”,
+        \n“이 말이 무슨 뜻 인줄 아니?”,
+        \n“많은 친구들이 한다고 해서 늘 옳은 뜻이 아니란다. 이건 안 되는거야” 와 같이
+        \n아이와 이야기를 나눠 봐야 해요.</string>
+    <string name="faq_data_content_4">
+        아이가 많이 위축되어 있다면 자존감을
+        \n높여주는 것이 좋아요.
+        \n결과물만 강조하는 것이 아닌
+        \n아이의 생각과 요구에 민감하게 반응해주는 게 중요합니다.
+        \n아이가 “내 생각은 달라”라고 말하며
+        \n목소리가 작아진다면
+        \n“00이 생각은 어떠니?” 라고 친절하게
+        \n되물으며 아이를 존중해주세요.</string>
+    <string name="faq_data_content_5">
+        사소한 것에도 우는 아이가
+        \n지난번 비슷한 상황에서보다 더 빨리 울음을 그친다면 칭찬을 해 주세요.
+        \n“아빠/엄마가 보니까 00이 지난번보다 울음을 빨리 그치네!” 라고 부드럽게 말해주세요.
+        \n어제보다 아주 조금이라도 나아진 오늘을
+        \n칭찬해주는 것이 혼내는 것 보다 아이에게 더 좋아요.</string>
+    <string name="faq_data_content_6">
+        아이가 무서워하거나 싫다는 의사표현을 해도
+        \n아이의 반응이 재미있어 반복하는 경우가 있어요.
+        \n아이가 싫어하면 “미안해, 너는 이게 싫구나.
+        \n안할게”라고 말해주세요.
+        \n아이를 놀리면서 아이의 자존심을 가지고 장난치지 마세요.</string>
+    <string name="faq_data_content_7">
+        무엇이든지 처음 경험하는 것이 많은 아이는
+        \n그만큼 수도 없이 많은 실패를 경험해요.
+        \n급할 것 없어요.
+        \n아이에게 ‘다음’을 허락해주며
+        \n‘다음’이 있다는 사실을 알려주세요.
+        \n“그래, 다음에 또 해보자” 라는 말을 자주 해주세요.</string>
+    <string name="faq_data_content_8">
+        “어린이집 다니는 거 힘들어?” 라고 물어보면
+        \n‘아니’라고 대답하며 말하지 않을 수 있어요.
+        \n아이가 참는 성향이면 힘들고 불편한 것이
+        \n없는지 잘 살펴봐야합니다.
+        \n“00 이 어린이집 다니는 거 좋아하잖아.
+        \n그런데 어떨 때는 힘들지 않니?”라고 물어봐주세요.
+        \n아무 말하지 않아도 괜찮지 않을 수 있어요.</string>
+    <string name="faq_data_content_9">
+        아이도 화가 나서 “엄마/아빠 미워” 라고
+        \n말하며 엄마/아빠를 싫어할 수 있습니다.
+        \n그래도 아이는 엄마/아빠를 사랑한다는
+        \n사실을 믿어 의심치 마세요.
+        \n아이에게 서운해 하지 말고
+        \n“엄마/아빠에게 미운 마음이 들 때가 있구나.
+        \n어떨 때 엄마/아빠가 미운지 이야기해주겠니?”
+        \n라고 말하며 궁금해 하고 이유를 물어봐주세요.</string>
+    <string name="faq_data_content_10">
+        “00이 친구와 놀고 싶었는데
+        \n친구가 싫다고 해서 속상했구나.” 라고
+        \n아이의 감정을 먼저 수긍해주세요.
+        \n그리곤 “그런데 그때 그 친구 마음은 그랬나보다. 다른 놀이를 하고 싶었나봐.
+        \n다시 놀고 싶을 때 또 놀자고 해봐.” 라고
+        \n말하며 아이에게 다음을 알려주세요.</string>
+    <string name="faq_data_content_11">
+        말을 더듬는 아이는 복합적 문제일
+        \n가능성이 있지만 심리적 문제로 인해 그럴 경우가 있어요.
+        \n심리적인 문제가 섞여 있다면
+        \n조금 더 주의 깊게 아이를 관찰하도록 해요.
+        \n아이에게 조바심을 주거나
+        \n“말 더듬지 말고 천천히 말해봐” 같이
+        \n말을 잘 못하 고 있다는 인식을 심어주는 것은 좋지 않아요.
+        \n당황하지 말고 평소처럼 대화해주는 것이 가장 좋아요.</string>
+    <string name="faq_data_content_12">
+        거짓말에 숨은 아이의 마음을 잘 읽어주세요.
+        \n하고 싶은 것, 갖고 싶은 것, 가고 싶은 곳
+        \n등에 대한 소망의 표현일 경우가 있어요.
+        \n이럴 때 “너 왜 거짓말 해”라고 하기 보다는
+        \n“00이 친구네가 가고 싶었구나.
+        \n그래서 엄마가 가자고 말한 것처럼
+        \n생각할 정도로 가고 싶었나보다” 라고 이야기해주는 것이 좋아요.
+        \n거짓말 자체에 초점을 두고 야단치는 것은
+        \n별로 효과적이지 않아요.
+        \n왜 거짓말을 하게 되었는지 아이의 의도와
+        \n욕구에 초점을 맞춰 대화하는 것이 더 효과적이에요.</string>
+    <string name="faq_data_content_13">
+        아이가 질문에 대해 즉각적인 대답을 하지 않을 수도 있어요.
+        \n그럴 땐 빨리 대답하라고 재촉하기 보다는
+        \n“00이 지금은 이야기를 하고 싶지 않구나.
+        \n나중에 하고 싶어 지면 이야기해줘.
+        \n엄마/아빠가 기다릴께.”라고 말하고
+        \n기다려주는 것이 좋아요.
+        \n대답을 강요하지 말고 마음 읽기 위주로
+        \n아이와 상호작용하다보면 아이는 믿음이
+        \n생겨 편안하고 자연스럽게 이야기하게 된답니다.</string>
 </resources>

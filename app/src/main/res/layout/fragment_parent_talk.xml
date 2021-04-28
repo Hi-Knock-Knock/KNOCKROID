@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/img_main_background"
-            tools:visibility="gone">
+            tools:visibility="visible">
 
             <ImageButton
                 android:id="@+id/talk_btn_hamburger"
@@ -192,7 +192,7 @@
                                     android:buttonTint="#252525"
                                     android:includeFontPadding="false"
                                     android:paddingStart="8dp"
-                                    android:text="없음"
+                                    android:text="@string/talk_question_0"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
@@ -205,7 +205,7 @@
                                     android:buttonTint="#252525"
                                     android:includeFontPadding="false"
                                     android:paddingStart="8dp"
-                                    android:text="엄마랑 아빠랑 싸우면 기분이 어때?"
+                                    android:text="@string/talk_question_1"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
@@ -218,7 +218,7 @@
                                     android:buttonTint="#252525"
                                     android:includeFontPadding="false"
                                     android:paddingStart="8dp"
-                                    android:text="동생은 어떤 존재야?"
+                                    android:text="@string/talk_question_2"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
@@ -231,7 +231,7 @@
                                     android:buttonTint="#252525"
                                     android:includeFontPadding="false"
                                     android:paddingStart="8dp"
-                                    android:text="동생이랑 노는 거 즐거워?"
+                                    android:text="@string/talk_question_3"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
@@ -244,7 +244,7 @@
                                     android:buttonTint="#252525"
                                     android:includeFontPadding="false"
                                     android:paddingStart="8dp"
-                                    android:text="엄마가 어떻게 해줬으면 좋겠어?"
+                                    android:text="@string/talk_question_4"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
@@ -257,7 +257,7 @@
                                     android:buttonTint="#252525"
                                     android:includeFontPadding="false"
                                     android:paddingStart="8dp"
-                                    android:text="아빠한테 속상한 거 있어?"
+                                    android:text="@string/talk_question_5"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
@@ -270,7 +270,7 @@
                                     android:buttonTint="#252525"
                                     android:includeFontPadding="false"
                                     android:paddingStart="8dp"
-                                    android:text="엄마한테 속상한 거 있어?"
+                                    android:text="@string/talk_question_6"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
@@ -283,7 +283,7 @@
                                     android:buttonTint="#252525"
                                     android:includeFontPadding="false"
                                     android:paddingStart="8dp"
-                                    android:text="엄마랑 아빠랑 싸우면 기분이 어때?"
+                                    android:text="@string/talk_question_7"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
@@ -296,7 +296,7 @@
                                     android:buttonTint="#252525"
                                     android:includeFontPadding="false"
                                     android:paddingStart="8dp"
-                                    android:text="동생은 어떤 존재야?"
+                                    android:text="@string/talk_question_8"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
@@ -309,7 +309,7 @@
                                     android:buttonTint="#252525"
                                     android:includeFontPadding="false"
                                     android:paddingStart="8dp"
-                                    android:text="동생이랑 노는 거 즐거워?"
+                                    android:text="@string/talk_question_9"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
@@ -322,59 +322,7 @@
                                     android:buttonTint="#252525"
                                     android:includeFontPadding="false"
                                     android:paddingStart="8dp"
-                                    android:text="엄마가 어떻게 해줬으면 좋겠어?"
-                                    android:textColor="#252525"
-                                    android:textSize="14sp" />
-
-                                <RadioButton
-                                    android:id="@+id/rb12"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="16dp"
-                                    android:layout_marginVertical="5dp"
-                                    android:button="@drawable/custom_radio_button"
-                                    android:buttonTint="#252525"
-                                    android:includeFontPadding="false"
-                                    android:paddingStart="8dp"
-                                    android:text="동생이랑 노는 거 즐거워?"
-                                    android:textColor="#252525"
-                                    android:textSize="14sp" />
-
-                                <RadioButton
-                                    android:id="@+id/rb13"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="16dp"
-                                    android:layout_marginVertical="5dp"
-                                    android:button="@drawable/custom_radio_button"
-                                    android:buttonTint="#252525"
-                                    android:includeFontPadding="false"
-                                    android:paddingStart="8dp"
-                                    android:text="엄마가 어떻게 해줬으면 좋겠어?"
-                                    android:textColor="#252525"
-                                    android:textSize="14sp" />
-
-                                <RadioButton
-                                    android:id="@+id/rb14"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="16dp"
-                                    android:layout_marginVertical="5dp"
-                                    android:button="@drawable/custom_radio_button"
-                                    android:buttonTint="#252525"
-                                    android:includeFontPadding="false"
-                                    android:paddingStart="8dp"
-                                    android:text="동생이랑 노는 거 즐거워?"
-                                    android:textColor="#252525"
-                                    android:textSize="14sp" />
-
-                                <RadioButton
-                                    android:id="@+id/rb15"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="16dp"
-                                    android:layout_marginVertical="5dp"
-                                    android:button="@drawable/custom_radio_button"
-                                    android:buttonTint="#252525"
-                                    android:includeFontPadding="false"
-                                    android:paddingStart="8dp"
-                                    android:text="엄마가 어떻게 해줬으면 좋겠어?"
+                                    android:text="@string/talk_question_10"
                                     android:textColor="#252525"
                                     android:textSize="14sp" />
 
@@ -414,7 +362,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/img_background"
             android:visibility="invisible"
-            tools:visibility="visible">
+            tools:visibility="invisible">
 
             <ImageButton
                 android:id="@+id/real_talk_btn_hamburger"
