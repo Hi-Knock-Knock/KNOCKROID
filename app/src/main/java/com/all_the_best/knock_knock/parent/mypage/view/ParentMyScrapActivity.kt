@@ -47,7 +47,7 @@ class ParentMyScrapActivity : AppCompatActivity() {
 
     private fun setMyScrapRcvAdapter() {
         binding.parentMyScrapRcv.adapter =
-            ParentFaqRcvAdapter<ItemParentMyScrapBinding>(R.layout.item_parent_my_scrap, this)
+            ParentFaqRcvAdapter<ItemParentMyScrapBinding>(R.layout.item_parent_my_scrap, this, parentMyScrapViewmodel)
     }
 
     private fun setMyScrapListObserve() {

@@ -20,7 +20,7 @@ class ParentFaqDetailActivity : AppCompatActivity() {
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.light_blue_status_bar, null))
         setFaqData()
         setOnBackBtnClick()
-        setOnBookmarkClick()
+        //setOnBookmarkClick()
     }
 
     private fun setFaqData() {
@@ -39,16 +39,14 @@ class ParentFaqDetailActivity : AppCompatActivity() {
     private fun setOnBookmarkClick() {
         binding.faqdetailBookmark.setOnClickListener {
             binding.faqDetailData.let {
-                if (it!!.isScrapped) {
-                    //버튼 클릭했을 시, 체크되어있는 북마크일 경우 -> 클릭하면 체크 해제 되도록
-                    //상세화면에서 북마크 변경하면 리사이클러뷰에도 적용되도록 해야함...(추가 코딩 필요)
-                    it.isScrapped = false
-                    binding.faqdetailBookmark.setBackgroundResource(R.drawable.ic_bookmark_unchecked)
-                } else {
-                    //버튼 클릭했을 시, 체크되어있지 않은 북마크일 경우 -> 클릭하면 체크 되도록
-                    //상세화면에서 북마크 변경하면 리사이클러뷰에도 적용되도록 해야함...(추가 코딩 필요)
-                    it.isScrapped = true
+                it!!.isScrapped = !it.isScrapped
+                faqDetailViewModel.faqDetailList[it.index].isScrapped = it.isScrapped
+                faqDetailViewModel.tempFaqList[it.index].isScrapped = it.isScrapped
+                faqDetailViewModel.setFaqList()
+                if (it.isScrapped) {
                     binding.faqdetailBookmark.setBackgroundResource(R.drawable.ic_bookmark_checked)
+                } else {
+                    binding.faqdetailBookmark.setBackgroundResource(R.drawable.ic_bookmark_unchecked)
                 }
             }
         }

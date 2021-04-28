@@ -15,7 +15,7 @@ class ParentFaqViewModel : ViewModel() {
     val myScrapList: LiveData<MutableList<ParentFaqData>>
         get() = _myScrapList
 
-    private var tempFaqList: List<ParentFaqData> = listOf(
+    var tempFaqList: List<ParentFaqData> = listOf(
         ParentFaqData(0, R.string.faq_title_1, R.string.faq_data_content_1, false),
         ParentFaqData(1, R.string.faq_title_2, R.string.faq_data_content_2, false),
         ParentFaqData(2, R.string.faq_title_3, R.string.faq_data_content_3, false),
