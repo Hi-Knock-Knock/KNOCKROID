@@ -16,24 +16,45 @@ class ParentFaqViewModel : ViewModel() {
         get() = _myScrapList
 
     private var tempFaqList: List<ParentFaqData> = listOf(
-        ParentFaqData(0, "자존감이\n" + "낮은 아이", R.string.faq_data_content, false),
-        ParentFaqData(1, "아이를\n" + "바르게\n" + "대하는 방법", R.string.faq_data_content, false),
-        ParentFaqData(2, "자존감이\n" + "낮은 아이", R.string.faq_data_content, false),
-        ParentFaqData(3, "자존감이\n" + "낮은 아이", R.string.faq_data_content, false),
-        ParentFaqData(4, "아이가\n" + "싫어하는 행동을\n" + "표현한 경우", R.string.faq_data_content, false),
-        ParentFaqData(5, "아이가\n" + "싫어하는 행동을\n" + "표현한 경우", R.string.faq_data_content, false),
-        ParentFaqData(6, "참는 성향이\n" + "있는 아이", R.string.faq_data_content, false),
-        ParentFaqData(7, "참는 성향이\n" + "있는 아이", R.string.faq_data_content, false),
-        ParentFaqData(8, "아이를\n" + "바르게\n" + "대하는 방법", R.string.faq_data_content, false)
+        ParentFaqData(0, R.string.faq_title_1, R.string.faq_data_content_1, false),
+        ParentFaqData(1, R.string.faq_title_2, R.string.faq_data_content_2, false),
+        ParentFaqData(2, R.string.faq_title_3, R.string.faq_data_content_3, false),
+        ParentFaqData(3, R.string.faq_title_4, R.string.faq_data_content_4, false),
+        ParentFaqData(4, R.string.faq_title_5, R.string.faq_data_content_5, false),
+        ParentFaqData(5, R.string.faq_title_6, R.string.faq_data_content_6, false),
+        ParentFaqData(6, R.string.faq_title_7, R.string.faq_data_content_7, false),
+        ParentFaqData(7, R.string.faq_title_8, R.string.faq_data_content_8, false),
+        ParentFaqData(8, R.string.faq_title_9, R.string.faq_data_content_9, false),
+        ParentFaqData(9, R.string.faq_title_10, R.string.faq_data_content_10, false),
+        ParentFaqData(10, R.string.faq_title_11, R.string.faq_data_content_11, false),
+        ParentFaqData(11, R.string.faq_title_12, R.string.faq_data_content_12, false),
+        ParentFaqData(12, R.string.faq_title_13, R.string.faq_data_content_13, false)
     )
 
+    var faqDetailList: List<ParentFaqData> = listOf(
+        ParentFaqData(0, R.string.faq_detail_title_1, R.string.faq_data_content_1, false),
+        ParentFaqData(1, R.string.faq_detail_title_2, R.string.faq_data_content_2, false),
+        ParentFaqData(2, R.string.faq_detail_title_3, R.string.faq_data_content_3, false),
+        ParentFaqData(3, R.string.faq_detail_title_4, R.string.faq_data_content_4, false),
+        ParentFaqData(4, R.string.faq_detail_title_5, R.string.faq_data_content_5, false),
+        ParentFaqData(5, R.string.faq_detail_title_6, R.string.faq_data_content_6, false),
+        ParentFaqData(6, R.string.faq_detail_title_7, R.string.faq_data_content_7, false),
+        ParentFaqData(7, R.string.faq_detail_title_8, R.string.faq_data_content_8, false),
+        ParentFaqData(8, R.string.faq_detail_title_9, R.string.faq_data_content_9, false),
+        ParentFaqData(9, R.string.faq_detail_title_10, R.string.faq_data_content_10, false),
+        ParentFaqData(10, R.string.faq_detail_title_11, R.string.faq_data_content_11, false),
+        ParentFaqData(11, R.string.faq_detail_title_12, R.string.faq_data_content_12, false),
+        ParentFaqData(12, R.string.faq_detail_title_13, R.string.faq_data_content_13, false)
+    )
+
+
     private var tempMyScrapList: List<ParentFaqData> = listOf(
-        ParentFaqData(0, "자존감이 낮은 아이", R.string.faq_data_content, true),
-        ParentFaqData(1, "아이를 바르게 대하는 방법", R.string.faq_data_content, true),
-        ParentFaqData(2, "자존감이 낮은 아이", R.string.faq_data_content, true),
-        ParentFaqData(4, "아이가 싫어하는 행동을 표현한 경우", R.string.faq_data_content, true),
-        ParentFaqData(6, "참는 성향이 있는 아이", R.string.faq_data_content, true),
-        ParentFaqData(8, "아이를 바르게 대하는 방법", R.string.faq_data_content, true)
+        ParentFaqData(0, R.string.faq_title_1, R.string.faq_data_content_1, true),
+        ParentFaqData(1, R.string.faq_title_1, R.string.faq_data_content_1, true),
+        ParentFaqData(2, R.string.faq_title_1, R.string.faq_data_content_1, true),
+        ParentFaqData(4, R.string.faq_title_1, R.string.faq_data_content_1, true),
+        ParentFaqData(6, R.string.faq_title_1, R.string.faq_data_content_1, true),
+        ParentFaqData(8, R.string.faq_title_1, R.string.faq_data_content_1, true)
     )
 
     fun setFaqList() {

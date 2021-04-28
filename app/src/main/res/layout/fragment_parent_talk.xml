@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/img_main_background"
-            tools:visibility="gone">
+            tools:visibility="visible">
 
             <ImageButton
                 android:id="@+id/talk_btn_hamburger"
@@ -362,7 +362,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/img_background"
             android:visibility="invisible"
-            tools:visibility="visible">
+            tools:visibility="invisible">
 
             <ImageButton
                 android:id="@+id/real_talk_btn_hamburger"
