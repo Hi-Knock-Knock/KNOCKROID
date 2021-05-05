@@ -27,6 +27,7 @@ class ParentMyPageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        overridePendingTransition(0, 0)
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.white_status_bar, null))
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_my_page)
         binding.lifecycleOwner = this
