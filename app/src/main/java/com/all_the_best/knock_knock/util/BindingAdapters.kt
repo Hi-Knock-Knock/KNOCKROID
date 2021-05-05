@@ -1,14 +1,18 @@
 package com.all_the_best.knock_knock.util
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.all_the_best.knock_knock.R
+import com.bumptech.glide.Glide
+import de.hdodenhof.circleimageview.CircleImageView
 
 object BindingAdapters {
     @BindingAdapter("setUnderLine")
@@ -46,4 +50,16 @@ object BindingAdapters {
         textView.text = spannableString
     }
 
+    @BindingAdapter("setSrcFromUrl")
+    @JvmStatic
+    fun setSrcFromUrl(imageView: CircleImageView, uri: Uri?) {
+        if (uri == null) {
+            imageView.setImageResource(R.drawable.img_baby_mybaby1)
+        } else {
+            Glide.with(imageView.context)
+                .load(uri)
+                .centerCrop()
+                .into(imageView)
+        }
+    }
 }
