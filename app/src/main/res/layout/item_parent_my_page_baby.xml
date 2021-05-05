@@ -18,11 +18,11 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_my_page_baby_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
             android:layout_marginStart="44dp"
             android:layout_marginEnd="44dp"
-            android:src="@drawable/img_mypage_baby1"
+            setSrcFromUrl="@{parentMyPageBabyData.uri}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

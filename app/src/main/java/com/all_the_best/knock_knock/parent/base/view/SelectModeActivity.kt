@@ -19,7 +19,7 @@ class SelectModeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_mode)
-
+        overridePendingTransition(0, 0)
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.light_blue_status_bar, null))
 
         val intent1 = Intent(this, ParentHomeActivity::class.java)

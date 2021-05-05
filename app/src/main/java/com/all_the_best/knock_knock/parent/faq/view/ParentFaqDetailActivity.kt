@@ -16,6 +16,7 @@ class ParentFaqDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        overridePendingTransition(0, 0)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_faq_detail)
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.light_blue_status_bar, null))
         setFaqData()

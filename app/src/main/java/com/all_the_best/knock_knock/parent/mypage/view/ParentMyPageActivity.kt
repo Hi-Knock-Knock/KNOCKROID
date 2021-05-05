@@ -18,16 +18,27 @@ class ParentMyPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityParentMyPageBinding
     private val parentMyPageViewModel: ParentMyPageViewModel by viewModels()
 
+    override fun onResume() {
+        super.onResume()
+        parentMyPageViewModel.getProfileImgFromStorage()
+        parentMyPageViewModel.setParentMyPageBabyList()
+        binding.parentMyPageRcvBaby.adapter?.notifyDataSetChanged()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        overridePendingTransition(0, 0)
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.white_status_bar, null))
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_my_page)
         binding.lifecycleOwner = this
         binding.txtEdit = "프로필 수정"
         binding.txtShowMore = "더보기"
+        parentMyPageViewModel.getProfileImgFromStorage()
         parentMyPageViewModel.setParentMyPageBabyList()
         setParentMyPageRcvAdapter()
+        binding.parentMyPageRcvBaby.adapter?.notifyDataSetChanged()
         setParentMyPageBabyObserve()
+        //setUriObserve()
         setSnapHelper()
         setOnClickListenerForGoBack()
         setOnClickListenerForEditProfile()
@@ -36,7 +47,10 @@ class ParentMyPageActivity : AppCompatActivity() {
     }
 
     private fun setParentMyPageRcvAdapter() {
-        val parentMyPageRcvAdapter = ParentMyPageRcvAdapter<ItemParentMyPageBabyBinding>(R.layout.item_parent_my_page_baby)
+        val parentMyPageRcvAdapter = ParentMyPageRcvAdapter<ItemParentMyPageBabyBinding>(
+            this,
+            R.layout.item_parent_my_page_baby
+        )
         binding.parentMyPageRcvBaby.adapter = parentMyPageRcvAdapter
     }
 
@@ -56,7 +70,7 @@ class ParentMyPageActivity : AppCompatActivity() {
     }
 
     private fun setOnClickListenerForGoBack() {
-        binding.parentMyPageBtnBack.setOnClickListener{
+        binding.parentMyPageBtnBack.setOnClickListener {
             onBackPressed()
         }
     }
@@ -80,6 +94,13 @@ class ParentMyPageActivity : AppCompatActivity() {
             val intent = Intent(this, ParentMyScrapActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun setUriObserve() {
+        parentMyPageViewModel.uri0.observe(this) { it.let { binding.parentMyPageRcvBaby.adapter?.notifyDataSetChanged() } }
+        parentMyPageViewModel.uri1.observe(this) { it.let { binding.parentMyPageRcvBaby.adapter?.notifyDataSetChanged() } }
+        parentMyPageViewModel.uri2.observe(this) { it.let { binding.parentMyPageRcvBaby.adapter?.notifyDataSetChanged() } }
+        parentMyPageViewModel.uri3.observe(this) { it.let { binding.parentMyPageRcvBaby.adapter?.notifyDataSetChanged() } }
     }
 
 }

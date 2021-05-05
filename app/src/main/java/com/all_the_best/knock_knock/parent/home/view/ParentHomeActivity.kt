@@ -27,6 +27,7 @@ class ParentHomeActivity : AppCompatActivity() {
     private val parentHomeViewModel: ParentHomeViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        overridePendingTransition(0, 0)
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.blue_status_bar, null))
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_home)
 

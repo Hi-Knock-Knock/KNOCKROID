@@ -2,6 +2,8 @@
     <string name="app_name">Knock_Knock</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sex_male">남</string>
+    <string name="sex_female">여</string>
     <string name="talk_question_0">없음</string>
     <string name="talk_question_1">엄마 아빠랑 싸우면 기분이 어때?</string>
     <string name="talk_question_2">동생이랑 노는거 즐거워?</string>

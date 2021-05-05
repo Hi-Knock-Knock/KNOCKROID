@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_signup.*
 class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        overridePendingTransition(0, 0)
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.blue_status_bar, null))
 
         val binding: ActivitySignupBinding = DataBindingUtil.setContentView(this, R.layout.activity_signup)

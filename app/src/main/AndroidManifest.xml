@@ -16,7 +16,8 @@
         <activity android:name=".parent.talk.view.ParentRealTalkActivity" />
         <activity android:name=".infant.cookie.view.InfantGetCookiePopupActivity" />
         <activity android:name=".parent.mypage.view.ParentMyScrapActivity" />
-        <activity android:name=".parent.mypage.view.ParentMyBabyActivity" />
+        <activity android:name=".parent.mypage.view.ParentMyBabyActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".parent.mypage.view.ParentEditProfileActivity" />
         <activity android:name=".parent.mypage.view.ParentMyPageActivity" />
         <activity android:name=".parent.record.view.ParentRecordMemoActivity" />

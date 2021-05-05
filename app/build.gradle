@@ -76,4 +76,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:20.0.3'
     //FirebaseStorage
     implementation 'com.google.firebase:firebase-storage:19.2.2'
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 }
