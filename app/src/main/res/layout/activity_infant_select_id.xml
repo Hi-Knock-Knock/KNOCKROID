@@ -27,9 +27,9 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="12dp"
             android:background="@drawable/bg_whitebox_14dp"
-            android:drawableTop="@drawable/img_infantprofile_1"
+            android:drawableTop="@drawable/ic_select_id_idle1"
             android:paddingTop="8dp"
-            android:text="짱아"
+            android:text="윤정"
             android:textColor="#000000" />
 
 
@@ -41,9 +41,9 @@
             android:layout_marginRight="40dp"
             android:background="@drawable/bg_whitebox_14dp"
             android:backgroundTint="@null"
-            android:drawableTop="@drawable/img_infantprofile_2"
+            android:drawableTop="@drawable/ic_select_id_idle2"
             android:paddingTop="8dp"
-            android:text="짱구"
+            android:text=""
             android:textColor="#000000" />
     </LinearLayout>
 

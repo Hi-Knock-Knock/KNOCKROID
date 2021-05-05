@@ -59,8 +59,8 @@
         android:id="@+id/stopRecordBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_infant_talk_finish_btn"
+        android:layout_marginTop="14dp"
+        android:src="@drawable/ic_ok"
         app:layout_constraintEnd_toEndOf="@+id/talk_start_char_dam"
         app:layout_constraintStart_toStartOf="@+id/talk_start_char_dam"
         app:layout_constraintTop_toBottomOf="@+id/talk_start_char_dam" />
