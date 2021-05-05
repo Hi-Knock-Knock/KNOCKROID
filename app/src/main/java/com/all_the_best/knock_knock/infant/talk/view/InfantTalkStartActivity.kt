@@ -44,6 +44,10 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.properties.Delegates
+import kotlinx.android.synthetic.main.activity_infant_home.infant_talk1 as infant_talk11
+import kotlinx.android.synthetic.main.activity_infant_home.talk_txtview as talk_txtview1
+import kotlinx.android.synthetic.main.activity_infant_select_person.infant_talk1 as infant_talk11
+import kotlinx.android.synthetic.main.activity_infant_select_person.talk_txtview as talk_txtview1
 
 @Suppress("DEPRECATION")
 class InfantTalkStartActivity : AppCompatActivity() {
@@ -136,6 +140,14 @@ class InfantTalkStartActivity : AppCompatActivity() {
         }
     }
 
+    private fun setSelectTalkCharacter(){
+        when(chSelect){
+            0 -> talk_start_char_dam.setAnimation("dami_talk.json")
+            1 -> talk_start_char_dam.setAnimation("knock_talk.json")
+            2 -> talk_start_char_dam.setAnimation("timi_talk.json")
+        }
+    }
+
     private fun setMotionInit(){
         when(lottieSelect){
             in 1..6 ->  lottieSelect = 0
@@ -147,14 +159,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
         talk_start_char_dam.repeatCount = LottieDrawable.INFINITE
         talk_start_char_dam.playAnimation()
     }
-
-    //  로딩 모션
-//    private fun CharLodingMotion() {
-//        when(loading){
-//            0 -> talk_start_char_dam.setAnimation("dami_ear.json")
-//            1-> talk_start_char_dam.setAnimation("dami_think.json")
-//        }
-//    }
 
     private fun getToday() {
         val currentTime: Date = Calendar.getInstance().getTime()
@@ -178,6 +182,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordClick() {
         talk_start_char_dam.setOnClickListener {
+
             if (ContextCompat.checkSelfPermission(
                     this,
                     android.Manifest.permission.RECORD_AUDIO
@@ -195,6 +200,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
                 ActivityCompat.requestPermissions(this, permissions, 0)
             } else {
                 //Log.d("record", "start")
+                this.talk_txtview.text = "다 말하면 버튼을 눌러!"
                 startRecording()
             }
             setOnBtnRecordStopClick()
@@ -203,6 +209,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordStopClick(){
         stopRecordBtn.setOnClickListener {
+            talk_txtview.visibility = View.INVISIBLE
+            infant_talk1.visibility = View.INVISIBLE
             when(chSelect){
                 0 -> {
                     talk_start_char_dam.setAnimation("dami_think.json")
@@ -343,7 +351,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
         myValue.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.value as Boolean) {
-                    setSelectCharacter()
+                    stopRecordBtn.visibility = View.INVISIBLE
+                    setSelectTalkCharacter()
                     setOnLottieStart()
                     getDataFromStorage()
                 }

@@ -7,11 +7,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.change.view.InfantSwitchCharacterActivity
 import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
+import com.all_the_best.knock_knock.infant.cookie.viewmodel.InfantCookieViewModel
 import com.all_the_best.knock_knock.infant.deco.view.InfantDecoActivity
 import com.all_the_best.knock_knock.infant.gift.view.InfantGiftStartActivity
 import com.all_the_best.knock_knock.infant.talk.view.InfantSelectFeelActivity
@@ -24,6 +26,8 @@ import java.time.format.DateTimeFormatter
 
 
 class InfantHomeActivity : AppCompatActivity() {
+
+    private val infantCookieViewModel: InfantCookieViewModel by viewModels()
 
     private var chSelect: Int = 0
     private var bgSelect: Int = 1
@@ -52,6 +56,7 @@ class InfantHomeActivity : AppCompatActivity() {
 
         setBackgroundForTime()
         setSelectCharacter()
+        setCookieSaveFirebase()
 
         infant_talk1.setOnClickListener{
             Log.d("time", formatted)
@@ -265,6 +270,12 @@ class InfantHomeActivity : AppCompatActivity() {
         val childName = "아이1"
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("startTalkChild")
             .setValue(true)
+        Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setCookieSaveFirebase() {
+        val childId = "아이1"
+        databaseReference.child(childId).child(childId + "의 쿠키개수 " ).setValue(cookieCount)
         Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
     }
 }
