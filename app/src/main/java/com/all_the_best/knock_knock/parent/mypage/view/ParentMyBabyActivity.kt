@@ -18,6 +18,8 @@ import com.all_the_best.knock_knock.parent.mypage.adapter.ParentMyPageRcvAdapter
 import com.all_the_best.knock_knock.parent.mypage.viewmodel.ParentMyPageViewModel
 import com.all_the_best.knock_knock.util.StatusBarUtil
 import com.bumptech.glide.Glide
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.File
@@ -27,26 +29,16 @@ class ParentMyBabyActivity : AppCompatActivity() {
     private val parentMyBabyViewModel: ParentMyPageViewModel by viewModels()
     private var firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
 
-    override fun onResume() {
-        super.onResume()
-        parentMyBabyViewModel.getProfileImgFromStorage()
-        parentMyBabyViewModel.setParentMyPageBabyList()
-        binding.parentMyBabyRcv.adapter?.notifyDataSetChanged()
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(0, 0)
         StatusBarUtil.setStatusBar(this, resources.getColor(R.color.blue_status_bar, null))
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_my_baby)
         parentMyBabyViewModel.getProfileImgFromStorage()
-        parentMyBabyViewModel.setParentMyPageBabyList()
+        parentMyBabyViewModel.getDefaultUri()
         setParentMyBabyRcvAdapter()
-        binding.parentMyBabyRcv.adapter?.notifyDataSetChanged()
         setOnClickListenerForBtnGoBack()
         setParentMyBabyObserve()
-        //setUriObserve()
-        Log.d("tag", parentMyBabyViewModel.tempParentMyPageBabyList[0].uri.toString())
     }
 
     private fun setOnClickListenerForBtnGoBack() {
@@ -75,53 +67,24 @@ class ParentMyBabyActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && data != null) {
-            Log.d("tag", "onactivity")
             val selectedImage: Uri? = data.data
-            uploadImgUri(selectedImage!!, requestCode)
-            parentMyBabyViewModel.tempParentMyPageBabyList[requestCode].uri = selectedImage
+            uploadImgUri(selectedImage!!.toString(), requestCode)
+            parentMyBabyViewModel.tempParentMyPageBabyList[requestCode].uri =
+                selectedImage.toString()
             binding.parentMyBabyRcv.adapter?.notifyDataSetChanged()
         }
     }
 
-    private fun uploadImgUri(file: Uri, listNum: Int) {
+    private fun uploadImgUri(file: String, listNum: Int) {
         // val file = Uri.fromFile(file)
-        firebaseStorage.reference.child("imageFile").child("imageUri($listNum).png")
-            .putFile(file).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    Log.d("tag", "upload success")
-                    parentMyBabyViewModel.getProfileImgFromStorage()
-                }
-            }
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
+        val databaseReference: DatabaseReference = database.reference
+        val parentId = "부모1"
+        val childName = "아이1"
+        databaseReference.child(parentId).child(parentId + "의 child " + childName)
+            .child("imageUri($listNum)")
+            .setValue(file)
     }
 
-    private fun setUriObserve() {
-        parentMyBabyViewModel.uri0.observe(this) {
-            it.let {
-                binding.parentMyBabyRcv.adapter?.notifyItemChanged(
-                    0
-                )
-            }
-        }
-        parentMyBabyViewModel.uri1.observe(this) {
-            it.let {
-                binding.parentMyBabyRcv.adapter?.notifyItemChanged(
-                    1
-                )
-            }
-        }
-        parentMyBabyViewModel.uri2.observe(this) {
-            it.let {
-                binding.parentMyBabyRcv.adapter?.notifyItemChanged(
-                    2
-                )
-            }
-        }
-        parentMyBabyViewModel.uri3.observe(this) {
-            it.let {
-                binding.parentMyBabyRcv.adapter?.notifyItemChanged(
-                    3
-                )
-            }
-        }
-    }
 }

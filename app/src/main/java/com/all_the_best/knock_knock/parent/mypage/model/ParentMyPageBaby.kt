@@ -4,7 +4,7 @@ import android.net.Uri
 import androidx.lifecycle.LiveData
 
 data class ParentMyPageBaby(
-    var uri: Uri?,
+    var uri: String?,
     var name: String,
     val gender: String,
     val birth: String,
