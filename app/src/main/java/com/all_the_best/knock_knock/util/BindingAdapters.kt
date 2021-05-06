@@ -52,7 +52,7 @@ object BindingAdapters {
 
     @BindingAdapter("setSrcFromUrl")
     @JvmStatic
-    fun setSrcFromUrl(imageView: CircleImageView, uri: Uri?) {
+    fun setSrcFromUrl(imageView: CircleImageView, uri: String?) {
         if (uri == null) {
             imageView.setImageResource(R.drawable.img_baby_mybaby1)
         } else {
