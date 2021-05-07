@@ -11,14 +11,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.databinding.ActivityInfantHomeBinding
 import com.all_the_best.knock_knock.infant.change.view.InfantSwitchCharacterActivity
 import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
 import com.all_the_best.knock_knock.infant.cookie.viewmodel.InfantCookieViewModel
 import com.all_the_best.knock_knock.infant.deco.view.InfantDecoActivity
 import com.all_the_best.knock_knock.infant.gift.view.InfantGiftStartActivity
 import com.all_the_best.knock_knock.infant.talk.view.InfantSelectFeelActivity
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_infant_deco.*
 import kotlinx.android.synthetic.main.activity_infant_home.*
 import java.time.LocalDateTime
@@ -27,8 +27,8 @@ import java.time.format.DateTimeFormatter
 
 class InfantHomeActivity : AppCompatActivity() {
 
-    private val infantCookieViewModel: InfantCookieViewModel by viewModels()
-
+    //private val infantCookieViewModel: InfantCookieViewModel by viewModels()
+    //private lateinit var binding: ActivityInfantHomeBinding
     private var chSelect: Int = 0
     private var bgSelect: Int = 1
     private var cookieCount: Int = 6
@@ -53,7 +53,6 @@ class InfantHomeActivity : AppCompatActivity() {
         cookieCount = intent.getIntExtra("cookieCount",6)
         giftSelect = intent.getIntExtra("giftSelect",0)
         lottieSelect = intent.getIntExtra("lottieSelect",0)
-
         setBackgroundForTime()
         setSelectCharacter()
         setCookieSaveFirebase()
@@ -278,4 +277,21 @@ class InfantHomeActivity : AppCompatActivity() {
         databaseReference.child(childId).child(childId + "의 쿠키개수 " ).setValue(cookieCount)
         Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
     }
+
+
+//    private fun getCookieDataFirebase(){
+//        //lateinit var getcount: String
+//        val childId = "아이1"
+//        val getCountCookie: DatabaseReference =
+//            databaseReference.child(childId).child(childId + "의 쿠키개수 " )
+//        Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
+//        getCountCookie.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                binding.txtCookie = snapshot.value as String
+//            }
+//            override fun onCancelled(error: DatabaseError) {
+//
+//            }
+//        })
+//    }
 }

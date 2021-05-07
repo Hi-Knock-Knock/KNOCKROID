@@ -26,11 +26,11 @@ import kotlinx.android.synthetic.main.activity_infant_select_character.*
 
 class InfantSelectCharacterActivity : AppCompatActivity() {
 
-    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+   // private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
    // private lateinit var binding: ActivityInfantSelectCharacterBinding
 
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
-    private val databaseReference: DatabaseReference = database.reference
+    //private val databaseReference: DatabaseReference = database.reference
     private lateinit var selectViewPagerAdapter: InfantViewPagerAdapter
     private val infantSelectChViewModel: InfantSelectChViewModel by viewModels()
     private val infantCookieViewModel: InfantCookieViewModel by viewModels()
@@ -92,7 +92,6 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
         // 홈화면
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         select_btn_ok.setOnClickListener{
-            //infantTalkLottieViewModel.setlottieSelect(0)
             intent1.putExtra("chSelect", infantSelectChViewModel.chSelect.value)
             intent1.putExtra("giftSelect", infantGiftBgViewModel.giftSelect.value)
             intent1.putExtra("lottieSelect", infantTalkLottieViewModel.lottieSelect.value)

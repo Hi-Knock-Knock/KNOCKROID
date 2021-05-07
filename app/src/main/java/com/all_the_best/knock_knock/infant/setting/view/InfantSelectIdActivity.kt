@@ -13,8 +13,6 @@ import kotlinx.android.synthetic.main.activity_infant_select_id.*
 
 class InfantSelectIdActivity : AppCompatActivity() {
 
-
-
     private var chSelect: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
