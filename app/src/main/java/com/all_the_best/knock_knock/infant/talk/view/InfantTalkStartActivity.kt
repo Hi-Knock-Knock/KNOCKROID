@@ -7,47 +7,29 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.media.MediaPlayer
-import android.media.MediaRecorder
+import android.media.*
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.annotation.NonNull
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
-import com.all_the_best.knock_knock.infant.cookie.view.InfantGetCookiePopupActivity
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
-import com.all_the_best.knock_knock.parent.base.view.LoginActivity
 import com.google.firebase.database.*
-import com.google.firebase.storage.FileDownloadTask
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.activity_infant_home.*
-import kotlinx.android.synthetic.main.activity_infant_select_person.*
 import kotlinx.android.synthetic.main.activity_infant_talk_start.*
-import kotlinx.coroutines.delay
-import java.io.File
-import java.io.IOException
+import java.io.*
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.properties.Delegates
-import kotlinx.android.synthetic.main.activity_infant_home.infant_talk1 as infant_talk11
-import kotlinx.android.synthetic.main.activity_infant_home.talk_txtview as talk_txtview1
-import kotlinx.android.synthetic.main.activity_infant_select_person.infant_talk1 as infant_talk11
-import kotlinx.android.synthetic.main.activity_infant_select_person.talk_txtview as talk_txtview1
 
 @Suppress("DEPRECATION")
 class InfantTalkStartActivity : AppCompatActivity() {
@@ -317,16 +299,15 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
         // createTempFile : 임시파일 생성 (so, 사용이 끝나면 삭제해줘야함.)
         // deleteOnExit을 사용해서 파일 삭제 -> 특징 : 파일을 바로 삭제하는 것이 아니라, JVM이 종료될 때 자동으로 저장된 파일을 삭제함.
-        val localFile = File.createTempFile("temp_download", "mp4")
-        localFile.deleteOnExit()
+//        val localFile = File.createTempFile("temp_download", "pom")
+//        localFile.deleteOnExit()
+        val localFile = File(applicationContext.getExternalFilesDir(null), "test.pom")
+        val myFile = File(applicationContext.getExternalFilesDir(null)!!.absolutePath, "test.pom")
+        myFile.createNewFile()
 
-        pathReference.getFile(localFile).addOnSuccessListener {
-            // Local temp file has been created
-            val player = MediaPlayer()
-            player.setDataSource(localFile.path)
-            player.prepare()
-            player.start()
-            getDataNum++
+        pathReference.getFile(myFile).addOnSuccessListener {
+            playRecording(localFile)
+
             Log.d("getAudio", "success")
         }.addOnFailureListener {
             // Handle any errors
@@ -342,7 +323,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
     }
 
-    private fun setPlayParentRecord() {0
+    private fun setPlayParentRecord() {
         val parentId = "부모1"
         val childName = "아이1"
         val myValue: DatabaseReference =
@@ -379,5 +360,42 @@ class InfantTalkStartActivity : AppCompatActivity() {
             .setValue("")
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("childPerson")
             .setValue("")
+    }
+
+    private fun playRecording(localFile: File){
+        var i = 0
+        val shortSizeInBytes = Short.SIZE_BYTES
+        val bufferSizeInBytes = (localFile.length() / shortSizeInBytes).toInt()
+
+        val audioData = ShortArray(bufferSizeInBytes)
+
+        val inputStream = FileInputStream(localFile)
+        val bufferedInputStream = BufferedInputStream(inputStream)
+        val dataInputStream = DataInputStream(bufferedInputStream)
+
+        var j = 0
+        while (dataInputStream.available() > 0){
+            audioData[j] = dataInputStream.readShort()
+            j++
+        }
+
+        dataInputStream.close()
+        i = 16000
+        val audioAttrs = AudioAttributes.Builder()
+            .setLegacyStreamType(3)
+            .build()
+
+        val audioFormat = AudioFormat.Builder()
+            .setSampleRate(i)
+            .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
+            .setChannelMask(AudioFormat.CHANNEL_OUT_MONO) // channel config
+            .build()
+
+        // audioTrack = AudioTrack(3, i, 2, 2, bufferSizeInBytes, 1)
+
+        val audioTrack = AudioTrack(audioAttrs, audioFormat, bufferSizeInBytes, 1, 1)
+        audioTrack!!.play()
+        audioTrack!!.write(audioData, 0 , bufferSizeInBytes)
+        getDataNum++
     }
 }

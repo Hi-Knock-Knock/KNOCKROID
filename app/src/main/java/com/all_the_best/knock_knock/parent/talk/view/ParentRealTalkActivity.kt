@@ -1,7 +1,9 @@
 package com.all_the_best.knock_knock.parent.talk.view
 
+import android.Manifest
 import android.content.ContentValues
 import android.content.pm.PackageManager
+import android.media.AudioRecord
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
@@ -25,8 +27,7 @@ import com.all_the_best.knock_knock.util.StatusBarUtil
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import java.io.File
-import java.io.IOException
+import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -48,6 +49,8 @@ class ParentRealTalkActivity : AppCompatActivity() {
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
 
+    var isRecording: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(0, 0)
@@ -64,6 +67,21 @@ class ParentRealTalkActivity : AppCompatActivity() {
         setRecordBtnClick()
         getToday()
         setLayout()
+        initPermissions()
+    }
+    private fun initPermissions() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.RECORD_AUDIO) !=
+            PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.RECORD_AUDIO)) {
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.RECORD_AUDIO), 1)
+            } else {
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.RECORD_AUDIO), 1)
+            }
+        }
     }
 
     private fun setSelectedFeelingAndPerson(){
@@ -179,28 +197,30 @@ class ParentRealTalkActivity : AppCompatActivity() {
 
     private fun setRecordBtnClick() {
         binding.acceptTalkBtnRecord.setOnClickListener {
+            Thread {
+                startRecording()
+            }.start()
             setFinishRecordParentAtFirebase(false)
             binding.acceptTalkBtnRecord.visibility = View.INVISIBLE
             binding.acceptTalkBtnRecordStop.visibility = View.VISIBLE
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    android.Manifest.permission.RECORD_AUDIO
-                ) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
-                    this,
-                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // Permission is not granted
-                val permissions = arrayOf(
-                    android.Manifest.permission.RECORD_AUDIO,
-                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-                )
-                ActivityCompat.requestPermissions(this, permissions, 0)
-            } else {
-                Log.d("record", "start")
-                startRecording()
-            }
+//            if (ContextCompat.checkSelfPermission(
+//                    this,
+//                    android.Manifest.permission.RECORD_AUDIO
+//                ) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
+//                    this,
+//                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+//                ) != PackageManager.PERMISSION_GRANTED
+//            ) {
+//                // Permission is not granted
+//                val permissions = arrayOf(
+//                    android.Manifest.permission.RECORD_AUDIO,
+//                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                    android.Manifest.permission.READ_EXTERNAL_STORAGE
+//                )
+//                ActivityCompat.requestPermissions(this, permissions, 0)
+//            } else {
+//                Log.d("record", "start")
+//            }
             setRecordStopBtnClick()
         }
     }
@@ -232,50 +252,39 @@ class ParentRealTalkActivity : AppCompatActivity() {
     }
 
     private fun stopRecording() {
-        if (state) {
-            mediaRecorder?.stop()
-            mediaRecorder?.reset()
-            mediaRecorder?.release()
-            state = false
-            Toast.makeText(this, "중지 되었습니다.", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "레코딩 상태가 아닙니다.", Toast.LENGTH_SHORT).show()
-        }
+        isRecording = false
     }
 
     @Suppress("DEPRECATION")
     private fun startRecording() {
-        // config and create MediaRecorder Object
-        val values = ContentValues(10)
-        values.put(MediaStore.MediaColumns.TITLE, "Recorded")
-        values.put(MediaStore.Audio.Media.DISPLAY_NAME, fileName)
-        values.put(MediaStore.Audio.Media.IS_RINGTONE, 1)
-        values.put(MediaStore.Audio.Media.IS_MUSIC, 1)
-        values.put(MediaStore.MediaColumns.DATE_ADDED, System.currentTimeMillis() / 1000)
-        values.put(MediaStore.MediaColumns.MIME_TYPE, "audio/mp4")
-        values.put(MediaStore.Audio.Media.DATA, fileName)
-        values.put(MediaStore.Audio.Media.RELATIVE_PATH, "Music/Recordings/")
+        isRecording = true
 
-        audioUri = contentResolver.insert(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, values)!!
-        val file = audioUri?.let { getContentResolver().openFileDescriptor(it, "w") }
+        val myFile = File(applicationContext.getExternalFilesDir(null)!!.absolutePath, "test.pom")
 
-        mediaRecorder = MediaRecorder()
-        mediaRecorder?.setAudioSource((MediaRecorder.AudioSource.MIC))
-        mediaRecorder?.setOutputFormat((MediaRecorder.OutputFormat.MPEG_4))
-        mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
-        if (file != null) {
-            mediaRecorder?.setOutputFile(file.getFileDescriptor())
+        myFile.createNewFile()
+
+        val outputStream = FileOutputStream(myFile)
+        val bufferedOutputStream = BufferedOutputStream(outputStream)
+        val dataOutputStream = DataOutputStream(bufferedOutputStream)
+        val minBufferSize = AudioRecord.getMinBufferSize(11025, 2, 2)
+
+        val audioData = ShortArray(minBufferSize)
+
+        val audioRecord = AudioRecord(1, 11025, 2, 2, minBufferSize)
+        audioRecord.startRecording()
+
+        while (isRecording){
+            val numberOfShort = audioRecord.read(audioData, 0, minBufferSize)
+
+            for (i in 0 until numberOfShort) {
+                dataOutputStream.writeShort(audioData[i].toInt())
+            }
         }
 
-        try {
-            mediaRecorder?.prepare()
-            mediaRecorder?.start()
-            state = true
-            Toast.makeText(this, "레코딩 시작되었습니다.", Toast.LENGTH_SHORT).show()
-        } catch (e: IllegalStateException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
-            e.printStackTrace()
+        if (!isRecording){
+            audioRecord.stop()
+            dataOutputStream.close()
+            audioUri = Uri.fromFile(File(myFile.path))
         }
     }
 
