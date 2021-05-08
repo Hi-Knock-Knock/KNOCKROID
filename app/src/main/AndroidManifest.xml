@@ -30,7 +30,6 @@
         <activity android:name=".parent.faq.view.ParentFaqSearchActivity" />
         <activity android:name=".infant.cookie.view.InfantCookieSaveActivity" />
         <activity android:name=".infant.deco.view.InfantDecoActivity" />
-        <activity android:name=".infant.gift.view.InfantGiftEndActivity" />
         <activity android:name=".infant.gift.view.InfantGiftBoxActivity" />
         <activity android:name=".infant.gift.view.InfantGiftStartActivity" />
         <activity android:name=".infant.change.view.InfantSwitchCharacterActivity" />
