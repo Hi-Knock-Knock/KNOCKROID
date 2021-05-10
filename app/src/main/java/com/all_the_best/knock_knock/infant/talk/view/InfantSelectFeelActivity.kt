@@ -1,8 +1,17 @@
 package com.all_the_best.knock_knock.infant.talk.view
 
+import android.app.Activity
+import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Color
+import android.media.AudioManager
+import android.media.SoundPool
+import android.os.Build
 import android.os.Bundle
+import android.speech.RecognizerIntent
+import android.speech.tts.TextToSpeech
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
@@ -11,14 +20,26 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class InfantSelectFeelActivity : AppCompatActivity() {
+    // sound
+    var soundPool: SoundPool?=null
+
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
     private var giftSelect: Int = 0
     private var lottieSelect: Int = 0
 
+    //TTS 관련 변수들
+    private var mTts: TextToSpeech? = null
+    private var mLocale = Locale.KOREA
+    private var mPitch = 0.5f
+    private var mRate = 1f
+    private var mQueue = TextToSpeech.QUEUE_ADD
+
+    // Firebase
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
@@ -26,6 +47,10 @@ class InfantSelectFeelActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_select_feel)
+
+        soundPool = SoundPool(1, AudioManager.STREAM_MUSIC,0)
+        val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
+
         bgSelect = intent.getIntExtra("bgSelect", 1)
         chSelect = intent.getIntExtra("chSelect", 0)
         cookieCount = intent.getIntExtra("cookieCount", 5)
@@ -34,7 +59,13 @@ class InfantSelectFeelActivity : AppCompatActivity() {
         //setSelectFeelMotion()
         setSelectCharacter()
 
+        init()
+        infant_talk1.setOnClickListener {
+            play()
+        }
 
+
+        // 시간 변수
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
         val formatted = current.format(formatter)
@@ -203,5 +234,91 @@ class InfantSelectFeelActivity : AppCompatActivity() {
         databaseReference.child(parentId).child(parentId + "의 child " + childName)
             .child("childFeel")
             .setValue(feelString)
+    }
+
+    //----------------------------tts------------------------------------------
+    override fun onPause() {
+        super.onPause()
+        if (mTts != null) {
+            if (mTts!!.isSpeaking) {
+                mTts!!.stop()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        if (mTts != null) {
+            if (mTts!!.isSpeaking) {
+                mTts!!.stop()
+            }
+            mTts!!.shutdown()
+        }
+        super.onDestroy()
+    }
+
+    private fun init() {
+        mTts = TextToSpeech(baseContext, TextToSpeech.OnInitListener { status ->
+            if (status == TextToSpeech.SUCCESS) {
+            } else {
+                // todo: fail 시 처리
+                startActivity(getSettingActIntent())
+            }
+        })
+    }
+
+    /** 언어 선택  */
+    fun setLanguage(locale: Locale?) {
+        if (mTts != null) mTts!!.language = locale
+    }
+
+    fun setPitch(value: Float) {
+        if (mTts != null) mTts!!.setPitch(value)
+    }
+
+    /** 속도 선택  */
+    fun setSpeechRate(value: Float) {
+        if (mTts != null) mTts!!.setSpeechRate(value)
+    }
+
+    /** TTS 설정 으로 이동  */
+    fun getSettingActIntent(): Intent? {
+        val intent = Intent()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            intent.action = "com.android.settings.TTS_SETTINGS"
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        } else {
+            intent.addCategory(Intent.CATEGORY_LAUNCHER)
+            intent.component = ComponentName("com.android.settings", "com.android.settings.TextToSpeechSettings")
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        return intent
+    }
+
+    /** 재생  */
+    @Suppress("DEPRECATION")
+    fun speak(text: String?, resId: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (mTts != null) mTts!!.speak(text, mQueue, null, "" + resId)
+        } else {
+            val map: HashMap<String, String> = HashMap()
+            map[TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID] = "" + resId
+            if (mTts != null) mTts!!.speak(text, mQueue, map)
+        }
+    }
+
+    fun play(): Intent?{
+        val intent = Intent()
+        if (mTts != null) {
+            if (talk_txtview_feel != null) {
+                val text = talk_txtview_feel.text.toString()
+                if (text.isNotEmpty()) {
+                    setLanguage(mLocale)
+                    setPitch(mPitch)
+                    setSpeechRate(mRate)
+                    speak(text, 0)
+                }
+            }
+        }
+        return intent
     }
 }

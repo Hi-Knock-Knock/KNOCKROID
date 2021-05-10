@@ -1,17 +1,22 @@
 package com.all_the_best.knock_knock.infant.talk.view
 
+import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_infant_home.*
+import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 import kotlinx.android.synthetic.main.activity_infant_select_person.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class InfantSelectPersonActivity : AppCompatActivity() {
     private var bgSelect: Int = 1
@@ -20,6 +25,13 @@ class InfantSelectPersonActivity : AppCompatActivity() {
     private var giftSelect: Int = 0
     private var lottieSelect: Int = 0
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+
+    //TTS 관련 변수들
+    private var mTts: TextToSpeech? = null
+    private var mLocale = Locale.KOREA
+    private var mPitch = 0.5f
+    private var mRate = 1f
+    private var mQueue = TextToSpeech.QUEUE_ADD
 
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
@@ -35,6 +47,10 @@ class InfantSelectPersonActivity : AppCompatActivity() {
 
         //setSelectCharacter()
         setSelectFeelMotion()
+        init()
+        char_talk_person.setOnClickListener {
+            play()
+        }
 
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
@@ -200,5 +216,90 @@ class InfantSelectPersonActivity : AppCompatActivity() {
         databaseReference.child(parentId).child(parentId + "의 child " + childName)
             .child("childPerson")
             .setValue(personString)
+    }
+
+    //----------------------------tts------------------------------------------
+    override fun onPause() {
+        super.onPause()
+        if (mTts != null) {
+            if (mTts!!.isSpeaking) {
+                mTts!!.stop()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        if (mTts != null) {
+            if (mTts!!.isSpeaking) {
+                mTts!!.stop()
+            }
+            mTts!!.shutdown()
+        }
+        super.onDestroy()
+    }
+
+    private fun init() {
+        mTts = TextToSpeech(baseContext, TextToSpeech.OnInitListener { status ->
+            if (status == TextToSpeech.SUCCESS) {
+            } else {
+                // todo: fail 시 처리
+                startActivity(getSettingActIntent())
+            }
+        })
+    }
+
+    /** 언어 선택  */
+    fun setLanguage(locale: Locale?) {
+        if (mTts != null) mTts!!.language = locale
+    }
+
+    fun setPitch(value: Float) {
+        if (mTts != null) mTts!!.setPitch(value)
+    }
+
+    /** 속도 선택  */
+    fun setSpeechRate(value: Float) {
+        if (mTts != null) mTts!!.setSpeechRate(value)
+    }
+
+    /** TTS 설정 으로 이동  */
+    fun getSettingActIntent(): Intent? {
+        val intent = Intent()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            intent.action = "com.android.settings.TTS_SETTINGS"
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        } else {
+            intent.addCategory(Intent.CATEGORY_LAUNCHER)
+            intent.component = ComponentName("com.android.settings", "com.android.settings.TextToSpeechSettings")
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        return intent
+    }
+
+    /** 재생  */
+    @Suppress("DEPRECATION")
+    fun speak(text: String?, resId: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (mTts != null) mTts!!.speak(text, mQueue, null, "" + resId)
+        } else {
+            val map: HashMap<String, String> = HashMap()
+            map[TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID] = "" + resId
+            if (mTts != null) mTts!!.speak(text, mQueue, map)
+        }
+    }
+
+    fun play(){
+        val intent = Intent()
+        if (mTts != null) {
+            if (talk_txtview_person != null) {
+                val text = talk_txtview_person.text.toString()
+                if (text.isNotEmpty()) {
+                    setLanguage(mLocale)
+                    setPitch(mPitch)
+                    setSpeechRate(mRate)
+                    speak(text, 0)
+                }
+            }
+        }
     }
 }

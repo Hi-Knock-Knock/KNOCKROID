@@ -1,39 +1,54 @@
 
 package com.all_the_best.knock_knock.infant.home.view
 
+import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Color
+import android.media.AudioManager
+import android.media.MediaPlayer
+import android.media.SoundPool
+import android.os.Build
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
-import com.all_the_best.knock_knock.databinding.ActivityInfantHomeBinding
 import com.all_the_best.knock_knock.infant.change.view.InfantSwitchCharacterActivity
 import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
-import com.all_the_best.knock_knock.infant.cookie.viewmodel.InfantCookieViewModel
 import com.all_the_best.knock_knock.infant.deco.view.InfantDecoActivity
 import com.all_the_best.knock_knock.infant.gift.view.InfantGiftStartActivity
 import com.all_the_best.knock_knock.infant.talk.view.InfantSelectFeelActivity
-import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_infant_deco.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_infant_home.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class InfantHomeActivity : AppCompatActivity() {
 
-    //private val infantCookieViewModel: InfantCookieViewModel by viewModels()
+    //private val infantTalkLottieViewModel: InfantTalkLottieViewModel by viewModels()
     //private lateinit var binding: ActivityInfantHomeBinding
+    //bgm
+    var mediaPlayer: MediaPlayer? = null
+    var soundPool:SoundPool?=null
     private var chSelect: Int = 0
     private var bgSelect: Int = 1
     private var cookieCount: Int = 6
     private var giftSelect:Int=0
     private var lottieSelect:Int=0
+    //private var lottieClick:Int=0
+
+    //TTS 관련 변수들
+    private var mTts: TextToSpeech? = null
+    private var mLocale = Locale.KOREA
+    private var mPitch = 0.5f
+    private var mRate = 1f
+    private var mQueue = TextToSpeech.QUEUE_FLUSH
 
     var time3: Long = 0
     private val current = LocalDateTime.now()
@@ -47,7 +62,27 @@ class InfantHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_home)
+        //mediaPlayer!!.reset()
+        mediaPlayer = MediaPlayer.create(this, R.raw.bgm);
+        mediaPlayer!!.setVolume(1f,1f)
+        mediaPlayer!!.start()
+//        if(mediaPlayer!=null){
+//
+//        }else{
+//            mediaPlayer = MediaPlayer.create(this, R.raw.bgm);
+//            mediaPlayer!!.setVolume(5f,5f)
+//            mediaPlayer!!.start()
+//            Log.d("media","존재한다. ")
+//        }
 
+        //mediaPlayer!!.isLooping = true; //무한재생
+
+        soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
+        val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
+        //val streamId: Int = soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
+
+        //infantTalkLottieViewModel.setlottieClick(0)
+        //lottieClick = infantTalkLottieViewModel.lottieClick.value!!
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",6)
@@ -56,8 +91,10 @@ class InfantHomeActivity : AppCompatActivity() {
         setBackgroundForTime()
         setSelectCharacter()
         setCookieSaveFirebase()
+        init()
 
         infant_talk1.setOnClickListener{
+            play()
             Log.d("time", formatted)
         }
 
@@ -74,6 +111,8 @@ class InfantHomeActivity : AppCompatActivity() {
             intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("giftSelect",giftSelect)
             setStartTalkAtFirebase()
+            mediaPlayer!!.stop()
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivity(intent1)
         }
 
@@ -84,6 +123,8 @@ class InfantHomeActivity : AppCompatActivity() {
             intent2.putExtra("cookieCount",cookieCount)
             intent2.putExtra("giftSelect",giftSelect)
             intent2.putExtra("lottieSelect",lottieSelect)
+            mediaPlayer!!.stop()
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivityForResult(intent2,0)
         }
 
@@ -95,6 +136,8 @@ class InfantHomeActivity : AppCompatActivity() {
             intent3.putExtra("chSelect",chSelect)
             intent3.putExtra("giftSelect",giftSelect)
             intent3.putExtra("lottieSelect",lottieSelect)
+            mediaPlayer!!.stop()
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivity(intent3)
         }
 
@@ -105,6 +148,8 @@ class InfantHomeActivity : AppCompatActivity() {
             intent4.putExtra("chSelect",chSelect)
             intent4.putExtra("giftSelect",giftSelect)
             intent4.putExtra("lottieSelect",lottieSelect)
+            mediaPlayer!!.stop()
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivityForResult(intent4,1)
         }
 
@@ -116,6 +161,8 @@ class InfantHomeActivity : AppCompatActivity() {
             intent5.putExtra("chSelect",chSelect)
             intent5.putExtra("giftSelect",giftSelect)
             intent5.putExtra("lottieSelect",lottieSelect)
+            mediaPlayer!!.stop()
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivity(intent5)
         }
 
@@ -228,14 +275,16 @@ class InfantHomeActivity : AppCompatActivity() {
 
     private fun setSelectCharacter(){
         when(chSelect){
-            0 -> {char_img.setAnimation("dami_idle.json")
+            0 -> {
+                char_img.setAnimation("dami_idle.json")
                 char_img.setOnClickListener{
                     char_img.setAnimation("dami_hi.json")
                     char_img.repeatMode = LottieDrawable.REVERSE
                     char_img.repeatCount = 1
                     char_img.playAnimation()
                 }
-            } // 담이 idle
+            }
+             // 담이 idle
             1 -> {
                 char_img.setAnimation("knock_idle.json")
                 char_img.setOnClickListener{
@@ -294,4 +343,86 @@ class InfantHomeActivity : AppCompatActivity() {
 //            }
 //        })
 //    }
+
+    override fun onPause() {
+        super.onPause()
+        if (mTts != null) {
+            if (mTts!!.isSpeaking) {
+                mTts!!.stop()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        if (mTts != null) {
+            if (mTts!!.isSpeaking) {
+                mTts!!.stop()
+            }
+            mTts!!.shutdown()
+        }
+        super.onDestroy()
+    }
+
+    private fun init() {
+        mTts = TextToSpeech(baseContext, TextToSpeech.OnInitListener { status ->
+            if (status == TextToSpeech.SUCCESS) {
+            } else {
+                // todo: fail 시 처리
+                startActivity(getSettingActIntent())
+            }
+        })
+    }
+
+    /** 언어 선택  */
+    fun setLanguage(locale: Locale?) {
+        if (mTts != null) mTts!!.language = locale
+    }
+
+    fun setPitch(value: Float) {
+        if (mTts != null) mTts!!.setPitch(value)
+    }
+
+    /** 속도 선택  */
+    fun setSpeechRate(value: Float) {
+        if (mTts != null) mTts!!.setSpeechRate(value)
+    }
+
+    /** TTS 설정 으로 이동  */
+    fun getSettingActIntent(): Intent? {
+        val intent = Intent()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            intent.action = "com.android.settings.TTS_SETTINGS"
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        } else {
+            intent.addCategory(Intent.CATEGORY_LAUNCHER)
+            intent.component = ComponentName("com.android.settings", "com.android.settings.TextToSpeechSettings")
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        return intent
+    }
+
+    /** 재생  */
+    fun speak(text: String?, resId: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (mTts != null) mTts!!.speak(text, mQueue, null, "" + resId)
+        } else {
+            val map: HashMap<String, String> = HashMap()
+            map[TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID] = "" + resId
+            if (mTts != null) mTts!!.speak(text, mQueue, map)
+        }
+    }
+
+    fun play(){
+        if (mTts != null) {
+            if (talk_txtview_home != null) {
+                val text = talk_txtview_home.text.toString()
+                if (text.isNotEmpty()) {
+                    setLanguage(mLocale)
+                    setPitch(mPitch)
+                    setSpeechRate(mRate)
+                    speak(text, 0)
+                }
+            }
+        }
+    }
 }

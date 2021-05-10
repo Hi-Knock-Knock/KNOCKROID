@@ -2,8 +2,11 @@ package com.all_the_best.knock_knock.infant.gift.view
 
 import android.content.Intent
 import android.graphics.Color
+import android.media.MediaPlayer
+import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -17,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_infant_talk_start.*
 
 class InfantGiftStartActivity : AppCompatActivity() {
 
+    var mediaPlayer: MediaPlayer? = null
 
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
@@ -28,6 +32,13 @@ class InfantGiftStartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_gift_start)
         setOnLottieStart()
+        if(mediaPlayer==null){
+            mediaPlayer = MediaPlayer.create(this, R.raw.bgm2);
+            mediaPlayer!!.setVolume(0.1f,0.1f)
+            mediaPlayer!!.start()
+        }else{
+            Log.d("media","존재한다. ")
+        }
         val cookieGiftCount1: TextView = findViewById(R.id.infant_gift_start_cookie_count)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
@@ -60,6 +71,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                     intentGoHome.putExtra("chSelect",chSelect)
                     intentGoHome.putExtra("cookieCount",cookieCount)
                     intentGoHome.putExtra("giftSelect",giftSelect)
+                    mediaPlayer!!.stop()
                     startActivity(intentGoHome)
                     overridePendingTransition(0, 0)
                 }else{
@@ -69,6 +81,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 }
                 if(count3==3){
                     infant_empty_cookie1.setImageResource(R.drawable.img_infant_full_cookie)
+                    mediaPlayer!!.stop()
                     startActivity(intent1)
                     overridePendingTransition(0, 0)
                 }
@@ -84,6 +97,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 intentGoHome.putExtra("chSelect",chSelect)
                 intentGoHome.putExtra("cookieCount",cookieCount)
                 intentGoHome.putExtra("giftSelect",giftSelect)
+                mediaPlayer!!.stop()
                 startActivity(intentGoHome)
                 overridePendingTransition(0, 0)
             }else{
@@ -93,6 +107,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
             }
             if(count3==3){
                 infant_empty_cookie2.setImageResource(R.drawable.img_infant_full_cookie)
+                mediaPlayer!!.stop()
                 startActivity(intent1)
                 overridePendingTransition(0, 0)
             }
@@ -107,6 +122,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 intentGoHome.putExtra("chSelect",chSelect)
                 intentGoHome.putExtra("cookieCount",cookieCount)
                 intentGoHome.putExtra("giftSelect",giftSelect)
+                mediaPlayer!!.stop()
                 startActivity(intentGoHome)
                 overridePendingTransition(0, 0)
             }else{
@@ -118,6 +134,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 infant_empty_cookie3.setImageResource(R.drawable.img_infant_full_cookie)
                 cookieGiftCount1.text = cookieCount.toString()
                 intent1.putExtra("cookieCount",cookieCount) //줄어든 쿠키갯수 받기
+                mediaPlayer!!.stop()
                 startActivity(intent1)
                 overridePendingTransition(0, 0)
             }
@@ -130,6 +147,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
             intentGoHome.putExtra("chSelect",chSelect)
             intentGoHome.putExtra("cookieCount",cookieCount)
             intentGoHome.putExtra("giftSelect",giftSelect)
+            mediaPlayer!!.stop()
             startActivity(intentGoHome)
             overridePendingTransition(0, 0)
         }

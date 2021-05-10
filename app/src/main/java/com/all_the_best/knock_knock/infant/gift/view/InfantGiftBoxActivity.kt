@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_infant_gift_start.*
 import kotlinx.android.synthetic.main.infant_gift_get_popup.*
 
 class InfantGiftBoxActivity : AppCompatActivity() {
-
+    //var mediaPlayer: MediaPlayer? = null
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
@@ -33,6 +34,9 @@ class InfantGiftBoxActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_gift_box)
         setOnLottieStart()
+//        mediaPlayer = MediaPlayer.create(this, R.raw.bgm2);
+//        mediaPlayer!!.setVolume(5f,5f)
+//        mediaPlayer!!.start()
         val cookieGiftCount2: TextView = findViewById(R.id.infant_cookie_count_box)
 
         bgSelect = intent.getIntExtra("bgSelect", 1)
@@ -51,7 +55,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
             intentGoHome.putExtra("chSelect", chSelect)
             intentGoHome.putExtra("cookieCount", cookieCount)
             intentGoHome.putExtra("giftSelect", giftSelect)
-
+            //mediaPlayer!!.stop()
             startActivity(intentGoHome)
             overridePendingTransition(0, 0)
         }
@@ -82,6 +86,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
             intentGoHome.putExtra("cookieCount", cookieCount)
             intentGoHome.putExtra("giftSelect", giftSelect)
             Handler(Looper.getMainLooper()).postDelayed({
+                //mediaPlayer!!.stop()
                 startActivity(intentGoHome)
                 overridePendingTransition(0, 0)
                 finish()

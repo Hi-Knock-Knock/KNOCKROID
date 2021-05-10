@@ -2,6 +2,7 @@ package com.all_the_best.knock_knock.infant.talk.view
 
 import android.app.Activity
 import android.app.Dialog
+import android.content.ComponentName
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,11 +10,13 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.media.*
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -24,7 +27,9 @@ import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.activity_infant_select_person.*
 import kotlinx.android.synthetic.main.activity_infant_talk_start.*
+import kotlinx.android.synthetic.main.activity_infant_talk_start.infant_talk1
 import java.io.*
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
@@ -40,6 +45,13 @@ class InfantTalkStartActivity : AppCompatActivity() {
     private var giftSelect:Int=0
     private var lottieSelect:Int=0
 
+    //TTS 관련 변수들
+    private var mTts: TextToSpeech? = null
+    private var mLocale = Locale.KOREA
+    private var mPitch = 0.5f
+    private var mRate = 1f
+    private var mQueue = TextToSpeech.QUEUE_FLUSH
+
     //private var loading by Delegates.notNull<Int>()
     private lateinit var fileName: String
     private lateinit var mediaRecorder: MediaRecorder
@@ -50,6 +62,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
     private var getDataNum: Int = 1
     //private val storageReference: StorageReference = firebaseStorage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com");
 
+    var finish:Boolean =false
     //gs://knockknock-29f42.appspot.com/audioFile
 
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
@@ -69,6 +82,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
         getToday()
         setOnBtnRecordClick()
         setOnLottieStart()
+        init()
+        getFinishRecordChild()
+        setPlayDenyParent()
         //setOnBtnDownLoadRecordClick()
         //setOnBtnAudioUploadClick()
         //loading = 0
@@ -164,7 +180,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordClick() {
         talk_start_char_dam.setOnClickListener {
-
             if (ContextCompat.checkSelfPermission(
                     this,
                     android.Manifest.permission.RECORD_AUDIO
@@ -182,6 +197,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
                 ActivityCompat.requestPermissions(this, permissions, 0)
             } else {
                 //Log.d("record", "start")
+                play()
                 this.talk_txtview.text = "다 말하면 버튼을 눌러!"
                 startRecording()
             }
@@ -267,8 +283,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
             mediaRecorder?.release()
             state = false
             Toast.makeText(this, "중지 되었습니다. 업로드 되었습니다.", Toast.LENGTH_SHORT).show()
+            //databaseReference.child(childId).child(childId + "stopRecord " ).setValue(finish)
             uploadAudioUri(audioUri)
-
         } else {
             Toast.makeText(this, "레코딩 상태가 아닙니다.", Toast.LENGTH_SHORT).show()
         }
@@ -345,6 +361,29 @@ class InfantTalkStartActivity : AppCompatActivity() {
         })
     }
 
+    private fun setPlayDenyParent() {
+        val parentId = "부모1"
+        val childName = "아이1"
+        val myValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("parentDenyTalk")
+        myValue.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.value as Boolean) {
+                    //stopRecordBtn.visibility = View.INVISIBLE
+
+
+
+                    //getDataFromStorage()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
     private fun setDefaultVariableAtFirebase() {
         val parentId = "부모1"
         val childName = "아이1"
@@ -397,5 +436,123 @@ class InfantTalkStartActivity : AppCompatActivity() {
         audioTrack!!.play()
         audioTrack!!.write(audioData, 0 , bufferSizeInBytes)
         getDataNum++
+    }
+
+    //----------------------------tts------------------------------------------
+    override fun onPause() {
+        super.onPause()
+        if (mTts != null) {
+            if (mTts!!.isSpeaking) {
+                mTts!!.stop()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        if (mTts != null) {
+            if (mTts!!.isSpeaking) {
+                mTts!!.stop()
+            }
+            mTts!!.shutdown()
+        }
+        super.onDestroy()
+    }
+
+    private fun init() {
+        mTts = TextToSpeech(baseContext, TextToSpeech.OnInitListener { status ->
+            if (status == TextToSpeech.SUCCESS) {
+            } else {
+                // todo: fail 시 처리
+                startActivity(getSettingActIntent())
+            }
+        })
+    }
+
+    // 언어선택
+    fun setLanguage(locale: Locale?) {
+        if (mTts != null) mTts!!.language = locale
+    }
+
+    fun setPitch(value: Float) {
+        if (mTts != null) mTts!!.setPitch(value)
+    }
+
+    // 속도 선택
+    fun setSpeechRate(value: Float) {
+        if (mTts != null) mTts!!.setSpeechRate(value)
+    }
+
+    // TTS 설정 으로 이동
+    fun getSettingActIntent(): Intent? {
+        val intent = Intent()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            intent.action = "com.android.settings.TTS_SETTINGS"
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            play()
+        } else {
+            intent.addCategory(Intent.CATEGORY_LAUNCHER)
+            intent.component = ComponentName("com.android.settings", "com.android.settings.TextToSpeechSettings")
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            play()
+        }
+        return intent
+    }
+
+    // 재생
+    @Suppress("DEPRECATION")
+    fun speak(text: String?, resId: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (mTts != null) mTts!!.speak(text, mQueue, null, "" + resId)
+        } else {
+            val map: HashMap<String, String> = HashMap()
+            map[TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID] = "" + resId
+            if (mTts != null) mTts!!.speak(text, mQueue, map)
+        }
+    }
+
+    fun play(){
+        if (mTts != null) {
+            if (talk_txtview != null) {
+                val text = talk_txtview.text.toString()
+                if (text.isNotEmpty()) {
+                    setLanguage(mLocale)
+                    setPitch(mPitch)
+                    setSpeechRate(mRate)
+                    speak(text, 0)
+                }
+            }
+        }
+    }
+
+    fun ParentDenyplay(){
+        val parentId = "부모1"
+        val childName = "아이1"
+        val myValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName).child("selectedQuestionAtDialog")
+        myValue.get().addOnSuccessListener {
+            talk_txtview.text = it.value.toString()
+            play()
+            setSelectTalkCharacter()
+            setOnLottieStart()
+            Log.d("tag", talk_txtview.text.toString())
+        }.addOnFailureListener {  }
+    }
+
+    fun getFinishRecordChild(){
+        val parentId = "부모1"
+        val childName = "아이1"
+        val myValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
+        myValue.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.value as Boolean){
+                    ParentDenyplay()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 }
