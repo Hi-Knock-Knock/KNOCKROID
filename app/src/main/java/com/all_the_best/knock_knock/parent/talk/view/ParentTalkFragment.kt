@@ -35,9 +35,11 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     private lateinit var dialogBinding: HelpDialogBinding
     private lateinit var refuseDialogBinding: TalkDialogBinding
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
-
+    val parentId = "부모1"
+    val childName = "아이1"
     override fun onBackPressed(): Boolean {
         return if (binding.talkDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             Log.d("프래그먼트", "대화하기 if")
@@ -63,6 +65,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
             DataBindingUtil.inflate(inflater, R.layout.talk_dialog, container, false)
         refuseDialogBinding.txtTitle = "실시간 대화 거절"
         refuseDialogBinding.txtEdit = "수정하기"
+        setSelectedQuestion()
         setOnClickListenerForBtnHamburger()
         setOnClickListenerForBtnSubmit()
         setOnClickListenerForBtnHelp()
@@ -72,9 +75,43 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         return binding.root
     }
 
+    private fun setSelectedQuestion() {
+        val myValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("selectedQuestion")
+        myValue.get().addOnSuccessListener {
+            binding.selectedQuestion = it.value.toString()
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+        val radioIndex: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("selectedQuestionIndex")
+        radioIndex.get().addOnSuccessListener {
+            Log.d("tag",it.value.toString())
+            binding.talkRadiogroup.check(
+                when (it.value.toString()) {
+                    "1" -> R.id.rb1
+                    "2" -> R.id.rb2
+                    "3" -> R.id.rb3
+                    "4" -> R.id.rb4
+                    "5" -> R.id.rb5
+                    "6" -> R.id.rb6
+                    "7" -> R.id.rb7
+                    "8" -> R.id.rb8
+                    "9" -> R.id.rb9
+                    "10" -> R.id.rb10
+                    "11" -> R.id.rb11
+                    else -> R.id.rb1
+                }
+            )
+
+        }.addOnFailureListener {
+            Log.e("firebase", "Error getting data", it)
+        }
+    }
+
     private fun setMode() {
-        val parentId = "부모1"
-        val childName = "아이1"
         val myValue: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
                 .child("startTalkChild")
@@ -130,9 +167,8 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     }
 
     private fun setParentAcceptTalkAtFirebase(isAccept: Boolean) {
-        val parentId = "부모1"
-        val childName = "아이1"
-        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("parentAcceptTalk")
+        databaseReference.child(parentId).child(parentId + "의 child " + childName)
+            .child("parentAcceptTalk")
             .setValue(isAccept)
     }
 
@@ -187,6 +223,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                     binding.realTalkConstraintAfterSubmit.visibility = View.VISIBLE
                 }
                 talkDialogRadiogroup.setOnCheckedChangeListener { questionGroup, checkedId ->
+                    setParentDenyTalkAtFirebase(true)
                     talkDialogTxtSelectedQuestion.text =
                         when (checkedId) {
                             R.id.rb1_dialog -> getString(R.string.talk_question_0)
@@ -202,6 +239,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                             R.id.rb11_dialog -> getString(R.string.talk_question_10)
                             else -> getString(R.string.talk_question_0)
                         }
+                    setSelectedQuestionDialogAtFirebase(talkDialogTxtSelectedQuestion.text.toString())
                 }
             }
 
@@ -280,6 +318,21 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                     R.id.rb11 -> getString(R.string.talk_question_10)
                     else -> getString(R.string.talk_question_0)
                 }
+            var index = when (binding.talkRadiogroup.checkedRadioButtonId) {
+                R.id.rb1 -> 1
+                R.id.rb2 -> 2
+                R.id.rb3 -> 3
+                R.id.rb4 -> 4
+                R.id.rb5 -> 5
+                R.id.rb6 -> 6
+                R.id.rb7 -> 7
+                R.id.rb8 -> 8
+                R.id.rb9 -> 9
+                R.id.rb10 -> 10
+                R.id.rb11 -> 11
+                else -> 1
+            }
+            setSelectedQuestionAtFirebase(binding.talkTxtSelectedQuestion.text.toString(), index)
         }
     }
 
@@ -299,6 +352,27 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         }
         startActivity(intent)
         return false
+    }
+
+    private fun setSelectedQuestionAtFirebase(question: String, index: Int) {
+        databaseReference.child(parentId).child(parentId + "의 child " + childName)
+            .child("selectedQuestion")
+            .setValue(question)
+        databaseReference.child(parentId).child(parentId + "의 child " + childName)
+            .child("selectedQuestionIndex")
+            .setValue(index)
+    }
+
+    private fun setSelectedQuestionDialogAtFirebase(question: String) {
+        databaseReference.child(parentId).child(parentId + "의 child " + childName)
+            .child("selectedQuestionAtDialog")
+            .setValue(question)
+    }
+
+    private fun setParentDenyTalkAtFirebase(isDeny: Boolean) {
+        databaseReference.child(parentId).child(parentId + "의 child " + childName)
+            .child("parentDenyTalk")
+            .setValue(isDeny)
     }
 
 }
