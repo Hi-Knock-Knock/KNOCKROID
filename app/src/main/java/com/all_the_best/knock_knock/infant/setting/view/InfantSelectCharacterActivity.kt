@@ -22,15 +22,14 @@ import com.all_the_best.knock_knock.infant.talk.viewmodel.InfantTalkLottieViewMo
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_infant_deco.*
 import kotlinx.android.synthetic.main.activity_infant_select_character.*
+import kotlinx.android.synthetic.main.activity_infant_talk_start.*
 
 
 class InfantSelectCharacterActivity : AppCompatActivity() {
 
-   // private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-   // private lateinit var binding: ActivityInfantSelectCharacterBinding
+    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    private val databaseReference: DatabaseReference = database.reference
 
-    // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
-    //private val databaseReference: DatabaseReference = database.reference
     private lateinit var selectViewPagerAdapter: InfantViewPagerAdapter
     private val infantSelectChViewModel: InfantSelectChViewModel by viewModels()
     private val infantCookieViewModel: InfantCookieViewModel by viewModels()
@@ -40,6 +39,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_select_character)
+        getCookieDataFirebase()
 
         //상태바 색상 지정
         window.statusBarColor = Color.parseColor("#74DAFF")
@@ -92,6 +92,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
         // 홈화면
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         select_btn_ok.setOnClickListener{
+            intent1.putExtra("cookieCount", infantCookieViewModel.cookieCount.value)
             intent1.putExtra("chSelect", infantSelectChViewModel.chSelect.value)
             intent1.putExtra("giftSelect", infantGiftBgViewModel.giftSelect.value)
             intent1.putExtra("lottieSelect", infantTalkLottieViewModel.lottieSelect.value)
@@ -100,21 +101,14 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
         }
     }
 
-
-//    private fun getCookieDataFirebase(){
-//        //lateinit var getcount: String
-//        val childId = "아이1"
-//        val getCountCookie: DatabaseReference =
-//            databaseReference.child(childId).child(childId + "의 쿠키개수 " )
-//        Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
-//        getCountCookie.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                binding.txtCookie = snapshot.value as String
-//            }
-//            override fun onCancelled(error: DatabaseError) {
-//                TODO("Not yet implemented")
-//            }
-//        })
-//    }
-
+    // 쿠킹 연동
+    fun getCookieDataFirebase(){
+        val childId = "아이1"
+        val myValue: DatabaseReference =
+            databaseReference.child(childId).child(childId + "의 쿠키개수 " )
+        myValue.get().addOnSuccessListener {
+            infantCookieViewModel.setCookieCount(it.value.toString().toInt())
+            Log.d("cookie", infantCookieViewModel.cookieCount.value.toString())
+        }.addOnFailureListener {  }
+    }
 }
