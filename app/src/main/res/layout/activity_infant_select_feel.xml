@@ -33,7 +33,7 @@
         app:layout_constraintStart_toStartOf="@+id/char_talk_feel" />
 
     <TextView
-        android:id="@+id/talk_txtview"
+        android:id="@+id/talk_txtview_feel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
