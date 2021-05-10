@@ -29,7 +29,9 @@
             android:background="@drawable/bg_whitebox_14dp"
             android:drawableTop="@drawable/ic_select_id_idle1"
             android:paddingTop="8dp"
+            android:textSize="25sp"
             android:text="윤정"
+            android:fontFamily="@font/maplestorybold"
             android:textColor="#000000" />
 
 
@@ -43,7 +45,9 @@
             android:backgroundTint="@null"
             android:drawableTop="@drawable/ic_select_id_idle2"
             android:paddingTop="8dp"
-            android:text=""
+            android:textSize="25sp"
+            android:text="지수"
+            android:fontFamily="@font/maplestorybold"
             android:textColor="#000000" />
     </LinearLayout>
 

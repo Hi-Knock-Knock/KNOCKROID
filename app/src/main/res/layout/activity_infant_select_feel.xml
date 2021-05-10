@@ -39,7 +39,7 @@
         android:layout_marginBottom="10dp"
         android:text="오늘 기분이 어때?"
         android:textSize="25sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/cookierunblack"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/infant_talk1"
         app:layout_constraintEnd_toEndOf="@+id/infant_talk1"
@@ -103,7 +103,7 @@
                     android:text="기뻐"
                     android:textColor="#000000"
                     android:textSize="19sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/cookierunregular" />
 
                 <TextView
                     android:id="@+id/infant_emj_feel_2_txt"
@@ -115,7 +115,7 @@
                     android:text="신나"
                     android:textColor="#000000"
                     android:textSize="19sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/cookierunregular" />
 
                 <TextView
                     android:id="@+id/infant_emj_feel_3_txt"
@@ -126,7 +126,7 @@
                     android:text="속상해"
                     android:textColor="#000000"
                     android:textSize="19sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/cookierunregular" />
             </TableRow>
 
             <TableRow>
@@ -167,7 +167,7 @@
                     android:text="슬퍼"
                     android:textColor="#000000"
                     android:textSize="19sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/cookierunregular"/>
 
                 <TextView
                     android:id="@+id/infant_emj_feel_5_txt"
@@ -179,7 +179,7 @@
                     android:text="무서워"
                     android:textColor="#000000"
                     android:textSize="19sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/cookierunregular" />
 
                 <TextView
                     android:id="@+id/infant_emj_feel_6_txt"
@@ -190,7 +190,7 @@
                     android:text="화나"
                     android:textColor="#000000"
                     android:textSize="19sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/cookierunregular"/>
             </TableRow>
 
         </TableLayout>

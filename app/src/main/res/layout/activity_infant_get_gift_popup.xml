@@ -24,6 +24,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/img_get_item2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_gift_get_selected"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_infant_deco_item_space"
+        app:layout_constraintBottom_toBottomOf="@+id/gift_popup_image"
+        app:layout_constraintEnd_toEndOf="@+id/gift_popup_image"
+        app:layout_constraintStart_toStartOf="@+id/gift_popup_image"
+        app:layout_constraintTop_toTopOf="@+id/gift_popup_image" />
+
+    <ImageView
         android:id="@+id/img_get_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,6 +49,7 @@
         app:layout_constraintStart_toStartOf="@+id/gift_popup_image"
         app:layout_constraintTop_toTopOf="@+id/gift_popup_image" />
 
+
     <TextView
         android:id="@+id/txt_get_bg"
         android:layout_width="wrap_content"
@@ -44,7 +58,7 @@
         android:text="바다를 받았어!"
         android:textColor="#ffffff"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/cookierunbold"
         app:layout_constraintEnd_toEndOf="@+id/img_get_item"
         app:layout_constraintStart_toStartOf="@+id/img_get_item"
         app:layout_constraintTop_toBottomOf="@+id/img_get_item" />
