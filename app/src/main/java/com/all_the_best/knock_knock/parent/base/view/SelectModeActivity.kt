@@ -50,5 +50,9 @@ class SelectModeActivity : AppCompatActivity() {
             .setValue("")
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("childPerson")
             .setValue("")
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("selectedQuestionAtDialog")
+            .setValue("")
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("parentDenyTalk")
+            .setValue(false)
     }
 }
