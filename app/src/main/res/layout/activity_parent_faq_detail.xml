@@ -21,10 +21,10 @@
             android:id="@+id/faqdetail_txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/scdream5"
             android:text="FAQ"
             android:textColor="#ffffff"
             android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/faqdetail_btn_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
+            android:fontFamily="@font/scdream5"
             android:text="Q. "
             android:textColor="#ffffff"
             android:textSize="20sp"
@@ -57,12 +58,13 @@
             android:id="@+id/faqdetail_txt_faqtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/scdream5"
             android:text="@{faqDetailData.title}"
             android:textColor="#ffffff"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/faqdetail_txt_faq_q"
             app:layout_constraintStart_toEndOf="@id/faqdetail_txt_faq_q"
-            app:layout_constraintTop_toTopOf="@id/faqdetail_txt_faq_q"
-            app:layout_constraintBottom_toBottomOf="@id/faqdetail_txt_faq_q"/>
+            app:layout_constraintTop_toTopOf="@id/faqdetail_txt_faq_q" />
 
 
         <ImageButton
@@ -97,10 +99,10 @@
                 android:id="@+id/faqdetail_txt_a"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/scdream5"
                 android:text="A"
                 android:textColor="#252525"
                 android:textSize="20sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -108,9 +110,11 @@
                 android:id="@+id/faqdetail_txt_answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/scdream4"
                 android:text="@{faqDetailData.content}"
                 android:textColor="#252525"
                 android:textSize="16sp"
+                android:lineSpacingExtra="6dp"
                 app:layout_constraintStart_toStartOf="@id/faqdetail_txt_a"
                 app:layout_constraintTop_toBottomOf="@id/faqdetail_txt_a" />
 

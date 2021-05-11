@@ -22,14 +22,14 @@
         android:id="@+id/parent_search_faq_txt_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/scdream5"
         android:text="검색하기"
         android:textColor="#ffffff"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="@id/parent_search_faq_btn_back"
         app:layout_constraintBottom_toBottomOf="@id/parent_search_faq_btn_back"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/parent_search_faq_btn_back" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/parent_search_faq_search_view"
