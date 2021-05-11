@@ -37,7 +37,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
     private var mTts: TextToSpeech? = null
     private var mLocale = Locale.KOREA
     private var mPitch = 1.5f
-    private var mRate = 1f
+    private var mRate = 0.8f
     private var mQueue = TextToSpeech.QUEUE_ADD
 
     // Firebase

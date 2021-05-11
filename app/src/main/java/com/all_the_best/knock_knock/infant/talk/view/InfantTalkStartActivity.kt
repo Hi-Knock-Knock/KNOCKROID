@@ -53,7 +53,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
     private var mTts: TextToSpeech? = null
     private var mLocale = Locale.KOREA
     private var mPitch = 1.5f
-    private var mRate = 1f
+    private var mRate = 0.8f
     private var mQueue = TextToSpeech.QUEUE_FLUSH
 
     //private var loading by Delegates.notNull<Int>()
@@ -216,7 +216,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordStopClick(){
         stopRecordBtn.setOnClickListener {
-
             val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             talk_txtview.visibility = View.INVISIBLE
@@ -383,13 +382,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.value as Boolean) {
                     //stopRecordBtn.visibility = View.INVISIBLE
-
-
-
                     //getDataFromStorage()
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
