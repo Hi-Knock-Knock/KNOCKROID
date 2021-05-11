@@ -16,6 +16,7 @@ import com.all_the_best.knock_knock.databinding.FragmentParentTalkBinding
 import com.all_the_best.knock_knock.infant.cookie.viewmodel.InfantCookieViewModel
 import com.all_the_best.knock_knock.infant.gift.viewmodel.InfantGiftBgViewModel
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
+import com.all_the_best.knock_knock.infant.home.viewmodel.InfantMusicViewModel
 import com.all_the_best.knock_knock.infant.setting.adapter.InfantViewPagerAdapter
 import com.all_the_best.knock_knock.infant.setting.viewmodel.InfantSelectChViewModel
 import com.all_the_best.knock_knock.infant.talk.viewmodel.InfantTalkLottieViewModel
@@ -35,6 +36,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
     private val infantCookieViewModel: InfantCookieViewModel by viewModels()
     private val infantGiftBgViewModel: InfantGiftBgViewModel by viewModels()
     private val infantTalkLottieViewModel: InfantTalkLottieViewModel by viewModels()
+    private val infantMusicViewModel: InfantMusicViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +63,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
             intent2.putExtra("cookieCount", infantCookieViewModel.cookieCount.value)
             intent2.putExtra("giftSelect", infantGiftBgViewModel.giftSelect.value)
             intent2.putExtra("lottieSelect", infantTalkLottieViewModel.lottieSelect.value)
+            intent2.putExtra("musicPlay", infantMusicViewModel.musicPlay.value)
             startActivity(intent2)
             overridePendingTransition(0, 0)
         }
@@ -96,6 +99,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
             intent1.putExtra("chSelect", infantSelectChViewModel.chSelect.value)
             intent1.putExtra("giftSelect", infantGiftBgViewModel.giftSelect.value)
             intent1.putExtra("lottieSelect", infantTalkLottieViewModel.lottieSelect.value)
+            intent1.putExtra("musicPlay", infantMusicViewModel.musicPlay.value)
             startActivity(intent1)
             overridePendingTransition(0, 0)
         }

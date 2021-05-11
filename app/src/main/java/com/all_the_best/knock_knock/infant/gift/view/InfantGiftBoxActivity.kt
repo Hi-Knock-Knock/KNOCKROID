@@ -28,6 +28,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
     private var giftSelect: Int = 0
+    private var musicPlay:Int=0
     private lateinit var getBgPopup: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +44,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
         chSelect = intent.getIntExtra("chSelect", 0)
         cookieCount = intent.getIntExtra("cookieCount", 5)
         giftSelect = intent.getIntExtra("giftSelect", 0)
+        musicPlay = intent.getIntExtra("musicPlay",0)
 
         cookieGiftCount2.text = cookieCount.toString()
 
@@ -55,6 +57,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
             intentGoHome.putExtra("chSelect", chSelect)
             intentGoHome.putExtra("cookieCount", cookieCount)
             intentGoHome.putExtra("giftSelect", giftSelect)
+            intentGoHome.putExtra("musicPlay",musicPlay)
             //mediaPlayer!!.stop()
             startActivity(intentGoHome)
             overridePendingTransition(0, 0)
@@ -85,6 +88,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
             intentGoHome.putExtra("chSelect", chSelect)
             intentGoHome.putExtra("cookieCount", cookieCount)
             intentGoHome.putExtra("giftSelect", giftSelect)
+            intentGoHome.putExtra("musicPlay",musicPlay)
             Handler(Looper.getMainLooper()).postDelayed({
                 //mediaPlayer!!.stop()
                 startActivity(intentGoHome)

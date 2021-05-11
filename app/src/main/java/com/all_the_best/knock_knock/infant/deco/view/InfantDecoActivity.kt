@@ -22,6 +22,7 @@ class InfantDecoActivity : AppCompatActivity() {
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
     private var giftSelect:Int=0
+    private var musicPlay:Int=0
 
 
     private val current = LocalDateTime.now()
@@ -36,6 +37,8 @@ class InfantDecoActivity : AppCompatActivity() {
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
         giftSelect = intent.getIntExtra("giftSelect",0)
+        musicPlay = intent.getIntExtra("musicPlay",0)
+
         setAddItem()
         setBgSelectObserve()
         setSelectCharacter()
@@ -75,6 +78,7 @@ class InfantDecoActivity : AppCompatActivity() {
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
             intent.putExtra("giftSelect",giftSelect)
+            intent.putExtra("musicPlay",musicPlay)
             setResult(Activity.RESULT_OK, intent)
             finish()
             overridePendingTransition(0, 0)
