@@ -366,9 +366,10 @@ class InfantHomeActivity : AppCompatActivity() {
     private fun init() {
         mTts = TextToSpeech(baseContext, TextToSpeech.OnInitListener { status ->
             if (status == TextToSpeech.SUCCESS) {
+                play()
             } else {
-                // todo: fail 시 처리
                 startActivity(getSettingActIntent())
+                play()
             }
         })
     }

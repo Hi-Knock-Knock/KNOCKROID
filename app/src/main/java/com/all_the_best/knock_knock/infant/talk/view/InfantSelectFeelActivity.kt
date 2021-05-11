@@ -58,12 +58,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
         lottieSelect = intent.getIntExtra("lottieSelect", 0)
         //setSelectFeelMotion()
         setSelectCharacter()
-
         init()
-        infant_talk1.setOnClickListener {
-            play()
-        }
-
 
         // 시간 변수
         val current = LocalDateTime.now()
@@ -124,6 +119,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
         val intent = Intent(this, InfantSelectPersonActivity::class.java)
         //감정선택버튼
         infant_emj_feel_1.setOnClickListener {
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             when (lottieSelect) {
                 0 -> lottieSelect = 1
             }
@@ -137,6 +133,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_2.setOnClickListener {
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             when (lottieSelect) {
                 0 -> lottieSelect = 2
             }
@@ -150,6 +147,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_3.setOnClickListener {
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             when (lottieSelect) {
                 0 -> lottieSelect = 3
             }
@@ -163,6 +161,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_4.setOnClickListener {
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             when (lottieSelect) {
                 0 -> lottieSelect = 4
             }
@@ -176,6 +175,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_5.setOnClickListener {
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             when (lottieSelect) {
                 0 -> lottieSelect = 5
             }
@@ -189,6 +189,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_6.setOnClickListener {
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             when (lottieSelect) {
                 0 -> lottieSelect = 6
             }
@@ -259,9 +260,10 @@ class InfantSelectFeelActivity : AppCompatActivity() {
     private fun init() {
         mTts = TextToSpeech(baseContext, TextToSpeech.OnInitListener { status ->
             if (status == TextToSpeech.SUCCESS) {
+                play()
             } else {
-                // todo: fail 시 처리
                 startActivity(getSettingActIntent())
+                play()
             }
         })
     }

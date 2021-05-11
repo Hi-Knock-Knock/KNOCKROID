@@ -3,6 +3,8 @@ package com.all_the_best.knock_knock.infant.talk.view
 import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Color
+import android.media.AudioManager
+import android.media.SoundPool
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,6 +21,10 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 class InfantSelectPersonActivity : AppCompatActivity() {
+
+    // 효과음
+    var soundPool: SoundPool?=null
+
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
@@ -39,6 +45,10 @@ class InfantSelectPersonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_select_person)
+
+        soundPool = SoundPool(1, AudioManager.STREAM_MUSIC,0)
+        val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
+
         bgSelect = intent.getIntExtra("bgSelect", 1)
         chSelect = intent.getIntExtra("chSelect", 0)
         cookieCount = intent.getIntExtra("cookieCount", 5)
@@ -48,9 +58,6 @@ class InfantSelectPersonActivity : AppCompatActivity() {
         //setSelectCharacter()
         setSelectFeelMotion()
         init()
-        char_talk_person.setOnClickListener {
-            play()
-        }
 
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
@@ -107,6 +114,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
         val intent = Intent(this, InfantTalkStartActivity::class.java)
         // 대상 선택 버튼
         infant_emj_person_1.setOnClickListener {
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             setPersonVariableAtFirebase(1)
             intent.putExtra("bgSelect", bgSelect)
             intent.putExtra("chSelect", chSelect)
@@ -117,6 +125,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
         infant_emj_person_2.setOnClickListener {
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             setPersonVariableAtFirebase(2)
             intent.putExtra("bgSelect", bgSelect)
             intent.putExtra("chSelect", chSelect)
@@ -127,6 +136,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
         infant_emj_person_3.setOnClickListener {
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             setPersonVariableAtFirebase(3)
             intent.putExtra("bgSelect", bgSelect)
             intent.putExtra("chSelect", chSelect)
@@ -137,6 +147,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
         infant_emj_person_4.setOnClickListener {
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             setPersonVariableAtFirebase(4)
             intent.putExtra("bgSelect", bgSelect)
             intent.putExtra("chSelect", chSelect)
@@ -147,6 +158,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
         infant_emj_person_5.setOnClickListener {
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             setPersonVariableAtFirebase(5)
             intent.putExtra("bgSelect", bgSelect)
             intent.putExtra("chSelect", chSelect)
@@ -241,9 +253,10 @@ class InfantSelectPersonActivity : AppCompatActivity() {
     private fun init() {
         mTts = TextToSpeech(baseContext, TextToSpeech.OnInitListener { status ->
             if (status == TextToSpeech.SUCCESS) {
+                play()
             } else {
-                // todo: fail 시 처리
                 startActivity(getSettingActIntent())
+                play()
             }
         })
     }
@@ -289,7 +302,6 @@ class InfantSelectPersonActivity : AppCompatActivity() {
     }
 
     fun play(){
-        val intent = Intent()
         if (mTts != null) {
             if (talk_txtview_person != null) {
                 val text = talk_txtview_person.text.toString()
