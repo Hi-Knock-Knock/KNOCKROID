@@ -48,7 +48,7 @@ class InfantHomeActivity : AppCompatActivity() {
     private var mTts: TextToSpeech? = null
     private var mLocale = Locale.KOREA
     private var mPitch = 1.5f
-    private var mRate = 1f
+    private var mRate = 0.8f
     private var mQueue = TextToSpeech.QUEUE_FLUSH
 
     private val current = LocalDateTime.now()
@@ -77,12 +77,13 @@ class InfantHomeActivity : AppCompatActivity() {
 
         if (musicPlay==0){
             mediaPlayer = MediaPlayer.create(this, R.raw.bgm);
-            mediaPlayer!!.setVolume(1f,1f)
+            mediaPlayer!!.setVolume(0.5f,0.5f)
             mediaPlayer!!.start()
             Log.d("media",musicPlay.toString())
             musicPlay=1
             Log.d("media",musicPlay.toString())
         }else{
+            mediaPlayer!!.isLooping = true
             Log.d("media",musicPlay.toString())
         }
 
@@ -112,8 +113,8 @@ class InfantHomeActivity : AppCompatActivity() {
             intent1.putExtra("giftSelect",giftSelect)
             intent1.putExtra("musicPlay",musicPlay)
             setStartTalkAtFirebase()
-            mediaPlayer!!.stop()
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
+            mediaPlayer!!.stop()
             startActivity(intent1)
         }
 
@@ -125,7 +126,6 @@ class InfantHomeActivity : AppCompatActivity() {
             intent2.putExtra("giftSelect",giftSelect)
             intent2.putExtra("lottieSelect",lottieSelect)
             intent2.putExtra("musicPlay",musicPlay)
-            //mediaPlayer!!.stop()
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivityForResult(intent2,0)
         }
@@ -139,7 +139,6 @@ class InfantHomeActivity : AppCompatActivity() {
             intent3.putExtra("giftSelect",giftSelect)
             intent3.putExtra("lottieSelect",lottieSelect)
             intent3.putExtra("musicPlay",musicPlay)
-            //mediaPlayer!!.stop()
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivity(intent3)
         }
@@ -152,7 +151,6 @@ class InfantHomeActivity : AppCompatActivity() {
             intent4.putExtra("giftSelect",giftSelect)
             intent4.putExtra("lottieSelect",lottieSelect)
             intent4.putExtra("musicPlay",musicPlay)
-            //mediaPlayer!!.stop()
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivityForResult(intent4,1)
         }
@@ -166,7 +164,6 @@ class InfantHomeActivity : AppCompatActivity() {
             intent5.putExtra("giftSelect",giftSelect)
             intent5.putExtra("lottieSelect",lottieSelect)
             intent5.putExtra("musicPlay",musicPlay)
-            //mediaPlayer!!.stop()
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivity(intent5)
         }

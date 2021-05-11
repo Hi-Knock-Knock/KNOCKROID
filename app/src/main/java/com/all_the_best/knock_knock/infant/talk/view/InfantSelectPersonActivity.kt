@@ -37,7 +37,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
     private var mTts: TextToSpeech? = null
     private var mLocale = Locale.KOREA
     private var mPitch = 1.5f
-    private var mRate = 1f
+    private var mRate = 0.8f
     private var mQueue = TextToSpeech.QUEUE_ADD
 
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
