@@ -20,30 +20,31 @@ import kotlinx.android.synthetic.main.activity_infant_talk_start.*
 
 class InfantGiftStartActivity : AppCompatActivity() {
 
-    var mediaPlayer: MediaPlayer? = null
+    //var mediaPlayer: MediaPlayer? = null
 
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
     private var giftSelect:Int=0
-    //private var btnTrue:Int = 0
+    private var musicPlay:Int=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_gift_start)
         setOnLottieStart()
-        if(mediaPlayer==null){
-            mediaPlayer = MediaPlayer.create(this, R.raw.bgm2);
-            mediaPlayer!!.setVolume(0.1f,0.1f)
-            mediaPlayer!!.start()
-        }else{
-            Log.d("media","존재한다. ")
-        }
+//        if(mediaPlayer==null){
+//            mediaPlayer = MediaPlayer.create(this, R.raw.bgm2);
+//            mediaPlayer!!.setVolume(0.1f,0.1f)
+//            mediaPlayer!!.start()
+//        }else{
+//            Log.d("media","존재한다. ")
+//        }
         val cookieGiftCount1: TextView = findViewById(R.id.infant_gift_start_cookie_count)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
         giftSelect = intent.getIntExtra("giftSelect",0)
+        musicPlay = intent.getIntExtra("musicPlay",0)
 
         val intentGoHome = Intent(this, InfantHomeActivity::class.java)
         cookieGiftCount1.text = cookieCount.toString()
@@ -59,6 +60,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
         intent1.putExtra("chSelect",chSelect)
         intent1.putExtra("cookieCount",cookieCount)
         intent1.putExtra("giftSelect",giftSelect)
+        intent1.putExtra("musicPlay",musicPlay)
 
         infant_empty_cookie1.setOnClickListener {
             if(cookieCount<=2){
@@ -71,7 +73,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                     intentGoHome.putExtra("chSelect",chSelect)
                     intentGoHome.putExtra("cookieCount",cookieCount)
                     intentGoHome.putExtra("giftSelect",giftSelect)
-                    mediaPlayer!!.stop()
+                    //mediaPlayer!!.stop()
                     startActivity(intentGoHome)
                     overridePendingTransition(0, 0)
                 }else{
@@ -81,7 +83,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 }
                 if(count3==3){
                     infant_empty_cookie1.setImageResource(R.drawable.img_infant_full_cookie)
-                    mediaPlayer!!.stop()
+                    //mediaPlayer!!.stop()
                     startActivity(intent1)
                     overridePendingTransition(0, 0)
                 }
@@ -97,7 +99,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 intentGoHome.putExtra("chSelect",chSelect)
                 intentGoHome.putExtra("cookieCount",cookieCount)
                 intentGoHome.putExtra("giftSelect",giftSelect)
-                mediaPlayer!!.stop()
+                //mediaPlayer!!.stop()
                 startActivity(intentGoHome)
                 overridePendingTransition(0, 0)
             }else{
@@ -107,7 +109,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
             }
             if(count3==3){
                 infant_empty_cookie2.setImageResource(R.drawable.img_infant_full_cookie)
-                mediaPlayer!!.stop()
+                //mediaPlayer!!.stop()
                 startActivity(intent1)
                 overridePendingTransition(0, 0)
             }
@@ -122,7 +124,8 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 intentGoHome.putExtra("chSelect",chSelect)
                 intentGoHome.putExtra("cookieCount",cookieCount)
                 intentGoHome.putExtra("giftSelect",giftSelect)
-                mediaPlayer!!.stop()
+                intentGoHome.putExtra("musicPlay",musicPlay)
+                //mediaPlayer!!.stop()
                 startActivity(intentGoHome)
                 overridePendingTransition(0, 0)
             }else{
@@ -134,7 +137,7 @@ class InfantGiftStartActivity : AppCompatActivity() {
                 infant_empty_cookie3.setImageResource(R.drawable.img_infant_full_cookie)
                 cookieGiftCount1.text = cookieCount.toString()
                 intent1.putExtra("cookieCount",cookieCount) //줄어든 쿠키갯수 받기
-                mediaPlayer!!.stop()
+                //mediaPlayer!!.stop()
                 startActivity(intent1)
                 overridePendingTransition(0, 0)
             }
@@ -147,7 +150,8 @@ class InfantGiftStartActivity : AppCompatActivity() {
             intentGoHome.putExtra("chSelect",chSelect)
             intentGoHome.putExtra("cookieCount",cookieCount)
             intentGoHome.putExtra("giftSelect",giftSelect)
-            mediaPlayer!!.stop()
+            intentGoHome.putExtra("musicPlay",musicPlay)
+            //mediaPlayer!!.stop()
             startActivity(intentGoHome)
             overridePendingTransition(0, 0)
         }

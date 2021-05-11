@@ -13,6 +13,7 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
@@ -20,6 +21,7 @@ import com.all_the_best.knock_knock.infant.change.view.InfantSwitchCharacterActi
 import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
 import com.all_the_best.knock_knock.infant.deco.view.InfantDecoActivity
 import com.all_the_best.knock_knock.infant.gift.view.InfantGiftStartActivity
+import com.all_the_best.knock_knock.infant.home.viewmodel.InfantMusicViewModel
 import com.all_the_best.knock_knock.infant.talk.view.InfantSelectFeelActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -30,10 +32,9 @@ import java.util.*
 
 
 class InfantHomeActivity : AppCompatActivity() {
-
-    //private val infantTalkLottieViewModel: InfantTalkLottieViewModel by viewModels()
-    //private lateinit var binding: ActivityInfantHomeBinding
+    
     //bgm
+    private var musicPlay:Int=0
     var mediaPlayer: MediaPlayer? = null
     var soundPool:SoundPool?=null
     private var chSelect: Int = 0
@@ -46,11 +47,10 @@ class InfantHomeActivity : AppCompatActivity() {
     //TTS 관련 변수들
     private var mTts: TextToSpeech? = null
     private var mLocale = Locale.KOREA
-    private var mPitch = 0.5f
+    private var mPitch = 1.5f
     private var mRate = 1f
     private var mQueue = TextToSpeech.QUEUE_FLUSH
 
-    var time3: Long = 0
     private val current = LocalDateTime.now()
     private val formatter = DateTimeFormatter.ISO_LOCAL_TIME
     private val formatted = current.format(formatter)
@@ -59,42 +59,42 @@ class InfantHomeActivity : AppCompatActivity() {
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_home)
-        //mediaPlayer!!.reset()
-        mediaPlayer = MediaPlayer.create(this, R.raw.bgm);
-        mediaPlayer!!.setVolume(1f,1f)
-        mediaPlayer!!.start()
-//        if(mediaPlayer!=null){
-//
-//        }else{
-//            mediaPlayer = MediaPlayer.create(this, R.raw.bgm);
-//            mediaPlayer!!.setVolume(5f,5f)
-//            mediaPlayer!!.start()
-//            Log.d("media","존재한다. ")
-//        }
-
-        //mediaPlayer!!.isLooping = true; //무한재생
-
+       
         soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
         val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
         //val streamId: Int = soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
 
-        //infantTalkLottieViewModel.setlottieClick(0)
-        //lottieClick = infantTalkLottieViewModel.lottieClick.value!!
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",6)
         giftSelect = intent.getIntExtra("giftSelect",0)
         lottieSelect = intent.getIntExtra("lottieSelect",0)
+        musicPlay = intent.getIntExtra("musicPlay",0)
+
+        if (musicPlay==0){
+            mediaPlayer = MediaPlayer.create(this, R.raw.bgm);
+            mediaPlayer!!.setVolume(1f,1f)
+            mediaPlayer!!.start()
+            Log.d("media",musicPlay.toString())
+            musicPlay=1
+            Log.d("media",musicPlay.toString())
+        }else{
+            Log.d("media",musicPlay.toString())
+        }
+
+        //mediaPlayer!!.isLooping = true; //무한재생
+        
+        //startService(Intent(applicationContext,InfantMusicService::class.java))
         setBackgroundForTime()
         setSelectCharacter()
         setCookieSaveFirebase()
         init()
 
         infant_talk1.setOnClickListener{
-            play()
             Log.d("time", formatted)
         }
 
@@ -110,6 +110,7 @@ class InfantHomeActivity : AppCompatActivity() {
             intent1.putExtra("lottieSelect",lottieSelect)
             intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("giftSelect",giftSelect)
+            intent1.putExtra("musicPlay",musicPlay)
             setStartTalkAtFirebase()
             mediaPlayer!!.stop()
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
@@ -123,7 +124,8 @@ class InfantHomeActivity : AppCompatActivity() {
             intent2.putExtra("cookieCount",cookieCount)
             intent2.putExtra("giftSelect",giftSelect)
             intent2.putExtra("lottieSelect",lottieSelect)
-            mediaPlayer!!.stop()
+            intent2.putExtra("musicPlay",musicPlay)
+            //mediaPlayer!!.stop()
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivityForResult(intent2,0)
         }
@@ -136,7 +138,8 @@ class InfantHomeActivity : AppCompatActivity() {
             intent3.putExtra("chSelect",chSelect)
             intent3.putExtra("giftSelect",giftSelect)
             intent3.putExtra("lottieSelect",lottieSelect)
-            mediaPlayer!!.stop()
+            intent3.putExtra("musicPlay",musicPlay)
+            //mediaPlayer!!.stop()
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivity(intent3)
         }
@@ -148,7 +151,8 @@ class InfantHomeActivity : AppCompatActivity() {
             intent4.putExtra("chSelect",chSelect)
             intent4.putExtra("giftSelect",giftSelect)
             intent4.putExtra("lottieSelect",lottieSelect)
-            mediaPlayer!!.stop()
+            intent4.putExtra("musicPlay",musicPlay)
+            //mediaPlayer!!.stop()
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivityForResult(intent4,1)
         }
@@ -161,7 +165,8 @@ class InfantHomeActivity : AppCompatActivity() {
             intent5.putExtra("chSelect",chSelect)
             intent5.putExtra("giftSelect",giftSelect)
             intent5.putExtra("lottieSelect",lottieSelect)
-            mediaPlayer!!.stop()
+            intent5.putExtra("musicPlay",musicPlay)
+            //mediaPlayer!!.stop()
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivity(intent5)
         }
@@ -180,6 +185,10 @@ class InfantHomeActivity : AppCompatActivity() {
 //        }
 //    }
 
+    override fun onBackPressed() {
+        mediaPlayer!!.stop()
+        super.onBackPressed()
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

@@ -25,6 +25,7 @@ import java.util.*
 class InfantSelectFeelActivity : AppCompatActivity() {
     // sound
     var soundPool: SoundPool?=null
+    private var musicPlay:Int=0
 
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
@@ -35,7 +36,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
     //TTS 관련 변수들
     private var mTts: TextToSpeech? = null
     private var mLocale = Locale.KOREA
-    private var mPitch = 0.5f
+    private var mPitch = 1.5f
     private var mRate = 1f
     private var mQueue = TextToSpeech.QUEUE_ADD
 
@@ -56,6 +57,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
         cookieCount = intent.getIntExtra("cookieCount", 5)
         giftSelect = intent.getIntExtra("giftSelect", 0)
         lottieSelect = intent.getIntExtra("lottieSelect", 0)
+        musicPlay = intent.getIntExtra("musicPlay",0)
         //setSelectFeelMotion()
         setSelectCharacter()
         init()
@@ -129,6 +131,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("cookieCount", cookieCount)
             intent.putExtra("giftSelect", giftSelect)
             intent.putExtra("lottieSelect", lottieSelect)
+            intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -143,6 +146,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("cookieCount", cookieCount)
             intent.putExtra("giftSelect", giftSelect)
             intent.putExtra("lottieSelect", lottieSelect)
+            intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -157,6 +161,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("cookieCount", cookieCount)
             intent.putExtra("giftSelect", giftSelect)
             intent.putExtra("lottieSelect", lottieSelect)
+            intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -171,6 +176,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("cookieCount", cookieCount)
             intent.putExtra("giftSelect", giftSelect)
             intent.putExtra("lottieSelect", lottieSelect)
+            intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -185,6 +191,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("cookieCount", cookieCount)
             intent.putExtra("giftSelect", giftSelect)
             intent.putExtra("lottieSelect", lottieSelect)
+            intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -199,6 +206,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("cookieCount", cookieCount)
             intent.putExtra("giftSelect", giftSelect)
             intent.putExtra("lottieSelect", lottieSelect)
+            intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

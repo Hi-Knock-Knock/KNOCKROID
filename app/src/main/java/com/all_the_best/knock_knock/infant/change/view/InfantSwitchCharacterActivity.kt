@@ -18,6 +18,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class InfantSwitchCharacterActivity : AppCompatActivity() {
+
+    private var musicPlay:Int=0
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
@@ -32,6 +34,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
         giftSelect = intent.getIntExtra("giftSelect",0)
+        musicPlay = intent.getIntExtra("musicPlay",0)
 
         val current = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_TIME
@@ -124,6 +127,7 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
             intent.putExtra("chSelect",chSelect)
             intent.putExtra("cookieCount",cookieCount)
             intent.putExtra("giftSelect",giftSelect)
+            intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
