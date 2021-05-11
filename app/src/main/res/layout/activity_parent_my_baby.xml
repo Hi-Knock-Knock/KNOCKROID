@@ -31,7 +31,7 @@
             android:text="우리 아이"
             android:textColor="#ffffff"
             android:textSize="20sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/scdream5"
             app:layout_constraintBottom_toBottomOf="@id/parent_my_baby_btn_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
             android:text="아이의 정보를 \n수정하고 추가하세요."
             android:textColor="#ffffff"
             android:textSize="20sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/scdream5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/parent_my_baby_txt_title" />
 
