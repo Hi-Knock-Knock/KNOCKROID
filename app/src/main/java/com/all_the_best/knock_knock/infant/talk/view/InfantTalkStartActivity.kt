@@ -39,6 +39,9 @@ import java.util.*
 @Suppress("DEPRECATION")
 class InfantTalkStartActivity : AppCompatActivity() {
 
+    // 효과음
+    var soundPool:SoundPool?=null
+
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
@@ -72,6 +75,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_talk_start)
+        soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
@@ -197,8 +201,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
                 ActivityCompat.requestPermissions(this, permissions, 0)
             } else {
                 //Log.d("record", "start")
-                play()
                 this.talk_txtview.text = "다 말하면 버튼을 눌러!"
+                play()
                 startRecording()
             }
             setOnBtnRecordStopClick()
@@ -207,6 +211,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordStopClick(){
         stopRecordBtn.setOnClickListener {
+
+            val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             talk_txtview.visibility = View.INVISIBLE
             infant_talk1.visibility = View.INVISIBLE
             when(chSelect){
@@ -461,9 +468,10 @@ class InfantTalkStartActivity : AppCompatActivity() {
     private fun init() {
         mTts = TextToSpeech(baseContext, TextToSpeech.OnInitListener { status ->
             if (status == TextToSpeech.SUCCESS) {
+                play()
             } else {
-                // todo: fail 시 처리
                 startActivity(getSettingActIntent())
+                play()
             }
         })
     }
@@ -488,12 +496,10 @@ class InfantTalkStartActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             intent.action = "com.android.settings.TTS_SETTINGS"
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            play()
         } else {
             intent.addCategory(Intent.CATEGORY_LAUNCHER)
             intent.component = ComponentName("com.android.settings", "com.android.settings.TextToSpeechSettings")
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            play()
         }
         return intent
     }
