@@ -52,19 +52,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/scdream5"
                     android:text="이미 계정이 있으신가요?"
                     android:textColor="#ffffff"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
 
                 <TextView
                     setUnderLine="@{txtLogin}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:fontFamily="@font/scdream5"
                     android:textColor="#ffffff"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -85,6 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:fontFamily="@font/scdream4"
                     android:text="계정"
                     android:textColor="#252525"
                     android:textSize="15sp" />
@@ -95,6 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:background="@drawable/bg_login_edt"
+                    android:fontFamily="@font/scdream4"
                     android:hint="email을 입력해주세요."
                     android:padding="5dp"
                     android:singleLine="true"
@@ -107,6 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:fontFamily="@font/scdream4"
                     android:text="비밀번호"
                     android:textColor="#252525"
                     android:textSize="15sp" />
@@ -117,6 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:background="@drawable/bg_login_edt"
+                    android:fontFamily="@font/scdream4"
                     android:hint="비밀번호를 입력해주세요."
                     android:inputType="textPassword"
                     android:padding="5dp"
@@ -130,6 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:fontFamily="@font/scdream4"
                     android:text="비밀번호 확인"
                     android:textColor="#252525"
                     android:textSize="15sp" />
@@ -140,6 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:background="@drawable/bg_login_edt"
+                    android:fontFamily="@font/scdream4"
                     android:hint="비밀번호를 한번 더 입력해주세요."
                     android:inputType="textPassword"
                     android:padding="5dp"
@@ -159,6 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:fontFamily="@font/scdream4"
                     android:text="자녀성별"
                     android:textColor="#252525"
                     android:textSize="15sp" />
@@ -171,6 +178,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/scdream4"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
                         android:text="여"
@@ -180,6 +188,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/scdream4"
                         android:minWidth="0dp"
                         android:minHeight="0dp"
                         android:text="남"
@@ -192,6 +201,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/scdream4"
                     android:text="자녀 이름"
                     android:textColor="#252525"
                     android:textSize="15sp" />
@@ -202,6 +212,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:background="@drawable/bg_login_edt"
+                    android:fontFamily="@font/scdream4"
                     android:hint="자녀 이름을 입력해주세요."
                     android:padding="5dp"
                     android:singleLine="true"
@@ -214,6 +225,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:fontFamily="@font/scdream4"
                     android:text="자녀 생년월일"
                     android:textColor="#252525"
                     android:textSize="15sp" />
@@ -224,6 +236,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:background="@drawable/bg_login_edt"
+                    android:fontFamily="@font/scdream4"
                     android:hint="자녀 생년월일을 입력해주세요."
                     android:padding="5dp"
                     android:singleLine="true"
@@ -249,6 +262,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
+                        android:fontFamily="@font/scdream4"
                         android:text="자녀성별"
                         android:textColor="#252525"
                         android:textSize="15sp" />
@@ -261,6 +275,7 @@
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/scdream4"
                             android:minWidth="0dp"
                             android:minHeight="0dp"
                             android:text="여"
@@ -270,6 +285,7 @@
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/scdream4"
                             android:minWidth="0dp"
                             android:minHeight="0dp"
                             android:text="남"
@@ -282,6 +298,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/scdream4"
                         android:text="자녀 이름"
                         android:textColor="#252525"
                         android:textSize="15sp" />
@@ -292,6 +309,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:background="@drawable/bg_login_edt"
+                        android:fontFamily="@font/scdream4"
                         android:hint="자녀 이름을 입력해주세요."
                         android:padding="5dp"
                         android:singleLine="true"
@@ -304,6 +322,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
+                        android:fontFamily="@font/scdream4"
                         android:text="자녀 생년월일"
                         android:textColor="#252525"
                         android:textSize="15sp" />
@@ -314,6 +333,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:background="@drawable/bg_login_edt"
+                        android:fontFamily="@font/scdream4"
                         android:hint="자녀 생년월일을 입력해주세요."
                         android:padding="5dp"
                         android:singleLine="true"
@@ -335,6 +355,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="38dp"
+                    android:fontFamily="@font/scdream4"
                     android:textColor="#000000"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -346,6 +367,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="100dp"
+                android:fontFamily="@font/scdream5"
                 android:textColor="#000000"
                 android:textSize="19sp"
                 app:layout_constraintBottom_toBottomOf="parent"

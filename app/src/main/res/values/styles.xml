@@ -18,6 +18,7 @@
         <item name="android:textColorHint">#b1c1ff</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">#b1c1ff</item>
+        <item name="android:fontFamily">@font/scdream4</item>
     </style>
 
     <style name="search_view_query_color" parent="Widget.AppCompat.SearchView">

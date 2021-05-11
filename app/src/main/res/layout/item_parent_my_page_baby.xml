@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="parentMyPageBabyData"
             type="com.all_the_best.knock_knock.parent.mypage.model.ParentMyPageBaby" />
@@ -18,11 +19,11 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_my_page_baby_img"
+            setSrcFromUrl="@{parentMyPageBabyData.uri}"
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_marginStart="44dp"
             android:layout_marginEnd="44dp"
-            setSrcFromUrl="@{parentMyPageBabyData.uri}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
+            android:fontFamily="@font/scdream4"
             android:text="@{parentMyPageBabyData.name}"
             android:textColor="#252525"
             android:textSize="14sp"
@@ -43,10 +45,11 @@
             android:id="@+id/item_my_page_baby_txt_gender_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/scdream4"
             android:text="성별 : "
             android:textColor="#252525"
             android:textSize="14sp"
-            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/item_my_page_baby_txt_name" />
 
@@ -54,6 +57,7 @@
             android:id="@+id/item_my_page_baby_txt_gender_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/scdream4"
             android:text="@{parentMyPageBabyData.gender}"
             android:textColor="#252525"
             android:textSize="14sp"
@@ -65,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
+            android:fontFamily="@font/scdream4"
             android:text="생년월일 : "
             android:textColor="#252525"
             android:textSize="14sp"
@@ -75,6 +80,7 @@
             android:id="@+id/item_my_page_baby_txt_birth_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/scdream4"
             android:text="@{parentMyPageBabyData.birth}"
             android:textColor="#252525"
             android:textSize="14sp"
@@ -86,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
+            android:fontFamily="@font/scdream4"
             android:text="별명 : "
             android:textColor="#252525"
             android:textSize="14sp"
@@ -96,6 +103,7 @@
             android:id="@+id/item_my_page_baby_txt_nickname_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/scdream4"
             android:text="@{parentMyPageBabyData.nickname}"
             android:textColor="#252525"
             android:textSize="14sp"

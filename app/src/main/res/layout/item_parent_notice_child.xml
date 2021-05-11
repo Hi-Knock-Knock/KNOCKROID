@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="2dp"
+        android:fontFamily="@font/scdream4"
         android:text="짱구가 대화를 요청 했습니다."
         android:textColor="#252525"
         android:textSize="14sp"
@@ -28,6 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/scdream4"
         android:text="13시45분"
         android:textColor="#252525"
         android:textSize="14sp"

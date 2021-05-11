@@ -25,14 +25,13 @@
 
         <TextView
             android:id="@+id/help_txt_title"
-            style="bold"
             setUnderLine="@{txtTitle}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:fontFamily="@font/scdream6"
             android:textColor="#000000"
             android:textSize="20sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="41dp"
+            android:fontFamily="@font/scdream4"
             android:gravity="center"
             android:textColor="#252525"
             android:textSize="15sp"
@@ -57,6 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:fontFamily="@font/scdream4"
             android:gravity="center"
             android:textColor="#252525"
             android:textSize="15sp"
@@ -72,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:fontFamily="@font/scdream4"
             android:gravity="center"
             android:text="아이에게 하고 싶었던\n질문을 골라보세요!"
             android:textColor="#252525"
@@ -92,15 +94,16 @@
             android:id="@+id/help_txt_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="12dp"
+            android:fontFamily="@font/scdream4"
             android:paddingHorizontal="120dp"
+            android:paddingVertical="12dp"
             android:text="확인"
             android:textColor="#252525"
             android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/help_division"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/help_division" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

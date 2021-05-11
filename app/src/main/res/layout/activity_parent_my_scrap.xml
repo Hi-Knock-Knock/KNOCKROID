@@ -42,7 +42,7 @@
                 android:text="FAQ 스크랩"
                 android:textColor="#000000"
                 android:textSize="20sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/scdream5"
                 app:layout_constraintBottom_toBottomOf="@id/parent_my_scrap_btn_back"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +66,7 @@
             android:layout_marginEnd="20dp"
             android:textColor="#5c7cff"
             android:textSize="15sp"
+            android:fontFamily="@font/scdream4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/parent_my_scrap_constraint_title" />
 
