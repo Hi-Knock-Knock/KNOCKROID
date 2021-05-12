@@ -36,6 +36,12 @@ object BindingAdapters {
         textView.text = nickname + "의 오늘"
     }
 
+    @BindingAdapter("setQuestion1FromHome")
+    @JvmStatic
+    fun setQuestion1FromHome(textView: TextView, nickname: String) {
+        textView.text = nickname + "야 오늘 기분이 어때?"
+    }
+
     @BindingAdapter("help_dialog:txt", "help_dialog:start", "help_dialog:end")
     @JvmStatic
     fun setBlueColor(textView: TextView, txt: String, start: Int, end: Int) {

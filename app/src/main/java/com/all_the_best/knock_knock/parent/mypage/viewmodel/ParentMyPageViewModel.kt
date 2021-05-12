@@ -10,10 +10,8 @@ import com.google.firebase.database.*
 class ParentMyPageViewModel : ViewModel() {
     var tempParentMyPageBabyList: List<ParentMyPageBaby> =
         listOf(
-            ParentMyPageBaby(null, "연주", "남", "2018.06.13", "쥬쥬"),
-            ParentMyPageBaby(null, "지수", "여", "2018.07.13", "슈슈"),
-            ParentMyPageBaby(null, "지호", "남", "2018.08.13", "죠죠"),
-            ParentMyPageBaby(null, "윤정", "여", "2018.09.13", "졍졍")
+            ParentMyPageBaby(null, "윤하", "여", "2018.06.13", "나나"),
+            ParentMyPageBaby(null, "윤지", "여", "2018.07.13", "쥐쥐")
         )
 
     private val _parentMyPageBabyList = MutableLiveData<MutableList<ParentMyPageBaby>>()
@@ -25,7 +23,7 @@ class ParentMyPageViewModel : ViewModel() {
     }
 
     fun getDefaultUri() {
-        for (i in 0..3) {
+        for (i in 0..1) {
             getDefaultUri(i)
         }
     }
@@ -33,8 +31,6 @@ class ParentMyPageViewModel : ViewModel() {
     fun getProfileImgFromStorage() {
         getImgFromStorage(0)
         getImgFromStorage(1)
-        getImgFromStorage(2)
-        getImgFromStorage(3)
     }
 
     private fun getDefaultUri(listNum: Int) {
@@ -48,7 +44,7 @@ class ParentMyPageViewModel : ViewModel() {
                 .child("imageUri($listNum)")
         myValue.get().addOnSuccessListener {
             tempParentMyPageBabyList[listNum].uri = it.value.toString()
-            if (listNum == 3) {
+            if (listNum == 1) {
                 setParentMyPageBabyList()
             }
         }.addOnFailureListener {

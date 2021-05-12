@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/scdream4"
-                android:text="짱구야 오늘 기분이 어때?"
+                setQuestion1FromHome="@{parentHomeRecordData.nickname}"
                 android:textColor="#252525"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"

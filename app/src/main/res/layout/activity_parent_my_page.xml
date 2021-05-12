@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/scdream5"
-                android:text="짱아 짱구맘"
+                android:text="윤하윤지맘"
                 android:textColor="#252525"
                 app:layout_constraintBottom_toBottomOf="@id/parent_my_page_img_profile"
                 app:layout_constraintStart_toEndOf="@id/parent_my_page_img_profile"

@@ -16,10 +16,8 @@ class ParentHomeViewModel : ViewModel() {
 
     private var tempParentHomeRecordList: List<ParentHomeRecord> =
         listOf(
-            ParentHomeRecord("연주", "행복해", "친구"),
-            ParentHomeRecord("지호", "속상해", "가족"),
-            ParentHomeRecord("지수", "행복해", "선생님"),
-            ParentHomeRecord("윤정", "속상해", "가족")
+            ParentHomeRecord("윤하", "행복해", "선생님"),
+            ParentHomeRecord("윤지", "속상해", "가족")
         )
     private val _parentHomeRecordList =
         MutableLiveData<MutableList<ParentHomeRecord>>()
