@@ -42,8 +42,9 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed,
     override fun onResume() {
         super.onResume()
         Log.d("tag_img", "onresume")
-        parentHomeViewModel.getProfileImgFromStorage()
+        parentHomeViewModel.getSelectedQuestion()
         parentHomeViewModel.getAnswerFromFirebase()
+        parentHomeViewModel.getProfileImgFromStorage()
         binding.parentHomeRcv.adapter?.notifyDataSetChanged()
     }
 
@@ -54,9 +55,10 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed,
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_parent_home, container, false)
         binding.lifecycleOwner = this
         binding.homeNavigationView.setNavigationItemSelectedListener(this)
+        parentHomeViewModel.getAnswerFromFirebase()
+        parentHomeViewModel.getSelectedQuestion()
         parentHomeViewModel.getDefaultUri()
         parentHomeViewModel.getProfileImgFromStorage()
-        parentHomeViewModel.getAnswerFromFirebase()
         setParentHomeRecordRcvAdapter()
         setParentHomeRecordObserve()
         setSnapHelper()

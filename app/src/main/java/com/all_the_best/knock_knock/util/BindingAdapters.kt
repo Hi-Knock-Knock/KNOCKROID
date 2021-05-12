@@ -14,13 +14,14 @@ import androidx.databinding.BindingAdapter
 import com.all_the_best.knock_knock.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.firebase.database.*
 import de.hdodenhof.circleimageview.CircleImageView
 
 object BindingAdapters {
     @BindingAdapter("setUnderLine")
     @JvmStatic
     fun setUnderLine(textView: TextView, txt: String) {
-        Log.d("dialog",txt)
+        Log.d("dialog", txt)
         val text = txt
         val spannableString = SpannableStringBuilder(text)
         spannableString.setSpan(
@@ -63,13 +64,13 @@ object BindingAdapters {
     fun setSrcFromUrl(imageView: ImageView, uri: String?) {
         if (uri == null) {
             Log.d("tag_img_binding", "null")
-            imageView.setImageResource(R.drawable.img_infant_home_bg_sea3)
+            imageView.setImageResource(R.drawable.img_profile_default_home)
         } else {
             Log.d("tag_img_binding", uri)
             Glide.with(imageView.context)
                 .load(uri)
                 .centerCrop()
-                .error(R.drawable.img_baby_mybaby1)
+                .error(R.drawable.img_profile_default_home)
                 .into(imageView)
         }
     }

@@ -18,8 +18,8 @@ class ParentHomeViewModel : ViewModel() {
 
     private var tempParentHomeRecordList: List<ParentHomeRecord> =
         listOf(
-            ParentHomeRecord("윤하", null, "답변 전", "답변 전"),
-            ParentHomeRecord("윤지", null, "답변 전", "답변 전")
+            ParentHomeRecord("윤하", null, "답변 전", "답변 전", null),
+            ParentHomeRecord("윤지", null, "답변 전", "답변 전", null)
         )
     private val _parentHomeRecordList =
         MutableLiveData<MutableList<ParentHomeRecord>>()
@@ -106,6 +106,50 @@ class ParentHomeViewModel : ViewModel() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 tempParentHomeRecordList[0].answer2 = snapshot.value as String
             }
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
+    fun getSelectedQuestion(){
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
+        val databaseReference: DatabaseReference = database.reference
+        val parentId = "부모1"
+        val childName = "아이1"
+
+        var selectedQuestionTxt = ""
+        val selectedQuestion: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("selectedQuestion")
+        val selectedQuestionAtDialog: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("selectedQuestionAtDialog")
+        selectedQuestion.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                Log.d("selectedQ", snapshot.value.toString())
+                selectedQuestionTxt = snapshot.value as String
+                tempParentHomeRecordList[0].selectedQuestion = selectedQuestionTxt
+                tempParentHomeRecordList[1].selectedQuestion = selectedQuestionTxt
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+        selectedQuestionAtDialog.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.value.toString() == "") {
+                    Log.d("selectedQ_Dialog", snapshot.value.toString())
+                    tempParentHomeRecordList[0].selectedQuestion = selectedQuestionTxt
+                    tempParentHomeRecordList[1].selectedQuestion = selectedQuestionTxt
+                } else {
+                    tempParentHomeRecordList[0].selectedQuestion = snapshot.value as String
+                    tempParentHomeRecordList[1].selectedQuestion = snapshot.value as String
+                }
+            }
+
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
