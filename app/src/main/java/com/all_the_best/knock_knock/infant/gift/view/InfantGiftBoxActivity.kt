@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
 import android.widget.Toast
@@ -76,7 +77,9 @@ class InfantGiftBoxActivity : AppCompatActivity() {
             getBgPopup.window!!.attributes.width = WindowManager.LayoutParams.MATCH_PARENT
             getBgPopup.window!!.attributes.height = WindowManager.LayoutParams.MATCH_PARENT
             when (giftSelect) {
-                0 -> giftSelect = 1
+                0 -> {
+                    giftSelect = 1
+                }
                 1 -> {
                     giftSelect = 2
 //                    img_get_item.setImageResource(R.drawable.img_infant_deco_item_space)
@@ -90,10 +93,9 @@ class InfantGiftBoxActivity : AppCompatActivity() {
             intentGoHome.putExtra("giftSelect", giftSelect)
             intentGoHome.putExtra("musicPlay",musicPlay)
             Handler(Looper.getMainLooper()).postDelayed({
-                //mediaPlayer!!.stop()
+                finish()
                 startActivity(intentGoHome)
                 overridePendingTransition(0, 0)
-                finish()
             }, 2000)
 
         }

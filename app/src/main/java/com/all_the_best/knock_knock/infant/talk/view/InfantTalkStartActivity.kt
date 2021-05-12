@@ -76,7 +76,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_talk_start)
-        soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
+        //soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
@@ -90,7 +90,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         setOnBtnRecordClick()
         setOnLottieStart()
         init()
-        getFinishRecordChild()
+        //getFinishRecordChild()
         setPlayDenyParent()
         //setOnBtnDownLoadRecordClick()
         //setOnBtnAudioUploadClick()
@@ -216,10 +216,13 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordStopClick(){
         stopRecordBtn.setOnClickListener {
+            soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
             val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
+
             talk_txtview.visibility = View.INVISIBLE
             infant_talk1.visibility = View.INVISIBLE
+
             when(chSelect){
                 0 -> {
                     talk_start_char_dam.setAnimation("dami_think.json")
@@ -301,15 +304,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
         }
     }
 
-//    private fun setOnBtnAudioUploadClick() {
-//        talk_start_char_dam.setOnClickListener {
-//            val audioIntent =
-//                Intent(Intent.ACTION_PICK, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI)
-//            startActivityForResult(audioIntent, 1)
-//        }
-//    }
-
-
     private fun uploadAudioUri(file: Uri) {
         //val file = Uri.fromFile(file)
         firebaseStorage.reference.child(fileName).child("child").child("child($recordNum).mp4")
@@ -347,7 +341,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         val childName = "아이1"
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
             .setValue(true)
-        Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
     }
 
     private fun setPlayParentRecord() {
@@ -370,6 +364,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+        stopRecordBtn.visibility = View.VISIBLE
     }
 
     private fun setPlayDenyParent() {
@@ -383,6 +378,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
                 if (snapshot.value as Boolean) {
                     //stopRecordBtn.visibility = View.INVISIBLE
                     //getDataFromStorage()
+                    //ParentDenyplay()
+                    getFinishRecordChild()
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -443,6 +440,10 @@ class InfantTalkStartActivity : AppCompatActivity() {
         audioTrack!!.play()
         audioTrack!!.write(audioData, 0 , bufferSizeInBytes)
         getDataNum++
+
+        stopRecordBtn.visibility = View.VISIBLE
+//        setSelectCharacter()
+//        setOnLottieStart()
     }
 
     //----------------------------tts------------------------------------------
