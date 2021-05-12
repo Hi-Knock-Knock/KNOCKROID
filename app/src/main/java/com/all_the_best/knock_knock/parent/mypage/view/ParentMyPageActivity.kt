@@ -21,6 +21,7 @@ class ParentMyPageActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        parentMyPageViewModel.getDefaultUri()
         parentMyPageViewModel.getProfileImgFromStorage()
         binding.parentMyPageRcvBaby.adapter?.notifyDataSetChanged()
     }
