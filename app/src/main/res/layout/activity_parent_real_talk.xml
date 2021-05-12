@@ -165,7 +165,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/scdream4"
-                android:text="짱구야 오늘 기분이 어때?"
+                android:text="윤하야 오늘 기분이 어때?"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
