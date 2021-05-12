@@ -1,6 +1,7 @@
 package com.all_the_best.knock_knock.util
 
 import android.annotation.SuppressLint
+import android.media.Image
 import android.net.Uri
 import android.text.Spannable
 import android.text.SpannableStringBuilder
@@ -12,6 +13,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.all_the_best.knock_knock.R
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import de.hdodenhof.circleimageview.CircleImageView
 
 object BindingAdapters {
@@ -36,6 +38,12 @@ object BindingAdapters {
         textView.text = nickname + "의 오늘"
     }
 
+    @BindingAdapter("setQuestion1FromHome")
+    @JvmStatic
+    fun setQuestion1FromHome(textView: TextView, nickname: String) {
+        textView.text = nickname + "야 오늘 기분이 어때?"
+    }
+
     @BindingAdapter("help_dialog:txt", "help_dialog:start", "help_dialog:end")
     @JvmStatic
     fun setBlueColor(textView: TextView, txt: String, start: Int, end: Int) {
@@ -52,13 +60,16 @@ object BindingAdapters {
 
     @BindingAdapter("setSrcFromUrl")
     @JvmStatic
-    fun setSrcFromUrl(imageView: CircleImageView, uri: String?) {
+    fun setSrcFromUrl(imageView: ImageView, uri: String?) {
         if (uri == null) {
-            imageView.setImageResource(R.drawable.img_baby_mybaby1)
+            Log.d("tag_img_binding", "null")
+            imageView.setImageResource(R.drawable.img_infant_home_bg_sea3)
         } else {
+            Log.d("tag_img_binding", uri)
             Glide.with(imageView.context)
                 .load(uri)
                 .centerCrop()
+                .error(R.drawable.img_baby_mybaby1)
                 .into(imageView)
         }
     }

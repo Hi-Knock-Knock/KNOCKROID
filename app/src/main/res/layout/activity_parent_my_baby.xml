@@ -28,10 +28,10 @@
             android:id="@+id/parent_my_baby_txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/scdream5"
             android:text="우리 아이"
             android:textColor="#ffffff"
             android:textSize="20sp"
-            android:fontFamily="@font/scdream5"
             app:layout_constraintBottom_toBottomOf="@id/parent_my_baby_btn_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,24 +42,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:fontFamily="@font/scdream5"
             android:text="아이의 정보를 \n수정하고 추가하세요."
             android:textColor="#ffffff"
             android:textSize="20sp"
-            android:fontFamily="@font/scdream5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/parent_my_baby_txt_title" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/parent_my_baby_rcv"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="42dp"
-            android:orientation="vertical"
             android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/parent_my_baby_txt_info"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/item_parent_my_baby" />
+            app:layout_constraintTop_toBottomOf="@id/parent_my_baby_txt_info">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/parent_my_baby_rcv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="42dp"
+                    android:orientation="vertical"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@id/parent_my_baby_btn_plus"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_parent_my_baby" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/parent_my_baby_btn_plus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:background="@drawable/img_profileplus_box"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/parent_my_baby_rcv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

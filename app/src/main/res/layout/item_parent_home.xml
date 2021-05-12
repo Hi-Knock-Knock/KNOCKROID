@@ -11,7 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="286dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:background="@drawable/bg_parent_home"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/scdream5"
             android:textColor="#252525"
-            android:textSize="25sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,8 +40,9 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/rcv_parent_img_parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/img_profile_home_parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -58,10 +59,9 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/rcv_parent_img_child"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_marginStart="4dp"
-                android:src="@drawable/img_profile_home_child"
                 app:layout_constraintStart_toEndOf="@id/rcv_parent_img_link"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,10 +77,10 @@
 
             <TextView
                 android:id="@+id/parent_record_txt_today_question1"
+                setQuestion1FromHome="@{parentHomeRecordData.nickname}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/scdream4"
-                android:text="짱구야 오늘 기분이 어때?"
                 android:textColor="#252525"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +90,7 @@
                 android:id="@+id/parent_record_txt_today_question2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="22dp"
                 android:fontFamily="@font/scdream4"
                 android:text="누구와 있었던 일이야?"
                 android:textColor="#252525"
@@ -126,7 +126,7 @@
             android:id="@+id/parent_record_txt_today_question3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="22dp"
             android:fontFamily="@font/scdream4"
             android:text="어떤 일이 있었는지 말해줄래?"
             android:textColor="#252525"
@@ -138,9 +138,9 @@
             android:id="@+id/parent_record_txt_today_question4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/scdream4"
-            android:text="엄마가 짱구를 어떻게 대해줬으면 \n좋겠어?"
+            android:text="엄마가 너를 어떻게 대해줬으면 \n좋겠어?"
             android:textColor="#252525"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +150,7 @@
             android:id="@+id/parent_record_constraint_play_question3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/bg_music_player"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -231,8 +231,10 @@
             android:id="@+id/parent_record_constraint_play_question4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="18dp"
             android:background="@drawable/bg_music_player"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/parent_record_txt_today_question4">
@@ -242,7 +244,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="14dp"
                 android:layout_marginTop="2dp"
-                android:progress="50"
+                android:progress="0"
                 android:progressDrawable="@drawable/music_player_progress"
                 android:thumb="@drawable/music_player_thumb"
                 app:layout_constraintEnd_toEndOf="parent"

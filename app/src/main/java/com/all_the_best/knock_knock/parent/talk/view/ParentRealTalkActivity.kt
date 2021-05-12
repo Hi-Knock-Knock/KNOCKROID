@@ -37,8 +37,6 @@ class ParentRealTalkActivity : AppCompatActivity() {
 
     private var firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
     private lateinit var pathReference: StorageReference
-    private lateinit var mediaRecorder: MediaRecorder
-    private var state: Boolean = false
     private lateinit var fileName: String
     private lateinit var audioUri: Uri
     private var recordNum: Int = 1

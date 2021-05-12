@@ -1,26 +1,27 @@
 package com.all_the_best.knock_knock.parent.home.view
 
-import android.annotation.SuppressLint
-import android.content.res.ColorStateList
+
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.view.ViewCompat.setBackgroundTintList
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
 import androidx.viewpager.widget.ViewPager
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.ActivityParentHomeBinding
-import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.parent.home.adapter.ParentViewPagerAdapter
 import com.all_the_best.knock_knock.parent.home.viewmodel.ParentHomeViewModel
+import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.util.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_parent_home.*
+import android.Manifest
 import kotlin.properties.Delegates
+
 
 class ParentHomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityParentHomeBinding
@@ -32,18 +33,19 @@ class ParentHomeActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_home)
 
         if (intent.getBooleanExtra("goFaq", false)) {
-            Log.d("parent_home","${intent.getBooleanExtra("goFaq",false)}")
+            Log.d("parent_home", "${intent.getBooleanExtra("goFaq", false)}")
             parentHomeViewModel.setGoFaqFlag(true)
-            Log.d("parent_home","${binding.parentViewpager.currentItem}")
+            Log.d("parent_home", "${binding.parentViewpager.currentItem}")
         }
         setViewPagerAdapter()
         setOnItemSelectedListenerForBottomNavigation()
         setOnClickListenerForFloatingBtn()
         setGoFaqFlagObserve()
+        requestReadExternalStoragePermission()
     }
 
     private fun setGoFaqFlagObserve(){
-        parentHomeViewModel.goFaqFlag.observe(this){goFaqFlag ->
+        parentHomeViewModel.goFaqFlag.observe(this){ goFaqFlag ->
             goFaqFlag.let{
                 if(goFaqFlag){
                     binding.parentViewpager.currentItem = 2
@@ -140,6 +142,29 @@ class ParentHomeActivity : AppCompatActivity() {
                         return
                     }
                 }
+            }
+        }
+    }
+
+
+    private fun requestReadExternalStoragePermission() {
+        if (ContextCompat.checkSelfPermission(this,  Manifest.permission.READ_EXTERNAL_STORAGE) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                )
+            ) {
+            } else {
+
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(
+                    this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    1
+                )
             }
         }
     }

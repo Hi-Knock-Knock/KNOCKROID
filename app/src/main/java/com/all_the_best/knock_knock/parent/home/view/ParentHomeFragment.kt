@@ -1,32 +1,28 @@
 package com.all_the_best.knock_knock.parent.home.view
 
+import androidx.fragment.app.activityViewModels
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.all_the_best.knock_knock.R
+import androidx.lifecycle.observe
 import com.all_the_best.knock_knock.databinding.FragmentParentHomeBinding
 import com.all_the_best.knock_knock.parent.alarm.view.ParentNoticeActivity
-import com.all_the_best.knock_knock.parent.faq.view.ParentFaqDetailActivity
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.parent.home.adapter.ParentHomeRcvAdapter
 import com.all_the_best.knock_knock.parent.home.viewmodel.ParentHomeViewModel
 import com.all_the_best.knock_knock.parent.mypage.view.ParentMyPageActivity
-import com.all_the_best.knock_knock.parent.setting.view.ParentAlarmSettingActivity
 import com.all_the_best.knock_knock.parent.setting.view.ParentSettingActivity
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.fragment_parent_home.*
 
 class ParentHomeFragment : Fragment(), FragmentOnBackPressed,
     NavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +39,14 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed,
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        Log.d("tag_img", "onresume")
+        parentHomeViewModel.getProfileImgFromStorage()
+        parentHomeViewModel.getAnswerFromFirebase()
+        binding.parentHomeRcv.adapter?.notifyDataSetChanged()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,7 +54,9 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed,
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_parent_home, container, false)
         binding.lifecycleOwner = this
         binding.homeNavigationView.setNavigationItemSelectedListener(this)
-        parentHomeViewModel.setParentRecordList()
+        parentHomeViewModel.getDefaultUri()
+        parentHomeViewModel.getProfileImgFromStorage()
+        parentHomeViewModel.getAnswerFromFirebase()
         setParentHomeRecordRcvAdapter()
         setParentHomeRecordObserve()
         setSnapHelper()
@@ -66,7 +72,7 @@ class ParentHomeFragment : Fragment(), FragmentOnBackPressed,
     }
 
     private fun setParentHomeRecordRcvAdapter() {
-        val parentHomeRecordAdapter = ParentHomeRcvAdapter()
+        val parentHomeRecordAdapter = ParentHomeRcvAdapter(requireActivity())
         binding.parentHomeRcv.adapter = parentHomeRecordAdapter
     }
 
