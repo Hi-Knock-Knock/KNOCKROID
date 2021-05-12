@@ -4,5 +4,6 @@ data class ParentHomeRecord(
     val nickname: String,
     var uri: String?,
     var answer1: String,
-    var answer2: String
+    var answer2: String,
+    var selectedQuestion: String?
 )

@@ -140,7 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/scdream4"
-            android:text="엄마가 너를 어떻게 대해줬으면 \n좋겠어?"
+            android:text="@{parentHomeRecordData.selectedQuestion}"
             android:textColor="#252525"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
