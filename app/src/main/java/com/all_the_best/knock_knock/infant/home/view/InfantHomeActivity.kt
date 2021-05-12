@@ -83,7 +83,7 @@ class InfantHomeActivity : AppCompatActivity() {
             musicPlay=1
             Log.d("media",musicPlay.toString())
         }else{
-            mediaPlayer!!.isLooping = true
+            //mediaPlayer!!.isLooping = true
             Log.d("media",musicPlay.toString())
         }
 
@@ -106,15 +106,15 @@ class InfantHomeActivity : AppCompatActivity() {
         //대화하기 버튼
         val intent1 = Intent(this, InfantSelectFeelActivity::class.java)
         char_talk_btn.setOnClickListener{
+            intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("bgSelect", bgSelect)
             intent1.putExtra("cookieCount",cookieCount)
             intent1.putExtra("lottieSelect",lottieSelect)
-            intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("giftSelect",giftSelect)
             intent1.putExtra("musicPlay",musicPlay)
             setStartTalkAtFirebase()
-            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             mediaPlayer!!.stop()
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivity(intent1)
         }
 
@@ -126,6 +126,7 @@ class InfantHomeActivity : AppCompatActivity() {
             intent2.putExtra("giftSelect",giftSelect)
             intent2.putExtra("lottieSelect",lottieSelect)
             intent2.putExtra("musicPlay",musicPlay)
+            intent1.putExtra("chSelect",chSelect)
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivityForResult(intent2,0)
         }
