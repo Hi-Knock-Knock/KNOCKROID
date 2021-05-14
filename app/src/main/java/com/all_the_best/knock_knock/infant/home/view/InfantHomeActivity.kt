@@ -59,6 +59,11 @@ class InfantHomeActivity : AppCompatActivity() {
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
 
+    override fun onResume() {
+        super.onResume()
+        mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
+    }
+
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +81,7 @@ class InfantHomeActivity : AppCompatActivity() {
         musicPlay = intent.getIntExtra("musicPlay",0)
 
         if (musicPlay==0){
-            mediaPlayer = MediaPlayer.create(this, R.raw.bgm);
+            mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
             mediaPlayer!!.setVolume(0.5f,0.5f)
             mediaPlayer!!.start()
             Log.d("media",musicPlay.toString())
