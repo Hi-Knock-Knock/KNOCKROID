@@ -3,6 +3,7 @@ package com.all_the_best.knock_knock.infant.setting.view
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.all_the_best.knock_knock.R
@@ -26,9 +27,15 @@ class InfantSelectIdActivity : AppCompatActivity() {
         button1.setOnClickListener{
             intent.putExtra("chSelect", chSelect)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
     }
+
+    override fun onBackPressed(){
+        Log.d("backpress","막음")
+    }
+
 
 
 

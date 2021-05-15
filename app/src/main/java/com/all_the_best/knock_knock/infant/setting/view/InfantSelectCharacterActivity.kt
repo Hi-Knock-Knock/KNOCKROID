@@ -20,9 +20,11 @@ import com.all_the_best.knock_knock.infant.home.viewmodel.InfantMusicViewModel
 import com.all_the_best.knock_knock.infant.setting.adapter.InfantViewPagerAdapter
 import com.all_the_best.knock_knock.infant.setting.viewmodel.InfantSelectChViewModel
 import com.all_the_best.knock_knock.infant.talk.viewmodel.InfantTalkLottieViewModel
+import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_infant_deco.*
 import kotlinx.android.synthetic.main.activity_infant_select_character.*
+import kotlinx.android.synthetic.main.activity_infant_switch_character.*
 import kotlinx.android.synthetic.main.activity_infant_talk_start.*
 
 
@@ -115,4 +117,37 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
             Log.d("cookie", infantCookieViewModel.cookieCount.value.toString())
         }.addOnFailureListener {  }
     }
+
+    override fun onBackPressed() {
+        var cutPlace = 0    //문자열 끊을 위치 -> fragmentList[i].toString().substring(0, cutPlace) 여기서 사용됨
+        var fragmentName: String = ""   //문자열 비교할 프래그먼트 이름
+        when (infant_viewpager_select.currentItem) {
+            0 -> {
+                cutPlace = 18
+                fragmentName = "InfantDamiFragment"
+            }
+            1 -> {
+                cutPlace = 24
+                fragmentName = "InfantKnockKnockFragment"
+            }
+            2 -> {
+                cutPlace = 18
+                fragmentName = "InfantTimiFragment"
+            }
+        }
+        //프래그먼트 백버튼 막기
+        val fragmentList = supportFragmentManager.fragments
+        for (fragment in fragmentList) {
+            for (i in 0 until fragmentList.size) {
+                if (fragmentList[i].toString().substring(0, cutPlace) == fragmentName) {
+                    if (fragmentList[i] is FragmentOnBackPressed) {
+                        if ((fragmentList[i] as FragmentOnBackPressed).onBackPressed()) {
+                            return
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

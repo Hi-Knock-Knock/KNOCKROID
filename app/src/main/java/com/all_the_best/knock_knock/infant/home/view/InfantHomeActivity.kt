@@ -13,15 +13,14 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.change.view.InfantSwitchCharacterActivity
 import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
 import com.all_the_best.knock_knock.infant.deco.view.InfantDecoActivity
 import com.all_the_best.knock_knock.infant.gift.view.InfantGiftStartActivity
-import com.all_the_best.knock_knock.infant.home.viewmodel.InfantMusicViewModel
 import com.all_the_best.knock_knock.infant.talk.view.InfantSelectFeelActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -29,6 +28,7 @@ import kotlinx.android.synthetic.main.activity_infant_home.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.system.exitProcess
 
 
 class InfantHomeActivity : AppCompatActivity() {
@@ -59,6 +59,11 @@ class InfantHomeActivity : AppCompatActivity() {
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
 
+    // 백버튼 뒤로가기시 종료
+    private val FINISH_INTERVAL_TIME: Long = 2000
+    private var backPressedTime: Long = 0
+
+    // 미디어 플레이어 Create
     override fun onResume() {
         super.onResume()
         mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
@@ -176,21 +181,19 @@ class InfantHomeActivity : AppCompatActivity() {
 
     }
 
-//    override fun onBackPressed() {
-//        val time1 = System.currentTimeMillis()
-//        val time2 = time1 - time3
-//        if (time2 in 0..2000) {
-//            finish()
-//        }
-//        else {
-//            time3 = time1
-//            //Toast.makeText(applicationContext, "한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show()
-//        }
-//    }
-
+    // 백버튼 두번 뒤로가기시 종료
     override fun onBackPressed() {
-        mediaPlayer!!.stop()
-        super.onBackPressed()
+        //mediaPlayer!!.stop()
+        val tempTime = System.currentTimeMillis()
+        val intervalTime: Long = tempTime - backPressedTime
+
+        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
+            ActivityCompat.finishAffinity(this)
+            exitProcess(0)
+        } else {
+            backPressedTime = tempTime
+            Toast.makeText(this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
