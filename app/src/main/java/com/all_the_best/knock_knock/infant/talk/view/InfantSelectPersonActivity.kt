@@ -9,6 +9,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.util.Log
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
 import com.google.firebase.database.DatabaseReference
@@ -57,7 +58,6 @@ class InfantSelectPersonActivity : AppCompatActivity() {
         lottieSelect = intent.getIntExtra("lottieSelect", 0)
         musicPlay = intent.getIntExtra("musicPlay",0)
 
-        //setSelectCharacter()
         setSelectFeelMotion()
         init()
 
@@ -125,6 +125,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("lottieSelect", lottieSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
         infant_emj_person_2.setOnClickListener {
@@ -137,6 +138,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("lottieSelect", lottieSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
         infant_emj_person_3.setOnClickListener {
@@ -149,6 +151,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("lottieSelect", lottieSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
         infant_emj_person_4.setOnClickListener {
@@ -161,6 +164,7 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("lottieSelect", lottieSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
         infant_emj_person_5.setOnClickListener {
@@ -173,9 +177,14 @@ class InfantSelectPersonActivity : AppCompatActivity() {
             intent.putExtra("lottieSelect", lottieSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
     }
+    override fun onBackPressed(){
+        Log.d("backpress","막음")
+    }
+
 
     // 기분 모션 선택
     private fun setSelectFeelMotion() {

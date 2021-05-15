@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
@@ -24,7 +25,6 @@ import kotlinx.android.synthetic.main.activity_infant_gift_start.*
 import kotlinx.android.synthetic.main.infant_gift_get_popup.*
 
 class InfantGiftBoxActivity : AppCompatActivity() {
-    //var mediaPlayer: MediaPlayer? = null
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
@@ -36,9 +36,6 @@ class InfantGiftBoxActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_gift_box)
         setOnLottieStart()
-//        mediaPlayer = MediaPlayer.create(this, R.raw.bgm2);
-//        mediaPlayer!!.setVolume(5f,5f)
-//        mediaPlayer!!.start()
         val cookieGiftCount2: TextView = findViewById(R.id.infant_cookie_count_box)
 
         bgSelect = intent.getIntExtra("bgSelect", 1)
@@ -59,8 +56,8 @@ class InfantGiftBoxActivity : AppCompatActivity() {
             intentGoHome.putExtra("cookieCount", cookieCount)
             intentGoHome.putExtra("giftSelect", giftSelect)
             intentGoHome.putExtra("musicPlay",musicPlay)
-            //mediaPlayer!!.stop()
             startActivity(intentGoHome)
+            finish()
             overridePendingTransition(0, 0)
         }
 
@@ -68,11 +65,8 @@ class InfantGiftBoxActivity : AppCompatActivity() {
         infant_gift_box.setOnClickListener {
             // 배경 얻는 팝업창
             getBgPopup = Dialog(this)
-            // Dialog 사이즈 조절 하기
-            //LayoutParams params = getBgPopup.getWindow().getAttributes();
 
             getBgPopup?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            //getBgPopup.getWindow().setAttributes((android.view.WindowManager.LayoutParams) params);
             getBgPopup.setContentView(R.layout.activity_infant_get_gift_popup)
             getBgPopup.window!!.attributes.width = WindowManager.LayoutParams.MATCH_PARENT
             getBgPopup.window!!.attributes.height = WindowManager.LayoutParams.MATCH_PARENT
@@ -93,12 +87,16 @@ class InfantGiftBoxActivity : AppCompatActivity() {
             intentGoHome.putExtra("giftSelect", giftSelect)
             intentGoHome.putExtra("musicPlay",musicPlay)
             Handler(Looper.getMainLooper()).postDelayed({
-                finish()
                 startActivity(intentGoHome)
+                finish()
                 overridePendingTransition(0, 0)
             }, 2000)
 
         }
+    }
+
+    override fun onBackPressed(){
+        Log.d("backpress","막음")
     }
 
     // 로티 적용

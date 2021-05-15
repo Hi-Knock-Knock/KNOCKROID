@@ -10,7 +10,9 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
 import com.all_the_best.knock_knock.infant.deco.viewmodel.InfantDecoViewModel
+import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import kotlinx.android.synthetic.main.activity_infant_deco.*
 import kotlinx.android.synthetic.main.activity_infant_deco.char_dam
 import java.time.LocalDateTime
@@ -47,6 +49,8 @@ class InfantDecoActivity : AppCompatActivity() {
 
     }
 
+
+
     private fun setAddItem(){
         when(giftSelect){
             0 -> {
@@ -71,18 +75,23 @@ class InfantDecoActivity : AppCompatActivity() {
         }
     }
 
+    /** 다시봐야됨**/
     private fun setOnClickListenerForGoBack() {
         infant_icon_deco_out1. setOnClickListener {
-            val intent = Intent()
-            intent.putExtra("bgSelect", infantDecoViewModel.bgSelect.value)
-            intent.putExtra("chSelect",chSelect)
-            intent.putExtra("cookieCount",cookieCount)
-            intent.putExtra("giftSelect",giftSelect)
-            intent.putExtra("musicPlay",musicPlay)
-            setResult(Activity.RESULT_OK, intent)
+            val intent1 = Intent(this, InfantHomeActivity::class.java)
+            intent1.putExtra("bgSelect", infantDecoViewModel.bgSelect.value)
+            intent1.putExtra("chSelect",chSelect)
+            intent1.putExtra("cookieCount",cookieCount)
+            intent1.putExtra("giftSelect",giftSelect)
+            intent1.putExtra("musicPlay",musicPlay)
+            setResult(Activity.RESULT_OK, intent1)
             finish()
             overridePendingTransition(0, 0)
         }
+    }
+
+    override fun onBackPressed(){
+        Log.d("backpress","막음")
     }
 
     // 캐릭터 바꾸기

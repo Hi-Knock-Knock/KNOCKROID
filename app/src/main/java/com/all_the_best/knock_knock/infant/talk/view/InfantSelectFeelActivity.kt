@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -133,6 +134,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("lottieSelect", lottieSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_2.setOnClickListener {
@@ -148,6 +150,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("lottieSelect", lottieSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_3.setOnClickListener {
@@ -163,6 +166,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("lottieSelect", lottieSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_4.setOnClickListener {
@@ -178,6 +182,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("lottieSelect", lottieSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_5.setOnClickListener {
@@ -193,6 +198,7 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("lottieSelect", lottieSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
         infant_emj_feel_6.setOnClickListener {
@@ -208,9 +214,15 @@ class InfantSelectFeelActivity : AppCompatActivity() {
             intent.putExtra("lottieSelect", lottieSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
     }
+
+    override fun onBackPressed(){
+        Log.d("backpress","막음")
+    }
+
 
     private fun setSelectCharacter() {
         when (chSelect) {

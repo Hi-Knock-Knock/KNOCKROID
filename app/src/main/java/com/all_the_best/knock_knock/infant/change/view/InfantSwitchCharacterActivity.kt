@@ -4,16 +4,20 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.app.ActivityCompat
 import androidx.viewpager.widget.ViewPager
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import com.all_the_best.knock_knock.infant.change.adapter.InfantSwitchViewPagerAdapter
 import com.all_the_best.knock_knock.infant.setting.viewmodel.InfantSelectChViewModel
+import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import kotlinx.android.synthetic.main.activity_infant_deco.*
 import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 
 import kotlinx.android.synthetic.main.activity_infant_switch_character.*
+import kotlinx.android.synthetic.main.activity_parent_home.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -129,12 +133,41 @@ class InfantSwitchCharacterActivity : AppCompatActivity() {
             intent.putExtra("giftSelect",giftSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
 
     }
-//    override fun onBackPressed() {
-//        startActivity(Intent(this, InfantHomeActivity::class.java))
-//        finish()
-//    }
+
+    override fun onBackPressed() {
+        var cutPlace = 0    //문자열 끊을 위치 -> fragmentList[i].toString().substring(0, cutPlace) 여기서 사용됨
+        var fragmentName: String = ""   //문자열 비교할 프래그먼트 이름
+        when (infant_viewpager_switch.currentItem) {
+            0 -> {
+                cutPlace = 24
+                fragmentName = "InfantSwitchDamiFragment"
+            }
+            1 -> {
+                cutPlace = 30
+                fragmentName = "InfantSwitchKnockKnockFragment"
+            }
+            2 -> {
+                cutPlace = 24
+                fragmentName = "InfantSwitchTimiFragment"
+            }
+        }
+        //프래그먼트 백버튼 막기
+        val fragmentList = supportFragmentManager.fragments
+        for (fragment in fragmentList) {
+            for (i in 0 until fragmentList.size) {
+                if (fragmentList[i].toString().substring(0, cutPlace) == fragmentName) {
+                    if (fragmentList[i] is FragmentOnBackPressed) {
+                        if ((fragmentList[i] as FragmentOnBackPressed).onBackPressed()) {
+                            return
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -64,10 +64,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
     private val firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
     private var recordNum: Int = 1
     private var getDataNum: Int = 1
-    //private val storageReference: StorageReference = firebaseStorage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com");
 
     var finish:Boolean =false
-    //gs://knockknock-29f42.appspot.com/audioFile
 
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
@@ -139,6 +137,10 @@ class InfantTalkStartActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
     }
+    override fun onBackPressed(){
+        Log.d("backpress","막음")
+    }
+
     private fun setSelectCharacter(){
         when(chSelect){
             0 -> talk_start_char_dam.setAnimation("dami_ear.json")
@@ -248,12 +250,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
         }
     }
 
-//    private fun setOnBtnDownLoadRecordClick(){
-//        btnDownload.setOnClickListener{
-//            getDataFromStorage()
-//        }
-//    }
-
     @Suppress("DEPRECATION")
     private fun startRecording() {
         //config and create MediaRecorder Object
@@ -305,7 +301,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
 
     private fun uploadAudioUri(file: Uri) {
-        //val file = Uri.fromFile(file)
         firebaseStorage.reference.child(fileName).child("child").child("child($recordNum).mp4")
             .putFile(file).addOnCompleteListener {
                 if (it.isSuccessful) {
@@ -429,8 +424,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
             .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
             .setChannelMask(AudioFormat.CHANNEL_OUT_MONO) // channel config
             .build()
-
-        // audioTrack = AudioTrack(3, i, 2, 2, bufferSizeInBytes, 1)
 
         val audioTrack = AudioTrack(audioAttrs, audioFormat, bufferSizeInBytes, 1, 1)
         audioTrack!!.play()

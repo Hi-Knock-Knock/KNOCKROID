@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -49,8 +50,13 @@ class InfantCookieSaveActivity : AppCompatActivity() {
             intent.putExtra("giftSelect",giftSelect)
             intent.putExtra("musicPlay",musicPlay)
             startActivity(intent)
+            finish()
             overridePendingTransition(0, 0)
         }
+    }
+
+    override fun onBackPressed(){
+        Log.d("backpress","막음")
     }
 
     private fun setTrueCookieCountImage(){
