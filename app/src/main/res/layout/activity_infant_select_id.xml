@@ -7,6 +7,7 @@
     android:background="@drawable/img_infant_splash_bg"
     tools:context=".infant.setting.view.InfantSelectIdActivity">
 
+
     <LinearLayout
         android:id="@+id/mode_infant_btn"
         android:layout_width="match_parent"
@@ -17,39 +18,92 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button1"
-            android:layout_width="128dp"
-            android:layout_height="154dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="12dp"
-            android:background="@drawable/bg_whitebox_14dp"
-            android:drawableTop="@drawable/ic_select_id_idle1"
-            android:paddingTop="8dp"
-            android:textSize="25sp"
-            android:text="윤하"
-            android:fontFamily="@font/maplestorybold"
-            android:textColor="#000000" />
+            <ImageView
+                android:id="@+id/button1"
+                android:layout_width="128dp"
+                android:layout_height="154dp"
+                android:background="@drawable/bg_whitebox_14dp"
+                android:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/maplestorybold"
+                android:text="윤하"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="@+id/button1"
+                app:layout_constraintEnd_toEndOf="@+id/button1"
+                app:layout_constraintStart_toStartOf="@+id/button1"
+                app:layout_constraintTop_toBottomOf="@+id/id_image1" />
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
-            android:layout_width="128dp"
-            android:layout_height="154dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/bg_whitebox_14dp"
-            android:backgroundTint="@null"
-            android:drawableTop="@drawable/ic_select_id_idle1"
-            android:paddingTop="8dp"
-            android:textSize="25sp"
-            android:text="윤지"
-            android:fontFamily="@font/maplestorybold"
-            android:textColor="#000000" />
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/id_image1"
+                android:layout_width="112dp"
+                android:layout_height="102dp"
+                android:layout_marginBottom="37dp"
+                android:background="@drawable/bg_infant_select_id"
+                android:backgroundTint="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_select_id_idle1"
+                app:layout_constraintBottom_toBottomOf="@+id/button1"
+                app:layout_constraintEnd_toEndOf="@+id/button1"
+                app:layout_constraintStart_toStartOf="@+id/button1"
+                app:layout_constraintTop_toTopOf="@+id/button1"
+                app:riv_corner_radius="14dp" />
+
+
+            <ImageView
+                android:id="@+id/button2"
+                android:layout_width="128dp"
+                android:layout_height="154dp"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/bg_whitebox_14dp"
+                android:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="@+id/button1"
+                app:layout_constraintStart_toEndOf="@+id/button1"
+                app:layout_constraintTop_toTopOf="@+id/button1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/maplestorybold"
+                android:text="윤지"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="@+id/button2"
+                app:layout_constraintEnd_toEndOf="@+id/button2"
+                app:layout_constraintStart_toStartOf="@+id/button2"
+                app:layout_constraintTop_toBottomOf="@+id/id_image2" />
+
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/id_image2"
+                android:layout_width="112dp"
+                android:layout_height="102dp"
+                android:layout_marginBottom="37dp"
+                android:background="@drawable/bg_infant_select_id"
+                android:backgroundTint="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_select_id_idle1"
+                app:layout_constraintBottom_toBottomOf="@+id/button2"
+                app:layout_constraintEnd_toEndOf="@+id/button2"
+                app:layout_constraintStart_toStartOf="@+id/button2"
+                app:layout_constraintTop_toTopOf="@+id/button2"
+                app:riv_corner_radius="14dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

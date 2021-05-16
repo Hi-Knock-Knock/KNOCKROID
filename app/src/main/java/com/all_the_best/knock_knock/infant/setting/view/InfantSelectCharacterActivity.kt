@@ -1,31 +1,23 @@
 package com.all_the_best.knock_knock.infant.setting.view
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
 import androidx.viewpager.widget.ViewPager
 import com.all_the_best.knock_knock.R
-import com.all_the_best.knock_knock.databinding.ActivityInfantSelectCharacterBinding
-import com.all_the_best.knock_knock.databinding.FragmentParentTalkBinding
 import com.all_the_best.knock_knock.infant.cookie.viewmodel.InfantCookieViewModel
 import com.all_the_best.knock_knock.infant.gift.viewmodel.InfantGiftBgViewModel
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
-import com.all_the_best.knock_knock.infant.home.viewmodel.InfantMusicViewModel
+import com.all_the_best.knock_knock.infant.home.viewmodel.InfantHomeViewModel
 import com.all_the_best.knock_knock.infant.setting.adapter.InfantViewPagerAdapter
 import com.all_the_best.knock_knock.infant.setting.viewmodel.InfantSelectChViewModel
 import com.all_the_best.knock_knock.infant.talk.viewmodel.InfantTalkLottieViewModel
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_infant_deco.*
 import kotlinx.android.synthetic.main.activity_infant_select_character.*
-import kotlinx.android.synthetic.main.activity_infant_switch_character.*
-import kotlinx.android.synthetic.main.activity_infant_talk_start.*
 
 
 class InfantSelectCharacterActivity : AppCompatActivity() {
@@ -38,7 +30,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
     private val infantCookieViewModel: InfantCookieViewModel by viewModels()
     private val infantGiftBgViewModel: InfantGiftBgViewModel by viewModels()
     private val infantTalkLottieViewModel: InfantTalkLottieViewModel by viewModels()
-    private val infantMusicViewModel: InfantMusicViewModel by viewModels()
+    private val infantHomeViewModel: InfantHomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,8 +47,6 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
 
         infant_viewpager_select.adapter = selectViewPagerAdapter
 
-        //getCookieDataFirebase()
-
         // 아이 계정 선택 화면
         val intent2 = Intent(this, InfantSelectIdActivity::class.java)
         select_btn_back.setOnClickListener {
@@ -65,7 +55,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
             intent2.putExtra("cookieCount", infantCookieViewModel.cookieCount.value)
             intent2.putExtra("giftSelect", infantGiftBgViewModel.giftSelect.value)
             intent2.putExtra("lottieSelect", infantTalkLottieViewModel.lottieSelect.value)
-            intent2.putExtra("musicPlay", infantMusicViewModel.musicPlay.value)
+            intent2.putExtra("musicPlay", infantHomeViewModel.musicPlay.value)
             startActivity(intent2)
             overridePendingTransition(0, 0)
         }
@@ -101,7 +91,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
             intent1.putExtra("chSelect", infantSelectChViewModel.chSelect.value)
             intent1.putExtra("giftSelect", infantGiftBgViewModel.giftSelect.value)
             intent1.putExtra("lottieSelect", infantTalkLottieViewModel.lottieSelect.value)
-            intent1.putExtra("musicPlay", infantMusicViewModel.musicPlay.value)
+            intent1.putExtra("musicPlay", infantHomeViewModel.musicPlay.value)
             startActivity(intent1)
             overridePendingTransition(0, 0)
         }
