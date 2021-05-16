@@ -63,7 +63,6 @@ class InfantHomeActivity : AppCompatActivity() {
     private val FINISH_INTERVAL_TIME: Long = 2000
     private var backPressedTime: Long = 0
 
-    // 미디어 플레이어 Create
     override fun onResume() {
         super.onResume()
         mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
@@ -76,7 +75,6 @@ class InfantHomeActivity : AppCompatActivity() {
        
         soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
         val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
-        //val streamId: Int = soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
 
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
@@ -87,19 +85,16 @@ class InfantHomeActivity : AppCompatActivity() {
 
         if (musicPlay==0){
             mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
-            mediaPlayer!!.setVolume(0.5f,0.5f)
+            mediaPlayer!!.setVolume(0.3f,0.3f)
             mediaPlayer!!.start()
+
             Log.d("media",musicPlay.toString())
             musicPlay=1
             Log.d("media",musicPlay.toString())
         }else{
-            //mediaPlayer!!.isLooping = true
             Log.d("media",musicPlay.toString())
         }
 
-        //mediaPlayer!!.isLooping = true; //무한재생
-        
-        //startService(Intent(applicationContext,InfantMusicService::class.java))
         setBackgroundForTime()
         setSelectCharacter()
         setCookieSaveFirebase()
@@ -116,6 +111,9 @@ class InfantHomeActivity : AppCompatActivity() {
         //대화하기 버튼
         val intent1 = Intent(this, InfantSelectFeelActivity::class.java)
         char_talk_btn.setOnClickListener{
+            mediaPlayer?.stop()
+            mediaPlayer?.release()
+            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("bgSelect", bgSelect)
             intent1.putExtra("cookieCount",cookieCount)
@@ -123,8 +121,6 @@ class InfantHomeActivity : AppCompatActivity() {
             intent1.putExtra("giftSelect",giftSelect)
             intent1.putExtra("musicPlay",musicPlay)
             setStartTalkAtFirebase()
-            mediaPlayer!!.stop()
-            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivity(intent1)
         }
 
@@ -187,7 +183,7 @@ class InfantHomeActivity : AppCompatActivity() {
         val tempTime = System.currentTimeMillis()
         val intervalTime: Long = tempTime - backPressedTime
 
-        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
+        if (intervalTime in 0..FINISH_INTERVAL_TIME) {
             ActivityCompat.finishAffinity(this)
             exitProcess(0)
         } else {

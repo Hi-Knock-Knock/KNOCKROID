@@ -1,20 +1,25 @@
 package com.all_the_best.knock_knock.infant.setting.view
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.all_the_best.knock_knock.R
-import com.all_the_best.knock_knock.databinding.ActivityParentRealTalkBinding
-import com.google.firebase.database.*
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.storage.FileDownloadTask
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_infant_select_id.*
+import java.io.File
+import java.io.IOException
 
 
 class InfantSelectIdActivity : AppCompatActivity() {
 
     private var chSelect: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_select_id)
@@ -23,6 +28,7 @@ class InfantSelectIdActivity : AppCompatActivity() {
         //상태바 색상 지정
         window.statusBarColor = Color.parseColor("#74DAFF")
 
+        getImgFromStorage(0)
         val intent = Intent(this, InfantSelectCharacterActivity::class.java)
         button1.setOnClickListener{
             intent.putExtra("chSelect", chSelect)
@@ -36,8 +42,19 @@ class InfantSelectIdActivity : AppCompatActivity() {
         Log.d("backpress","막음")
     }
 
-
-
-
+    private fun getImgFromStorage(listNum: Int){
+        var storage = FirebaseStorage.getInstance()
+        var storageRef =
+            storage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com").child("imageFile").child("imageUri($listNum).png")
+        try {
+            val localFile: File = File.createTempFile("images", "png")
+            storageRef.getFile(localFile)
+                .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot?> {
+                    val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                    id_image1.setImageBitmap(bitmap)
+                }).addOnFailureListener(OnFailureListener { })
+        } catch (e: IOException) {
+        }
+    }
 }
 

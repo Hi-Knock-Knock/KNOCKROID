@@ -75,16 +75,16 @@ class InfantDecoActivity : AppCompatActivity() {
         }
     }
 
-    /** 다시봐야됨**/
     private fun setOnClickListenerForGoBack() {
+        val intent1 = Intent(this, InfantHomeActivity::class.java)
         infant_icon_deco_out1. setOnClickListener {
-            val intent1 = Intent(this, InfantHomeActivity::class.java)
             intent1.putExtra("bgSelect", infantDecoViewModel.bgSelect.value)
             intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("cookieCount",cookieCount)
             intent1.putExtra("giftSelect",giftSelect)
             intent1.putExtra("musicPlay",musicPlay)
-            setResult(Activity.RESULT_OK, intent1)
+            startActivity(intent1)
+            //setResult(Activity.RESULT_OK, intent1)
             finish()
             overridePendingTransition(0, 0)
         }
