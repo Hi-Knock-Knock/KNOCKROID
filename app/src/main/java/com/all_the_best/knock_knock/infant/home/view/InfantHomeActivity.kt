@@ -42,7 +42,6 @@ class InfantHomeActivity : AppCompatActivity() {
     private var cookieCount: Int = 6
     private var giftSelect:Int=0
     private var lottieSelect:Int=0
-    //private var lottieClick:Int=0
 
     //TTS 관련 변수들
     private var mTts: TextToSpeech? = null
@@ -63,11 +62,11 @@ class InfantHomeActivity : AppCompatActivity() {
     private val FINISH_INTERVAL_TIME: Long = 2000
     private var backPressedTime: Long = 0
 
+
     override fun onResume() {
         super.onResume()
         mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
     }
-
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,8 +110,6 @@ class InfantHomeActivity : AppCompatActivity() {
         //대화하기 버튼
         val intent1 = Intent(this, InfantSelectFeelActivity::class.java)
         char_talk_btn.setOnClickListener{
-            mediaPlayer?.stop()
-            mediaPlayer?.release()
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             intent1.putExtra("chSelect",chSelect)
             intent1.putExtra("bgSelect", bgSelect)
@@ -120,6 +117,7 @@ class InfantHomeActivity : AppCompatActivity() {
             intent1.putExtra("lottieSelect",lottieSelect)
             intent1.putExtra("giftSelect",giftSelect)
             intent1.putExtra("musicPlay",musicPlay)
+            mediaPlayer!!.stop()
             setStartTalkAtFirebase()
             startActivity(intent1)
         }
