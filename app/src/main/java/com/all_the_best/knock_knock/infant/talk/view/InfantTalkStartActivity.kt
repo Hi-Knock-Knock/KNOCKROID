@@ -132,11 +132,13 @@ class InfantTalkStartActivity : AppCompatActivity() {
             intent1.putExtra("musicPlay",musicPlay)
             Handler(Looper.getMainLooper()).postDelayed ({
                 startActivity(intent1)
+                cookiePopUp.dismiss()
                 finish()
             }, 2000)
             overridePendingTransition(0, 0)
         }
     }
+
     override fun onBackPressed(){
         Log.d("backpress","막음")
     }

@@ -28,7 +28,7 @@ class InfantSelectIdActivity : AppCompatActivity() {
         //상태바 색상 지정
         window.statusBarColor = Color.parseColor("#74DAFF")
 
-        getImgFromStorage(0)
+        getImgFromStorage(0,1)
         val intent = Intent(this, InfantSelectCharacterActivity::class.java)
         button1.setOnClickListener{
             intent.putExtra("chSelect", chSelect)
@@ -42,16 +42,24 @@ class InfantSelectIdActivity : AppCompatActivity() {
         Log.d("backpress","막음")
     }
 
-    private fun getImgFromStorage(listNum: Int){
+    private fun getImgFromStorage(listNum: Int,listNum2: Int){
         var storage = FirebaseStorage.getInstance()
         var storageRef =
             storage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com").child("imageFile").child("imageUri($listNum).png")
+        var storageRef2 =
+            storage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com").child("imageFile").child("imageUri($listNum2).png")
         try {
             val localFile: File = File.createTempFile("images", "png")
+            //val localFile2: File = File.createTempFile("images", "png")
             storageRef.getFile(localFile)
                 .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot?> {
                     val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
                     id_image1.setImageBitmap(bitmap)
+                }).addOnFailureListener(OnFailureListener { })
+            storageRef2.getFile(localFile)
+                .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot?> {
+                    val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                    id_image2.setImageBitmap(bitmap)
                 }).addOnFailureListener(OnFailureListener { })
         } catch (e: IOException) {
         }
