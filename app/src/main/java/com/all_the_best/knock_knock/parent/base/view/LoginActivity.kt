@@ -2,9 +2,9 @@ package com.all_the_best.knock_knock.parent.base.view
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.ActivityLoginBinding
