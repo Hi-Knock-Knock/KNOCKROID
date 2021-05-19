@@ -72,6 +72,10 @@ class InfantGiftBoxActivity : AppCompatActivity() {
 
         // 선물 받는 팝업창
         infant_gift_box.setOnClickListener {
+            intentGoHome.putExtra("bgSelect", bgSelect)
+            intentGoHome.putExtra("chSelect", chSelect)
+            intentGoHome.putExtra("cookieCount", cookieCount)
+            intentGoHome.putExtra("musicPlay",musicPlay)
             when (giftSelect) {
                 0 -> {
                     giftSelect = 1
@@ -82,11 +86,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
                     getBgPopup.window!!.attributes.width = WindowManager.LayoutParams.MATCH_PARENT
                     getBgPopup.window!!.attributes.height = WindowManager.LayoutParams.MATCH_PARENT
                     getBgPopup.show()
-                    intentGoHome.putExtra("bgSelect", bgSelect)
-                    intentGoHome.putExtra("chSelect", chSelect)
-                    intentGoHome.putExtra("cookieCount", cookieCount)
                     intentGoHome.putExtra("giftSelect", giftSelect)
-                    intentGoHome.putExtra("musicPlay",musicPlay)
                     Handler(Looper.getMainLooper()).postDelayed({
                         startActivity(intentGoHome)
                         getBgPopup.dismiss()
@@ -102,11 +102,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
                     getBgPopup2.window!!.attributes.width = WindowManager.LayoutParams.MATCH_PARENT
                     getBgPopup2.window!!.attributes.height = WindowManager.LayoutParams.MATCH_PARENT
                     getBgPopup2.show()
-                    intentGoHome.putExtra("bgSelect", bgSelect)
-                    intentGoHome.putExtra("chSelect", chSelect)
-                    intentGoHome.putExtra("cookieCount", cookieCount)
                     intentGoHome.putExtra("giftSelect", giftSelect)
-                    intentGoHome.putExtra("musicPlay",musicPlay)
                     Handler(Looper.getMainLooper()).postDelayed({
                         startActivity(intentGoHome)
                         getBgPopup2.dismiss()
