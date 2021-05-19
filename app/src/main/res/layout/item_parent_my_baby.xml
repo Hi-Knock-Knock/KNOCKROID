@@ -134,6 +134,7 @@
             android:id="@+id/item_my_baby_radio_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checkedButton="@id/rb_female"
             android:orientation="horizontal"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@id/item_my_baby_txt_gender"

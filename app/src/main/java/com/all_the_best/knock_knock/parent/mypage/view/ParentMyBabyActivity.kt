@@ -2,27 +2,22 @@ package com.all_the_best.knock_knock.parent.mypage.view
 
 import android.app.Activity
 import android.content.Intent
-import android.media.MediaPlayer
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.observe
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.ActivityParentMyBabyBinding
 import com.all_the_best.knock_knock.databinding.ItemParentMyBabyBinding
-import com.all_the_best.knock_knock.databinding.ItemParentMyPageBabyBinding
 import com.all_the_best.knock_knock.parent.mypage.adapter.ParentMyPageRcvAdapter
 import com.all_the_best.knock_knock.parent.mypage.viewmodel.ParentMyPageViewModel
 import com.all_the_best.knock_knock.util.StatusBarUtil
-import com.bumptech.glide.Glide
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import java.io.File
 
 class ParentMyBabyActivity : AppCompatActivity() {
     private lateinit var binding: ActivityParentMyBabyBinding
@@ -68,14 +63,14 @@ class ParentMyBabyActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && data != null) {
             val selectedImage: Uri? = data.data
-            uploadImgUri(selectedImage!!.toString(), requestCode)
+            uploadImgUri(selectedImage!!, requestCode)
             parentMyBabyViewModel.tempParentMyPageBabyList[requestCode].uri =
                 selectedImage.toString()
             binding.parentMyBabyRcv.adapter?.notifyDataSetChanged()
         }
     }
 
-    private fun uploadImgUri(file: String, listNum: Int) {
+    private fun uploadImgUri(file: Uri, listNum: Int) {
         // val file = Uri.fromFile(file)
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
@@ -84,7 +79,15 @@ class ParentMyBabyActivity : AppCompatActivity() {
         val childName = "아이1"
         databaseReference.child(parentId).child(parentId + "의 child " + childName)
             .child("imageUri($listNum)")
-            .setValue(file)
+            .setValue(file.toString())
+
+
+        firebaseStorage.reference.child("imageFile").child("imageUri($listNum)")
+            .putFile(file).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Log.d("storage", "upload success")
+                }
+            }
     }
 
 }
