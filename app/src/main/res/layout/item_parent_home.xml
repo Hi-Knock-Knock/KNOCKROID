@@ -168,12 +168,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/parent_record_txt_start_time_question3"
+            <Chronometer
+                android:id="@+id/parent_record_chronometer_question3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="0:00"
                 android:textColor="#252525"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@id/parent_record_seek_bar_question3"
@@ -184,7 +183,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="5:00"
+                android:text="00:00"
                 android:textColor="#252525"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/parent_record_seek_bar_question3"
@@ -201,7 +200,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/parent_record_seek_bar_question3"
                 app:layout_constraintStart_toStartOf="@id/parent_record_seek_bar_question3"
-                app:layout_constraintTop_toBottomOf="@id/parent_record_txt_start_time_question3" />
+                app:layout_constraintTop_toBottomOf="@id/parent_record_chronometer_question3" />
 
             <ImageButton
                 android:id="@+id/parent_record_btn_pause_question3"
@@ -265,12 +264,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/parent_record_txt_start_time_question4"
+            <Chronometer
+                android:id="@+id/parent_record_chronometer_question4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="0:00"
                 android:textColor="#252525"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@id/parent_record_seek_bar_question4"
@@ -281,7 +279,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="5:00"
+                android:text="00:00"
                 android:textColor="#252525"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/parent_record_seek_bar_question4"
@@ -298,7 +296,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/parent_record_seek_bar_question4"
                 app:layout_constraintStart_toStartOf="@id/parent_record_seek_bar_question4"
-                app:layout_constraintTop_toBottomOf="@id/parent_record_txt_start_time_question4" />
+                app:layout_constraintTop_toBottomOf="@id/parent_record_chronometer_question4" />
 
             <ImageButton
                 android:id="@+id/parent_record_btn_pause_question4"

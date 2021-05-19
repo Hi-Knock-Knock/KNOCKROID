@@ -2,6 +2,7 @@ package com.all_the_best.knock_knock.parent.home.adapter
 
 import android.content.Context
 import android.media.MediaPlayer
+import android.os.SystemClock
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -111,7 +112,7 @@ class ParentHomeRcvAdapter(private val context: Context) :
     private fun setOnFirstPauseBtnClick(binding: ItemParentHomeBinding) {
         binding.parentRecordBtnPauseQuestion3.setOnClickListener {
             isClickPauseFirst = true
-            pauseRecord(1)
+            pauseRecord(1, binding)
             it.visibility = View.INVISIBLE
             binding.parentRecordBtnPlayQuestion3.visibility = View.VISIBLE
         }
@@ -120,28 +121,35 @@ class ParentHomeRcvAdapter(private val context: Context) :
     private fun setOnSecondPauseBtnClick(binding: ItemParentHomeBinding) {
         binding.parentRecordBtnPauseQuestion4.setOnClickListener {
             isClickPauseSecond = true
-            pauseRecord(2)
+            pauseRecord(2, binding)
             it.visibility = View.INVISIBLE
             binding.parentRecordBtnPlayQuestion4.visibility = View.VISIBLE
         }
     }
 
 
-    private fun pauseRecord(recordNum: Int) {
+    private fun pauseRecord(recordNum: Int, binding: ItemParentHomeBinding) {
         if (recordNum == 1) {
             player1.pause()
+            binding.parentRecordChronometerQuestion3.stop()
         } else {
             player2.pause()
+            binding.parentRecordChronometerQuestion4.stop()
         }
     }
 
     private fun restartRecord(recordNum: Int, binding: ItemParentHomeBinding) {
         if (recordNum == 1) {
             player1.start()
+//            binding.parentRecordChronometerQuestion3.base =
+//                SystemClock.elapsedRealtime() - player1.currentPosition
+//            binding.parentRecordChronometerQuestion3.start()
+//            binding.parentRecordChronometerQuestion3.stop()
+//            binding.parentRecordChronometerQuestion3.start()
             Thread {
                 while (player1.isPlaying) {  // 음악이 실행중일때 계속 돌아가게 함
                     try {
-                        Thread.sleep(20) // 1초마다 시크바 움직이게 함
+                        Thread.sleep(20)
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
@@ -150,12 +158,17 @@ class ParentHomeRcvAdapter(private val context: Context) :
                 }
             }.start()
             player1.setOnCompletionListener {
+                binding.parentRecordChronometerQuestion3.stop()
+                binding.parentRecordChronometerQuestion3.base =
+                    SystemClock.elapsedRealtime() - player1.currentPosition
                 isClickPauseFirst = false
                 binding.parentRecordBtnPauseQuestion3.visibility = View.INVISIBLE
                 binding.parentRecordBtnPlayQuestion3.visibility = View.VISIBLE
             }
         } else {
             player2.start()
+//            binding.parentRecordChronometerQuestion4.base = SystemClock.elapsedRealtime()
+//            binding.parentRecordChronometerQuestion4.start()
             Thread {
                 while (player2.isPlaying) {  // 음악이 실행중일때 계속 돌아가게 함
                     try {
@@ -168,6 +181,9 @@ class ParentHomeRcvAdapter(private val context: Context) :
                 }
             }.start()
             player2.setOnCompletionListener {
+                binding.parentRecordChronometerQuestion4.stop()
+                binding.parentRecordChronometerQuestion4.base =
+                    SystemClock.elapsedRealtime() - player2.currentPosition
                 isClickPauseSecond = false
                 binding.parentRecordBtnPauseQuestion4.visibility = View.INVISIBLE
                 binding.parentRecordBtnPlayQuestion4.visibility = View.VISIBLE
@@ -176,6 +192,7 @@ class ParentHomeRcvAdapter(private val context: Context) :
     }
 
     private fun setSeekBar(recordNum: Int, binding: ItemParentHomeBinding) {
+
         if (recordNum == 1) {
             binding.parentRecordSeekBarQuestion3.apply {
                 max = player1.duration
@@ -186,8 +203,11 @@ class ParentHomeRcvAdapter(private val context: Context) :
                         progress: Int,
                         fromUser: Boolean
                     ) {
-                        if (fromUser)
+                        binding.parentRecordChronometerQuestion3.base =
+                            SystemClock.elapsedRealtime() - player1.currentPosition
+                        if (fromUser) {
                             player1.seekTo(progress)
+                        }
                     }
 
                     override fun onStartTrackingTouch(seekBar: SeekBar) {}
@@ -204,8 +224,11 @@ class ParentHomeRcvAdapter(private val context: Context) :
                         progress: Int,
                         fromUser: Boolean
                     ) {
-                        if (fromUser)
+                        binding.parentRecordChronometerQuestion4.base =
+                            SystemClock.elapsedRealtime() - player2.currentPosition
+                        if (fromUser) {
                             player2.seekTo(progress)
+                        }
                     }
 
                     override fun onStartTrackingTouch(seekBar: SeekBar) {}
@@ -269,7 +292,7 @@ class ParentHomeRcvAdapter(private val context: Context) :
             val minute = player1.duration / 1000 / 60
             val second = (player1.duration / 1000) - (minute * 60)
             val time = String.format(
-                "%01d:%02d",
+                "%02d:%02d",
                 minute,
                 second
             )
@@ -283,7 +306,7 @@ class ParentHomeRcvAdapter(private val context: Context) :
             val minute = player2.duration / 1000 / 60
             val second = (player2.duration / 1000) - (minute * 60)
             val time = String.format(
-                "%01d:%02d",
+                "%02d:%02d",
                 minute,
                 second
             )
