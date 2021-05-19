@@ -67,7 +67,6 @@ class InfantHomeActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         startService(Intent(applicationContext, MusicService::class.java))
-        //mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
     }
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,9 +85,6 @@ class InfantHomeActivity : AppCompatActivity() {
 
         if (musicPlay==0){
             startService(Intent(applicationContext, MusicService::class.java))
-//            mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
-//            mediaPlayer!!.setVolume(0.3f,0.3f)
-//            mediaPlayer!!.start()
             Log.d("media",musicPlay.toString())
             musicPlay=1
             Log.d("media",musicPlay.toString())
@@ -120,7 +116,6 @@ class InfantHomeActivity : AppCompatActivity() {
             intent1.putExtra("giftSelect",giftSelect)
             intent1.putExtra("musicPlay",musicPlay)
             stopService(Intent(applicationContext, MusicService::class.java))
-            //mediaPlayer!!.stop()
             setStartTalkAtFirebase()
             startActivity(intent1)
         }
@@ -338,23 +333,6 @@ class InfantHomeActivity : AppCompatActivity() {
         databaseReference.child(childId).child(childId + "의 쿠키개수 " ).setValue(cookieCount)
         Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
     }
-
-
-//    private fun getCookieDataFirebase(){
-//        //lateinit var getcount: String
-//        val childId = "아이1"
-//        val getCountCookie: DatabaseReference =
-//            databaseReference.child(childId).child(childId + "의 쿠키개수 " )
-//        Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
-//        getCountCookie.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                binding.txtCookie = snapshot.value as String
-//            }
-//            override fun onCancelled(error: DatabaseError) {
-//
-//            }
-//        })
-//    }
 
     override fun onPause() {
         super.onPause()

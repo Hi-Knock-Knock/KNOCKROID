@@ -88,11 +88,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
         setOnBtnRecordClick()
         setOnLottieStart()
         init()
-        //getFinishRecordChild()
         setPlayDenyParent()
-        //setOnBtnDownLoadRecordClick()
-        //setOnBtnAudioUploadClick()
-        //loading = 0
+
         window.statusBarColor = Color.parseColor("#FCC364")
 
         val current = LocalDateTime.now()
@@ -416,7 +413,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         }
 
         dataInputStream.close()
-        i = 16000
+        i = 15060 // 16000
         val audioAttrs = AudioAttributes.Builder()
             .setLegacyStreamType(3)
             .build()
