@@ -40,7 +40,7 @@ class ParentHomeRcvAdapter(private val context: Context) :
             Glide.with(context)
                 .load(parentHomeRecordData.uri)
                 .centerCrop()
-                .error(R.drawable.img_baby_mybaby1)
+                .error(R.drawable.img_profile_default_home)
                 .into(binding.rcvParentImgChild)
             if (parentHomeRecordData.answer1 != "답변 전" && parentHomeRecordData.answer2 != "답변 전") {
                 getTime(binding)
