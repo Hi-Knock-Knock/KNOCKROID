@@ -25,8 +25,9 @@ class ParentHomeRcvAdapter(private val context: Context) :
     ListAdapter<ParentHomeRecord, ParentHomeRcvAdapter.ParentHomeRcvViewHolder>(
         ParentHomeRcvDiffUtil()
     ) {
-    val player = MediaPlayer()
-    var isClickPause = false
+    private val player = MediaPlayer()
+    private var isClickPauseFirst = false
+    private var isClickPauseSecond = false
 
     inner class ParentHomeRcvViewHolder(private val binding: ItemParentHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -79,8 +80,8 @@ class ParentHomeRcvAdapter(private val context: Context) :
 
     private fun setOnFirstPlayBtnClick(binding: ItemParentHomeBinding) {
         binding.parentRecordBtnPlayQuestion3.setOnClickListener {
-            if (!isClickPause) {
-                getRecord(1)
+            if (!isClickPauseFirst) {
+                getRecord(1,binding)
             } else {
                 restartRecord()
             }
@@ -92,8 +93,8 @@ class ParentHomeRcvAdapter(private val context: Context) :
 
     private fun setOnSecondPlayBtnClick(binding: ItemParentHomeBinding) {
         binding.parentRecordBtnPlayQuestion4.setOnClickListener {
-            if (!isClickPause) {
-                getRecord(2)
+            if (!isClickPauseSecond) {
+                getRecord(2,binding)
             } else {
                 restartRecord()
             }
@@ -104,6 +105,7 @@ class ParentHomeRcvAdapter(private val context: Context) :
 
     private fun setOnFirstPauseBtnClick(binding: ItemParentHomeBinding) {
         binding.parentRecordBtnPauseQuestion3.setOnClickListener {
+            isClickPauseFirst = true
             pauseRecord()
             it.visibility = View.INVISIBLE
             binding.parentRecordBtnPlayQuestion3.visibility = View.VISIBLE
@@ -112,13 +114,14 @@ class ParentHomeRcvAdapter(private val context: Context) :
 
     private fun setOnSecondPauseBtnClick(binding: ItemParentHomeBinding) {
         binding.parentRecordBtnPauseQuestion4.setOnClickListener {
+            isClickPauseSecond = true
             pauseRecord()
             it.visibility = View.INVISIBLE
             binding.parentRecordBtnPlayQuestion4.visibility = View.VISIBLE
         }
     }
 
-    private fun getRecord(recordNum: Int) {
+    private fun getRecord(recordNum: Int, binding:ItemParentHomeBinding) {
         val firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
         val pathReference =
             firebaseStorage.reference.child(getToday()).child("child")
@@ -129,9 +132,21 @@ class ParentHomeRcvAdapter(private val context: Context) :
         localFile.deleteOnExit()
         pathReference.getFile(localFile).addOnSuccessListener {
             // Local temp file has been created
+            player.reset()
             player.setDataSource(localFile.path)
             player.prepare()
             player.start()
+            player.setOnCompletionListener {
+                if(recordNum == 1){
+                    isClickPauseFirst = false
+                    binding.parentRecordBtnPauseQuestion3.visibility = View.INVISIBLE
+                    binding.parentRecordBtnPlayQuestion3.visibility = View.VISIBLE
+                } else{
+                    isClickPauseSecond = false
+                    binding.parentRecordBtnPauseQuestion4.visibility = View.INVISIBLE
+                    binding.parentRecordBtnPlayQuestion4.visibility = View.VISIBLE
+                }
+            }
             Log.d("getAudio", "success")
         }.addOnFailureListener {
 
@@ -139,7 +154,6 @@ class ParentHomeRcvAdapter(private val context: Context) :
     }
 
     private fun pauseRecord() {
-        isClickPause = true
         player.pause()
     }
 
