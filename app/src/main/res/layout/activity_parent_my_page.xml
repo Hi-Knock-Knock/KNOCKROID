@@ -12,6 +12,10 @@
         <variable
             name="txtShowMore"
             type="String" />
+
+        <variable
+            name="faqViewModel"
+            type="com.all_the_best.knock_knock.parent.faq.viewmodel.ParentFaqViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -222,12 +226,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/scdream5"
-                android:text="아이를 바르게 대하는 방법"
+                android:text="@{faqViewModel.firstTitle.title}"
                 android:textColor="#252525"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/parent_my_page_img_bookmark1"
                 app:layout_constraintStart_toEndOf="@id/parent_my_page_img_bookmark1"
-                app:layout_constraintTop_toTopOf="@id/parent_my_page_img_bookmark1" />
+                app:layout_constraintTop_toTopOf="@id/parent_my_page_img_bookmark1"
+                tools:text="아이를 바르게 대하는 방법" />
 
             <View
                 android:id="@+id/parent_my_page_view_bookmark1"
@@ -255,12 +260,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/scdream5"
-                android:text="자존감이 낮은 아이"
+                android:text="@{faqViewModel.secondTitle.title}"
                 android:textColor="#252525"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/parent_my_page_img_bookmark2"
                 app:layout_constraintStart_toEndOf="@id/parent_my_page_img_bookmark2"
-                app:layout_constraintTop_toTopOf="@id/parent_my_page_img_bookmark2" />
+                app:layout_constraintTop_toTopOf="@id/parent_my_page_img_bookmark2"
+                tools:text="자존감이 낮은 아이" />
 
             <View
                 android:id="@+id/parent_my_page_view_bookmark2"
@@ -288,12 +294,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/scdream5"
-                android:text="아이가 싫어하는 행동을 표현한 경우"
+                android:text="@{faqViewModel.thirdTitle.title}"
                 android:textColor="#252525"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/parent_my_page_img_bookmark3"
                 app:layout_constraintStart_toEndOf="@id/parent_my_page_img_bookmark3"
-                app:layout_constraintTop_toTopOf="@id/parent_my_page_img_bookmark3" />
+                app:layout_constraintTop_toTopOf="@id/parent_my_page_img_bookmark3"
+                tools:text="아이가 싫어하는 행동을 표현한 경우" />
 
             <TextView
                 android:id="@+id/parent_my_page_txt_show_more_scrap"

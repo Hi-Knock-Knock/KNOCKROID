@@ -64,7 +64,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginBottom="8dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_bookmark_unchecked"
+            android:src="@{faqData.isScrapped == true ? @drawable/ic_bookmark_checked : @drawable/ic_bookmark_unchecked}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

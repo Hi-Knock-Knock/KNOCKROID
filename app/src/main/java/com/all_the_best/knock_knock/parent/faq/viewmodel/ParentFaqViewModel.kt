@@ -1,10 +1,13 @@
 package com.all_the_best.knock_knock.parent.faq.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.parent.faq.model.ParentFaqData
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class ParentFaqViewModel : ViewModel() {
     private val _faqList = MutableLiveData<MutableList<ParentFaqData>>()
@@ -14,6 +17,18 @@ class ParentFaqViewModel : ViewModel() {
     private val _myScrapList = MutableLiveData<MutableList<ParentFaqData>>()
     val myScrapList: LiveData<MutableList<ParentFaqData>>
         get() = _myScrapList
+
+    private val _threeTitle = MutableLiveData(mutableListOf("", "", ""))
+    val threeTitle: LiveData<MutableList<String>>
+        get() = _threeTitle
+
+    var firstTitle = ParentFaqData(0, R.string.talk_question_0, 0, false)
+
+    var secondTitle = ParentFaqData(0, R.string.talk_question_0, 0, false)
+
+    var thirdTitle = ParentFaqData(0, R.string.talk_question_0, 0, false)
+
+    var count = 0
 
     var tempFaqList: List<ParentFaqData> = listOf(
         ParentFaqData(0, R.string.faq_title_1, R.string.faq_data_content_1, false),
@@ -48,20 +63,50 @@ class ParentFaqViewModel : ViewModel() {
     )
 
 
-    private var tempMyScrapList: List<ParentFaqData> = listOf(
-        ParentFaqData(0, R.string.faq_title_1, R.string.faq_data_content_1, true),
-        ParentFaqData(1, R.string.faq_title_1, R.string.faq_data_content_1, true),
-        ParentFaqData(2, R.string.faq_title_1, R.string.faq_data_content_1, true),
-        ParentFaqData(4, R.string.faq_title_1, R.string.faq_data_content_1, true),
-        ParentFaqData(6, R.string.faq_title_1, R.string.faq_data_content_1, true),
-        ParentFaqData(8, R.string.faq_title_1, R.string.faq_data_content_1, true)
-    )
-
     fun setFaqList() {
         _faqList.value = tempFaqList.toMutableList()
     }
 
-    fun setMyScrapList() {
-        _myScrapList.value = tempMyScrapList.toMutableList()
+    fun setScrapList() {
+        var tempScrapList = mutableListOf<ParentFaqData>()
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val databaseReference: DatabaseReference = database.reference
+        for (index in 0..12) {
+            val myValue = databaseReference.child("부모1").child("faqScrap")
+                .child("index_$index")
+            myValue.get().addOnSuccessListener {
+                if (it.value as Boolean) {
+                    tempScrapList.add(faqDetailList[index])
+                    if (count == 0) {
+                        firstTitle = faqDetailList[index]
+                        count++
+                    } else if (count == 1) {
+                        secondTitle = faqDetailList[index]
+                        count++
+                    } else if (count == 2) {
+                        thirdTitle = faqDetailList[index]
+                        count++
+                    }
+                    _myScrapList.value = tempScrapList.toMutableList()
+                }
+            }.addOnFailureListener {
+                Log.e("firebase", "Error getting data", it)
+            }
+        }
+    }
+
+    fun setIsScrapped() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val databaseReference: DatabaseReference = database.reference
+        for (index in 0..12) {
+            val myValue = databaseReference.child("부모1").child("faqScrap")
+                .child("index_$index")
+            myValue.get().addOnSuccessListener {
+                tempFaqList[index].isScrapped = it.value as Boolean
+            }.addOnFailureListener {
+                Log.e("firebase", "Error getting data", it)
+            }
+        }
+        setFaqList()
     }
 }

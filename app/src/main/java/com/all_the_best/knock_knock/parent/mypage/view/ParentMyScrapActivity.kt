@@ -1,9 +1,9 @@
 package com.all_the_best.knock_knock.parent.mypage.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.observe
 import com.all_the_best.knock_knock.R
@@ -24,7 +24,7 @@ class ParentMyScrapActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_my_scrap)
         binding.txtGoFaq = "FAQ 바로가기"
         binding.lifecycleOwner = this
-        parentMyScrapViewmodel.setMyScrapList()
+        parentMyScrapViewmodel.setScrapList()
         setOnClickListenerForGoBack()
         setOnClickListenerForGoFaq()
         setMyScrapRcvAdapter()

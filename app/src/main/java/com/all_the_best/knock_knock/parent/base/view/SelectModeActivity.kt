@@ -1,8 +1,8 @@
 package com.all_the_best.knock_knock.parent.base.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.setting.view.InfantSelectIdActivity
 import com.all_the_best.knock_knock.parent.home.view.ParentHomeActivity
@@ -46,13 +46,13 @@ class SelectModeActivity : AppCompatActivity() {
             .setValue(false)
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordParent")
             .setValue(false)
-        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("childFeel")
-            .setValue("답변 전")
-        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("childPerson")
-            .setValue("답변 전")
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("selectedQuestionAtDialog")
             .setValue("")
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("parentDenyTalk")
             .setValue(false)
+//        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("childFeel")
+//            .setValue("답변 전")
+//        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("childPerson")
+//            .setValue("답변 전")
     }
 }
