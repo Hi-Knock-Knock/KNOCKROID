@@ -45,20 +45,21 @@ class InfantSelectIdActivity : AppCompatActivity() {
     private fun getImgFromStorage(listNum: Int,listNum2: Int){
         var storage = FirebaseStorage.getInstance()
         var storageRef =
-            storage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com").child("imageFile").child("imageUri($listNum).png")
+            storage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com").child("imageFile").child("imageUri($listNum)")
         var storageRef2 =
-            storage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com").child("imageFile").child("imageUri($listNum2).png")
+            storage.getReferenceFromUrl("gs://knockknock-29f42.appspot.com").child("imageFile").child("imageUri($listNum2)")
         try {
             val localFile: File = File.createTempFile("images", "png")
-            //val localFile2: File = File.createTempFile("images", "png")
+            val localFile2: File = File.createTempFile("images", "png")
             storageRef.getFile(localFile)
                 .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot?> {
                     val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+
                     id_image1.setImageBitmap(bitmap)
                 }).addOnFailureListener(OnFailureListener { })
-            storageRef2.getFile(localFile)
+            storageRef2.getFile(localFile2)
                 .addOnSuccessListener(OnSuccessListener<FileDownloadTask.TaskSnapshot?> {
-                    val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                    val bitmap = BitmapFactory.decodeFile(localFile2.absolutePath)
                     id_image2.setImageBitmap(bitmap)
                 }).addOnFailureListener(OnFailureListener { })
         } catch (e: IOException) {
