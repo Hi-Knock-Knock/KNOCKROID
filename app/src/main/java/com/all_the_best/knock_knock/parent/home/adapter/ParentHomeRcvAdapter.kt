@@ -4,7 +4,9 @@ import android.content.Context
 import android.media.MediaPlayer
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -23,6 +25,9 @@ class ParentHomeRcvAdapter(private val context: Context) :
     ListAdapter<ParentHomeRecord, ParentHomeRcvAdapter.ParentHomeRcvViewHolder>(
         ParentHomeRcvDiffUtil()
     ) {
+    val player = MediaPlayer()
+    var isClickPause = false
+
     inner class ParentHomeRcvViewHolder(private val binding: ItemParentHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(parentHomeRecordData: ParentHomeRecord) {
@@ -35,6 +40,8 @@ class ParentHomeRcvAdapter(private val context: Context) :
                 .into(binding.rcvParentImgChild)
             setOnFirstPlayBtnClick(binding)
             setOnSecondPlayBtnClick(binding)
+            setOnFirstPauseBtnClick(binding)
+            setOnSecondPauseBtnClick(binding)
             binding.executePendingBindings()
         }
     }
@@ -72,39 +79,72 @@ class ParentHomeRcvAdapter(private val context: Context) :
 
     private fun setOnFirstPlayBtnClick(binding: ItemParentHomeBinding) {
         binding.parentRecordBtnPlayQuestion3.setOnClickListener {
-            getRecord(1)
+            if (!isClickPause) {
+                getRecord(1)
+            } else {
+                restartRecord()
+            }
+            it.visibility = View.INVISIBLE
+            binding.parentRecordBtnPauseQuestion3.visibility = View.VISIBLE
         }
     }
 
+
     private fun setOnSecondPlayBtnClick(binding: ItemParentHomeBinding) {
         binding.parentRecordBtnPlayQuestion4.setOnClickListener {
-            getRecord(2)
+            if (!isClickPause) {
+                getRecord(2)
+            } else {
+                restartRecord()
+            }
+            it.visibility = View.INVISIBLE
+            binding.parentRecordBtnPauseQuestion4.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setOnFirstPauseBtnClick(binding: ItemParentHomeBinding) {
+        binding.parentRecordBtnPauseQuestion3.setOnClickListener {
+            pauseRecord()
+            it.visibility = View.INVISIBLE
+            binding.parentRecordBtnPlayQuestion3.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setOnSecondPauseBtnClick(binding: ItemParentHomeBinding) {
+        binding.parentRecordBtnPauseQuestion4.setOnClickListener {
+            pauseRecord()
+            it.visibility = View.INVISIBLE
+            binding.parentRecordBtnPlayQuestion4.visibility = View.VISIBLE
         }
     }
 
     private fun getRecord(recordNum: Int) {
-        var firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
-        lateinit var pathReference: StorageReference
-        pathReference =
+        val firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
+        val pathReference =
             firebaseStorage.reference.child(getToday()).child("child")
                 .child("child($recordNum).mp4")
-
         // createTempFile : 임시파일 생성 (so, 사용이 끝나면 삭제해줘야함.)
         // deleteOnExit을 사용해서 파일 삭제 -> 특징 : 파일을 바로 삭제하는 것이 아니라, JVM이 종료될 때 자동으로 저장된 파일을 삭제함.
         val localFile = File.createTempFile("temp_download", "mp4")
         localFile.deleteOnExit()
-
         pathReference.getFile(localFile).addOnSuccessListener {
             // Local temp file has been created
-            val player = MediaPlayer()
             player.setDataSource(localFile.path)
             player.prepare()
             player.start()
             Log.d("getAudio", "success")
         }.addOnFailureListener {
-            // Handle any errors
-            Log.d("getAudio", "fail")
+
         }
+    }
+
+    private fun pauseRecord() {
+        isClickPause = true
+        player.pause()
+    }
+
+    private fun restartRecord() {
+        player.start()
     }
 
     private fun getToday(): String {
