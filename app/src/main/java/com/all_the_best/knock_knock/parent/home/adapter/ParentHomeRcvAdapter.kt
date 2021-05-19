@@ -42,7 +42,9 @@ class ParentHomeRcvAdapter(private val context: Context) :
                 .centerCrop()
                 .error(R.drawable.img_baby_mybaby1)
                 .into(binding.rcvParentImgChild)
-            getTime(binding)
+            if (parentHomeRecordData.answer1 != "답변 전" && parentHomeRecordData.answer2 != "답변 전") {
+                getTime(binding)
+            }
             setOnFirstPlayBtnClick(binding)
             setOnSecondPlayBtnClick(binding)
             setOnFirstPauseBtnClick(binding)
