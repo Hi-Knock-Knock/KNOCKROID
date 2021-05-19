@@ -33,7 +33,6 @@
             setSrcFromUrl="@{parentMyBabyData.uri}"
             android:layout_width="52dp"
             android:layout_height="52dp"
-            android:src="@drawable/img_baby_mybaby1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

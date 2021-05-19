@@ -1,16 +1,16 @@
 package com.all_the_best.knock_knock.parent.mypage.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.ActivityParentMyPageBinding
 import com.all_the_best.knock_knock.databinding.ItemParentMyPageBabyBinding
+import com.all_the_best.knock_knock.parent.faq.viewmodel.ParentFaqViewModel
 import com.all_the_best.knock_knock.parent.mypage.adapter.ParentMyPageRcvAdapter
 import com.all_the_best.knock_knock.parent.mypage.viewmodel.ParentMyPageViewModel
 import com.all_the_best.knock_knock.util.StatusBarUtil
@@ -18,6 +18,7 @@ import com.all_the_best.knock_knock.util.StatusBarUtil
 class ParentMyPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityParentMyPageBinding
     private val parentMyPageViewModel: ParentMyPageViewModel by viewModels()
+    private val parentFaqViewModel: ParentFaqViewModel by viewModels()
 
     override fun onResume() {
         super.onResume()
@@ -34,8 +35,11 @@ class ParentMyPageActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.txtEdit = "프로필 수정"
         binding.txtShowMore = "더보기"
+        binding.faqViewModel = parentFaqViewModel
         parentMyPageViewModel.getDefaultUri()
         parentMyPageViewModel.getProfileImgFromStorage()
+        parentFaqViewModel.setScrapList()
+        setScrapListObserve()
         setParentMyPageRcvAdapter()
         setParentMyPageBabyObserve()
         setSnapHelper()
@@ -94,5 +98,14 @@ class ParentMyPageActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    private fun setScrapListObserve(){
+        parentFaqViewModel.myScrapList.observe(this){
+            binding.parentMyPageTxtFaq1.text = getString(parentFaqViewModel.firstTitle.title)
+            binding.parentMyPageTxtFaq2.text = getString(parentFaqViewModel.secondTitle.title)
+            binding.parentMyPageTxtFaq3.text = getString(parentFaqViewModel.thirdTitle.title)
+        }
+    }
+
 
 }

@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
@@ -12,12 +11,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.all_the_best.knock_knock.BR
 import com.all_the_best.knock_knock.R
-import com.all_the_best.knock_knock.databinding.*
+import com.all_the_best.knock_knock.databinding.ItemParentFaqBinding
+import com.all_the_best.knock_knock.databinding.ItemParentMyScrapBinding
 import com.all_the_best.knock_knock.parent.faq.model.ParentFaqData
 import com.all_the_best.knock_knock.parent.faq.view.ParentFaqDetailActivity
 import com.all_the_best.knock_knock.parent.faq.viewmodel.ParentFaqViewModel
-import com.all_the_best.knock_knock.parent.mypage.adapter.ParentMyPageRcvAdapter
-import com.all_the_best.knock_knock.parent.mypage.model.ParentMyPageBaby
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class ParentFaqRcvAdapter<B : ViewDataBinding>(
     val layout: Int,
@@ -115,6 +115,12 @@ class ParentFaqRcvAdapter<B : ViewDataBinding>(
         binding.rcvFaqBookmark.setOnClickListener {
             data.isScrapped = !data.isScrapped
             viewModel.faqDetailList[data.index].isScrapped = data.isScrapped
+            val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+            val databaseReference: DatabaseReference = database.reference
+            databaseReference.child("부모1").child("faqScrap")
+                .child("index_${data.index}")
+                .setValue(data.isScrapped)
+
             if(data.isScrapped){
                 binding.rcvFaqBookmark.setBackgroundResource(R.drawable.ic_bookmark_checked)
             }else{
