@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_appicon"
@@ -13,11 +15,18 @@
         android:roundIcon="@mipmap/ic_appicon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knock_Knock">
-        <activity android:name=".infant.gift.view.InfantGetGiftPopupActivity"></activity>
+        <service
+            android:name=".infant.home.service.MusicService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
+        <activity android:name=".infant.gift.view.InfantGetGiftPopupActivity" />
         <activity android:name=".parent.talk.view.ParentRealTalkActivity" />
         <activity android:name=".infant.cookie.view.InfantGetCookiePopupActivity" />
         <activity android:name=".parent.mypage.view.ParentMyScrapActivity" />
-        <activity android:name=".parent.mypage.view.ParentMyBabyActivity"
+        <activity
+            android:name=".parent.mypage.view.ParentMyBabyActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".parent.mypage.view.ParentEditProfileActivity" />
         <activity android:name=".parent.mypage.view.ParentMyPageActivity" />

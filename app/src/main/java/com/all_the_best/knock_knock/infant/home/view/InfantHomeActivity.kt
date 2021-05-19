@@ -21,6 +21,7 @@ import com.all_the_best.knock_knock.infant.change.view.InfantSwitchCharacterActi
 import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
 import com.all_the_best.knock_knock.infant.deco.view.InfantDecoActivity
 import com.all_the_best.knock_knock.infant.gift.view.InfantGiftStartActivity
+import com.all_the_best.knock_knock.infant.home.service.MusicService
 import com.all_the_best.knock_knock.infant.talk.view.InfantSelectFeelActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -65,7 +66,8 @@ class InfantHomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
+        startService(Intent(applicationContext, MusicService::class.java))
+        //mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
     }
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,10 +85,10 @@ class InfantHomeActivity : AppCompatActivity() {
         musicPlay = intent.getIntExtra("musicPlay",0)
 
         if (musicPlay==0){
-            mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
-            mediaPlayer!!.setVolume(0.3f,0.3f)
-            mediaPlayer!!.start()
-
+            startService(Intent(applicationContext, MusicService::class.java))
+//            mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
+//            mediaPlayer!!.setVolume(0.3f,0.3f)
+//            mediaPlayer!!.start()
             Log.d("media",musicPlay.toString())
             musicPlay=1
             Log.d("media",musicPlay.toString())
@@ -117,7 +119,8 @@ class InfantHomeActivity : AppCompatActivity() {
             intent1.putExtra("lottieSelect",lottieSelect)
             intent1.putExtra("giftSelect",giftSelect)
             intent1.putExtra("musicPlay",musicPlay)
-            mediaPlayer!!.stop()
+            stopService(Intent(applicationContext, MusicService::class.java))
+            //mediaPlayer!!.stop()
             setStartTalkAtFirebase()
             startActivity(intent1)
         }
