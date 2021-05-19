@@ -209,7 +209,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
                 //Log.d("record", "start")
                 this.talk_txtview.text = "다 말하면 버튼을 눌러!"
                 play()
-                startRecording()
+                if(play()){
+                    startRecording()
+                }
             }
             setOnBtnRecordStopClick()
         }
@@ -217,13 +219,11 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordStopClick(){
         stopRecordBtn.setOnClickListener {
-            soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
             val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
 
             talk_txtview.visibility = View.INVISIBLE
             infant_talk1.visibility = View.INVISIBLE
-
             when(chSelect){
                 0 -> {
                     talk_start_char_dam.setAnimation("dami_think.json")
@@ -291,11 +291,12 @@ class InfantTalkStartActivity : AppCompatActivity() {
             mediaRecorder?.reset()
             mediaRecorder?.release()
             state = false
-            Toast.makeText(this, "중지 되었습니다. 업로드 되었습니다.", Toast.LENGTH_SHORT).show()
-            //databaseReference.child(childId).child(childId + "stopRecord " ).setValue(finish)
+            soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
+
+            Toast.makeText(this, "캐릭터가 고민중이에요!", Toast.LENGTH_SHORT).show()
             uploadAudioUri(audioUri)
         } else {
-            Toast.makeText(this, "레코딩 상태가 아닙니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "레코딩오류", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -322,7 +323,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
         pathReference.getFile(myFile).addOnSuccessListener {
             playRecording(localFile)
-
             Log.d("getAudio", "success")
         }.addOnFailureListener {
             // Handle any errors
@@ -347,10 +347,10 @@ class InfantTalkStartActivity : AppCompatActivity() {
         myValue.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.value as Boolean) {
-                    stopRecordBtn.visibility = View.INVISIBLE
+                    stopRecordBtn.isClickable = false
+                    getDataFromStorage()
                     setSelectTalkCharacter()
                     setOnLottieStart()
-                    getDataFromStorage()
                 }
             }
 
@@ -396,6 +396,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
 
     private fun playRecording(localFile: File){
+
         var i = 0
         val shortSizeInBytes = Short.SIZE_BYTES
         val bufferSizeInBytes = (localFile.length() / shortSizeInBytes).toInt()
@@ -428,10 +429,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
         audioTrack!!.play()
         audioTrack!!.write(audioData, 0 , bufferSizeInBytes)
         getDataNum++
-
-        stopRecordBtn.visibility = View.VISIBLE
 //        setSelectCharacter()
 //        setOnLottieStart()
+        stopRecordBtn.visibility = View.VISIBLE
     }
 
     //----------------------------tts------------------------------------------
@@ -505,7 +505,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         }
     }
 
-    fun play(){
+    fun play():Boolean{
         if (mTts != null) {
             if (talk_txtview != null) {
                 val text = talk_txtview.text.toString()
@@ -517,6 +517,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
                 }
             }
         }
+        return true
     }
 
     fun ParentDenyplay(){
