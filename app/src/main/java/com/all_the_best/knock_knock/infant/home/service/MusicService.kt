@@ -8,6 +8,7 @@ import com.all_the_best.knock_knock.R
 
 
 class MusicService : Service() {
+    // 배경음악 서비스 
     var mediaPlayer: MediaPlayer? = null
 
     override fun onBind(intent: Intent?): IBinder? {
