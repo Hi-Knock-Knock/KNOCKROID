@@ -177,7 +177,6 @@ class ParentHomeRcvAdapter(private val context: Context) :
 
     private fun setSeekBar(recordNum: Int, binding: ItemParentHomeBinding) {
         if (recordNum == 1) {
-            binding.parentRecordTxtEndTimeQuestion3.text = player1.duration.toString()
             binding.parentRecordSeekBarQuestion3.apply {
                 max = player1.duration
                 setOnSeekBarChangeListener(object :
@@ -196,7 +195,6 @@ class ParentHomeRcvAdapter(private val context: Context) :
                 })
             }
         } else {
-            binding.parentRecordTxtEndTimeQuestion4.text = player2.duration.toString()
             binding.parentRecordSeekBarQuestion4.apply {
                 max = player2.duration
                 setOnSeekBarChangeListener(object :
