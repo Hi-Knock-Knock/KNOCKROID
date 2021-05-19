@@ -131,42 +131,14 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/login_btn_google"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="18dp"
-                android:src="@drawable/ic_google"
-                app:layout_constraintEnd_toStartOf="@id/login_btn_naver"
-                app:layout_constraintTop_toTopOf="@id/login_btn_naver" />
-
-            <ImageView
-                android:id="@+id/login_btn_naver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_naver"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/login_constraint_white" />
-
-            <ImageView
-                android:id="@+id/login_btn_kakao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:src="@drawable/ic_kakao"
-                app:layout_constraintStart_toEndOf="@id/login_btn_naver"
-                app:layout_constraintTop_toTopOf="@id/login_btn_naver" />
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="40dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/login_btn_naver">
+                app:layout_constraintTop_toBottomOf="@id/login_constraint_white">
 
                 <TextView
                     android:layout_width="wrap_content"
