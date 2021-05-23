@@ -189,7 +189,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordClick() {
         talk_start_char_dam.setOnClickListener {
-            databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
+            databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordAfterFirst")
                 .setValue(false)
             if (ContextCompat.checkSelfPermission(
                     this,
@@ -334,7 +334,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
     private fun setFinishRecordChildAtFirebase() {
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
             .setValue(true)
-        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordAfterFirst")
             .setValue(true)
     }
 

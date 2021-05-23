@@ -140,12 +140,36 @@ class ParentRealTalkActivity : AppCompatActivity() {
                         acceptTalkConstraintQuestion.visibility = View.VISIBLE
                         acceptTalkConstraintRecord.visibility = View.VISIBLE
                         acceptTalkConstraintLoading.visibility = View.GONE
+                        acceptTalkBtnChildRecordPlay.visibility = View.VISIBLE
+                        strokeTalkProfile.visibility = View.VISIBLE
                     }
                 } else {
                     binding.apply {
                         acceptTalkConstraintQuestion.visibility = View.GONE
                         acceptTalkConstraintRecord.visibility = View.GONE
                         acceptTalkConstraintLoading.visibility = View.VISIBLE
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+        val recordValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("finishRecordAfterFirst")
+        recordValue.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.value as Boolean) {
+                    binding.apply {
+                        acceptTalkBtnChildRecordPlay.visibility = View.VISIBLE
+                        strokeTalkProfile.visibility = View.VISIBLE
+                    }
+                } else {
+                    binding.apply {
+                        acceptTalkBtnChildRecordPlay.visibility = View.INVISIBLE
+                        strokeTalkProfile.visibility = View.INVISIBLE
                     }
                 }
             }
