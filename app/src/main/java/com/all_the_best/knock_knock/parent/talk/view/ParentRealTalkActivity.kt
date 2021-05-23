@@ -1,18 +1,13 @@
 package com.all_the_best.knock_knock.parent.talk.view
 
 import android.Manifest
-import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.media.AudioRecord
 import android.media.MediaPlayer
-import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
-import android.renderscript.Sampler
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -27,7 +22,10 @@ import com.all_the_best.knock_knock.util.StatusBarUtil
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import java.io.*
+import java.io.BufferedOutputStream
+import java.io.DataOutputStream
+import java.io.File
+import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -43,10 +41,11 @@ class ParentRealTalkActivity : AppCompatActivity() {
     private var getDataNum: Int = 1
 
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-
-    // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
-
+    private val parentId = "부모1"
+    private val childName = "아이1"
+    private var isClickPause = false
+    val player = MediaPlayer()
     var isRecording: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,32 +58,43 @@ class ParentRealTalkActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_real_talk)
         binding.txtSubmit = "전송하기"
         setSelectedFeelingAndPerson()
-        setGetChildRecordClick()
+        setChildRecordPlayClick()
+        setChildRecordPauseClick()
         setTipRcvAdapter()
         setSubmitClick()
         setRecordBtnClick()
         getToday()
+        finishActivityAfterFinishTalk()
         setLayout()
         initPermissions()
     }
+
     private fun initPermissions() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.RECORD_AUDIO) !=
-            PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.RECORD_AUDIO)) {
-                ActivityCompat.requestPermissions(this,
-                    arrayOf(Manifest.permission.RECORD_AUDIO), 1)
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.RECORD_AUDIO
+            ) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.RECORD_AUDIO
+                )
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.RECORD_AUDIO), 1
+                )
             } else {
-                ActivityCompat.requestPermissions(this,
-                    arrayOf(Manifest.permission.RECORD_AUDIO), 1)
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.RECORD_AUDIO), 1
+                )
             }
         }
     }
 
-    private fun setSelectedFeelingAndPerson(){
-        val parentId = "부모1"
-        val childName = "아이1"
+    private fun setSelectedFeelingAndPerson() {
         val selectedFeeling: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
                 .child("childFeel")
@@ -95,6 +105,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.txtFeeling = snapshot.value as String
             }
+
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -103,6 +114,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.txtPerson = snapshot.value as String
             }
+
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -110,16 +122,29 @@ class ParentRealTalkActivity : AppCompatActivity() {
     }
 
     private fun setFinishRecordParentAtFirebase(isDone: Boolean) {
-        val parentId = "부모1"
-        val childName = "아이1"
         databaseReference.child(parentId).child(parentId + "의 child " + childName)
             .child("finishRecordParent")
             .setValue(isDone)
     }
 
+    private fun finishActivityAfterFinishTalk() {
+        val myValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("startTalkChild")
+        myValue.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (!(snapshot.value as Boolean)) {
+                    finish()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
     private fun setLayout() {
-        val parentId = "부모1"
-        val childName = "아이1"
         val myValue: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
                 .child("finishRecordChild")
@@ -130,12 +155,36 @@ class ParentRealTalkActivity : AppCompatActivity() {
                         acceptTalkConstraintQuestion.visibility = View.VISIBLE
                         acceptTalkConstraintRecord.visibility = View.VISIBLE
                         acceptTalkConstraintLoading.visibility = View.GONE
+                        acceptTalkBtnChildRecordPlay.visibility = View.VISIBLE
+                        strokeTalkProfile.visibility = View.VISIBLE
                     }
                 } else {
                     binding.apply {
                         acceptTalkConstraintQuestion.visibility = View.GONE
                         acceptTalkConstraintRecord.visibility = View.GONE
                         acceptTalkConstraintLoading.visibility = View.VISIBLE
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+        val recordValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("finishRecordAfterFirst")
+        recordValue.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.value as Boolean) {
+                    binding.apply {
+                        acceptTalkBtnChildRecordPlay.visibility = View.VISIBLE
+                        strokeTalkProfile.visibility = View.VISIBLE
+                    }
+                } else {
+                    binding.apply {
+                        acceptTalkBtnChildRecordPlay.visibility = View.INVISIBLE
+                        strokeTalkProfile.visibility = View.INVISIBLE
                     }
                 }
             }
@@ -164,13 +213,28 @@ class ParentRealTalkActivity : AppCompatActivity() {
         snapHelper.attachToRecyclerView(binding.acceptTalkRcv)
     }
 
-    private fun setGetChildRecordClick() {
+    private fun setChildRecordPlayClick() {
         binding.acceptTalkBtnChildRecordPlay.setOnClickListener {
-            getDataFromStorage()
+            binding.acceptTalkBtnChildRecordPlay.visibility = View.INVISIBLE
+            binding.acceptTalkBtnChildRecordPause.visibility = View.VISIBLE
+            if (!isClickPause) {
+                startChildRecord()
+            } else {
+                player.start()
+            }
         }
     }
 
-    private fun getDataFromStorage() {
+    private fun setChildRecordPauseClick() {
+        binding.acceptTalkBtnChildRecordPause.setOnClickListener {
+            isClickPause = true
+            binding.acceptTalkBtnChildRecordPause.visibility = View.INVISIBLE
+            binding.acceptTalkBtnChildRecordPlay.visibility = View.VISIBLE
+            player.pause()
+        }
+    }
+
+    private fun startChildRecord() {
         pathReference =
             firebaseStorage.reference.child(fileName).child("child").child("child($getDataNum).mp4")
 
@@ -181,12 +245,18 @@ class ParentRealTalkActivity : AppCompatActivity() {
 
         pathReference.getFile(localFile).addOnSuccessListener {
             // Local temp file has been created
-            val player = MediaPlayer()
+            player.reset()
             player.setDataSource(localFile.path)
             player.prepare()
             player.start()
             Log.d("getAudio", "success")
             getDataNum++
+            player.setOnCompletionListener {
+                isClickPause = false
+                binding.acceptTalkBtnChildRecordPause.visibility=View.INVISIBLE
+                binding.acceptTalkBtnChildRecordPlay.visibility=View.VISIBLE
+                Log.d("finishRecord",isClickPause.toString())
+            }
         }.addOnFailureListener {
             // Handle any errors
             Log.d("getAudio", "fail")
@@ -201,24 +271,6 @@ class ParentRealTalkActivity : AppCompatActivity() {
             setFinishRecordParentAtFirebase(false)
             binding.acceptTalkBtnRecord.visibility = View.INVISIBLE
             binding.acceptTalkBtnRecordStop.visibility = View.VISIBLE
-//            if (ContextCompat.checkSelfPermission(
-//                    this,
-//                    android.Manifest.permission.RECORD_AUDIO
-//                ) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
-//                    this,
-//                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-//                ) != PackageManager.PERMISSION_GRANTED
-//            ) {
-//                // Permission is not granted
-//                val permissions = arrayOf(
-//                    android.Manifest.permission.RECORD_AUDIO,
-//                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-//                )
-//                ActivityCompat.requestPermissions(this, permissions, 0)
-//            } else {
-//                Log.d("record", "start")
-//            }
             setRecordStopBtnClick()
         }
     }
@@ -271,7 +323,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
         val audioRecord = AudioRecord(1, 11025, 2, 2, minBufferSize)
         audioRecord.startRecording()
 
-        while (isRecording){
+        while (isRecording) {
             val numberOfShort = audioRecord.read(audioData, 0, minBufferSize)
 
             for (i in 0 until numberOfShort) {
@@ -279,7 +331,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
             }
         }
 
-        if (!isRecording){
+        if (!isRecording) {
             audioRecord.stop()
             dataOutputStream.close()
             audioUri = Uri.fromFile(File(myFile.path))

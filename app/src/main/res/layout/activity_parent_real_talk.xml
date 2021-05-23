@@ -53,12 +53,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/accept_talk_btn_hamburger" />
 
-        <ImageView
+        <View
+            android:id="@+id/stroke_talk_profile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_circle_profile"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/accept_talk_img_profile"
+            app:layout_constraintEnd_toEndOf="@id/accept_talk_img_profile"
+            app:layout_constraintStart_toStartOf="@id/accept_talk_img_profile"
+            app:layout_constraintTop_toTopOf="@id/accept_talk_img_profile" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/accept_talk_img_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:padding="20dp"
+            android:padding="4dp"
             android:src="@drawable/img_real_talk_child_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,16 +82,20 @@
             android:background="@drawable/background_transparent"
             android:padding="20dp"
             android:src="@drawable/ic_play_child_record"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@id/accept_talk_img_profile"
             app:layout_constraintEnd_toEndOf="@id/accept_talk_img_profile"
             app:layout_constraintStart_toStartOf="@id/accept_talk_img_profile"
             app:layout_constraintTop_toTopOf="@id/accept_talk_img_profile" />
 
-        <ProgressBar
-            android:id="@+id/accept_talk_child_progress"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:indeterminateDrawable="@drawable/circle_progress_bar_child"
+        <ImageButton
+            android:id="@+id/accept_talk_btn_child_record_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_transparent"
+            android:padding="20dp"
+            android:src="@drawable/ic_pause_child_record"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@id/accept_talk_img_profile"
             app:layout_constraintEnd_toEndOf="@id/accept_talk_img_profile"
             app:layout_constraintStart_toStartOf="@id/accept_talk_img_profile"
@@ -90,14 +105,14 @@
             android:id="@+id/accept_talk_txt_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/scdream5"
             android:text="@{txtDate}"
             android:textColor="#ffffff"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@id/accept_talk_img_profile"
             app:layout_constraintStart_toStartOf="@id/accept_talk_img_profile"
-            app:layout_constraintTop_toBottomOf="@id/accept_talk_btn_child_record_play"
+            app:layout_constraintTop_toBottomOf="@id/stroke_talk_profile"
             tools:text="2020.10.08" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -240,41 +255,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/accept_talk_btn_record_play"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_transparent"
-                android:padding="20dp"
-                android:src="@drawable/ic_record_start"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageButton
-                android:id="@+id/accept_talk_btn_record_pause"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_transparent"
-                android:padding="20dp"
-                android:src="@drawable/ic_record_pause"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ProgressBar
-                android:id="@+id/accept_talk_parent_progress"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:indeterminateDrawable="@drawable/circle_progress_bar_child"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="@id/accept_talk_btn_record"
-                app:layout_constraintEnd_toEndOf="@id/accept_talk_btn_record"
-                app:layout_constraintStart_toStartOf="@id/accept_talk_btn_record"
-                app:layout_constraintTop_toTopOf="@id/accept_talk_btn_record" />
 
             <TextView
                 android:id="@+id/accept_talk_submit"

@@ -11,7 +11,6 @@ import android.graphics.drawable.ColorDrawable
 import android.media.*
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -20,6 +19,7 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieDrawable
@@ -27,9 +27,7 @@ import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.activity_infant_select_person.*
 import kotlinx.android.synthetic.main.activity_infant_talk_start.*
-import kotlinx.android.synthetic.main.activity_infant_talk_start.infant_talk1
 import java.io.*
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
@@ -68,8 +66,9 @@ class InfantTalkStartActivity : AppCompatActivity() {
     var finish:Boolean =false
 
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-    // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
+    val parentId = "부모1"
+    val childName = "아이1"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -190,6 +189,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordClick() {
         talk_start_char_dam.setOnClickListener {
+            databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordAfterFirst")
+                .setValue(false)
             if (ContextCompat.checkSelfPermission(
                     this,
                     android.Manifest.permission.RECORD_AUDIO
@@ -331,16 +332,13 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
 
     private fun setFinishRecordChildAtFirebase() {
-        val parentId = "부모1"
-        val childName = "아이1"
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
             .setValue(true)
-        //Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordAfterFirst")
+            .setValue(true)
     }
 
     private fun setPlayParentRecord() {
-        val parentId = "부모1"
-        val childName = "아이1"
         val myValue: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
                 .child("finishRecordParent")
@@ -362,8 +360,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
 
     private fun setPlayDenyParent() {
-        val parentId = "부모1"
-        val childName = "아이1"
         val myValue: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
                 .child("parentDenyTalk")
@@ -383,8 +379,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
 
     private fun setDefaultVariableAtFirebase() {
-        val parentId = "부모1"
-        val childName = "아이1"
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("startTalkChild")
             .setValue(false)
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("parentAcceptTalk")
@@ -392,6 +386,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
             .setValue(false)
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordParent")
+            .setValue(false)
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordAfterFirst")
             .setValue(false)
     }
 
@@ -521,8 +517,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
 
     fun ParentDenyplay(){
-        val parentId = "부모1"
-        val childName = "아이1"
         val myValue: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName).child("selectedQuestionAtDialog")
         myValue.get().addOnSuccessListener {
@@ -535,8 +529,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
     }
 
     fun getFinishRecordChild(){
-        val parentId = "부모1"
-        val childName = "아이1"
         val myValue: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordChild")
         myValue.addValueEventListener(object : ValueEventListener {
