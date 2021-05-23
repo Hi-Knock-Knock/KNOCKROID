@@ -2,21 +2,15 @@ package com.all_the_best.knock_knock.infant.gift.view
 
 import android.content.Intent
 import android.graphics.Color
-import android.media.MediaPlayer
-import android.media.SoundPool
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
-import com.all_the_best.knock_knock.infant.cookie.viewmodel.InfantCookieViewModel
-import com.all_the_best.knock_knock.infant.gift.viewmodel.InfantGiftBgViewModel
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import kotlinx.android.synthetic.main.activity_infant_gift_start.*
-import kotlinx.android.synthetic.main.activity_infant_talk_start.*
 
 class InfantGiftStartActivity : AppCompatActivity() {
 
@@ -32,13 +26,6 @@ class InfantGiftStartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_gift_start)
         setOnLottieStart()
-//        if(mediaPlayer==null){
-//            mediaPlayer = MediaPlayer.create(this, R.raw.bgm2);
-//            mediaPlayer!!.setVolume(0.1f,0.1f)
-//            mediaPlayer!!.start()
-//        }else{
-//            Log.d("media","존재한다. ")
-//        }
         val cookieGiftCount1: TextView = findViewById(R.id.infant_gift_start_cookie_count)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
@@ -49,7 +36,6 @@ class InfantGiftStartActivity : AppCompatActivity() {
         val intentGoHome = Intent(this, InfantHomeActivity::class.java)
         cookieGiftCount1.text = cookieCount.toString()
 
-        //var count:Int = cookieCount //보유 쿠키 개수
         var count3:Int = 0 //소비한 쿠키 개
 
         window.statusBarColor = Color.parseColor("#8A2A6C")
@@ -109,7 +95,6 @@ class InfantGiftStartActivity : AppCompatActivity() {
             }
             if(count3==3){
                 infant_empty_cookie2.setImageResource(R.drawable.img_infant_full_cookie)
-                //mediaPlayer!!.stop()
                 startActivity(intent1)
                 finish()
                 overridePendingTransition(0, 0)
@@ -119,7 +104,6 @@ class InfantGiftStartActivity : AppCompatActivity() {
 
         infant_empty_cookie3.setOnClickListener {
             if(cookieCount==0){
-                Toast.makeText(this, "쿠키가 부족해요!ㅠㅠ", Toast.LENGTH_SHORT).show()
                 cookieCount++
                 intentGoHome.putExtra("bgSelect",bgSelect)
                 intentGoHome.putExtra("chSelect",chSelect)

@@ -46,6 +46,7 @@ class InfantSelectCharacterActivity : AppCompatActivity() {
             )
 
         infant_viewpager_select.adapter = selectViewPagerAdapter
+        infantGiftBgViewModel.setgiftbgSelect(0)
 
         // 아이 계정 선택 화면
         val intent2 = Intent(this, InfantSelectIdActivity::class.java)

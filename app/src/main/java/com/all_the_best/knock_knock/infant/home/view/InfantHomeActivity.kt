@@ -128,7 +128,7 @@ class InfantHomeActivity : AppCompatActivity() {
             intent2.putExtra("giftSelect",giftSelect)
             intent2.putExtra("lottieSelect",lottieSelect)
             intent2.putExtra("musicPlay",musicPlay)
-            intent1.putExtra("chSelect",chSelect)
+            intent2.putExtra("chSelect",chSelect)
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             startActivityForResult(intent2,0)
         }
@@ -136,14 +136,22 @@ class InfantHomeActivity : AppCompatActivity() {
         // 선물상자 버튼
         val intent3 = Intent(this, InfantGiftStartActivity::class.java)
         infant_icon_gift.setOnClickListener{
-            intent3.putExtra("bgSelect",bgSelect)
-            intent3.putExtra("cookieCount",cookieCount)
-            intent3.putExtra("chSelect",chSelect)
-            intent3.putExtra("giftSelect",giftSelect)
-            intent3.putExtra("lottieSelect",lottieSelect)
-            intent3.putExtra("musicPlay",musicPlay)
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
-            startActivity(intent3)
+            when(giftSelect){
+                in 0..1 -> {
+                    Toast.makeText(this, "$giftSelect", Toast.LENGTH_SHORT).show()
+                    intent3.putExtra("bgSelect",bgSelect)
+                    intent3.putExtra("cookieCount",cookieCount)
+                    intent3.putExtra("chSelect",chSelect)
+                    intent3.putExtra("giftSelect",giftSelect)
+                    intent3.putExtra("lottieSelect",lottieSelect)
+                    intent3.putExtra("musicPlay",musicPlay)
+                    startActivity(intent3)
+                }
+                2->{
+                    Toast.makeText(this, "선물을 준비중이에요!ㅠㅠ", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
         // 배경 꾸미기 버튼
@@ -175,7 +183,6 @@ class InfantHomeActivity : AppCompatActivity() {
 
     // 백버튼 두번 뒤로가기시 종료
     override fun onBackPressed() {
-        //mediaPlayer!!.stop()
         val tempTime = System.currentTimeMillis()
         val intervalTime: Long = tempTime - backPressedTime
 

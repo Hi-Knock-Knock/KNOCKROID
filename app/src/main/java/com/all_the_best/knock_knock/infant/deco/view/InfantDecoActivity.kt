@@ -6,11 +6,9 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
 import com.all_the_best.knock_knock.R
-import com.all_the_best.knock_knock.infant.cookie.view.InfantCookieSaveActivity
 import com.all_the_best.knock_knock.infant.deco.viewmodel.InfantDecoViewModel
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import kotlinx.android.synthetic.main.activity_infant_deco.*
@@ -83,8 +81,7 @@ class InfantDecoActivity : AppCompatActivity() {
             intent1.putExtra("cookieCount",cookieCount)
             intent1.putExtra("giftSelect",giftSelect)
             intent1.putExtra("musicPlay",musicPlay)
-            startActivity(intent1)
-            //setResult(Activity.RESULT_OK, intent1)
+            setResult(Activity.RESULT_OK, intent1)
             finish()
             overridePendingTransition(0, 0)
         }
