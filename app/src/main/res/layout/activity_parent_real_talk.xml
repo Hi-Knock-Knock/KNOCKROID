@@ -88,18 +88,31 @@
             app:layout_constraintStart_toStartOf="@id/accept_talk_img_profile"
             app:layout_constraintTop_toTopOf="@id/accept_talk_img_profile" />
 
+        <ImageButton
+            android:id="@+id/accept_talk_btn_child_record_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_transparent"
+            android:padding="20dp"
+            android:src="@drawable/ic_pause_child_record"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/accept_talk_img_profile"
+            app:layout_constraintEnd_toEndOf="@id/accept_talk_img_profile"
+            app:layout_constraintStart_toStartOf="@id/accept_talk_img_profile"
+            app:layout_constraintTop_toTopOf="@id/accept_talk_img_profile" />
+
         <TextView
             android:id="@+id/accept_talk_txt_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/scdream5"
             android:text="@{txtDate}"
             android:textColor="#ffffff"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@id/accept_talk_img_profile"
             app:layout_constraintStart_toStartOf="@id/accept_talk_img_profile"
-            app:layout_constraintTop_toBottomOf="@id/accept_talk_btn_child_record_play"
+            app:layout_constraintTop_toBottomOf="@id/stroke_talk_profile"
             tools:text="2020.10.08" />
 
         <androidx.constraintlayout.widget.ConstraintLayout

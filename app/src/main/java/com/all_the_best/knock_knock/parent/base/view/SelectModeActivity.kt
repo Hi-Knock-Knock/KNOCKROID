@@ -50,6 +50,8 @@ class SelectModeActivity : AppCompatActivity() {
             .setValue("")
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("parentDenyTalk")
             .setValue(false)
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordAfterFirst")
+            .setValue(false)
 //        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("childFeel")
 //            .setValue("답변 전")
 //        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("childPerson")

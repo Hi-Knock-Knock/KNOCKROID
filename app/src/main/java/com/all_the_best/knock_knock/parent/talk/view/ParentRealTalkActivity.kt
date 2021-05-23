@@ -42,9 +42,10 @@ class ParentRealTalkActivity : AppCompatActivity() {
 
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
     private val databaseReference: DatabaseReference = database.reference
-    val parentId = "부모1"
-    val childName = "아이1"
-
+    private val parentId = "부모1"
+    private val childName = "아이1"
+    private var isClickPause = false
+    val player = MediaPlayer()
     var isRecording: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +58,8 @@ class ParentRealTalkActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_real_talk)
         binding.txtSubmit = "전송하기"
         setSelectedFeelingAndPerson()
-        setGetChildRecordClick()
+        setChildRecordPlayClick()
+        setChildRecordPauseClick()
         setTipRcvAdapter()
         setSubmitClick()
         setRecordBtnClick()
@@ -66,22 +68,33 @@ class ParentRealTalkActivity : AppCompatActivity() {
         setLayout()
         initPermissions()
     }
+
     private fun initPermissions() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.RECORD_AUDIO) !=
-            PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.RECORD_AUDIO)) {
-                ActivityCompat.requestPermissions(this,
-                    arrayOf(Manifest.permission.RECORD_AUDIO), 1)
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.RECORD_AUDIO
+            ) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.RECORD_AUDIO
+                )
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.RECORD_AUDIO), 1
+                )
             } else {
-                ActivityCompat.requestPermissions(this,
-                    arrayOf(Manifest.permission.RECORD_AUDIO), 1)
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.RECORD_AUDIO), 1
+                )
             }
         }
     }
 
-    private fun setSelectedFeelingAndPerson(){
+    private fun setSelectedFeelingAndPerson() {
         val selectedFeeling: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
                 .child("childFeel")
@@ -92,6 +105,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.txtFeeling = snapshot.value as String
             }
+
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -100,6 +114,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.txtPerson = snapshot.value as String
             }
+
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -112,7 +127,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
             .setValue(isDone)
     }
 
-    private fun finishActivityAfterFinishTalk(){
+    private fun finishActivityAfterFinishTalk() {
         val myValue: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
                 .child("startTalkChild")
@@ -198,13 +213,28 @@ class ParentRealTalkActivity : AppCompatActivity() {
         snapHelper.attachToRecyclerView(binding.acceptTalkRcv)
     }
 
-    private fun setGetChildRecordClick() {
+    private fun setChildRecordPlayClick() {
         binding.acceptTalkBtnChildRecordPlay.setOnClickListener {
-            getDataFromStorage()
+            binding.acceptTalkBtnChildRecordPlay.visibility = View.INVISIBLE
+            binding.acceptTalkBtnChildRecordPause.visibility = View.VISIBLE
+            if (!isClickPause) {
+                startChildRecord()
+            } else {
+                player.start()
+            }
         }
     }
 
-    private fun getDataFromStorage() {
+    private fun setChildRecordPauseClick() {
+        binding.acceptTalkBtnChildRecordPause.setOnClickListener {
+            isClickPause = true
+            binding.acceptTalkBtnChildRecordPause.visibility = View.INVISIBLE
+            binding.acceptTalkBtnChildRecordPlay.visibility = View.VISIBLE
+            player.pause()
+        }
+    }
+
+    private fun startChildRecord() {
         pathReference =
             firebaseStorage.reference.child(fileName).child("child").child("child($getDataNum).mp4")
 
@@ -215,12 +245,18 @@ class ParentRealTalkActivity : AppCompatActivity() {
 
         pathReference.getFile(localFile).addOnSuccessListener {
             // Local temp file has been created
-            val player = MediaPlayer()
+            player.reset()
             player.setDataSource(localFile.path)
             player.prepare()
             player.start()
             Log.d("getAudio", "success")
             getDataNum++
+            player.setOnCompletionListener {
+                isClickPause = false
+                binding.acceptTalkBtnChildRecordPause.visibility=View.INVISIBLE
+                binding.acceptTalkBtnChildRecordPlay.visibility=View.VISIBLE
+                Log.d("finishRecord",isClickPause.toString())
+            }
         }.addOnFailureListener {
             // Handle any errors
             Log.d("getAudio", "fail")
@@ -287,7 +323,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
         val audioRecord = AudioRecord(1, 11025, 2, 2, minBufferSize)
         audioRecord.startRecording()
 
-        while (isRecording){
+        while (isRecording) {
             val numberOfShort = audioRecord.read(audioData, 0, minBufferSize)
 
             for (i in 0 until numberOfShort) {
@@ -295,7 +331,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
             }
         }
 
-        if (!isRecording){
+        if (!isRecording) {
             audioRecord.stop()
             dataOutputStream.close()
             audioUri = Uri.fromFile(File(myFile.path))
