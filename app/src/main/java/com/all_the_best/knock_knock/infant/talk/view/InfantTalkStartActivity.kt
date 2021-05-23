@@ -110,30 +110,35 @@ class InfantTalkStartActivity : AppCompatActivity() {
             }
         }
 
-        val intent1 = Intent(this, InfantHomeActivity::class.java)
+
         infant_icon_out.setOnClickListener{
-            setDefaultVariableAtFirebase()
-            setMotionInit()
-            // 쿠키 받는 팝업
-            val cookiePopUp = Dialog(this)
-            cookiePopUp?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            cookiePopUp.setContentView(R.layout.activity_infant_get_cookie_popup)
-            cookiePopUp.show()
-            cookieCount += 1
-            intent1.putExtra("bgSelect", bgSelect)
-            intent1.putExtra("chSelect",chSelect)
-            intent1.putExtra("cookieCount",cookieCount)
-            intent1.putExtra("giftSelect",giftSelect)
-            intent1.putExtra("lottieSelect",lottieSelect)
-            musicPlay = 0
-            intent1.putExtra("musicPlay",musicPlay)
-            Handler(Looper.getMainLooper()).postDelayed ({
-                startActivity(intent1)
-                cookiePopUp.dismiss()
-                finish()
-            }, 2000)
-            overridePendingTransition(0, 0)
+            setGoOut()
         }
+    }
+
+    private fun setGoOut(){
+        val intent1 = Intent(this, InfantHomeActivity::class.java)
+        setDefaultVariableAtFirebase()
+        setMotionInit()
+        // 쿠키 받는 팝업
+        val cookiePopUp = Dialog(this)
+        cookiePopUp?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        cookiePopUp.setContentView(R.layout.activity_infant_get_cookie_popup)
+        cookiePopUp.show()
+        cookieCount += 1
+        intent1.putExtra("bgSelect", bgSelect)
+        intent1.putExtra("chSelect",chSelect)
+        intent1.putExtra("cookieCount",cookieCount)
+        intent1.putExtra("giftSelect",giftSelect)
+        intent1.putExtra("lottieSelect",lottieSelect)
+        musicPlay = 0
+        intent1.putExtra("musicPlay",musicPlay)
+        Handler(Looper.getMainLooper()).postDelayed ({
+            startActivity(intent1)
+            cookiePopUp.dismiss()
+            finish()
+        }, 2000)
+        overridePendingTransition(0, 0)
     }
 
     override fun onBackPressed(){
@@ -245,6 +250,17 @@ class InfantTalkStartActivity : AppCompatActivity() {
             }
             stopRecording()
             setFinishRecordChildAtFirebase()
+            //getFinshDenyTalkFirebase()
+            if (finish){
+                setSelectTalkCharacter()
+                setOnLottieStart()
+                this.talk_txtview.text = "그렇구나! 말해줘서 고마워! 다음에 또 보자!!"
+                play()
+                Handler(Looper.getMainLooper()).postDelayed ({
+                    setGoOut()
+                }, 9000)
+
+            }
         }
     }
 
@@ -428,9 +444,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
         audioTrack!!.play()
         audioTrack!!.write(audioData, 0 , bufferSizeInBytes)
         getDataNum++
-//        setSelectCharacter()
-//        setOnLottieStart()
-        //stopRecordBtn.visibility = View.VISIBLE
     }
 
     //----------------------------tts------------------------------------------
@@ -525,10 +538,12 @@ class InfantTalkStartActivity : AppCompatActivity() {
         val myValue: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName).child("selectedQuestionAtDialog")
         myValue.get().addOnSuccessListener {
+            finish = true
             talk_txtview.text = it.value.toString()
             play()
             setSelectTalkCharacter()
             setOnLottieStart()
+            //setFinshDenyTalk()
             Log.d("tag", talk_txtview.text.toString())
         }.addOnFailureListener {  }
     }
@@ -550,4 +565,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
             }
         })
     }
+
+
 }

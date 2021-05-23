@@ -325,13 +325,13 @@ class InfantHomeActivity : AppCompatActivity() {
         val childName = "아이1"
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("startTalkChild")
             .setValue(true)
-        Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
     }
 
     private fun setCookieSaveFirebase() {
         val childId = "아이1"
         databaseReference.child(childId).child(childId + "의 쿠키개수 " ).setValue(cookieCount)
-        Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "push", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPause() {
