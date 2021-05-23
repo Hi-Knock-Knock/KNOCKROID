@@ -53,27 +53,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/accept_talk_btn_hamburger" />
 
-        <View
-            android:id="@+id/stroke_talk_profile"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/bg_circle_profile"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@id/accept_talk_img_profile"
-            app:layout_constraintEnd_toEndOf="@id/accept_talk_img_profile"
-            app:layout_constraintStart_toStartOf="@id/accept_talk_img_profile"
-            app:layout_constraintTop_toTopOf="@id/accept_talk_img_profile" />
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/accept_talk_img_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginTop="10dp"
-            android:padding="4dp"
             android:src="@drawable/img_real_talk_child_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/accept_talk_txt_title" />
+
+        <me.tankery.lib.circularseekbar.CircularSeekBar
+            android:id="@+id/accept_talk_child_seek_bar"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:visibility="invisible"
+            app:cs_circle_color="@color/white"
+            app:cs_circle_progress_color="#ff6060"
+            app:cs_circle_stroke_width="4dp"
+            app:cs_circle_style="round"
+            app:cs_end_angle="270.0"
+            app:cs_negative_enabled="true"
+            app:cs_pointer_color="#ff6060"
+            app:cs_pointer_stroke_width="4dp"
+            app:cs_progress="0"
+            app:cs_start_angle="270.0"
+            app:layout_constraintBottom_toBottomOf="@id/accept_talk_img_profile"
+            app:layout_constraintEnd_toEndOf="@id/accept_talk_img_profile"
+            app:layout_constraintStart_toStartOf="@id/accept_talk_img_profile"
+            app:layout_constraintTop_toTopOf="@id/accept_talk_img_profile" />
 
         <ImageButton
             android:id="@+id/accept_talk_btn_child_record_play"
@@ -112,7 +120,7 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@id/accept_talk_img_profile"
             app:layout_constraintStart_toStartOf="@id/accept_talk_img_profile"
-            app:layout_constraintTop_toBottomOf="@id/stroke_talk_profile"
+            app:layout_constraintTop_toBottomOf="@id/accept_talk_child_seek_bar"
             tools:text="2020.10.08" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
