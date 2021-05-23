@@ -220,9 +220,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordStopClick(){
         stopRecordBtn.setOnClickListener {
-            val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
-            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
-
+//            val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
+//            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             talk_txtview.visibility = View.INVISIBLE
             infant_talk1.visibility = View.INVISIBLE
             when(chSelect){
@@ -345,7 +344,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         myValue.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.value as Boolean) {
-                    stopRecordBtn.isClickable = false
+                    //stopRecordBtn.isClickable = false
                     getDataFromStorage()
                     setSelectTalkCharacter()
                     setOnLottieStart()
@@ -356,7 +355,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
-        stopRecordBtn.visibility = View.VISIBLE
+        //stopRecordBtn.visibility = View.VISIBLE
     }
 
     private fun setPlayDenyParent() {
@@ -427,7 +426,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         getDataNum++
 //        setSelectCharacter()
 //        setOnLottieStart()
-        stopRecordBtn.visibility = View.VISIBLE
+        //stopRecordBtn.visibility = View.VISIBLE
     }
 
     //----------------------------tts------------------------------------------
