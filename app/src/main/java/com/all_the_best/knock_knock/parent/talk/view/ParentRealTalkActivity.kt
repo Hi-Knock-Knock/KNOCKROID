@@ -1,18 +1,13 @@
 package com.all_the_best.knock_knock.parent.talk.view
 
 import android.Manifest
-import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.media.AudioRecord
 import android.media.MediaPlayer
-import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
-import android.renderscript.Sampler
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -27,7 +22,10 @@ import com.all_the_best.knock_knock.util.StatusBarUtil
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import java.io.*
+import java.io.BufferedOutputStream
+import java.io.DataOutputStream
+import java.io.File
+import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -43,9 +41,9 @@ class ParentRealTalkActivity : AppCompatActivity() {
     private var getDataNum: Int = 1
 
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-
-    // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
+    val parentId = "부모1"
+    val childName = "아이1"
 
     var isRecording: Boolean = false
 
@@ -64,6 +62,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
         setSubmitClick()
         setRecordBtnClick()
         getToday()
+        finishActivityAfterFinishTalk()
         setLayout()
         initPermissions()
     }
@@ -83,8 +82,6 @@ class ParentRealTalkActivity : AppCompatActivity() {
     }
 
     private fun setSelectedFeelingAndPerson(){
-        val parentId = "부모1"
-        val childName = "아이1"
         val selectedFeeling: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
                 .child("childFeel")
@@ -110,16 +107,29 @@ class ParentRealTalkActivity : AppCompatActivity() {
     }
 
     private fun setFinishRecordParentAtFirebase(isDone: Boolean) {
-        val parentId = "부모1"
-        val childName = "아이1"
         databaseReference.child(parentId).child(parentId + "의 child " + childName)
             .child("finishRecordParent")
             .setValue(isDone)
     }
 
+    private fun finishActivityAfterFinishTalk(){
+        val myValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("startTalkChild")
+        myValue.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (!(snapshot.value as Boolean)) {
+                    finish()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
     private fun setLayout() {
-        val parentId = "부모1"
-        val childName = "아이1"
         val myValue: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
                 .child("finishRecordChild")
@@ -201,24 +211,6 @@ class ParentRealTalkActivity : AppCompatActivity() {
             setFinishRecordParentAtFirebase(false)
             binding.acceptTalkBtnRecord.visibility = View.INVISIBLE
             binding.acceptTalkBtnRecordStop.visibility = View.VISIBLE
-//            if (ContextCompat.checkSelfPermission(
-//                    this,
-//                    android.Manifest.permission.RECORD_AUDIO
-//                ) != PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
-//                    this,
-//                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-//                ) != PackageManager.PERMISSION_GRANTED
-//            ) {
-//                // Permission is not granted
-//                val permissions = arrayOf(
-//                    android.Manifest.permission.RECORD_AUDIO,
-//                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-//                )
-//                ActivityCompat.requestPermissions(this, permissions, 0)
-//            } else {
-//                Log.d("record", "start")
-//            }
             setRecordStopBtnClick()
         }
     }
