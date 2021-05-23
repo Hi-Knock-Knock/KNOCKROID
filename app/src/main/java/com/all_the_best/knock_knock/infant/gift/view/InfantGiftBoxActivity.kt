@@ -1,31 +1,20 @@
 package com.all_the_best.knock_knock.infant.gift.view
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.InsetDrawable
-import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.databinding.DataBindingUtil
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
-import com.all_the_best.knock_knock.databinding.ActivityInfantGetGiftPopupBinding
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
-import kotlinx.android.synthetic.main.activity_infant_get_gift_popup.*
 import kotlinx.android.synthetic.main.activity_infant_gift_box.*
 
 
@@ -35,9 +24,6 @@ class InfantGiftBoxActivity : AppCompatActivity() {
     private var cookieCount: Int = 5
     private var giftSelect: Int = 0
     private var musicPlay:Int=0
-   // private lateinit var getBgPopup: Dialog
-   // private lateinit var getBgPopup2: Dialog
-    //private lateinit var getGiftPopupBinding: ActivityInfantGetGiftPopupBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,9 +39,6 @@ class InfantGiftBoxActivity : AppCompatActivity() {
         cookieGiftCount2.text = cookieCount.toString()
 
         window.statusBarColor = Color.parseColor("#8A2A6C")
-        //getGiftPopupBinding = ActivityInfantGetGiftPopupBinding.inflate(layoutInflater)
-//        val view = getGiftPopupBinding.root
-//        setContentView(view)
 
         // 홈으로 돌아가기
         val intentGoHome = Intent(this, InfantHomeActivity::class.java)
@@ -88,6 +71,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
                     getBgPopup.show()
                     intentGoHome.putExtra("giftSelect", giftSelect)
                     Handler(Looper.getMainLooper()).postDelayed({
+                        Toast.makeText(this, "$giftSelect", Toast.LENGTH_SHORT).show()
                         startActivity(intentGoHome)
                         getBgPopup.dismiss()
                         overridePendingTransition(0, 0)
@@ -126,9 +110,4 @@ class InfantGiftBoxActivity : AppCompatActivity() {
         infant_gift_box.playAnimation()
         infant_gift_char.playAnimation()
     }
-
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        getBgPopup.dismiss()
-//    }
 }

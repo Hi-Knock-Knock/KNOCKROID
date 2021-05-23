@@ -73,7 +73,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_talk_start)
-        //soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
         bgSelect = intent.getIntExtra("bgSelect",1)
         chSelect = intent.getIntExtra("chSelect",0)
         cookieCount = intent.getIntExtra("cookieCount",5)
@@ -251,7 +250,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
             }
             stopRecording()
             setFinishRecordChildAtFirebase()
-            //getFinshDenyTalkFirebase()
             if (finish){
                 setSelectTalkCharacter()
                 setOnLottieStart()
@@ -259,7 +257,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
                 play()
                 Handler(Looper.getMainLooper()).postDelayed ({
                     setGoOut()
-                }, 9000)
+                }, 8500)
 
             }
         }
@@ -293,7 +291,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
             mediaRecorder?.prepare()
             mediaRecorder?.start()
             state = true
-            Toast.makeText(this, "레코딩 시작되었습니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "대화시작!", Toast.LENGTH_SHORT).show()
         } catch (e: IllegalStateException) {
             e.printStackTrace()
         } catch (e: IOException) {
@@ -308,8 +306,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
             mediaRecorder?.release()
             state = false
             soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
-
-            Toast.makeText(this, "캐릭터가 고민중이에요!", Toast.LENGTH_SHORT).show()
             uploadAudioUri(audioUri)
         } else {
             Toast.makeText(this, "레코딩오류", Toast.LENGTH_SHORT).show()
@@ -329,10 +325,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
     private fun getDataFromStorage() {
         var pathReference = firebaseStorage.reference.child(fileName).child("parent").child("parent($getDataNum).mp4")
 
-        // createTempFile : 임시파일 생성 (so, 사용이 끝나면 삭제해줘야함.)
-        // deleteOnExit을 사용해서 파일 삭제 -> 특징 : 파일을 바로 삭제하는 것이 아니라, JVM이 종료될 때 자동으로 저장된 파일을 삭제함.
-//        val localFile = File.createTempFile("temp_download", "pom")
-//        localFile.deleteOnExit()
         val localFile = File(applicationContext.getExternalFilesDir(null), "test.pom")
         val myFile = File(applicationContext.getExternalFilesDir(null)!!.absolutePath, "test.pom")
         myFile.createNewFile()
@@ -371,7 +363,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
-        //stopRecordBtn.visibility = View.VISIBLE
     }
 
     private fun setPlayDenyParent() {
@@ -381,9 +372,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
         myValue.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.value as Boolean) {
-                    //stopRecordBtn.visibility = View.INVISIBLE
-                    //getDataFromStorage()
-                    //ParentDenyplay()
                     getFinishRecordChild()
                 }
             }
@@ -537,7 +525,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
             play()
             setSelectTalkCharacter()
             setOnLottieStart()
-            //setFinshDenyTalk()
             Log.d("tag", talk_txtview.text.toString())
         }.addOnFailureListener {  }
     }
