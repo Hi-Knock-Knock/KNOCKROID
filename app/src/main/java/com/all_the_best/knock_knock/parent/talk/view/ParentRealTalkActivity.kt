@@ -156,7 +156,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
                         acceptTalkConstraintRecord.visibility = View.VISIBLE
                         acceptTalkConstraintLoading.visibility = View.GONE
                         acceptTalkBtnChildRecordPlay.visibility = View.VISIBLE
-                        strokeTalkProfile.visibility = View.VISIBLE
+                        acceptTalkChildSeekBar.visibility = View.VISIBLE
                     }
                 } else {
                     binding.apply {
@@ -179,12 +179,12 @@ class ParentRealTalkActivity : AppCompatActivity() {
                 if (snapshot.value as Boolean) {
                     binding.apply {
                         acceptTalkBtnChildRecordPlay.visibility = View.VISIBLE
-                        strokeTalkProfile.visibility = View.VISIBLE
+                        acceptTalkChildSeekBar.visibility = View.VISIBLE
                     }
                 } else {
                     binding.apply {
                         acceptTalkBtnChildRecordPlay.visibility = View.INVISIBLE
-                        strokeTalkProfile.visibility = View.INVISIBLE
+                        acceptTalkChildSeekBar.visibility = View.INVISIBLE
                     }
                 }
             }
@@ -221,6 +221,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
                 startChildRecord()
             } else {
                 player.start()
+                setSeekBar()
             }
         }
     }
@@ -232,6 +233,20 @@ class ParentRealTalkActivity : AppCompatActivity() {
             binding.acceptTalkBtnChildRecordPlay.visibility = View.VISIBLE
             player.pause()
         }
+    }
+
+    private fun setSeekBar(){
+        Thread {
+            while (player.isPlaying) {  // 음악이 실행중일때 계속 돌아가게 함
+                try {
+                    Thread.sleep(20)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+                // 현재 재생중인 위치를 가져와 시크바에 적용
+                binding.acceptTalkChildSeekBar.progress = player.currentPosition.toFloat()
+            }
+        }.start()
     }
 
     private fun startChildRecord() {
@@ -249,6 +264,8 @@ class ParentRealTalkActivity : AppCompatActivity() {
             player.setDataSource(localFile.path)
             player.prepare()
             player.start()
+            binding.acceptTalkChildSeekBar.max = player.duration.toFloat()
+            setSeekBar()
             Log.d("getAudio", "success")
             getDataNum++
             player.setOnCompletionListener {
