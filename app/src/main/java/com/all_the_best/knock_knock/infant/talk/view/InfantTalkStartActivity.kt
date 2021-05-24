@@ -284,7 +284,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         mediaRecorder?.setOutputFormat((MediaRecorder.OutputFormat.MPEG_4))
         mediaRecorder?.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
         if (file != null) {
-            mediaRecorder?.setOutputFile(file.getFileDescriptor())
+            mediaRecorder?.setOutputFile(file.fileDescriptor)
         }
 
         try {
@@ -391,6 +391,8 @@ class InfantTalkStartActivity : AppCompatActivity() {
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordParent")
             .setValue(false)
         databaseReference.child(parentId).child(parentId + "의 child " + childName).child("finishRecordAfterFirst")
+            .setValue(false)
+        databaseReference.child(parentId).child(parentId + "의 child " + childName).child("parentDenyTalk")
             .setValue(false)
     }
 
@@ -525,7 +527,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
             play()
             setSelectTalkCharacter()
             setOnLottieStart()
-            Log.d("tag", talk_txtview.text.toString())
+            Log.d("deny", talk_txtview.text.toString())
         }.addOnFailureListener {  }
     }
 
@@ -538,7 +540,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
                     ParentDenyplay()
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
