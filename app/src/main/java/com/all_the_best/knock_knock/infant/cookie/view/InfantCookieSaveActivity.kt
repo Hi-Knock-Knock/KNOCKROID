@@ -2,19 +2,16 @@ package com.all_the_best.knock_knock.infant.cookie.view
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.all_the_best.knock_knock.R
-import com.all_the_best.knock_knock.infant.deco.viewmodel.InfantDecoViewModel
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
+import com.google.android.material.internal.ContextUtils.getActivity
 import kotlinx.android.synthetic.main.activity_infant_cookie_save.*
-import kotlinx.android.synthetic.main.activity_infant_deco.*
-import kotlinx.android.synthetic.main.activity_infant_home.*
 
 class InfantCookieSaveActivity : AppCompatActivity() {
 
@@ -24,7 +21,6 @@ class InfantCookieSaveActivity : AppCompatActivity() {
     private var giftSelect:Int=0
     private var musicPlay:Int=0
 
-    //private var i:Int = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_infant_cookie_save)
@@ -37,7 +33,7 @@ class InfantCookieSaveActivity : AppCompatActivity() {
         giftSelect = intent.getIntExtra("giftSelect",0)
         musicPlay = intent.getIntExtra("musicPlay",0)
         cookieSaveCount.text = cookieCount.toString()
-        setTrueCookieCountImage()
+        setCookieCountImage()
 
         window.statusBarColor = Color.parseColor("#FCC364")
 
@@ -59,239 +55,18 @@ class InfantCookieSaveActivity : AppCompatActivity() {
         Log.d("backpress","막음")
     }
 
-    private fun setTrueCookieCountImage(){
-        when(cookieCount){
-            1 -> ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-            2 -> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-            }
-            3-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
+    private fun setCookieCountImage(){
+        val cookieId =
+            arrayOfNulls<ImageView>(cookieCount+1)
 
+        for(i in 1 until cookieCount+1){
+            var id: Int= resources.getIdentifier("ic_cookie_false$i", "id", packageName)
+            if(i>30){
+                Toast.makeText(this, "쿠키가 꽉찼어요!", Toast.LENGTH_SHORT).show()
+                break
             }
-            4-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-
-            }
-            5-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-            }
-            6-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-            }
-            7-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-
-            }
-            8-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-
-            }
-            9-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false9.setImageResource(R.drawable.ic_cookies_true)
-            }
-            10-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false9.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false10.setImageResource(R.drawable.ic_cookies_true)
-            }
-            11-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false9.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false10.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false11.setImageResource(R.drawable.ic_cookies_true)
-            }
-            12-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false9.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false10.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false11.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false12.setImageResource(R.drawable.ic_cookies_true)
-            }
-            13-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false9.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false10.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false11.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false12.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false13.setImageResource(R.drawable.ic_cookies_true)
-            }
-            14-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false9.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false10.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false11.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false12.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false13.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false14.setImageResource(R.drawable.ic_cookies_true)
-            }
-            15-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false9.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false10.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false11.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false12.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false13.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false14.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false15.setImageResource(R.drawable.ic_cookies_true)
-            }
-            16-> {
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false9.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false10.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false11.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false12.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false13.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false14.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false15.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false16.setImageResource(R.drawable.ic_cookies_true)
-            }
-            17 ->{
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false9.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false10.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false11.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false12.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false13.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false14.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false15.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false16.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false17.setImageResource(R.drawable.ic_cookies_true)
-            }
-            18 ->{
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false9.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false10.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false11.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false12.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false13.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false14.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false15.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false16.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false17.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false18.setImageResource(R.drawable.ic_cookies_true)
-            }
-            19 ->{
-                ic_cookie_false1.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false2.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false3.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false4.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false5.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false6.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false7.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false8.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false9.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false10.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false11.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false12.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false13.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false14.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false15.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false16.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false17.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false18.setImageResource(R.drawable.ic_cookies_true)
-                ic_cookie_false19.setImageResource(R.drawable.ic_cookies_true)
-            }
+            cookieId[i] = findViewById(id)
+            cookieId[i]?.setImageResource(R.drawable.ic_cookies_true)
         }
     }
-
 }
