@@ -79,7 +79,6 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         binding.realTalkTimerTime.apply {
             base = SystemClock.elapsedRealtime() + 15000
             start()
-
             setOnChronometerTickListener {
                 if (it.base <= SystemClock.elapsedRealtime() + 0) {
                     stop()
@@ -105,7 +104,6 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
                 .child("selectedQuestionIndex")
         radioIndex.get().addOnSuccessListener {
-            Log.d("tag", it.value.toString())
             binding.talkRadiogroup.check(
                 when (it.value.toString()) {
                     "1" -> R.id.rb1
@@ -335,7 +333,6 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         databaseReference.child(parentId).child(parentId + "의 child " + childName)
             .child("selectedQuestionAtDialog")
             .setValue(question)
-        Log.d("timer", "dialog $question")
     }
 
     private fun setParentDenyTalkAtFirebase(isDeny: Boolean) {
