@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/img_main_background"
-            tools:visibility="visible">
+            tools:visibility="invisible">
 
             <ImageButton
                 android:id="@+id/talk_btn_hamburger"
@@ -382,7 +382,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/img_background"
             android:visibility="invisible"
-            tools:visibility="invisible">
+            tools:visibility="visible">
 
             <ImageButton
                 android:id="@+id/real_talk_btn_hamburger"
@@ -414,8 +414,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.455"
-                tools:visibility="invisible">
+                app:layout_constraintVertical_bias="0.455">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/real_talk_img_child"
@@ -514,15 +513,15 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/real_Talk_txt_time"
+                        <Chronometer
+                            android:id="@+id/real_Talk_timer_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:fontFamily="@font/scdream5"
-                            android:text="01 : 30"
-                            android:textColor="#252525"
+                            android:textColor="#ff3e18"
                             android:textSize="27sp"
+                            android:countDown="true"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toEndOf="@id/real_talk_img_alarm"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -595,7 +594,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="invisible">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/real_talk_img_child_submit"
