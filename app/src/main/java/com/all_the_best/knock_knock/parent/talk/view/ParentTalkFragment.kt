@@ -6,12 +6,12 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -75,6 +75,23 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         return binding.root
     }
 
+    private fun startTimerBeforeDeny() {
+        binding.realTalkTimerTime.apply {
+            base = SystemClock.elapsedRealtime() + 15000
+            start()
+
+            setOnChronometerTickListener {
+                if (it.base <= SystemClock.elapsedRealtime() + 0) {
+                    stop()
+                    binding.realTalkConstraintBeforeSubmit.visibility = View.INVISIBLE
+                    binding.realTalkConstraintAfterSubmit.visibility = View.VISIBLE
+                    setParentDenyTalkAtFirebase(true)
+                    setSelectedQuestionDialogAtFirebase(binding.selectedQuestion.toString())
+                }
+            }
+        }
+    }
+
     private fun setSelectedQuestion() {
         val myValue: DatabaseReference =
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
@@ -88,7 +105,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
             databaseReference.child(parentId).child(parentId + "의 child " + childName)
                 .child("selectedQuestionIndex")
         radioIndex.get().addOnSuccessListener {
-            Log.d("tag",it.value.toString())
+            Log.d("tag", it.value.toString())
             binding.talkRadiogroup.check(
                 when (it.value.toString()) {
                     "1" -> R.id.rb1
@@ -119,6 +136,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.value as Boolean) {
                     binding.apply {
+                        startTimerBeforeDeny()
                         realTalkConstraintBeforeSubmit.visibility = View.VISIBLE
                         realTalkConstraintAfterSubmit.visibility = View.GONE
                         realTalkVerConstraint.visibility = View.VISIBLE
@@ -247,56 +265,6 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 window!!.setBackgroundDrawable(inset)
                 show()
             }
-
-//            refuseDialogBinding.root.talk_dialog_txt_ok.setOnClickListener {
-//                //dialog.dismiss()
-//                refuseDialogBinding.apply {
-//                    talkDialogConstraintFinish.visibility = View.VISIBLE
-//                    talkDialogConstraintBtnNoOk.visibility = View.INVISIBLE
-//                    talkDialogConstraintRadioBtn.visibility = View.GONE
-//                    talkDialogTxtEdit.visibility = View.GONE
-//                    talkDialogTxtSubSelected.visibility = View.GONE
-//                    talkDialogConstraintSubmit.visibility = View.VISIBLE
-//                }
-//            }
-
-//            refuseDialogBinding.root.talk_dialog_txt_edit.setOnClickListener {
-//                refuseDialogBinding.apply {
-//                    talkDialogConstraintRadioBtn.visibility = View.VISIBLE
-//                    talkDialogTxtEdit.visibility = View.GONE
-//                }
-//            }
-
-//            refuseDialogBinding.root.apply {
-//                talk_dialog_txt_no.setOnClickListener {
-//                    dialog.dismiss()
-//                }
-//                talk_dialog_txt_finish.setOnClickListener {
-//                    dialog.dismiss()
-//                }
-//                talk_dialog_radiogroup.setOnCheckedChangeListener { questionGroup, checkedId ->
-//                    talk_dialog_txt_selected_question.text =
-//                        when (checkedId) {
-//                            R.id.rb1_dialog -> "없음"
-//                            R.id.rb2_dialog -> "엄마랑 아빠랑 싸우면 기분이 어때?"
-//                            R.id.rb3_dialog -> "동생은 어떤 존재야?"
-//                            R.id.rb4_dialog -> "동생이랑 노는 거 즐거워?"
-//                            R.id.rb5_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
-//                            R.id.rb6_dialog -> "아빠한테 속상한 거 있어?"
-//                            R.id.rb7_dialog -> "엄마한테 속상한 거 있어?"
-//                            R.id.rb8_dialog -> "엄마랑 아빠랑 싸우면 기분이 어때?"
-//                            R.id.rb9_dialog -> "동생은 어떤 존재야?"
-//                            R.id.rb10_dialog -> "동생이랑 노는 거 즐거워?"
-//                            R.id.rb11_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
-//                            R.id.rb12_dialog -> "동생이랑 노는 거 즐거워?"
-//                            R.id.rb13_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
-//                            R.id.rb14_dialog -> "동생이랑 노는 거 즐거워?"
-//                            R.id.rb15_dialog -> "엄마가 어떻게 해줬으면 좋겠어?"
-//                            else -> "없음"
-//                        }
-//                }
-//            }
-//        }
         }
     }
 
@@ -367,6 +335,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         databaseReference.child(parentId).child(parentId + "의 child " + childName)
             .child("selectedQuestionAtDialog")
             .setValue(question)
+        Log.d("timer", "dialog $question")
     }
 
     private fun setParentDenyTalkAtFirebase(isDeny: Boolean) {
