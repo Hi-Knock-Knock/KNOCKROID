@@ -16,9 +16,9 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.databinding.DialogHelpBinding
+import com.all_the_best.knock_knock.databinding.DialogTalkBinding
 import com.all_the_best.knock_knock.databinding.FragmentParentTalkBinding
-import com.all_the_best.knock_knock.databinding.HelpDialogBinding
-import com.all_the_best.knock_knock.databinding.TalkDialogBinding
 import com.all_the_best.knock_knock.parent.alarm.view.ParentNoticeActivity
 import com.all_the_best.knock_knock.parent.mypage.view.ParentMyPageActivity
 import com.all_the_best.knock_knock.parent.setting.view.ParentSettingActivity
@@ -32,8 +32,8 @@ import kotlinx.android.synthetic.main.fragment_parent_talk.*
 class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: FragmentParentTalkBinding
-    private lateinit var dialogBinding: HelpDialogBinding
-    private lateinit var refuseDialogBinding: TalkDialogBinding
+    private lateinit var dialogBinding: DialogHelpBinding
+    private lateinit var refuseDialogBinding: DialogTalkBinding
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
 
     // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
@@ -56,13 +56,13 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_parent_talk, container, false)
         binding.talkNavigationView.setNavigationItemSelectedListener(this)
-        dialogBinding = DataBindingUtil.inflate(inflater, R.layout.help_dialog, container, false)
+        dialogBinding = DataBindingUtil.inflate(inflater, R.layout.dialog_help, container, false)
         dialogBinding.txtTitle = "여기서 보내는 질문이란?"
         dialogBinding.txtContentTop =
             "부모가 아이와 실시간 대화가\n불가능할 경우 선택한\n한가지 질문으로 캐릭터가 아이에게\n부모 대신 물어보게 됩니다."
         dialogBinding.txtContentBottom = "단 한 개의 질문만\n선택할 수 있으며,\n아이가 대화를 시도하기 전\n질문을 수정할 수 있습니다."
         refuseDialogBinding =
-            DataBindingUtil.inflate(inflater, R.layout.talk_dialog, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.dialog_talk, container, false)
         refuseDialogBinding.txtTitle = "실시간 대화 거절"
         refuseDialogBinding.txtEdit = "수정하기"
         setSelectedQuestion()
