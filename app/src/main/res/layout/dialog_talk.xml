@@ -51,15 +51,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/talk_dialog_txt_time"
+            <Chronometer
+                android:id="@+id/talk_dialog_timer_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/scdream5"
-                android:text="01 : 30"
-                android:textColor="#252525"
+                android:textColor="#ff3e18"
                 android:textSize="27sp"
+                android:countDown="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/talk_dialog_img_alarm"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -81,13 +81,13 @@
 
         <TextView
             android:id="@+id/talk_dialog_txt_selected_question"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/scdream5"
-            android:text="없음"
             android:textColor="#252525"
             android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/talk_dialog_view"
             app:layout_constraintStart_toStartOf="@id/talk_dialog_txt_title_selected"
             app:layout_constraintTop_toBottomOf="@id/talk_dialog_txt_title_selected" />
 

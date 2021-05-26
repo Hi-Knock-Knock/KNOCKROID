@@ -35,11 +35,10 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     private lateinit var dialogBinding: DialogHelpBinding
     private lateinit var refuseDialogBinding: DialogTalkBinding
     private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-
-    // 데이터베이스의 인스턴스를 가져온다고 생각(즉, Root를 가져온다고 이해하면 쉬움)
     private val databaseReference: DatabaseReference = database.reference
     val parentId = "부모1"
     val childName = "아이1"
+
     override fun onBackPressed(): Boolean {
         return if (binding.talkDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             Log.d("프래그먼트", "대화하기 if")
@@ -77,7 +76,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
 
     private fun startTimerBeforeDeny() {
         binding.realTalkTimerTime.apply {
-            base = SystemClock.elapsedRealtime() + 15000
+            base = SystemClock.elapsedRealtime() + 16000
             start()
             setOnChronometerTickListener {
                 if (it.base <= SystemClock.elapsedRealtime() + 0) {
@@ -199,7 +198,8 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
     private fun setOnClickListenerForBtnRefuse() {
         binding.realTalkTxtNo.setOnClickListener {
             setParentAcceptTalkAtFirebase(false)
-            refuseDialogBinding.apply {
+            with(refuseDialogBinding) {
+                talkDialogTxtSelectedQuestion.text = binding.selectedQuestion.toString()
                 talkDialogTxtEdit.visibility = View.VISIBLE
                 talkDialogConstraintRadioBtn.visibility = View.GONE
                 talkDialogConstraintFinish.visibility = View.INVISIBLE
@@ -219,8 +219,9 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 refuseDialogBinding.root
             )
 
-            refuseDialogBinding.apply {
+            with(refuseDialogBinding) {
                 talkDialogTxtOk.setOnClickListener {
+                    refuseDialogBinding.talkDialogTimerTime.stop()
                     talkDialogConstraintFinish.visibility = View.VISIBLE
                     talkDialogConstraintBtnNoOk.visibility = View.INVISIBLE
                     talkDialogConstraintRadioBtn.visibility = View.GONE
@@ -253,7 +254,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                             R.id.rb9_dialog -> getString(R.string.talk_question_8)
                             R.id.rb10_dialog -> getString(R.string.talk_question_9)
                             R.id.rb11_dialog -> getString(R.string.talk_question_10)
-                            else -> getString(R.string.talk_question_0)
+                            else -> binding.selectedQuestion.toString()
                         }
                     setSelectedQuestionDialogAtFirebase(talkDialogTxtSelectedQuestion.text.toString())
                 }
@@ -262,7 +263,29 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
             dialog.apply {
                 window!!.setBackgroundDrawable(inset)
                 show()
+                refuseDialogBinding.talkDialogTimerTime.apply {
+                    base = SystemClock.elapsedRealtime() + 7000
+                    start()
+                    setOnChronometerTickListener {
+                        if (it.base <= SystemClock.elapsedRealtime() + 0) {
+                            stop()
+                            setVisibilityAfterTimerAtDialog()
+                            setSelectedQuestionDialogAtFirebase(binding.selectedQuestion.toString())
+                        }
+                    }
+                }
             }
+        }
+    }
+
+    private fun setVisibilityAfterTimerAtDialog(){
+        with(refuseDialogBinding){
+            talkDialogConstraintFinish.visibility = View.VISIBLE
+            talkDialogConstraintBtnNoOk.visibility = View.INVISIBLE
+            talkDialogConstraintRadioBtn.visibility = View.GONE
+            talkDialogTxtEdit.visibility = View.GONE
+            talkDialogTxtSubSelected.visibility = View.GONE
+            talkDialogConstraintSubmit.visibility = View.VISIBLE
         }
     }
 

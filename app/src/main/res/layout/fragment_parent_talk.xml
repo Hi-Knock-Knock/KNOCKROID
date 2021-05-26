@@ -514,7 +514,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <Chronometer
-                            android:id="@+id/real_Talk_timer_time"
+                            android:id="@+id/real_talk_timer_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
