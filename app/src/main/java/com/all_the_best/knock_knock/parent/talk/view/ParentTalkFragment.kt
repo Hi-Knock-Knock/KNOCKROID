@@ -264,7 +264,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 window!!.setBackgroundDrawable(inset)
                 show()
                 refuseDialogBinding.talkDialogTimerTime.apply {
-                    base = SystemClock.elapsedRealtime() + 7000
+                    base = SystemClock.elapsedRealtime() + 61000
                     start()
                     setOnChronometerTickListener {
                         if (it.base <= SystemClock.elapsedRealtime() + 0) {
