@@ -4,20 +4,12 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.core.app.ActivityCompat
 import androidx.viewpager.widget.ViewPager
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import com.all_the_best.knock_knock.infant.change.adapter.InfantSwitchViewPagerAdapter
-import com.all_the_best.knock_knock.infant.setting.viewmodel.InfantSelectChViewModel
 import com.all_the_best.knock_knock.util.FragmentOnBackPressed
-import kotlinx.android.synthetic.main.activity_infant_deco.*
-import kotlinx.android.synthetic.main.activity_infant_select_feel.*
-
 import kotlinx.android.synthetic.main.activity_infant_switch_character.*
-import kotlinx.android.synthetic.main.activity_parent_home.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 

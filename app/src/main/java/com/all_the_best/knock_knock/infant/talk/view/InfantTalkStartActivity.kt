@@ -291,7 +291,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
             mediaRecorder?.prepare()
             mediaRecorder?.start()
             state = true
-            Toast.makeText(this, "대화시작!", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "대화시작!", Toast.LENGTH_SHORT).show()
         } catch (e: IllegalStateException) {
             e.printStackTrace()
         } catch (e: IOException) {

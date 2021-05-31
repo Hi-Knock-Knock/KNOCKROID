@@ -71,7 +71,7 @@ class InfantGiftBoxActivity : AppCompatActivity() {
                     getBgPopup.show()
                     intentGoHome.putExtra("giftSelect", giftSelect)
                     Handler(Looper.getMainLooper()).postDelayed({
-                        Toast.makeText(this, "$giftSelect", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(this, "$giftSelect", Toast.LENGTH_SHORT).show()
                         startActivity(intentGoHome)
                         getBgPopup.dismiss()
                         overridePendingTransition(0, 0)
