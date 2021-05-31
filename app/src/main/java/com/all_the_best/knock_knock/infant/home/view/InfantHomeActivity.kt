@@ -139,7 +139,7 @@ class InfantHomeActivity : AppCompatActivity() {
             soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
             when(giftSelect){
                 in 0..1 -> {
-                    Toast.makeText(this, "$giftSelect", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "$giftSelect", Toast.LENGTH_SHORT).show()
                     intent3.putExtra("bgSelect",bgSelect)
                     intent3.putExtra("cookieCount",cookieCount)
                     intent3.putExtra("chSelect",chSelect)

@@ -14,8 +14,6 @@ import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_infant_home.*
-import kotlinx.android.synthetic.main.activity_infant_select_feel.*
 import kotlinx.android.synthetic.main.activity_infant_select_person.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
