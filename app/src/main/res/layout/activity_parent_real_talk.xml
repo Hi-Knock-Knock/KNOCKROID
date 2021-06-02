@@ -58,7 +58,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/img_real_talk_child_profile"
+            android:src="@drawable/img_profile_default_real_talk"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/accept_talk_txt_title" />
