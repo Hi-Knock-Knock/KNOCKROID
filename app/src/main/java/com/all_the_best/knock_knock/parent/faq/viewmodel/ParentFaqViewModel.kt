@@ -103,10 +103,11 @@ class ParentFaqViewModel : ViewModel() {
                 .child("index_$index")
             myValue.get().addOnSuccessListener {
                 tempFaqList[index].isScrapped = it.value as Boolean
+                if(index ==12)_faqList.value = tempFaqList.toMutableList()
             }.addOnFailureListener {
                 Log.e("firebase", "Error getting data", it)
             }
         }
-        setFaqList()
+
     }
 }

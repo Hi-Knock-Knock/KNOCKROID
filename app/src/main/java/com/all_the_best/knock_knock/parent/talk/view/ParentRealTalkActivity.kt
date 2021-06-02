@@ -57,6 +57,7 @@ class ParentRealTalkActivity : AppCompatActivity() {
         )
         binding = DataBindingUtil.setContentView(this, R.layout.activity_parent_real_talk)
         binding.txtSubmit = "전송하기"
+        setChildProfileImage()
         setSelectedFeelingAndPerson()
         setChildRecordPlayClick()
         setChildRecordPauseClick()
@@ -364,6 +365,18 @@ class ParentRealTalkActivity : AppCompatActivity() {
                 }
             }
         recordNum++
+    }
+
+    private fun setChildProfileImage(){
+        val myValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("imageUri(0)")
+        myValue.get().addOnSuccessListener {
+            binding.childProfileUri = it.value.toString()
+            Log.d("firebase", it.value.toString())
+        }.addOnFailureListener {
+            Log.d("firebase", "Error getting data", it)
+        }
     }
 
 }

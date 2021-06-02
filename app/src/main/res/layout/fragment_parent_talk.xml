@@ -8,6 +8,9 @@
         <variable
             name="selectedQuestion"
             type="String" />
+        <variable
+            name="childProfileUri"
+            type="String" />
 
     </data>
 
@@ -417,9 +420,9 @@
                 app:layout_constraintVertical_bias="0.455">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/real_talk_img_child"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/real_talk_img_parent"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
                     android:layout_marginStart="44dp"
                     android:src="@drawable/ic_parent_talk_dam_profile"
                     app:layout_constraintEnd_toStartOf="@id/real_talk_img_link"
@@ -431,19 +434,22 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="12dp"
                     android:src="@drawable/ic_parent_talk_link"
-                    app:layout_constraintBottom_toBottomOf="@id/real_talk_img_child"
+                    app:layout_constraintBottom_toBottomOf="@id/real_talk_img_parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/real_talk_img_child" />
+                    app:layout_constraintTop_toTopOf="@id/real_talk_img_parent" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/real_talk_img_parent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/real_talk_img_child"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
                     android:layout_marginEnd="44dp"
-                    android:src="@drawable/ic_parent_talk_men_profile"
+                    setSrcFromUrl="@{childProfileUri}"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_profile_default_talk"
                     app:layout_constraintStart_toEndOf="@id/real_talk_img_link"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@id/real_talk_img_parent"
+                    app:layout_constraintBottom_toBottomOf="@id/real_talk_img_parent"/>
 
                 <TextView
                     android:id="@+id/real_talk_txt_child_name"
@@ -456,7 +462,7 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/real_talk_img_child" />
+                    app:layout_constraintTop_toBottomOf="@id/real_talk_img_parent" />
 
                 <TextView
                     android:id="@+id/real_talk_txt_request"
@@ -598,9 +604,9 @@
                 android:visibility="invisible">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/real_talk_img_child_submit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/real_talk_img_parent_submit"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
                     android:layout_marginStart="44dp"
                     android:src="@drawable/ic_parent_talk_dam_profile"
                     app:layout_constraintEnd_toStartOf="@id/real_talk_img_link_submit"
@@ -612,19 +618,21 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="12dp"
                     android:src="@drawable/ic_parent_talk_link"
-                    app:layout_constraintBottom_toBottomOf="@id/real_talk_img_child_submit"
+                    app:layout_constraintBottom_toBottomOf="@id/real_talk_img_parent_submit"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/real_talk_img_child_submit" />
+                    app:layout_constraintTop_toTopOf="@id/real_talk_img_parent_submit" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/real_talk_img_parent_submit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/real_talk_img_child_submit"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
                     android:layout_marginEnd="44dp"
-                    android:src="@drawable/ic_parent_talk_men_profile"
+                    setSrcFromUrl="@{childProfileUri}"
+                    android:src="@drawable/img_profile_default_talk"
                     app:layout_constraintStart_toEndOf="@id/real_talk_img_link_submit"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@id/real_talk_img_parent_submit"
+                    app:layout_constraintBottom_toBottomOf="@id/real_talk_img_parent_submit"/>
 
                 <TextView
                     android:id="@+id/real_talk_txt_1_submit"
@@ -638,7 +646,7 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/real_talk_img_child_submit" />
+                    app:layout_constraintTop_toBottomOf="@id/real_talk_img_parent_submit" />
 
                 <TextView
                     android:id="@+id/real_talk_txt_2_submit"

@@ -1,7 +1,5 @@
 package com.all_the_best.knock_knock.parent.home.view
 
-import androidx.fragment.app.activityViewModels
-
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,19 +7,20 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.all_the_best.knock_knock.R
-import androidx.lifecycle.observe
 import com.all_the_best.knock_knock.databinding.FragmentParentHomeBinding
 import com.all_the_best.knock_knock.parent.alarm.view.ParentNoticeActivity
-import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.all_the_best.knock_knock.parent.home.adapter.ParentHomeRcvAdapter
 import com.all_the_best.knock_knock.parent.home.viewmodel.ParentHomeViewModel
 import com.all_the_best.knock_knock.parent.mypage.view.ParentMyPageActivity
 import com.all_the_best.knock_knock.parent.setting.view.ParentSettingActivity
+import com.all_the_best.knock_knock.util.FragmentOnBackPressed
 import com.google.android.material.navigation.NavigationView
 
 class ParentHomeFragment : Fragment(), FragmentOnBackPressed,
