@@ -24,6 +24,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieDrawable
 import com.all_the_best.knock_knock.R
+import com.all_the_best.knock_knock.infant.home.service.MusicService
 import com.all_the_best.knock_knock.infant.home.view.InfantHomeActivity
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
@@ -40,7 +41,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
     // 효과음
     var soundPool:SoundPool?=null
     private var musicPlay:Int=0
-
+    var thinkSound: MediaPlayer? = null
     private var bgSelect: Int = 1
     private var chSelect: Int = 0
     private var cookieCount: Int = 5
@@ -69,6 +70,10 @@ class InfantTalkStartActivity : AppCompatActivity() {
     private val databaseReference: DatabaseReference = database.reference
     val parentId = "부모1"
     val childName = "아이1"
+    override fun onResume() {
+        super.onResume()
+        thinkSound = MediaPlayer.create(this, R.raw.think)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,7 +113,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
             }
         }
 
-
         infant_icon_out.setOnClickListener{
             setGoOut()
         }
@@ -118,11 +122,12 @@ class InfantTalkStartActivity : AppCompatActivity() {
         val intent1 = Intent(this, InfantHomeActivity::class.java)
         setDefaultVariableAtFirebase()
         setMotionInit()
+        thinkSound!!.stop()
         // 쿠키 받는 팝업
         val cookiePopUp = Dialog(this)
         cookiePopUp?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         cookiePopUp.setContentView(R.layout.activity_infant_get_cookie_popup)
-        cookiePopUp.show()
+         cookiePopUp.show()
         cookieCount += 1
         intent1.putExtra("bgSelect", bgSelect)
         intent1.putExtra("chSelect",chSelect)
@@ -224,8 +229,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
 
     private fun setOnBtnRecordStopClick(){
         stopRecordBtn.setOnClickListener {
-//            val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
-//            soundPool!!.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f)
+            playSound()
             talk_txtview.visibility = View.INVISIBLE
             infant_talk1.visibility = View.INVISIBLE
             when(chSelect){
@@ -305,7 +309,6 @@ class InfantTalkStartActivity : AppCompatActivity() {
             mediaRecorder?.reset()
             mediaRecorder?.release()
             state = false
-            soundPool = SoundPool(1,AudioManager.STREAM_MUSIC,0)
             uploadAudioUri(audioUri)
         } else {
             Toast.makeText(this, "레코딩오류", Toast.LENGTH_SHORT).show()
@@ -352,7 +355,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
         myValue.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.value as Boolean) {
-                    //stopRecordBtn.isClickable = false
+                    thinkSound!!.stop()
                     getDataFromStorage()
                     setSelectTalkCharacter()
                     setOnLottieStart()
@@ -538,6 +541,7 @@ class InfantTalkStartActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot.value as Boolean){
                     ParentDenyplay()
+                    thinkSound!!.stop()
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -545,6 +549,22 @@ class InfantTalkStartActivity : AppCompatActivity() {
             }
         })
     }
+    private fun playSound(){
+        soundPool = SoundPool(1, AudioManager.STREAM_MUSIC,0)
+        val soundId: Int = soundPool!!.load(this, R.raw.button, 1)
+        soundPool!!.setOnLoadCompleteListener { soundPool, sampleId, status ->
+            soundPool.play(soundId, 1f, 1f, 0, 0, 1f)
+            if(!finish){
+                thinkSound = MediaPlayer.create(this, R.raw.think)
+                thinkSound!!.setVolume(0.4f,0.4f)
+                thinkSound!!.start()
+                thinkSound!!.isLooping = true
+            }else{
 
+            }
+        }
+    }
 
 }
+
+
