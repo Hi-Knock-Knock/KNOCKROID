@@ -64,6 +64,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
             DataBindingUtil.inflate(inflater, R.layout.dialog_talk, container, false)
         refuseDialogBinding.txtTitle = "실시간 대화 거절"
         refuseDialogBinding.txtEdit = "수정하기"
+        setChildProfileImage()
         setSelectedQuestion()
         setOnClickListenerForBtnHamburger()
         setOnClickListenerForBtnSubmit()
@@ -362,6 +363,18 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
         databaseReference.child(parentId).child(parentId + "의 child " + childName)
             .child("parentDenyTalk")
             .setValue(isDeny)
+    }
+
+    private fun setChildProfileImage(){
+        val myValue: DatabaseReference =
+            databaseReference.child(parentId).child(parentId + "의 child " + childName)
+                .child("imageUri(0)")
+        myValue.get().addOnSuccessListener {
+            binding.childProfileUri = it.value.toString()
+            Log.d("firebase", it.value.toString())
+        }.addOnFailureListener {
+            Log.d("firebase", "Error getting data", it)
+        }
     }
 
 }
