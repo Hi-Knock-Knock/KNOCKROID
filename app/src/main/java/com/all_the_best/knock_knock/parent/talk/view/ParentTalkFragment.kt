@@ -135,6 +135,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 if (snapshot.value as Boolean) {
                     binding.apply {
                         startTimerBeforeDeny()
+                        setChildProfileImage()
                         realTalkConstraintBeforeSubmit.visibility = View.VISIBLE
                         realTalkConstraintAfterSubmit.visibility = View.GONE
                         realTalkVerConstraint.visibility = View.VISIBLE
@@ -371,7 +372,7 @@ class ParentTalkFragment : Fragment(), FragmentOnBackPressed,
                 .child("imageUri(0)")
         myValue.get().addOnSuccessListener {
             binding.childProfileUri = it.value.toString()
-            Log.d("firebase", it.value.toString())
+            Log.d("firebase_fragment", it.value.toString())
         }.addOnFailureListener {
             Log.d("firebase", "Error getting data", it)
         }
