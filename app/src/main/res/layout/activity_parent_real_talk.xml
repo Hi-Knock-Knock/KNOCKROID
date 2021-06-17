@@ -131,7 +131,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/accept_talk_constraint_rcv"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="102dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_whitebox_10dp"
@@ -164,9 +164,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/accept_talk_rcv"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginHorizontal="8dp"
-                android:layout_marginVertical="40dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -17,7 +16,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import com.all_the_best.knock_knock.R
 import com.all_the_best.knock_knock.databinding.ActivityParentRealTalkBinding
 import com.all_the_best.knock_knock.parent.talk.adapter.ParentTalkAcceptTipRcvAdapter
-import com.all_the_best.knock_knock.parent.talk.viewmodel.ParentTalkViewModel
+import com.all_the_best.knock_knock.parent.talk.model.ParentTalkAcceptTip
 import com.all_the_best.knock_knock.util.StatusBarUtil
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
@@ -31,7 +30,6 @@ import java.util.*
 
 class ParentRealTalkActivity : AppCompatActivity() {
     private lateinit var binding: ActivityParentRealTalkBinding
-    private val parentTalkViewModel: ParentTalkViewModel by viewModels()
 
     private var firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
     private lateinit var pathReference: StorageReference
@@ -206,9 +204,20 @@ class ParentRealTalkActivity : AppCompatActivity() {
         fileName = fileNameFormat.format(currentTime).toString()
     }
 
+    private fun getTalkTipList() =
+        listOf(
+            ParentTalkAcceptTip(1, getString(R.string.talk_tip_1)),
+            ParentTalkAcceptTip(2, getString(R.string.talk_tip_2)),
+            ParentTalkAcceptTip(3, getString(R.string.talk_tip_3)),
+            ParentTalkAcceptTip(4, getString(R.string.talk_tip_4)),
+            ParentTalkAcceptTip(5, getString(R.string.talk_tip_5)),
+            ParentTalkAcceptTip(6, getString(R.string.talk_tip_6)),
+            ParentTalkAcceptTip(7, getString(R.string.talk_tip_7))
+        )
+
     private fun setTipRcvAdapter() {
         val tipRcvAdapter = ParentTalkAcceptTipRcvAdapter()
-        tipRcvAdapter.submitList(parentTalkViewModel.tipList)
+        tipRcvAdapter.submitList(getTalkTipList())
         binding.acceptTalkRcv.adapter = tipRcvAdapter
         val snapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(binding.acceptTalkRcv)
