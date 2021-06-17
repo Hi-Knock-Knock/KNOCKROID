@@ -15,6 +15,13 @@
     <string name="talk_question_8">너는 가장 친한친구가 누구야?</string>
     <string name="talk_question_9">오늘 어린이집에서 재밌었어?</string>
     <string name="talk_question_10">오늘 친구하고 뭐하고 놀았어?</string>
+    <string name="talk_tip_1">아이의 말을 끝까지 들어주세요.</string>
+    <string name="talk_tip_2">아이의 입장에서\n꾸준히 공감하는 질문을 많이 해주세요.</string>
+    <string name="talk_tip_3">먼저 답을 정해놓고 아이에게 원하는\n대답을 듣는 것을 강요하지 마세요.</string>
+    <string name="talk_tip_4">아이의 말을 맞장구치며 듣는 것이\n중요해요. 함께 공감해주세요.</string>
+    <string name="talk_tip_5">아이에게 칭찬하는 것이 가장 중요해요.\n아낌없이 칭찬해주세요.</string>
+    <string name="talk_tip_6">아이와 대화 할 때\n\&apos;하지 마라\&apos;는 부정 지시어보다\n\&apos;하라\&apos;는 긍정 지시어를 사용해주세요.</string>
+    <string name="talk_tip_7">차분한 목소리로 대화해주세요.</string>
     <string name="faq_title_1">아이를\n바르게\n대하는 방법</string>
     <string name="faq_title_2">동생이\n밉다고\n느끼는 아이</string>
     <string name="faq_title_3">나쁜 말을\n하는 아이</string>
